@@ -1,0 +1,88 @@
+{
+  "operations": {
+    "awning": {
+      "name": "awning",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "1"
+    },
+    "casement": {
+      "name": "Casement",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "2"
+    },
+    "sh": {
+      "name": "Single Hung",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "4"
+    },
+    "dh": {
+      "name": "Double Hung",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "5"
+    },
+    "fixedCasement": {
+      "name": "Fixed Casement",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "6"
+    },
+    "panoramic": {
+      "name": "Panoramic",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "7"
+    },
+    "singleSlider": {
+      "name": "Single Slider",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "8"
+    },
+    "doubleSlider": {
+      "name": "Double Slider",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "9"
+    },
+    "threeLiteSlider": {
+      "name": "Three Lite Slider",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "10"
+    },
+    "octagon": {
+      "name": "octagon",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "11"
+    },
+    "round": {
+      "name": "Round",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "12"
+    },
+    "rectangle": {
+      "name": "Rectangle",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "13"
+    },
+    "moose": {
+      "name": "Moose",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "14"
+    },
+    "triangle": {
+      "name": "Triangle",
+      "defaultImage": "https://unsplash.com/photos/Fd9tUmRBJzk",
+      "video": "https://www.pexels.com/video/wind-blowing-the-curtain-854116/",
+      "id": "15"
+    }
+  }
+}
