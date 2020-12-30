@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-// import { useQuery } from "@apollo/client";
-
-// import { CURRENT_USER_QUERY } from "../../queries/User";
-
 import disableScroll from "disable-scroll";
 
 import Logo from "../../assets/branding/frank_logo.svg";
@@ -15,9 +11,8 @@ import MenuComp from "./Menu";
 import { Container } from "../layout/Container";
 
 export const Header = (props) => {
-  // const { data } = useQuery(CURRENT_USER_QUERY);
   const [menuState, setMenuState] = useState(false);
-  // const { data } = useQuery(CURRENT_USER_QUERY);
+
   const [sticky, setSticky] = useState(true);
 
   // START -- Getting PAGE Y Off

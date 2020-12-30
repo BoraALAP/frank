@@ -3,7 +3,7 @@ import React from "react";
 import { Breadcrumbs } from "../components/pageSpecific/products/PageTitle";
 import { Container } from "../components/layout/Container";
 
-const PatioDoorTemplate = ({ children, title }) => {
+const SlidingDoorTemplate = ({ children, title }) => {
   const links = [
     {
       name: "Design Options",
@@ -23,10 +23,10 @@ const PatioDoorTemplate = ({ children, title }) => {
 
   return (
     <Container space gap>
-      <Breadcrumbs links={links} title={title} parent="Patio Doors" />
+      <Breadcrumbs links={links} title={title} parent="Sliding Doors" />
       {children}
     </Container>
   );
 };
 
-export default PatioDoorTemplate;
+export default SlidingDoorTemplate;

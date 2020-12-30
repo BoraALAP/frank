@@ -1,6 +1,5 @@
 import Link from "next/link";
-import styled from "./products/windows/node_modules/styled-components";
-
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import VideoImage from "../assets/images/videography.jpg";

@@ -8,8 +8,6 @@ import { TertiaryButton } from "../../UI/Links";
 import Body from "../../layout/Body";
 
 const Split = ({ title, subtitle, href, button, image, children, side }) => {
-  console.log(children);
-
   return (
     <Link href={href}>
       <Container side={side}>
@@ -24,11 +22,7 @@ const Split = ({ title, subtitle, href, button, image, children, side }) => {
         <Text side={side}>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
-          <Body>
-            {children.map((parag, index) => (
-              <p key={index}>{parag}</p>
-            ))}
-          </Body>
+          <Body>{children}</Body>
           <TertiaryButton rev={side ? false : true} href={href}>
             {button}
           </TertiaryButton>

@@ -57,8 +57,8 @@ const Menu = (props) => {
           image2: Menu4,
         },
         {
-          href: "/products/patiodoors",
-          name: "Patio Doors",
+          href: "/products/slidingdoors",
+          name: "Sliding Doors",
           image1: Menu5,
           image2: Menu6,
         },

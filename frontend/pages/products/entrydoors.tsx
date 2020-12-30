@@ -10,8 +10,8 @@ const entrydoors = () => {
   const pagetitle = "Entry Doors";
   const links = [
     {
-      name: "Patio Doors",
-      href: "/products/patiodoors",
+      name: "Sliding Doors",
+      href: "/products/slidingdoors",
     },
     {
       name: "Windows",

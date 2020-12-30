@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "../products/windows/node_modules/styled-components";
+import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
 import { FullImage } from "../../components/UI/FullImage";
 

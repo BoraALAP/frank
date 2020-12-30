@@ -24,15 +24,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/products/windows": [
+    "/home": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows.js"
-    ],
-    "/products/windows/prism": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows/prism.js"
+      "static/chunks/pages/home.js"
     ]
   },
   "ampFirstPages": []

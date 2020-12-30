@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
@@ -10,7 +10,25 @@ import image5 from "../assets/images/homepage5.jpg";
 import image6 from "../assets/images/homepage6.jpg";
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
+const ME = gql`
+  query Operation {
+    allOperations {
+      id
+      name
+    }
+  }
+`;
+
 const Home = (props) => {
+  const { loading, error, data } = useQuery(ME);
+
+  if (loading) {
+    return (
+      <div>
+        <h1>Loading</h1>
+      </div>
+    );
+  }
   return (
     <Container space>
       <Context>
@@ -63,9 +81,9 @@ const Home = (props) => {
             </p>
           </Category2>
           <Category3
-            title="Patio Doors"
+            title="Sliding Doors"
             subtitle="Maximize your living space."
-            href="/products/patiodoor"
+            href="/products/slidingdoor"
             image={image6}
           >
             <p>Rated Most efficient by Energy Star</p>

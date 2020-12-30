@@ -16,13 +16,16 @@ export const EnergyEfficiency = ({ imageSrc }) => {
       <Text simple>
         <Title>Energy Efficiency.</Title>
         <Body>
-          <p>Rated Most efficient by Energy Star</p>
+          <>
+            <p>Rated Most efficient by Energy Star</p>
 
-          <p>
-            Warm edge spacers recessed between the panes of glass both minimize
-            glass edge conductivity while optimally containing the argon gas
-            within the sealed units, obtaining a 90% argon gas fill rate
-          </p>
+            <p>
+              Warm edge spacers recessed between the panes of glass both
+              minimize glass edge conductivity while optimally containing the
+              argon gas within the sealed units, obtaining a 90% argon gas fill
+              rate
+            </p>
+          </>
         </Body>
         <TertiaryButton href="/sub/learn">
           More on Energy Efficiency

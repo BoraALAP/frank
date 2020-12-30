@@ -24,6 +24,7 @@ const CategoryTemplate = ({ pagetitle, links, products }) => {
             href={href}
             image={image}
             side={side}
+            key={index}
           >
             {children}
           </Split>

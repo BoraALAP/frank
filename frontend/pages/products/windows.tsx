@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "./windows/node_modules/styled-components";
+import styled from "styled-components";
 
 import CategoryTemplate from "../../template/CategoryTemplate";
 
@@ -16,8 +16,8 @@ const windows = () => {
       href: "/products/entrydoors",
     },
     {
-      name: "Patio Doors",
-      href: "/products/patiodoors",
+      name: "Sliding Doors",
+      href: "/products/slidingdoors",
     },
     {
       name: "Design Options",

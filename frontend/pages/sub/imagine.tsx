@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "../products/windows/node_modules/styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
 
