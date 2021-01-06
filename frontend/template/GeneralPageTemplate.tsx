@@ -1,9 +1,22 @@
-import React from "react";
-import styled from "styled-components";
+import { gql, useQuery } from "@apollo/client";
 import { Breadcrumbs } from "../components/pageSpecific/products/PageTitle";
-import { Container } from "../components/layout/Container";
+
+import { Operations } from "../components/pageSpecific/products/Operations";
 import { ImageOverlap } from "../components/pageSpecific/products/ImageOverlap";
 import { ThreeImages } from "../components/pageSpecific/products/ThreeImages";
+import { DesignOptions } from "../components/pageSpecific/DesignOptions";
+import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
+
+const OPERATIONS = gql`
+  query Operation {
+    allOperations {
+      id
+      name
+      defaultImage
+      video
+    }
+  }
+`;
 
 const GeneralTemplate = ({
   title,
@@ -19,7 +32,15 @@ const GeneralTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
+  operations
 }) => {
+  const { loading, error, data } = useQuery(OPERATIONS);
+
+  const operationList = data.allOperations.filter(item => {
+    console.log("check", item, operations);
+    return operations.find( operation => item.name === operation )
+  })
+
   return (
     <>
       <Breadcrumbs links={links} title={title} parent={parent} />
@@ -37,6 +58,9 @@ const GeneralTemplate = ({
         title={threeImagesTitle}
         description={threeImagesDescription}
       />
+      <Operations list={operationList} />
+      <DesignOptions />
+      <EnergyEfficiency />
     </>
   );
 };

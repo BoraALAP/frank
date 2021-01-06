@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled from "styled-components";
 import image1 from "../../../assets/images/homepage4.jpg";
 

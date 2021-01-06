@@ -1,5 +1,4 @@
 import { Container } from "../components/layout/Container";
-import Operations from "../components/pageSpecific/products/Operations";
 import GeneralTemplate from "./GeneralPageTemplate";
 
 const WindowsTemplate = ({
@@ -14,7 +13,7 @@ const WindowsTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operationList,
+  operations
 }) => {
   const links = [
     {
@@ -47,8 +46,8 @@ const WindowsTemplate = ({
         threeImagesProductImage3={threeImagesProductImage3}
         threeImagesTitle={threeImagesTitle}
         threeImagesDescription={threeImagesDescription}
-      />
-      <Operations list={operationList} />
+        operations={operations}
+      />    
     </Container>
   );
 };

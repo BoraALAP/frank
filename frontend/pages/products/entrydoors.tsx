@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import CategoryTemplate from "../../template/CategoryTemplate";
 
@@ -24,9 +24,9 @@ const entrydoors = () => {
   ];
   const products = [
     {
-      title: "Modo",
+      title: "Designer",
       subtitle: "Smooth fibreglass doors available in a range of options.",
-      href: "/products/entrydoors/modo",
+      href: "/products/entrydoors/designer",
       image: image1,
       children: [
         "For a simple replacement or add some style to your front facade.",

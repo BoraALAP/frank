@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
@@ -9,6 +8,25 @@ export const NavLinks = (props) => {
         {props.children}
       </Container>
     </Link>
+  );
+};
+
+export const Button = ({ href, children, rev = false, type = "" }: Props) => {
+  interface Props {
+    href?: string;
+    rev?: boolean;
+    type?: string;
+  }
+  return href ? (
+    <Link href={href}>
+      <ButtonContainer href={href} rev={rev}>
+        {children}
+      </ButtonContainer>
+    </Link>
+  ) : (
+    <ButtonContainer type={type} rev={rev}>
+      {children}
+    </ButtonContainer>
   );
 };
 
@@ -46,6 +64,16 @@ const TertiaryContainer = styled.a`
     props.rev ? props.theme.color.white : props.theme.color.primary};
   font-size: 1.125rem;
   text-decoration: underline;
+`;
+
+const ButtonContainer = styled.button`
+  display: grid;
+  color: ${(props) =>
+    props.rev ? props.theme.color.primary : props.theme.color.white};
+  background-color: ${(props) =>
+    props.rev ? props.theme.color.white : props.theme.color.primary};
+
+  padding: 0.75rem 1.5rem;
 `;
 
 const FooterButtonContainer = styled.div`

@@ -90,6 +90,9 @@ const GlobalStyle = createGlobalStyle`
   }
   button{
     font-size: 1.125rem;
+    background-color: transparent;
+    outline: none;
+    border: none;
     &:disabled{
       background-color: ${({ theme }) => theme.color.grey};
       border: none;

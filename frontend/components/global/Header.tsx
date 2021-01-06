@@ -98,6 +98,7 @@ export const Header = (props) => {
               src={MenuIcon}
               menuprop={menuState}
               onClick={handleMenu}
+              aria-label="Open Close Toggle"
             />
             {/* <SearchIcon /> */}
           </Right>

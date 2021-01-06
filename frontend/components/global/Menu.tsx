@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
+
 
 import MenuImage1 from "../../assets/images/menuImages/menuImage1.jpg";
 import MenuImage2 from "../../assets/images/menuImages/menuImage2.jpg";
@@ -107,7 +106,7 @@ const Menu = (props) => {
     {
       item: [
         {
-          href: "/contactUs",
+          href: "/contactus",
           name: "Contact Us",
           image1: Menu15,
           image2: Menu16,
@@ -251,9 +250,13 @@ const ImageS = styled(motion.div)`
 const ImgContainer = styled(motion.div)`
   position: relative;
   height: 100%;
-  display: grid;
+  display: none;
   gap: ${({ theme }) => theme.gap};
   grid-template-columns: 1fr 1fr;
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+  display: grid    
+  }
 `;
 
 const ImgCont = styled.div`
@@ -264,19 +267,19 @@ const ImgCont = styled.div`
 
 const Right = styled(motion.div)`
   display: grid;
-  gap: calc(2 * ${({ theme }) => theme.gap});
+  /* gap: calc(2 * ${({ theme }) => theme.gap}); */
   align-items: start;
-  align-content: start;
+  align-content: space-between;
 
   @media (min-width: 768px) {
-    align-content: flex-start;
+    align-content: space-between;
     height: 100%;
   }
 `;
 
 const Divide = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 2);
+  gap: calc( ${({ theme }) => theme.gap} / 4 );
 `;
 
 const HR = styled.div`

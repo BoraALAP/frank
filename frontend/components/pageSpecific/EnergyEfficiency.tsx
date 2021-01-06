@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "../UI/Links";
@@ -6,7 +6,7 @@ import Body from "../layout/Body";
 
 import homepage1 from "../../assets/images/homepage1.jpg";
 
-export const EnergyEfficiency = ({ imageSrc }) => {
+export const EnergyEfficiency = ({ imageSrc= "" }) => {
   const image = imageSrc || homepage1;
   return (
     <Container simple>
@@ -35,40 +35,6 @@ export const EnergyEfficiency = ({ imageSrc }) => {
   );
 };
 
-export const EnergyEfficiencyProduct = ({
-  imageSrc1,
-  imageSrc2,
-  imageSrc3,
-}) => {
-  return (
-    <Container>
-      <ImageContainer1>
-        <Image src={imageSrc1} objectFit="cover" layout="fill" />
-      </ImageContainer1>
-      <Text>
-        <Title>Energy Efficiency.</Title>
-        <Body>
-          <p>Rated Most efficient by Energy Star</p>
-
-          <p>
-            Warm edge spacers recessed between the panes of glass both minimize
-            glass edge conductivity while optimally containing the argon gas
-            within the sealed units, obtaining a 90% argon gas fill rate
-          </p>
-        </Body>
-        <TertiaryButton href="/sub/learn">
-          More on Energy Efficiency
-        </TertiaryButton>
-      </Text>
-      <ImageContainer2>
-        <Image src={imageSrc2} objectFit="cover" layout="fill" />
-      </ImageContainer2>
-      <ImageContainer3>
-        <Image src={imageSrc3} objectFit="cover" layout="fill" />
-      </ImageContainer3>
-    </Container>
-  );
-};
 
 const Container = styled.div`
   display: grid;
@@ -82,17 +48,6 @@ const ImageContainer = styled.div`
   display: grid;
   position: relative;
   height: 400px;
-`;
-
-const ImageContainer1 = styled(ImageContainer)`
-  grid-row: span 2;
-  height: auto;
-`;
-
-const ImageContainer2 = styled(ImageContainer)``;
-
-const ImageContainer3 = styled(ImageContainer)`
-  grid-column: span 2;
 `;
 
 const Text = styled.div`

@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled from "styled-components";
 import { Container } from "../../layout/Container";
 
@@ -18,7 +18,7 @@ const Context = styled.div`
   display: grid;
   background-color: ${(props) =>
     props.transparent ? "none" : props.theme.color.lightGrey};
-  padding: ${({ theme }) => theme.padding};
+  padding: ${({ theme }) => theme.padding}};
   gap: ${({ theme }) => theme.gap};
 `;
 

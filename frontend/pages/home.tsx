@@ -20,15 +20,6 @@ const ME = gql`
 `;
 
 const Home = (props) => {
-  const { loading, error, data } = useQuery(ME);
-
-  if (loading) {
-    return (
-      <div>
-        <h1>Loading</h1>
-      </div>
-    );
-  }
   return (
     <Container space>
       <Context>
@@ -38,13 +29,13 @@ const Home = (props) => {
           </Left>
 
           <Right>
-            <Link href="/">Contact Us</Link>
+            <Link href="/contactus">Contact Us</Link>
             <Link href="/">Dealer Login</Link>
-            <p>
+            {/* <p>
               Our story starts 35 years ago, with a commitment to quality that
               has remained family owned and operated. Learn more about us{" "}
               <Link href="/sub/frank">here.</Link>{" "}
-            </p>
+            </p> */}
           </Right>
         </Welcome>
         <Categories>
@@ -54,6 +45,7 @@ const Home = (props) => {
             subtitle="Maximize your living space."
             href="/products/windows"
             image={image4}
+            rev
           >
             <p>Rated Most efficient by Energy Star</p>
 
@@ -67,9 +59,9 @@ const Home = (props) => {
           <Category2
             title="Entry Door"
             subtitle="Maximize your living space."
-            href="/products/entrydoor"
+            href="/products/entrydoors"
             image={image5}
-            rev
+            
           >
             <p>Rated Most efficient by Energy Star</p>
 
@@ -83,8 +75,9 @@ const Home = (props) => {
           <Category3
             title="Sliding Doors"
             subtitle="Maximize your living space."
-            href="/products/slidingdoor"
+            href="/products/slidingdoors"
             image={image6}
+            rev
           >
             <p>Rated Most efficient by Energy Star</p>
 
@@ -145,8 +138,12 @@ const Right = styled.div`
   align-items: end;
   align-content: end;
   gap: ${({ theme }) => theme.gap};
-  @media (min-width: 480px) {
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
     display: grid;
+    position: sticky;
+    height: min-content;
+    top: 500px;   
   }
 `;
 

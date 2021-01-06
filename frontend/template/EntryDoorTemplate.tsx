@@ -1,9 +1,20 @@
-import React from "react";
-
-import { Breadcrumbs } from "../components/pageSpecific/products/PageTitle";
 import { Container } from "../components/layout/Container";
+import GeneralTemplate from "./GeneralPageTemplate";
 
-const EntryDoorTemplate = ({ children, title }) => {
+const EntryDoorTemplate = ({
+  title,
+  imageOverlapDetailsTitle,
+  imageOverlapDetailsChildren,
+  imageOverlapImageSrc,
+  imageOverlapImageTitle,
+  imageOverlapImageChildren,
+  threeImagesProductImage1,
+  threeImagesProductImage2,
+  threeImagesProductImage3,
+  threeImagesTitle,
+  threeImagesDescription,
+  operations
+}) => {
   const links = [
     {
       name: "Design Options",
@@ -18,13 +29,30 @@ const EntryDoorTemplate = ({ children, title }) => {
       href: "/sub/dealerfinder",
     },
   ];
+  
 
   return (
     <Container space gap>
-      <Breadcrumbs links={links} title={title} parent="Entry Doors" />
-      {children}
+      <GeneralTemplate
+        title={title}
+        parent="Entry Doors"
+        links={links}
+        imageOverlapDetailsTitle={imageOverlapDetailsTitle}
+        imageOverlapDetailsChildren={imageOverlapDetailsChildren}
+        imageOverlapImageSrc={imageOverlapImageSrc}
+        imageOverlapImageTitle={imageOverlapImageTitle}
+        imageOverlapImageChildren={imageOverlapImageChildren}
+        threeImagesProductImage1={threeImagesProductImage1}
+        threeImagesProductImage2={threeImagesProductImage2}
+        threeImagesProductImage3={threeImagesProductImage3}
+        threeImagesTitle={threeImagesTitle}
+        threeImagesDescription={threeImagesDescription}
+        operations={operations}
+      />
     </Container>
   );
 };
 
 export default EntryDoorTemplate;
+
+  

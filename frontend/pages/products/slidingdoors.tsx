@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import CategoryTemplate from "../../template/CategoryTemplate";
 
@@ -50,22 +50,10 @@ const slidingdoors = () => {
       ],
     },
     {
-      title: "Lift and Slide",
-      subtitle: "Trending today, for tomorrow’s architecture.",
-      href: "/products/slidingdoors/liftandslide",
-      image: image3,
-      children: [
-        "The industry’s largest 2 panel offering for a sliding door with unparalleled energy efficiency and performance ratings.",
-        "Multi-point locking system and upgraded European hardware that can accommodate both dual and triple-glazed units comes standard.",
-        "Ultra smooth and finger tip easy panel operation.",
-      ],
-    },
-    {
       title: "Orchestra Door",
       subtitle: "A modern look for everyone.",
       href: "/products/slidingdoors/orchestradoor",
       image: image4,
-      side: true,
       children: [
         "Solid frame and sash construction with 7 ¼” frame depth and a 2 ¼” thick sashes.",
         "High performance roller system for smooth operation and designed for larger openings.",
@@ -77,11 +65,23 @@ const slidingdoors = () => {
       subtitle: "Bifold",
       href: "/products/slidingdoors/foldingdoor",
       image: image3,
+      side: true,
       children: [
         "Multiple configurations available that can accommodate up to 24 ft wide and 10 ft tall.",
         "Highest quality stainless steel hinge and roller hardware, complimented by a European handle hardware and locking system that comes in variety of finishes.",
         "Engineered no other folding door -- with structural steel reinforced sashes.",
         "Creates a seamless transition to the outdoors.",
+      ],
+    },
+    {
+      title: "Lift and Slide",
+      subtitle: "Trending today, for tomorrow’s architecture.",
+      href: "/products/slidingdoors/liftandslide",
+      image: image3,
+      children: [
+        "The industry’s largest 2 panel offering for a sliding door with unparalleled energy efficiency and performance ratings.",
+        "Multi-point locking system and upgraded European hardware that can accommodate both dual and triple-glazed units comes standard.",
+        "Ultra smooth and finger tip easy panel operation.",
       ],
     },
   ];
