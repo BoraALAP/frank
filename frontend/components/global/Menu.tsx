@@ -159,20 +159,21 @@ const Menu = (props) => {
               transition={{ delay: 0.65, duration: 0.75 }}
             >
               {links.map((location, index) => {
+                console.log(location);
+
                 return (
                   <Divide key={index}>
-                    {location.item.map((it, index) => (
-                      <div
+                    {location?.item?.map((it, index) => (
+                      <NavLinks
+                        href={it.href}
+                        Bottom={it.prop}
                         key={index}
-                        onClick={props.onClick}
                         onMouseEnter={() => {
                           setImageSrc({ image1: it.image1, image2: it.image2 });
                         }}
                       >
-                        <NavLinks href={it.href} Bottom={it.prop}>
-                          {it.name}
-                        </NavLinks>
-                      </div>
+                        {it.name}
+                      </NavLinks>
                     ))}
                   </Divide>
                 );
