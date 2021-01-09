@@ -24,10 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/sub/imagine": [
+    "/home": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/sub/imagine.js"
+      "static/chunks/pages/home.js"
+    ],
+    "/products/windows/core": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/products/windows/core.js"
     ]
   },
   "ampFirstPages": []

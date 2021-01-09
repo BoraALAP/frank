@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const menu = ({ color }) => {
+const menu = () => {
   return (
     <Svg
       width="31"

@@ -66,16 +66,17 @@ export const Header = (props) => {
     <Context show={sticky}>
       <Container>
         <HeaderS>
-          <Left>
-            <Link href="/home">
+          <Link href="/home">
+            <Left>
               <LogoS />
-            </Link>
-            <H4>
-              We make
-              <br />
-              Windows and Doors
-            </H4>
-          </Left>
+
+              <H4>
+                We make
+                <br />
+                Windows and Doors
+              </H4>
+            </Left>
+          </Link>
           {/* <Nav>
         {data?.me ? (
           <>
@@ -99,7 +100,7 @@ export const Header = (props) => {
               onClick={handleMenu}
               aria-label="Open Close Toggle"
             >
-              <MenuIcon />{" "}
+              <MenuIcon />
             </MenuIconS>
             {/* <SearchIcon /> */}
           </Right>
