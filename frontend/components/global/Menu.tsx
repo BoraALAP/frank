@@ -17,86 +17,82 @@ const Menu = (props) => {
   };
 
   const links = [
-    {
-      item: [
-        {
-          href: "/products/windows",
-          name: "Windows",
-          image1: "/menuImages/menu1.jpg",
-          image2: "/menuImages/menu2.jpg",
-        },
-        {
-          href: "/products/entrydoors",
-          name: "Entry Doors",
-          image1: "/menuImages/menu3.jpg",
-          image2: "/menuImages/menu4.jpg",
-        },
-        {
-          href: "/products/slidingdoors",
-          name: "Sliding Doors",
-          image1: "/menuImages/menu5.jpg",
-          image2: "/menuImages/menu6.jpg",
-        },
-      ],
-    },
-    {
-      item: [
-        {
-          href: "/sub/frank",
-          name: "Who is Frank?",
-          image1: "/menuImages/menu7.jpg",
-          image2: "/menuImages/menu8.jpg",
-        },
-        {
-          href: "/sub/imagine",
-          name: "Imagine",
-          image1: "/menuImages/menu9.jpg",
-          image2: "/menuImages/menu10.jpg",
-        },
-        {
-          href: "/sub/designOptions",
-          name: "Design Options",
-          image1: "/menuImages/menu13.jpg",
-          image2: "/menuImages/menu14.jpg",
-        },
-        {
-          href: "/sub/learn",
-          name: "Learn",
-          image1: "/menuImages/menu13.jpg",
-          image2: "/menuImages/menu14.jpg",
-        },
-        // {
-        //   href: "/sub/make",
-        //   name: "Make",
-        //   image1: "/menuImages/menu11.jpg",
-        //   image2: "/menuImages/menu12.jpg",
-        // },
-        {
-          href: "/sub/dealerfinder",
-          name: "Find a Dealer",
-          image1: "/menuImages/menu19.jpg",
-          image2: "/menuImages/menu20.jpg",
-        },
-      ],
-    },
-    {
-      item: [
-        {
-          href: "/contactus",
-          name: "Contact Us",
-          image1: "/menuImages/menu15.jpg",
-          image2: "/menuImages/menu16.jpg",
-          prop: "Bottom",
-        },
-        {
-          href: "/user",
-          name: props.me ? "Account" : "Dealer Login",
-          image1: "/menuImages/menu17.jpg",
-          image2: "/menuImages/menu18.jpg",
-          prop: "Bottom",
-        },
-      ],
-    },
+    [
+      {
+        href: "/products/windows",
+        name: "Windows",
+        image1: "/menuImages/menu1.jpg",
+        image2: "/menuImages/menu2.jpg",
+      },
+      {
+        href: "/products/entrydoors",
+        name: "Entry Doors",
+        image1: "/menuImages/menu3.jpg",
+        image2: "/menuImages/menu4.jpg",
+      },
+      {
+        href: "/products/slidingdoors",
+        name: "Sliding Doors",
+        image1: "/menuImages/menu5.jpg",
+        image2: "/menuImages/menu6.jpg",
+      },
+    ],
+
+    [
+      {
+        href: "/sub/frank",
+        name: "Who is Frank?",
+        image1: "/menuImages/menu7.jpg",
+        image2: "/menuImages/menu8.jpg",
+      },
+      {
+        href: "/sub/imagine",
+        name: "Imagine",
+        image1: "/menuImages/menu9.jpg",
+        image2: "/menuImages/menu10.jpg",
+      },
+      {
+        href: "/sub/designOptions",
+        name: "Design Options",
+        image1: "/menuImages/menu13.jpg",
+        image2: "/menuImages/menu14.jpg",
+      },
+      {
+        href: "/sub/learn",
+        name: "Learn",
+        image1: "/menuImages/menu13.jpg",
+        image2: "/menuImages/menu14.jpg",
+      },
+      // {
+      //   href: "/sub/make",
+      //   name: "Make",
+      //   image1: "/menuImages/menu11.jpg",
+      //   image2: "/menuImages/menu12.jpg",
+      // },
+      {
+        href: "/sub/dealerfinder",
+        name: "Find a Dealer",
+        image1: "/menuImages/menu19.jpg",
+        image2: "/menuImages/menu20.jpg",
+      },
+    ],
+
+    [
+      {
+        href: "/contactus",
+        name: "Contact Us",
+        image1: "/menuImages/menu15.jpg",
+        image2: "/menuImages/menu16.jpg",
+        prop: "Bottom",
+      },
+      {
+        href: "/user",
+        name: props.me ? "Account" : "Dealer Login",
+        image1: "/menuImages/menu17.jpg",
+        image2: "/menuImages/menu18.jpg",
+        prop: "Bottom",
+      },
+    ],
   ];
 
   return (
@@ -158,23 +154,26 @@ const Menu = (props) => {
               variants={opacity}
               transition={{ delay: 0.65, duration: 0.75 }}
             >
-              {links.map((location, index) => {
-                console.log(location);
-
+              {links.map((pages, index) => {
                 return (
                   <Divide key={index}>
-                    {location?.item?.map((it, index) => (
-                      <NavLinks
-                        href={it.href}
-                        Bottom={it.prop}
-                        key={index}
-                        onMouseEnter={() => {
-                          setImageSrc({ image1: it.image1, image2: it.image2 });
-                        }}
-                      >
-                        {it.name}
-                      </NavLinks>
-                    ))}
+                    {/* {pages?.map((it) => {
+                      return (
+                        <NavLinks
+                          href={it.href}
+                          Bottom={it.prop}
+                          key={index}
+                          onMouseEnter={() => {
+                            setImageSrc({
+                              image1: it.image1,
+                              image2: it.image2,
+                            });
+                          }}
+                        >
+                          {it.name}
+                        </NavLinks>
+                      );
+                    })} */}
                   </Divide>
                 );
               })}
