@@ -1,3 +1,3 @@
 import { createContext } from "react";
-
-export const globalContext = createContext();
+const defaultValue = "light";
+export const globalContext = createContext(defaultValue);

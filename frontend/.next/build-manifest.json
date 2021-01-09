@@ -23,8 +23,10 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/products/windows/enersense": [
+    ]
+  },
+  "ampFirstPages": []
+}sense": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/products/windows/enersense.js"
