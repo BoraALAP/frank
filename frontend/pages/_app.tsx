@@ -3,10 +3,14 @@ import { useRouter } from "next/router";
 import { ThemeProvider } from "styled-components";
 
 import { HttpLink } from "apollo-link-http";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import {
+  ApolloClient,
+  InMemoryCache,
+  NormalizedCacheObject,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
 import { Query } from "@keystonejs/apollo-helpers";
-import { ApolloProvider, gql } from "@apollo/client";
 
 import { primaryTheme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
