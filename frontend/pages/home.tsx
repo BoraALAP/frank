@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
-import { globalContext } from "../context/context";
+import { GlobalContext } from "../context/context";
 import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
@@ -12,7 +12,7 @@ import Category from "../components/pageSpecific/home/Category";
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
 const Home = (props) => {
-  const { store, dispatch } = useContext(globalContext);
+  const { store, dispatch } = useContext(GlobalContext);
 
   return (
     <Container space>
