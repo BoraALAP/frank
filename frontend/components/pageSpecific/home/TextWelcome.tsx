@@ -1,10 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-import Home1 from "../../../assets/images/homepage1.jpg";
-import Home2 from "../../../assets/images/homepage2.jpg";
-import Home3 from "../../../assets/images/homepage3.jpg";
-
 const TextWelcome = (props) => {
   return (
     <Container>
@@ -14,7 +10,7 @@ const TextWelcome = (props) => {
           over four decades of
           <ImageS>
             <Image
-              src={Home1}
+              src="/homepage1.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
@@ -25,7 +21,7 @@ const TextWelcome = (props) => {
         <Inwrap>
           <ImageS>
             <Image
-              src={Home2}
+              src="/homepage2.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
@@ -38,7 +34,7 @@ const TextWelcome = (props) => {
           Frank is like family.
           <ImageS>
             <Image
-              src={Home3}
+              src="/homepage3.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"

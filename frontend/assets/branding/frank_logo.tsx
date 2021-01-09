@@ -9,7 +9,7 @@ const frank_logo = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0)">
+      <g clipPath="url(#clip0)">
         <path
           d="M130.193 11.1291V10.5714H132.617V11.1291H131.733V13.3347H131.077V11.1291H130.193Z"
           fill="#0E3152"

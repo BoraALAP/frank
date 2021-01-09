@@ -1,10 +1,8 @@
-
 import styled from "styled-components";
-import image1 from "../../../assets/images/homepage4.jpg";
 
 const Message = () => {
   return (
-    <Container image1={image1}>
+    <Container image1="homepage4.jpg">
       <Top>
         <Left>
           Frank is proudly Made in Ontario and serves customers across Canada.

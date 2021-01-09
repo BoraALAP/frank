@@ -1,12 +1,6 @@
-
 import styled from "styled-components";
 
 import CategoryTemplate from "../../template/CategoryTemplate";
-
-import image1 from "../../assets/images/product/image1.jpg";
-import image2 from "../../assets/images/product/image2.jpg";
-import image3 from "../../assets/images/product/image3.jpg";
-import image4 from "../../assets/images/product/image4.jpg";
 
 const windows = () => {
   const pagetitle = "Windows";
@@ -30,7 +24,7 @@ const windows = () => {
       title: "Core",
       subtitle: "Ideal for renovation or new construction",
       href: "/products/windows/core",
-      image: image1,
+      image: "/product/image1.jpg",
       children: [
         "Rated Most efficient by Energy Star",
         "Warm edge spacers recessed between the panes of glass both minimize glass edge conductivity while optimally containing the argon gas within the sealed units, obtaining a 90% argon gas fill rate.",
@@ -40,7 +34,7 @@ const windows = () => {
       title: "Core+",
       subtitle: "Classic wood window design meets modern engineering",
       href: "/products/windows/coreplus",
-      image: image2,
+      image: "/product/image2.jpg",
       side: true,
       children: [
         "Rated Most efficient by Energy Star",
@@ -51,7 +45,7 @@ const windows = () => {
       title: "Enersense",
       subtitle: "Maximize your living space.",
       href: "/products/windows/enersense",
-      image: image3,
+      image: "/product/image3.jpg",
       children: [
         "Rated Most efficient by Energy Star",
         "Warm edge spacers recessed between the panes of glass both minimize glass edge conductivity while optimally containing the argon gas within the sealed units, obtaining a 90% argon gas fill rate.",
@@ -61,7 +55,7 @@ const windows = () => {
       title: "Prism",
       subtitle: "More glass surface area for more light.",
       href: "/products/windows/prism",
-      image: image4,
+      image: "/product/image4.jpg",
 
       side: true,
       children: [

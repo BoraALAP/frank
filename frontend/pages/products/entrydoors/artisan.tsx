@@ -1,10 +1,5 @@
 import EntryDoorTemplate from "../../../template/EntryDoorTemplate";
 
-import image1 from "../../../assets/images/product/core.png";
-import productImage1 from "../../../assets/images/product/productImage1.jpg";
-import productImage2 from "../../../assets/images/product/productImage2.jpg";
-import productImage3 from "../../../assets/images/product/productImage3.jpg";
-
 const artisan = () => {
   return (
     <EntryDoorTemplate
@@ -13,20 +8,16 @@ const artisan = () => {
       imageOverlapDetailsChildren={[
         "Available in a range of styles and finishes that fool the eye -- Mahogany, Oak, Fir, Rustic, and Canvas.",
         "Superior quality construction and detailed craftsmanship that allows for 10% more glass than other entry door lines, and a clean hard edge that further mimics real wood.",
-        "The handcrafted elegance of another era for today’s homeowner."
+        "The handcrafted elegance of another era for today’s homeowner.",
       ]}
-      imageOverlapImageSrc={image1}
+      imageOverlapImageSrc="/product/core.png"
       imageOverlapImageTitle="Missing"
-      imageOverlapImageChildren={[
-        "Missing"
-      ]}
-      threeImagesProductImage1={productImage1}
-      threeImagesProductImage2={productImage2}
-      threeImagesProductImage3={productImage3}
+      imageOverlapImageChildren={["Missing"]}
+      threeImagesProductImage1="/product/productImage1.jpg"
+      threeImagesProductImage2="/product/productImage2.jpg"
+      threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
-      threeImagesDescription={[
-        "Missing"
-      ]}
+      threeImagesDescription={["Missing"]}
       operations={["Missing"]}
     />
   );

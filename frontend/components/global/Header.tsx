@@ -69,7 +69,6 @@ export const Header = (props) => {
           <Link href="/home">
             <Left>
               <LogoS />
-
               <H4>
                 We make
                 <br />

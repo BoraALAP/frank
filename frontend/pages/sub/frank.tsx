@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
 import { FullImage } from "../../components/UI/FullImage";
@@ -6,15 +5,11 @@ import { FullImage } from "../../components/UI/FullImage";
 import Body from "../../components/layout/Body";
 import TwoColumn from "../../components/UI/TwoColumn";
 
-import frankImage from "../../assets/images/frank.jpg";
-import frank2 from "../../assets/images/frank2.jpg";
-import frank3 from "../../assets/images/frank3.jpg";
-
 const frank = () => {
   return (
     <Container space>
       <Context>
-        <FullImage imageSrc={frankImage} />
+        <FullImage imageSrc="frank" />
         <Text>
           <Body>
             <Subtitle>Who is Frank?</Subtitle>
@@ -26,7 +21,7 @@ const frank = () => {
             </p>
           </Body>
         </Text>
-        <TwoColumn title="Commitment to Quality" imageSrc={frank2} rev>
+        <TwoColumn title="Commitment to Quality" imageSrc="frank2" rev>
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way
@@ -42,7 +37,7 @@ const frank = () => {
           </p>
         </TwoColumn>
 
-        <TwoColumn title="Placeholder copy" imageSrc={frank3}>
+        <TwoColumn title="Placeholder copy" imageSrc="frank3">
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way

@@ -1,36 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import MenuImage1 from "../../assets/images/menuImages/menuImage1.jpg";
-import MenuImage2 from "../../assets/images/menuImages/menuImage2.jpg";
-import Menu1 from "../../assets/images/menuImages/menu1.jpg";
-import Menu2 from "../../assets/images/menuImages/menu2.jpg";
-import Menu3 from "../../assets/images/menuImages/menu3.jpg";
-import Menu4 from "../../assets/images/menuImages/menu4.jpg";
-import Menu5 from "../../assets/images/menuImages/menu5.jpg";
-import Menu6 from "../../assets/images/menuImages/menu6.jpg";
-import Menu7 from "../../assets/images/menuImages/menu7.jpg";
-import Menu8 from "../../assets/images/menuImages/menu8.jpg";
-import Menu9 from "../../assets/images/menuImages/menu9.jpg";
-import Menu10 from "../../assets/images/menuImages/menu10.jpg";
-import Menu11 from "../../assets/images/menuImages/menu11.jpg";
-import Menu12 from "../../assets/images/menuImages/menu12.jpg";
-import Menu13 from "../../assets/images/menuImages/menu13.jpg";
-import Menu14 from "../../assets/images/menuImages/menu14.jpg";
-import Menu15 from "../../assets/images/menuImages/menu15.jpg";
-import Menu16 from "../../assets/images/menuImages/menu16.jpg";
-import Menu17 from "../../assets/images/menuImages/menu17.jpg";
-import Menu18 from "../../assets/images/menuImages/menu18.jpg";
-import Menu19 from "../../assets/images/menuImages/menu19.jpg";
-import Menu20 from "../../assets/images/menuImages/menu20.jpg";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLinks } from "../UI/Links";
 
 const Menu = (props) => {
   const [imageSrc, setImageSrc] = useState({
-    image1: MenuImage1,
-    image2: MenuImage2,
+    image1: "/menuImages/menuImage1.jpg",
+    image2: "/menuImages/menuImage2.jpg",
   });
 
   const opacity = {
@@ -45,20 +22,20 @@ const Menu = (props) => {
         {
           href: "/products/windows",
           name: "Windows",
-          image1: Menu1,
-          image2: Menu2,
+          image1: "/menuImages/menu1.jpg",
+          image2: "/menuImages/menu2.jpg",
         },
         {
           href: "/products/entrydoors",
           name: "Entry Doors",
-          image1: Menu3,
-          image2: Menu4,
+          image1: "/menuImages/menu3.jpg",
+          image2: "/menuImages/menu4.jpg",
         },
         {
           href: "/products/slidingdoors",
           name: "Sliding Doors",
-          image1: Menu5,
-          image2: Menu6,
+          image1: "/menuImages/menu5.jpg",
+          image2: "/menuImages/menu6.jpg",
         },
       ],
     },
@@ -67,38 +44,38 @@ const Menu = (props) => {
         {
           href: "/sub/frank",
           name: "Who is Frank?",
-          image1: Menu7,
-          image2: Menu8,
+          image1: "/menuImages/menu7.jpg",
+          image2: "/menuImages/menu8.jpg",
         },
         {
           href: "/sub/imagine",
           name: "Imagine",
-          image1: Menu9,
-          image2: Menu10,
+          image1: "/menuImages/menu9.jpg",
+          image2: "/menuImages/menu10.jpg",
         },
         {
           href: "/sub/designOptions",
           name: "Design Options",
-          image1: Menu13,
-          image2: Menu14,
+          image1: "/menuImages/menu13.jpg",
+          image2: "/menuImages/menu14.jpg",
         },
         {
           href: "/sub/learn",
           name: "Learn",
-          image1: Menu13,
-          image2: Menu14,
+          image1: "/menuImages/menu13.jpg",
+          image2: "/menuImages/menu14.jpg",
         },
         // {
         //   href: "/sub/make",
         //   name: "Make",
-        //   image1: Menu11,
-        //   image2: Menu12,
+        //   image1: "/menuImages/menu11.jpg",
+        //   image2: "/menuImages/menu12.jpg",
         // },
         {
           href: "/sub/dealerfinder",
           name: "Find a Dealer",
-          image1: Menu19,
-          image2: Menu20,
+          image1: "/menuImages/menu19.jpg",
+          image2: "/menuImages/menu20.jpg",
         },
       ],
     },
@@ -107,15 +84,15 @@ const Menu = (props) => {
         {
           href: "/contactus",
           name: "Contact Us",
-          image1: Menu15,
-          image2: Menu16,
+          image1: "/menuImages/menu15.jpg",
+          image2: "/menuImages/menu16.jpg",
           prop: "Bottom",
         },
         {
           href: "/user",
           name: props.me ? "Account" : "Dealer Login",
-          image1: Menu17,
-          image2: Menu18,
+          image1: "/menuImages/menu17.jpg",
+          image2: "/menuImages/menu18.jpg",
           prop: "Bottom",
         },
       ],

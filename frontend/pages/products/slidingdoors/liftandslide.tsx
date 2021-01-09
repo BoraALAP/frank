@@ -1,10 +1,5 @@
 import SlidingDoorTemplate from "../../../template/SlidingDoorTemplate";
 
-import image1 from "../../../assets/images/product/core.png";
-import productImage1 from "../../../assets/images/product/productImage1.jpg";
-import productImage2 from "../../../assets/images/product/productImage2.jpg";
-import productImage3 from "../../../assets/images/product/productImage3.jpg";
-
 const liftandslidedoor = () => {
   return (
     <SlidingDoorTemplate
@@ -15,18 +10,14 @@ const liftandslidedoor = () => {
         "Multi-point locking system and upgraded European hardware that can accommodate both dual and triple-glazed units comes standard.",
         "Ultra smooth and finger tip easy panel operation.",
       ]}
-      imageOverlapImageSrc={image1}
+      imageOverlapImageSrc="/product/core"
       imageOverlapImageTitle="Missing"
-      imageOverlapImageChildren={[
-        "Missing"
-      ]}
-      threeImagesProductImage1={productImage1}
-      threeImagesProductImage2={productImage2}
-      threeImagesProductImage3={productImage3}
+      imageOverlapImageChildren={["Missing"]}
+      threeImagesProductImage1="/product/productImage1"
+      threeImagesProductImage2="/product/productImage2"
+      threeImagesProductImage3="/product/productImage3"
       threeImagesTitle="Missing"
-      threeImagesDescription={[
-        "Missing"
-      ]}
+      threeImagesDescription={["Missing"]}
       operations={["Missing"]}
     />
   );

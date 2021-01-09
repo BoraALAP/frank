@@ -3,10 +3,8 @@ import Image from "next/image";
 import { TertiaryButton } from "../UI/Links";
 import Body from "../layout/Body";
 
-import homepage1 from "../../assets/images/homepage1.jpg";
-
 export const EnergyEfficiency = ({ imageSrc = "" }) => {
-  const image = imageSrc || homepage1;
+  const image = imageSrc || "/homepage1.jpg";
   return (
     <Container simple>
       <ImageContainer>

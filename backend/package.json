@@ -1,11 +1,11 @@
 {
-  "name": "@keystonejs/example-projects-blank",
-  "description": "A blank KeystoneJS starter project.",
+  "name": "frankbackend",
+  "description": "Frank Back End",
   "private": true,
   "version": "5.0.16",
-  "author": "The KeystoneJS Development Team",
-  "repository": "https://github.com/keystonejs/keystone/tree/master/packages/create-keystone-app/example-projects/blank",
-  "homepage": "https://github.com/keystonejs/keystone",
+  "author": "Arttic Fox",
+  "repository": "https://github.com/BoraALAP/frank",
+  "homepage": "https://frankbackend.herokuapp.com/",
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"

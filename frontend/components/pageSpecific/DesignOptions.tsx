@@ -3,10 +3,8 @@ import Image from "next/image";
 import { TertiaryButton } from "../UI/Links";
 import Body from "../layout/Body";
 
-import homepage2 from "../../assets/images/homepage2.jpg";
-
 export const DesignOptions = ({ imageSrc = "" }) => {
-  const image = imageSrc || homepage2;
+  const image = imageSrc || "/homepage2.jpg";
   return (
     <Container simple>
       <ImageContainer>

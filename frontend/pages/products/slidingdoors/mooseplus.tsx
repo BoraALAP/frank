@@ -1,10 +1,5 @@
 import SlidingDoorTemplate from "../../../template/SlidingDoorTemplate";
 
-import image1 from "../../../assets/images/product/core.png";
-import productImage1 from "../../../assets/images/product/productImage1.jpg";
-import productImage2 from "../../../assets/images/product/productImage2.jpg";
-import productImage3 from "../../../assets/images/product/productImage3.jpg";
-
 const mooseplus = () => {
   return (
     <SlidingDoorTemplate
@@ -15,18 +10,14 @@ const mooseplus = () => {
         "The sill looks and performs better than anything on the market, with a specially designed aluminum sill plate cover, and a sub-sill drainage system.",
         "All doors 8’ and wider come standard with steel header reinforcement that allows for smoother operation, and have an engineered anti lift block for added security.",
       ]}
-      imageOverlapImageSrc={image1}
+      imageOverlapImageSrc="/product/core.png"
       imageOverlapImageTitle="Missing"
-      imageOverlapImageChildren={[
-        "Missing"
-      ]}
-      threeImagesProductImage1={productImage1}
-      threeImagesProductImage2={productImage2}
-      threeImagesProductImage3={productImage3}
+      imageOverlapImageChildren={["Missing"]}
+      threeImagesProductImage1="/product/productImage1.jpg"
+      threeImagesProductImage2="/product/productImage2.jpg"
+      threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
-      threeImagesDescription={[
-        "Missing"
-      ]}
+      threeImagesDescription={["Missing"]}
       operations={["Missing"]}
     />
   );

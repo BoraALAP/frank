@@ -1,10 +1,4 @@
-
-
 import CategoryTemplate from "../../template/CategoryTemplate";
-
-import image1 from "../../assets/images/product/image1.jpg";
-import image2 from "../../assets/images/product/image2.jpg";
-import image3 from "../../assets/images/product/image3.jpg";
 
 const entrydoors = () => {
   const pagetitle = "Entry Doors";
@@ -27,7 +21,7 @@ const entrydoors = () => {
       title: "Designer",
       subtitle: "Smooth fibreglass doors available in a range of options.",
       href: "/products/entrydoors/designer",
-      image: image1,
+      image: "/product/image1.jpg",
       children: [
         "For a simple replacement or add some style to your front facade.",
         "Expansive selection of glass configurations in flush glazed and modern door lite designs.",
@@ -38,7 +32,7 @@ const entrydoors = () => {
       title: "Classic",
       subtitle: "Mahogany and Oak grain in all the traditional styles.",
       href: "/products/entrydoors/classic",
-      image: image2,
+      image: "/product/image2.jpg",
       side: true,
       children: [
         "The industry leading fibreglass door with ultra realistic wood grain technology.",
@@ -50,7 +44,7 @@ const entrydoors = () => {
       title: "Artisan",
       subtitle: "Mixing Old World values with New World technology and design.",
       href: "/products/entrydoors/artisan",
-      image: image3,
+      image: "/product/image3.jpg",
       children: [
         "Available in a range of styles and finishes that fool the eye -- Mahogany, Oak, Fir, Rustic, and Canvas.",
         "Superior quality construction and detailed craftsmanship that allows for 10% more glass than other entry door lines, and a clean hard edge that further mimics real wood.",

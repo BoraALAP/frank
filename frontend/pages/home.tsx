@@ -8,9 +8,7 @@ import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
 import Category from "../components/pageSpecific/home/Category";
-import image4 from "../assets/images/homepage4.jpg";
-import image5 from "../assets/images/homepage5.jpg";
-import image6 from "../assets/images/homepage6.jpg";
+
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
 const Home = (props) => {
@@ -40,7 +38,7 @@ const Home = (props) => {
             title="Windows"
             subtitle="Maximize your living space."
             href="/products/windows"
-            image={image4}
+            image="/homepage4.jpg"
             rev
           >
             <p>Rated Most efficient by Energy Star</p>
@@ -56,7 +54,7 @@ const Home = (props) => {
             title="Entry Door"
             subtitle="Maximize your living space."
             href="/products/entrydoors"
-            image={image5}
+            image="/homepage5.jpg"
           >
             <p>Rated Most efficient by Energy Star</p>
 
@@ -71,7 +69,7 @@ const Home = (props) => {
             title="Sliding Doors"
             subtitle="Maximize your living space."
             href="/products/slidingdoors"
-            image={image6}
+            image="/homepage6.jpg"
             rev
           >
             <p>Rated Most efficient by Energy Star</p>

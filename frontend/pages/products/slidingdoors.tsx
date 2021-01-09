@@ -1,11 +1,4 @@
-
-
 import CategoryTemplate from "../../template/CategoryTemplate";
-
-import image1 from "../../assets/images/product/image1.jpg";
-import image2 from "../../assets/images/product/image2.jpg";
-import image3 from "../../assets/images/product/image3.jpg";
-import image4 from "../../assets/images/product/image4.jpg";
 
 const slidingdoors = () => {
   const pagetitle = "Sliding Doors";
@@ -30,7 +23,7 @@ const slidingdoors = () => {
       title: "Moose",
       subtitle: "Strong, sturdy, and dependable.",
       href: "/products/slidingdoors/moose",
-      image: image1,
+      image: "/product/image1.jpg",
       children: [
         "Frame depth 5 ⅝” with interior and exterior jamb pocket cover for clean finish.",
         "Contemporary handle options, added security features, and twin point lock comes standard.",
@@ -41,7 +34,7 @@ const slidingdoors = () => {
       title: "Moose+",
       subtitle: "Elevated function and feel.",
       href: "/products/slidingdoors/mooseplus",
-      image: image2,
+      image: "/product/image2.jpg",
       side: true,
       children: [
         "Deeper 5 ⅞” frame depth with interior and exterior jamb pocket cover for clean finish.",
@@ -53,7 +46,7 @@ const slidingdoors = () => {
       title: "Orchestra Door",
       subtitle: "A modern look for everyone.",
       href: "/products/slidingdoors/orchestradoor",
-      image: image4,
+      image: "/product/image4.jpg",
       children: [
         "Solid frame and sash construction with 7 ¼” frame depth and a 2 ¼” thick sashes.",
         "High performance roller system for smooth operation and designed for larger openings.",
@@ -64,7 +57,7 @@ const slidingdoors = () => {
       title: "Folding Door",
       subtitle: "Bifold",
       href: "/products/slidingdoors/foldingdoor",
-      image: image3,
+      image: "/product/image3.jpg",
       side: true,
       children: [
         "Multiple configurations available that can accommodate up to 24 ft wide and 10 ft tall.",
@@ -77,7 +70,7 @@ const slidingdoors = () => {
       title: "Lift and Slide",
       subtitle: "Trending today, for tomorrow’s architecture.",
       href: "/products/slidingdoors/liftandslide",
-      image: image3,
+      image: "/product/image3.jpg",
       children: [
         "The industry’s largest 2 panel offering for a sliding door with unparalleled energy efficiency and performance ratings.",
         "Multi-point locking system and upgraded European hardware that can accommodate both dual and triple-glazed units comes standard.",

@@ -1,10 +1,5 @@
 import EntryDoorTemplate from "../../../template/EntryDoorTemplate";
 
-import image1 from "../../../assets/images/product/core.png";
-import productImage1 from "../../../assets/images/product/productImage1.jpg";
-import productImage2 from "../../../assets/images/product/productImage2.jpg";
-import productImage3 from "../../../assets/images/product/productImage3.jpg";
-
 const classic = () => {
   return (
     <EntryDoorTemplate
@@ -13,20 +8,16 @@ const classic = () => {
       imageOverlapDetailsChildren={[
         "The industry leading fibreglass door with ultra realistic wood grain technology.",
         "Expansive selection of glass configurations in flush glazed and modern door lite designs.",
-        "The look and feel of a real wood door with all the upside."
+        "The look and feel of a real wood door with all the upside.",
       ]}
-      imageOverlapImageSrc={image1}
+      imageOverlapImageSrc="/product/core.png"
       imageOverlapImageTitle="Missing"
-      imageOverlapImageChildren={[
-        "Missing"
-      ]}
-      threeImagesProductImage1={productImage1}
-      threeImagesProductImage2={productImage2}
-      threeImagesProductImage3={productImage3}
+      imageOverlapImageChildren={["Missing"]}
+      threeImagesProductImage1="/product/productImage1.jpg"
+      threeImagesProductImage2="/product/productImage2.jpg"
+      threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
-      threeImagesDescription={[
-        "Missing"
-      ]}
+      threeImagesDescription={["Missing"]}
       operations={["Missing"]}
     />
   );
