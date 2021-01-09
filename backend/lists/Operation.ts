@@ -1,9 +1,10 @@
 const { Text, Url, Select } = require("@keystonejs/fields");
+const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
 
-const options = [
-  {value: "window", name:"Window"},
-  {value: "entry", name:"Entry Door"},
-  {value: "slider", name:"Sliding Door"}
+const operationOptions = [
+"WINDOW",
+"ENTRYDOOR",
+ "SLIDINGDOOR"
 ]
 
 module.exports = {
@@ -22,9 +23,10 @@ module.exports = {
     },
     place:{
       type: Select , 
-      options: options,
+      options: operationOptions,
+      dataType: "enum",
       isRequired: true,
-      
     }
   },
+
 };

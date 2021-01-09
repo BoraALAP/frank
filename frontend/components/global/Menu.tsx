@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-
 import MenuImage1 from "../../assets/images/menuImages/menuImage1.jpg";
 import MenuImage2 from "../../assets/images/menuImages/menuImage2.jpg";
 import Menu1 from "../../assets/images/menuImages/menu1.jpg";
@@ -89,12 +88,12 @@ const Menu = (props) => {
           image1: Menu13,
           image2: Menu14,
         },
-        {
-          href: "/sub/make",
-          name: "Make",
-          image1: Menu11,
-          image2: Menu12,
-        },
+        // {
+        //   href: "/sub/make",
+        //   name: "Make",
+        //   image1: Menu11,
+        //   image2: Menu12,
+        // },
         {
           href: "/sub/dealerfinder",
           name: "Find a Dealer",
@@ -113,7 +112,7 @@ const Menu = (props) => {
           prop: "Bottom",
         },
         {
-          href: "/user/account",
+          href: "/user",
           name: props.me ? "Account" : "Dealer Login",
           image1: Menu17,
           image2: Menu18,
@@ -215,7 +214,7 @@ const Container = styled(motion.div)`
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
-  padding: 160px calc(2.5vh + 2rem);
+  padding: ${({ theme }) => `160px calc(2.5vh + ${theme.padding})`};
   height: 100%;
   max-height: 900px;
   box-sizing: border-box;
@@ -254,8 +253,8 @@ const ImgContainer = styled(motion.div)`
   gap: ${({ theme }) => theme.gap};
   grid-template-columns: 1fr 1fr;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
-  display: grid    
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    display: grid;
   }
 `;
 
@@ -279,7 +278,7 @@ const Right = styled(motion.div)`
 
 const Divide = styled.div`
   display: grid;
-  gap: calc( ${({ theme }) => theme.gap} / 4 );
+  gap: calc(${({ theme }) => theme.gap} / 4);
 `;
 
 const HR = styled.div`

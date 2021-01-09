@@ -11,12 +11,14 @@ export const NavLinks = (props) => {
   );
 };
 
+interface Props {
+  href?: string;
+  rev?: boolean;
+  type?: string;
+  children: any;
+}
+
 export const Button = ({ href, children, rev = false, type = "" }: Props) => {
-  interface Props {
-    href?: string;
-    rev?: boolean;
-    type?: string;
-  }
   return href ? (
     <Link href={href}>
       <ButtonContainer href={href} rev={rev}>

@@ -11,69 +11,62 @@ import { ApolloProvider, gql } from "@apollo/client";
 import { primaryTheme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
 
+import { globalContext } from "../context/context";
 import { initialState, globalReducer } from "../context/reducer";
 
 import Meta from "../components/global/Meta";
 import { Header } from "../components/global/Header";
-import { globalContext } from "../context/contex";
 import Footer from "../components/global/Footer";
 import Loading from "../components/global/Loading";
 
-const client = new ApolloClient({
-  ssrMode: true,
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: process.env.NEXT_PUBLIC_API_URL,
-
-    fetchOptions: {
-      mode: 'cors'
-     },
-  }),
-});
-
-
-const QUERY = gql`
-query {
-  allOperations{
-    id
-    name
-    defaultImage
-    video
-    place
-  }
-}
-`
-
 const MyApp = ({ Component, pageProps }) => {
+  const client = new ApolloClient({
+    ssrMode: true,
+    cache: new InMemoryCache(),
+    link: new HttpLink({
+      uri: process.env.NEXT_PUBLIC_API_URL,
+
+      fetchOptions: {
+        mode: "cors",
+      },
+    }),
+  });
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
 
-  
-
   return (
-    <ApolloProvider client={client}>
+    <globalContext.Provider value={{ store, dispatch }}>
+      <ApolloProvider client={client}>
         <ThemeProvider theme={primaryTheme}>
           <Meta />
           {router.route !== "/" && <Header />}
-          <Query
-            query={QUERY}
-          >
-          {({ loading }) => {
-            if(loading){ 
-              return <Loading /> 
-            } else { 
-
-              return  (
-              <Component {...pageProps} />
-              )
-        }}}
-           </Query> 
+          <Query query={QUERY}>
+            {({ loading }) => {
+              if (loading) {
+                return <Loading />;
+              } else {
+                return <Component {...pageProps} />;
+              }
+            }}
+          </Query>
           <Footer />
           <GlobalStyle />
         </ThemeProvider>
-     </ApolloProvider>
+      </ApolloProvider>
+    </globalContext.Provider>
   );
 };
 
+const QUERY = gql`
+  query {
+    allOperations {
+      id
+      name
+      defaultImage
+      video
+      place
+    }
+  }
+`;
 
 export default MyApp;

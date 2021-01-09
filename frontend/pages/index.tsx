@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import VideoImage from "../assets/images/videography.jpg";
-import Logo from "../assets/branding/frank_logo.svg";
-import ArrowRight from "../assets/icons/arrowRight.svg";
+import Logo from "../assets/branding/frank_logo";
+import ArrowRight from "../assets/icons/arrowRight";
 
 import Meta from "../components/global/Meta";
 
@@ -20,7 +20,6 @@ const Home = () => {
       <Meta title="Welcome to Frank" />
       <Header>
         <LogoS
-          src={Logo}
           animate={{ x: 0, opacity: 1 }}
           initial={{ x: -20, opacity: 0 }}
           exit={{ opacity: 0 }}
@@ -34,7 +33,7 @@ const Home = () => {
             transition={{ delay: 1.5, duration: 0.75 }}
           >
             <H1>Continue to Frank</H1>
-            <img src={ArrowRight} />
+            <ArrowRight />
           </Right>
         </Link>
       </Header>
@@ -62,7 +61,7 @@ const Header = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.color.primary};
 `;
 
-const LogoS = styled(motion.img)`
+const LogoS = styled(motion.custom(Logo))`
   display: grid;
   height: 80px;
   width: auto;

@@ -1,7 +1,9 @@
-
 import styled from "styled-components";
 
-const Body = ({ children }) => {
+interface Props {
+  children: any;
+}
+const Body = ({ children }: Props) => {
   return (
     <Container>
       {Array.isArray(children)

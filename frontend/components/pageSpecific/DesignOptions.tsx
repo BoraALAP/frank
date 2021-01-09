@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "../UI/Links";
@@ -6,7 +5,7 @@ import Body from "../layout/Body";
 
 import homepage2 from "../../assets/images/homepage2.jpg";
 
-export const DesignOptions = ({ imageSrc= "" }) => {
+export const DesignOptions = ({ imageSrc = "" }) => {
   const image = imageSrc || homepage2;
   return (
     <Container simple>
@@ -14,13 +13,18 @@ export const DesignOptions = ({ imageSrc= "" }) => {
         <Image src={image} objectFit="cover" layout="fill" />
       </ImageContainer>
       <Text simple>
-      <Title>Design Options</Title>
+        <Title>Design Options</Title>
         <Body>
-          <p>Rated Most efficient by Energy Star</p>
+          <>
+            <p>Rated Most efficient by Energy Star</p>
 
-          <p>
-          Deciding on the product that’s right for your project is just the beginning. With an extensive array of design options to choose from, you can customize your windows and doors to reflect your home’s architecture, character, and personality.
-          </p>
+            <p>
+              Deciding on the product that’s right for your project is just the
+              beginning. With an extensive array of design options to choose
+              from, you can customize your windows and doors to reflect your
+              home’s architecture, character, and personality.
+            </p>
+          </>
         </Body>
         <TertiaryButton href="/sub/designOptions">
           More on Energy Efficiency
@@ -29,8 +33,6 @@ export const DesignOptions = ({ imageSrc= "" }) => {
     </Container>
   );
 };
-
-
 
 const Container = styled.div`
   display: grid;
@@ -49,8 +51,8 @@ const ImageContainer = styled.div`
 const Text = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap};
-  padding: 2rem;
-  color: ${({ theme }) => theme.color.primary};;
+  padding: ${({ theme }) => theme.padding};
+  color: ${({ theme }) => theme.color.primary}; ;
 `;
 
 const Title = styled.h3`

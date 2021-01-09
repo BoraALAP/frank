@@ -29,8 +29,8 @@ const contactus = () => {
       <h1>Contact Us</h1>
       <Content>
         <Left>
-          {list.map((item) => (
-            <Detail>
+          {list.map((item, index) => (
+            <Detail key={index}>
               <h5>{item.name}</h5>
               <a href={`mailto:${item.email}`}>{item.email}</a>
               {item.phone && <a href={`tel:${item.phone}`}>{item.phone}</a>}

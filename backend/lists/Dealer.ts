@@ -1,5 +1,6 @@
 const { Text, Float  } = require("@keystonejs/fields");
 const { LocationGoogle } = require('@keystonejs/fields-location-google');
+const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
 
 
 module.exports = {
@@ -31,4 +32,10 @@ module.exports = {
       type: Text,
     }
   },
+  plugins: [
+    atTracking({
+      createdAtField,
+      updatedAtField
+    }),
+  ],
 };

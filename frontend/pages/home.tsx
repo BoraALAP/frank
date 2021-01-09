@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
+
+import { globalContext } from "../context/context";
 import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
@@ -10,16 +13,9 @@ import image5 from "../assets/images/homepage5.jpg";
 import image6 from "../assets/images/homepage6.jpg";
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
-const ME = gql`
-  query Operation {
-    allOperations {
-      id
-      name
-    }
-  }
-`;
-
 const Home = (props) => {
+  const { store, dispatch } = useContext(globalContext);
+
   return (
     <Container space>
       <Context>
@@ -30,7 +26,7 @@ const Home = (props) => {
 
           <Right>
             <Link href="/contactus">Contact Us</Link>
-            <Link href="/">Dealer Login</Link>
+            <Link href="/user">Dealer Login</Link>
             {/* <p>
               Our story starts 35 years ago, with a commitment to quality that
               has remained family owned and operated. Learn more about us{" "}
@@ -61,7 +57,6 @@ const Home = (props) => {
             subtitle="Maximize your living space."
             href="/products/entrydoors"
             image={image5}
-            
           >
             <p>Rated Most efficient by Energy Star</p>
 
@@ -139,11 +134,20 @@ const Right = styled.div`
   align-content: end;
   gap: ${({ theme }) => theme.gap};
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     display: grid;
     position: sticky;
     height: min-content;
-    top: 500px;   
+    top: 500px;
+  }
+`;
+
+const ME = gql`
+  query Operation {
+    allOperations {
+      id
+      name
+    }
   }
 `;
 

@@ -1,13 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 
 import Details from "./Details";
 import { Container } from "../../layout/Container";
 
 export const Operations = ({ list }) => {
-  const [videoSrc, setVideoSrc] = useState("https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4")
-  const [operationName, setOperationName] = useState("")
+  const [videoSrc, setVideoSrc] = useState(
+    "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"
+  );
+  const [operationName, setOperationName] = useState("");
 
   return (
     <Container>
@@ -25,18 +27,31 @@ export const Operations = ({ list }) => {
       </Details>
       <Middle>
         <Left>
-          <ReactPlayer url={videoSrc} playing loop muted width='100%' height='100%'/>
+          <ReactPlayer
+            url={videoSrc}
+            playing
+            loop
+            muted
+            width="100%"
+            height="100%"
+          />
           <h6>{operationName}</h6>
         </Left>
         <Right>
           {list.map((item) => {
-            console.log(item);
-            
             return (
-              <ImageContainer key={item.id} src={item.defaultImage} 
-              onMouseEnter={() => {setVideoSrc(item.video); setOperationName(item.name)}} 
-              onClick={() => {setVideoSrc(item.video); setOperationName(item.name)}} />
-         
+              <ImageContainer
+                key={item.id}
+                src={item.defaultImage}
+                onMouseEnter={() => {
+                  setVideoSrc(item.video);
+                  setOperationName(item.name);
+                }}
+                onClick={() => {
+                  setVideoSrc(item.video);
+                  setOperationName(item.name);
+                }}
+              />
             );
           })}
         </Right>
@@ -47,13 +62,14 @@ export const Operations = ({ list }) => {
 
 const Middle = styled.div`
   display: grid;
-  padding: ${({ theme }) => `calc(${theme.padding} / 4 ) ${theme.padding} ${theme.padding} `} ;
-  
+  padding: ${({ theme }) =>
+    `calc(${theme.padding} / 4 ) ${theme.padding} ${theme.padding} `};
+
   gap: ${({ theme }) => theme.gap};
   align-items: start;
-    align-content: start;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
-  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -66,9 +82,9 @@ const Left = styled.div`
 const Right = styled.div`
   display: grid;
   gap: calc(${({ theme }) => theme.gap} / 4);
-  grid-template-columns: repeat(auto-fit , minmax(4rem, 4rem));
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 4rem));
   justify-content: start;
-    align-content: start;
+  align-content: start;
 `;
 
 const ImageContainer = styled.div`
@@ -76,5 +92,5 @@ const ImageContainer = styled.div`
   height: 4rem;
   width: 4rem;
   background-color: #c3c3c3;
-  background-image: url(${props => props.src})
+  background-image: url(${(props) => props.src});
 `;

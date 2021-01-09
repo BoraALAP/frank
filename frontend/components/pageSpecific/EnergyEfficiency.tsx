@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "../UI/Links";
@@ -6,7 +5,7 @@ import Body from "../layout/Body";
 
 import homepage1 from "../../assets/images/homepage1.jpg";
 
-export const EnergyEfficiency = ({ imageSrc= "" }) => {
+export const EnergyEfficiency = ({ imageSrc = "" }) => {
   const image = imageSrc || homepage1;
   return (
     <Container simple>
@@ -35,7 +34,6 @@ export const EnergyEfficiency = ({ imageSrc= "" }) => {
   );
 };
 
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: ${(props) => (props.simple ? "inherit" : "1fr 1fr")};
@@ -53,7 +51,7 @@ const ImageContainer = styled.div`
 const Text = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap};
-  padding: 2rem;
+  padding: ${({ theme }) => theme.padding};
   color: ${(props) =>
     props.simple ? props.theme.color.secondary : props.theme.color.primary};
 `;

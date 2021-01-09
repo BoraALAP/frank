@@ -4,8 +4,8 @@ import Link from "next/link";
 
 import disableScroll from "disable-scroll";
 
-import Logo from "../../assets/branding/frank_logo.svg";
-import MenuIcon from "../../assets/icons/menu.svg";
+import Logo from "../../assets/branding/frank_logo";
+import MenuIcon from "../../assets/icons/menu";
 
 import MenuComp from "./Menu";
 import { Container } from "../layout/Container";
@@ -68,7 +68,7 @@ export const Header = (props) => {
         <HeaderS>
           <Left>
             <Link href="/home">
-              <LogoS src={Logo} />
+              <LogoS />
             </Link>
             <H4>
               We make
@@ -95,11 +95,12 @@ export const Header = (props) => {
       </Nav> */}
           <Right>
             <MenuIconS
-              src={MenuIcon}
               menuprop={menuState}
               onClick={handleMenu}
               aria-label="Open Close Toggle"
-            />
+            >
+              <MenuIcon />{" "}
+            </MenuIconS>
             {/* <SearchIcon /> */}
           </Right>
         </HeaderS>
@@ -157,7 +158,7 @@ const H4 = styled.h4`
   }
 `;
 
-const MenuIconS = styled.img`
+const MenuIconS = styled.div`
   transform: ${(props) => (props.menuprop ? "rotate(-45deg)" : "rotate(0)")};
   transition: all 0.75s ease;
   padding: 4px;
@@ -168,7 +169,7 @@ const MenuIconS = styled.img`
   }
 `;
 
-const LogoS = styled.img`
+const LogoS = styled(Logo)`
   display: grid;
   height: 60px;
   width: auto;

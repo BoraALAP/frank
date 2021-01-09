@@ -32,14 +32,13 @@ const GeneralTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations
+  operations,
 }) => {
   const { loading, error, data } = useQuery(OPERATIONS);
 
-  const operationList = data.allOperations.filter(item => {
-    console.log("check", item, operations);
-    return operations.find( operation => item.name === operation )
-  })
+  const operationList = data.allOperations.filter((item) => {
+    return operations.find((operation) => item.name === operation);
+  });
 
   return (
     <>

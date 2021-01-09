@@ -23,6 +23,7 @@ export const primaryTheme = {
     bg: "hsl(0, 0%, 95%)",
     black: "hsl(0, 0%, 0%)",
     white: "hsl(0, 0%, 100%)",
+    error: "hsl(0, 100%, 15%)",
     whiteBg: "hsla(0, 0%, 100%, 0.5)",
     overlay: "hsla(0, 0%, 0%, 90%)",
   },
