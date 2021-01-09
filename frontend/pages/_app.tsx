@@ -2,11 +2,9 @@ import { useReducer } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "styled-components";
 
-import { HttpLink } from "apollo-link-http";
 import {
   ApolloClient,
   InMemoryCache,
-  NormalizedCacheObject,
   ApolloProvider,
   gql,
 } from "@apollo/client";
@@ -27,13 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
   const client = new ApolloClient({
     ssrMode: true,
     cache: new InMemoryCache(),
-    link: new HttpLink({
-      uri: process.env.NEXT_PUBLIC_API_URL,
-
-      fetchOptions: {
-        mode: "cors",
-      },
-    }),
+    uri: process.env.NEXT_PUBLIC_API_URL,
   });
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
