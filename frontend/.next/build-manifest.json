@@ -26,11 +26,4 @@
     ]
   },
   "ampFirstPages": []
-}sense": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows/enersense.js"
-    ]
-  },
-  "ampFirstPages": []
 }

@@ -11,7 +11,7 @@ import { ApolloProvider, gql } from "@apollo/client";
 import { primaryTheme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
 
-import { globalContext } from "../context/context";
+import { GlobalContext } from "../context/context";
 import { initialState, globalReducer } from "../context/reducer";
 
 import Meta from "../components/global/Meta";
@@ -35,7 +35,7 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
   return (
-    <globalContext.Provider value={{ store, dispatch }}>
+    <GlobalContext.Provider value={{ store, dispatch }}>
       <ApolloProvider client={client}>
         <ThemeProvider theme={primaryTheme}>
           <Meta />
@@ -53,7 +53,7 @@ const MyApp = ({ Component, pageProps }) => {
           <GlobalStyle />
         </ThemeProvider>
       </ApolloProvider>
-    </globalContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 
