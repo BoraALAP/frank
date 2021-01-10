@@ -1,11 +1,11 @@
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 const Meta = ({ title = "We make Windows and Doors" }) => {
   return (
-    <Helmet>
-      <meta charSet="utf-8" />
+    <Head>
       <title>Frank - {title} </title>
       <link rel="canonical" href="http://frankwd.com" />
+      <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <meta name="theme-color" content="#000000" />
@@ -36,7 +36,7 @@ const Meta = ({ title = "We make Windows and Doors" }) => {
         name="google-site-verification"
         content="C-AALCLWttkjaNEk2fJx2bn1hy4ksPtGZ4YWW22m3n4"
       />
-    </Helmet>
+    </Head>
   );
 };
 
