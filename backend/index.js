@@ -3,7 +3,7 @@ const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
-const { NextApp } = require('@keystonejs/app-next');
+// const { NextApp } = require('@keystonejs/app-next');
 const { Text, Password} = require("@keystonejs/fields");
 
 const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
@@ -103,6 +103,6 @@ module.exports = {
     new AdminUIApp({ name: PROJECT_NAME, enableDefaultRoute: false, 
       // authStrategy: authStrategy, 
     }),
-    new NextApp({ dir: '../frontend/' }),
+    // new NextApp({ dir: '../frontend/' }),
   ],
 };
