@@ -99,47 +99,49 @@ keystone.createList("Imagine", ImagineSchema);
 //   },
 // });
 
-// module.exports = {
-//   keystone,
-//   apps: [
-//     new GraphQLApp(),
-//     new AdminUIApp({ name: PROJECT_NAME, enableDefaultRoute: false, 
-//       // authStrategy: authStrategy, 
-//     }),
-//     // new NextApp({ dir: '../frontend/' }),
-//   ],
-// };
+module.exports = {
+  keystone,
+  apps: [
+    new GraphQLApp(),
+    new AdminUIApp({ name: PROJECT_NAME, enableDefaultRoute: false, 
+      // authStrategy: authStrategy, 
+    }),
+    // new NextApp({ dir: '../frontend/' }),
+  ],
+};
 
-const dev = process.env.NODE_ENV !== 'production';
-const apps = [new GraphQLApp(), new AdminUIApp()];
-const preparations = apps.map(app =>
-  app.prepareMiddleware({ keystone, dev })
-);
+// const dev = process.env.NODE_ENV !== 'production';
+// const apps = [new GraphQLApp(), new AdminUIApp()];
+// const preparations = apps.map(app =>
+//   app.prepareMiddleware({ keystone, dev })
+// );
 
-Promise.all(preparations).then(async middlewares => {
-  await keystone.connect();
-  const app = express();
+// Promise.all(preparations).then(async middlewares => {
+//   await keystone.connect();
+//   const app = express();
   
-  app.use(cookieParser(process.env.COOKIESECRET));
+//   app.use(cookieParser(process.env.COOKIESECRET));
  
-  app.use((req, res, next) => {
-    const { token } = req.cookies;
+//   app.use((req, res, next) => {
+//     const { token } = req.cookies;
   
-    if (token) {
-      const { userId } = jwt.verify(token, process.env.APP_SECRET);
+//     if (token) {
+//       const { userId } = jwt.verify(token, process.env.APP_SECRET);
   
-      req.userId = userId;
-      //put the user Id onto the req for future request to access
-    }
-    next();
-  });
+//       req.userId = userId;
+//       //put the user Id onto the req for future request to access
+//     }
+//     next();
+//   });
 
 
-  app.get('/', function (req, res) {
-    res.send('Hello World!')
-  })
+//   app.get('/', function (req, res) {
+//     res.send('Hello World!')
+//   })
 
 
-  app.use(middlewares).listen(3000);
-})
+//   app.use(middlewares).listen(process.env.PORT, () => {
+//     console.log(`Example app listening at http://localhost:${process.env.PORT}`)
+//   })
+// })
 
