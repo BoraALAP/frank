@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
@@ -8,6 +8,7 @@ import { Container } from "../../components/layout/Container";
 
 import Lightbox from "../../components/UI/Lightbox";
 import { ErrorMessage } from "../../components/UI/ErrorMessages";
+import { GlobalContext } from "../../context/context";
 
 const imagine = () => {
   const breakpointColumnsObj = {
@@ -46,6 +47,7 @@ const imagine = () => {
     setSelected(selected !== 0 ? selected - 1 : imagelist.length - 1);
   };
 
+  const { store, dispatch } = useContext(GlobalContext);
   return (
     <BigContainer>
       <Container space gap padding>
@@ -73,7 +75,10 @@ const imagine = () => {
                       src={img.src}
                       key={index}
                       alt={img.description}
-                      onClick={() => handleModal(index)}
+                      onClick={() => {
+                        handleModal(index),
+                          dispatch({ type: "HEADER_SHOW", headerShow: false });
+                      }}
                     />
                   );
                 })

@@ -1,3 +1,7 @@
+const express = require('express')
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+
 const { Keystone } = require("@keystonejs/keystone");
 const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
@@ -18,7 +22,6 @@ const OperationSchema = require("./lists/Operation.ts");
 const UserSchema = require("./lists/User.ts");
 const DealerSchema = require("./lists/Dealer.ts");
 const ImagineSchema = require("./lists/Imagine.ts");
-
 
 const cookieSecret = process.env.COOKIESECRET;
 
@@ -58,14 +61,14 @@ keystone.createList("User", UserSchema);
 keystone.createList("Dealer", DealerSchema);
 keystone.createList("Imagine", ImagineSchema);
 
-const authStrategy = keystone.createAuthStrategy({
-  type: PasswordAuthStrategy,
-  list: 'BackEndUser',
-  config: {
-    identityField: 'email',
-    secretField: 'password',
-  },
-});
+// const authStrategy = keystone.createAuthStrategy({
+//   type: PasswordAuthStrategy,
+//   list: 'BackEndUser',
+//   config: {
+//     identityField: 'email',
+//     secretField: 'password',
+//   },
+// });
 // const googleStrategy = keystone.createAuthStrategy({
 //   type: GoogleAuthStrategy,
 //   list: 'BackEndUser',
@@ -96,13 +99,47 @@ const authStrategy = keystone.createAuthStrategy({
 //   },
 // });
 
-module.exports = {
-  keystone,
-  apps: [
-    new GraphQLApp(),
-    new AdminUIApp({ name: PROJECT_NAME, enableDefaultRoute: false, 
-      // authStrategy: authStrategy, 
-    }),
-    // new NextApp({ dir: '../frontend/' }),
-  ],
-};
+// module.exports = {
+//   keystone,
+//   apps: [
+//     new GraphQLApp(),
+//     new AdminUIApp({ name: PROJECT_NAME, enableDefaultRoute: false, 
+//       // authStrategy: authStrategy, 
+//     }),
+//     // new NextApp({ dir: '../frontend/' }),
+//   ],
+// };
+
+const dev = process.env.NODE_ENV !== 'production';
+const apps = [new GraphQLApp(), new AdminUIApp()];
+const preparations = apps.map(app =>
+  app.prepareMiddleware({ keystone, dev })
+);
+
+Promise.all(preparations).then(async middlewares => {
+  await keystone.connect();
+  const app = express();
+  
+  app.use(cookieParser(process.env.COOKIESECRET));
+ 
+  app.use((req, res, next) => {
+    const { token } = req.cookies;
+  
+    if (token) {
+      const { userId } = jwt.verify(token, process.env.APP_SECRET);
+  
+      req.userId = userId;
+      //put the user Id onto the req for future request to access
+    }
+    next();
+  });
+
+
+  app.get('/', function (req, res) {
+    res.send('Hello World!')
+  })
+
+
+  app.use(middlewares).listen(3000);
+})
+

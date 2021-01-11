@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const frank_logo = () => {
   return (
-    <svg
+    <Svg
       width="136"
       height="74"
       viewBox="0 0 136 74"
@@ -52,8 +52,14 @@ const frank_logo = () => {
           <rect width="136" height="74" fill="white" />
         </clipPath>
       </defs>
-    </svg>
+    </Svg>
   );
 };
+
+const Svg = styled.svg`
+  display: grid;
+  height: 60px;
+  width: 100%;
+`;
 
 export default frank_logo;

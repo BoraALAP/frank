@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { Container } from "../layout/Container";
 import { FooterButton } from "../UI/Links";
@@ -73,8 +72,11 @@ const Footer = () => {
 const BigContainer = styled.div`
   display: grid;
   background-color: ${({ theme }) => theme.color.lightGrey2};
-  padding: ${({ theme }) => theme.padding};
   border-top: 1px solid ${({ theme }) => theme.grey};
+  padding: ${({ theme }) => theme.paddingSmw};
+  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
+    padding: ${({ theme }) => theme.padding};
+  }
 `;
 
 const Context = styled.div`

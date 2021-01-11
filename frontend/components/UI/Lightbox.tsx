@@ -84,8 +84,6 @@ const Lightbox = ({
       break;
   }
 
-  console.log(url);
-
   return (
     <Container open={open}>
       <Context>
@@ -146,6 +144,12 @@ const Details = styled.div`
   justify-self: start;
   color: ${({ theme }) => theme.color.white};
   z-index: 10;
+  width: 70vw;
+  max-width: 900px;
+  gap: ${({ theme }) => `calc(${theme.gap} / 2)`};
+  a {
+    color: ${({ theme }) => theme.color.white};
+  }
 `;
 
 const BG = styled.div`
@@ -161,7 +165,7 @@ const ImageContainer = styled.div`
   display: grid;
   position: relative;
   height: 60vh;
-  min-width: 50vw;
+  min-width: 70vw;
   max-width: 900px;
   z-index: 3;
   div {

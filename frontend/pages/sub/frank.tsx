@@ -9,7 +9,7 @@ const frank = () => {
   return (
     <Container space>
       <Context>
-        <FullImage imageSrc="frank" />
+        <FullImage imageSrc="/frank.jpg" />
         <Text>
           <Body>
             <Subtitle>Who is Frank?</Subtitle>
@@ -21,7 +21,7 @@ const frank = () => {
             </p>
           </Body>
         </Text>
-        <TwoColumn title="Commitment to Quality" imageSrc="frank2" rev>
+        <TwoColumn title="Commitment to Quality" imageSrc="/frank2.jpg" rev>
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way
@@ -37,7 +37,7 @@ const frank = () => {
           </p>
         </TwoColumn>
 
-        <TwoColumn title="Placeholder copy" imageSrc="frank3">
+        <TwoColumn title="Placeholder copy" imageSrc="/frank3.jpg">
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way

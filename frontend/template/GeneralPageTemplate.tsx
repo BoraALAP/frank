@@ -7,17 +7,6 @@ import { ThreeImages } from "../components/pageSpecific/products/ThreeImages";
 import { DesignOptions } from "../components/pageSpecific/DesignOptions";
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
-const OPERATIONS = gql`
-  query Operation {
-    allOperations {
-      id
-      name
-      defaultImage
-      video
-    }
-  }
-`;
-
 const GeneralTemplate = ({
   title,
   parent,
@@ -35,8 +24,9 @@ const GeneralTemplate = ({
   operations,
 }) => {
   const { loading, error, data } = useQuery(OPERATIONS);
+  console.log(data);
 
-  const operationList = data.allOperations.filter((item) => {
+  const operationList = data?.allOperations.filter((item) => {
     return operations.find((operation) => item.name === operation);
   });
 
@@ -63,5 +53,16 @@ const GeneralTemplate = ({
     </>
   );
 };
+
+const OPERATIONS = gql`
+  query Operation {
+    allOperations {
+      id
+      name
+      defaultImage
+      video
+    }
+  }
+`;
 
 export default GeneralTemplate;

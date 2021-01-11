@@ -6,9 +6,7 @@ import Details from "./Details";
 import { Container } from "../../layout/Container";
 
 export const Operations = ({ list }) => {
-  const [videoSrc, setVideoSrc] = useState(
-    "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"
-  );
+  const [videoSrc, setVideoSrc] = useState(list && list[0].video);
   const [operationName, setOperationName] = useState("");
 
   return (
@@ -38,7 +36,7 @@ export const Operations = ({ list }) => {
           <h6>{operationName}</h6>
         </Left>
         <Right>
-          {list.map((item) => {
+          {list?.map((item) => {
             return (
               <ImageContainer
                 key={item.id}

@@ -19,7 +19,7 @@ const prism = () => {
         "Santoprene bulb seals improve sash/bulb contact area for a consistent seal and improved performance",
         "Ideal for renovation or new construction (new construction we recommend a brickmould be applied)",
       ]}
-      imageOverlapImageSrc="/product/prism.jpg"
+      imageOverlapImageSrc="/product/core.png"
       imageOverlapImageTitle="Missing"
       imageOverlapImageChildren={["Missing"]}
       threeImagesProductImage1="/product/productImage1.jpg"

@@ -23,18 +23,21 @@ const Menu = (props) => {
         name: "Windows",
         image1: "/menuImages/menu1.jpg",
         image2: "/menuImages/menu2.jpg",
+        bottom: false,
       },
       {
         href: "/products/entrydoors",
         name: "Entry Doors",
         image1: "/menuImages/menu3.jpg",
         image2: "/menuImages/menu4.jpg",
+        bottom: false,
       },
       {
         href: "/products/slidingdoors",
         name: "Sliding Doors",
         image1: "/menuImages/menu5.jpg",
         image2: "/menuImages/menu6.jpg",
+        bottom: false,
       },
     ],
 
@@ -44,36 +47,42 @@ const Menu = (props) => {
         name: "Who is Frank?",
         image1: "/menuImages/menu7.jpg",
         image2: "/menuImages/menu8.jpg",
+        bottom: false,
       },
       {
         href: "/sub/imagine",
         name: "Imagine",
         image1: "/menuImages/menu9.jpg",
         image2: "/menuImages/menu10.jpg",
+        bottom: false,
       },
       {
         href: "/sub/designOptions",
         name: "Design Options",
         image1: "/menuImages/menu13.jpg",
         image2: "/menuImages/menu14.jpg",
+        bottom: false,
       },
       {
         href: "/sub/learn",
         name: "Learn",
         image1: "/menuImages/menu13.jpg",
         image2: "/menuImages/menu14.jpg",
+        bottom: false,
       },
       // {
       //   href: "/sub/make",
       //   name: "Make",
       //   image1: "/menuImages/menu11.jpg",
       //   image2: "/menuImages/menu12.jpg",
+      // bottom: false,
       // },
       {
         href: "/sub/dealerfinder",
         name: "Find a Dealer",
         image1: "/menuImages/menu19.jpg",
         image2: "/menuImages/menu20.jpg",
+        bottom: false,
       },
     ],
 
@@ -83,17 +92,25 @@ const Menu = (props) => {
         name: "Contact Us",
         image1: "/menuImages/menu15.jpg",
         image2: "/menuImages/menu16.jpg",
-        prop: "Bottom",
+        bottom: true,
       },
       {
         href: "/user",
         name: props.me ? "Account" : "Dealer Login",
         image1: "/menuImages/menu17.jpg",
         image2: "/menuImages/menu18.jpg",
-        prop: "Bottom",
+        bottom: true,
       },
     ],
   ];
+
+  interface Item {
+    href: string;
+    name: string;
+    image1: string;
+    image2: string;
+    bottom?: boolean;
+  }
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -157,23 +174,24 @@ const Menu = (props) => {
               {links.map((pages, index) => {
                 return (
                   <Divide key={index}>
-                    {/* {pages?.map((it) => {
+                    {pages.map((item: Item, index) => {
                       return (
                         <NavLinks
-                          href={it.href}
-                          Bottom={it.prop}
+                          href={item.href}
+                          Bottom={item.bottom}
+                          onClick={props.onClick}
                           key={index}
                           onMouseEnter={() => {
                             setImageSrc({
-                              image1: it.image1,
-                              image2: it.image2,
+                              image1: item.image1,
+                              image2: item.image2,
                             });
                           }}
                         >
-                          {it.name}
+                          {item.name}
                         </NavLinks>
                       );
-                    })} */}
+                    })}
                   </Divide>
                 );
               })}
@@ -191,7 +209,7 @@ const Container = styled(motion.div)`
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
-  padding: ${({ theme }) => `160px calc(2.5vh + ${theme.padding})`};
+  padding: ${({ theme }) => `130px ${theme.padding} 70px`};
   height: 100%;
   max-height: 900px;
   box-sizing: border-box;
@@ -243,12 +261,12 @@ const ImgCont = styled.div`
 
 const Right = styled(motion.div)`
   display: grid;
-  /* gap: calc(2 * ${({ theme }) => theme.gap}); */
+  gap: ${({ theme }) => theme.gap};
   align-items: start;
-  align-content: space-between;
+  align-content: start;
 
   @media (min-width: 768px) {
-    align-content: space-between;
+    align-content: start;
     height: 100%;
   }
 `;

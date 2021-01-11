@@ -13,6 +13,7 @@ export const primaryTheme = {
   cardPadding: "3em 3em",
   contentPadding: "2.5vw",
   padding: "3.5rem",
+  paddingSm: "2rem",
   gap: "2rem",
   color: {
     primary: "hsl(209,71%,19%)",

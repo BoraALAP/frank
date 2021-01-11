@@ -16,7 +16,6 @@
     "start": "cross-env NODE_ENV=production keystone start",
     "create-tables": "cross-env keystone create-tables"
   },
-  
   "dependencies": {
     "@keystonejs/adapter-mongoose": "^10.1.1",
     "@keystonejs/app-admin-ui": "^7.3.8",
@@ -26,7 +25,11 @@
     "@keystonejs/fields-location-google": "^3.2.0",
     "@keystonejs/keystone": "^18.0.0",
     "@keystonejs/list-plugins": "^7.1.5",
+    "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.4.17"
   }
 }

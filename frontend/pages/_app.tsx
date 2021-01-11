@@ -2,14 +2,6 @@ import { useReducer } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "styled-components";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
-import { Query } from "@keystonejs/apollo-helpers";
-
 import { primaryTheme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
 
@@ -20,49 +12,25 @@ import Meta from "../components/global/Meta";
 import { Header } from "../components/global/Header";
 import Footer from "../components/global/Footer";
 import Loading from "../components/global/Loading";
+import Graphql from "../components/layout/Graphql";
 
 const MyApp = ({ Component, pageProps }) => {
-  const client = new ApolloClient({
-    ssrMode: true,
-    cache: new InMemoryCache(),
-    uri: process.env.NEXT_PUBLIC_API_URL,
-  });
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
 
   return (
     <GlobalContext.Provider value={{ store, dispatch }}>
-      <ApolloProvider client={client}>
-        <ThemeProvider theme={primaryTheme}>
-          <Meta />
+      <ThemeProvider theme={primaryTheme}>
+        <Meta />
+        <Graphql>
           {router.route !== "/" && <Header />}
-          <Query query={QUERY}>
-            {({ loading }) => {
-              if (loading) {
-                return <Loading />;
-              } else {
-                return <Component {...pageProps} />;
-              }
-            }}
-          </Query>
+          <Component {...pageProps} />
           <Footer />
-          <GlobalStyle />
-        </ThemeProvider>
-      </ApolloProvider>
+        </Graphql>
+        <GlobalStyle />
+      </ThemeProvider>
     </GlobalContext.Provider>
   );
 };
-
-const QUERY = gql`
-  query {
-    allOperations {
-      id
-      name
-      defaultImage
-      video
-      place
-    }
-  }
-`;
 
 export default MyApp;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
@@ -9,11 +9,13 @@ import MenuIcon from "../../assets/icons/menu";
 
 import MenuComp from "./Menu";
 import { Container } from "../layout/Container";
+import { GlobalContext } from "../../context/context";
 
 export const Header = (props) => {
+  const { store, dispatch } = useContext(GlobalContext);
   const [menuState, setMenuState] = useState(false);
 
-  const [sticky, setSticky] = useState(true);
+  const [sticky, setSticky] = useState(store.headerShow);
 
   // START -- Getting PAGE Y Off
   const [yOffset, setYOffset] = useState(0);
@@ -53,6 +55,10 @@ export const Header = (props) => {
       disableScroll.off();
     }
   }, [menuState]);
+
+  useEffect(() => {
+    // dispatch({ type: "HEADER_SHOW", headerShow: sticky });
+  }, [sticky]);
 
   // props.history.listen((location) => {
   //   setMenuState(false);
@@ -130,7 +136,10 @@ const HeaderS = styled.div`
   grid-template-columns: auto 25%;
   align-items: center;
   z-index: 1000;
-  padding: 2.5vh ${({ theme }) => theme.padding};
+  padding: 2.5vh ${({ theme }) => theme.paddingSm};
+  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
+    padding: 2.5vh ${({ theme }) => theme.padding};
+  }
 `;
 
 const Left = styled.div`
@@ -163,6 +172,7 @@ const MenuIconS = styled.div`
   transition: all 0.75s ease;
   padding: 4px;
   height: 32px;
+  width: 32px;
   box-sizing: border-box;
   &:hover {
     filter: ${({ theme }) => `drop-shadow(2px 2px 2px rgba(0,0,0,0.3))`};
