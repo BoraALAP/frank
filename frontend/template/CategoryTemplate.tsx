@@ -1,5 +1,3 @@
-
-
 import { Container } from "../components/layout/Container";
 import Split from "../components/pageSpecific/products/Split";
 import { PageTitle } from "../components/pageSpecific/products/PageTitle";
@@ -7,7 +5,7 @@ import { PageTitle } from "../components/pageSpecific/products/PageTitle";
 const CategoryTemplate = ({ pagetitle, links, products }) => {
   return (
     <Container space gap>
-      <PageTitle title={pagetitle} links={links} />
+      <PageTitle title={pagetitle} links={links} padding />
       {products.map((product, index) => {
         const {
           title,

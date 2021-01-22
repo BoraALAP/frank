@@ -1,26 +1,28 @@
 import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
-import { FullImage } from "../../components/UI/FullImage";
+import { FullImage } from "../../UI/FullImage";
 
-import Body from "../../components/layout/Body";
-import TwoColumn from "../../components/UI/TwoColumn";
+import { Body } from "../../components/layout/Body";
+import { TwoColumn } from "../../UI/TwoColumn";
 
 const frank = () => {
   return (
     <Container space>
       <Context>
-        <FullImage imageSrc="/frank.jpg" />
-        <Text>
-          <Body>
+        <Header>
+          <FullImage imageSrc="/frank.jpg" />
+          <Text>
             <Subtitle>Who is Frank?</Subtitle>
-            <p>
-              What differentiates Frank from our competitors is how we run the
-              business, day in day out. Family owned and operated, we take pride
-              in the fact that we have many long-standing members of the Frank
-              team.
-            </p>
-          </Body>
-        </Text>
+            <Body>
+              <p>
+                What differentiates Frank from our competitors is how we run the
+                business, day in day out. Family owned and operated, we take
+                pride in the fact that we have many long-standing members of the
+                Frank team.
+              </p>
+            </Body>
+          </Text>
+        </Header>
         <TwoColumn title="Commitment to Quality" imageSrc="/frank2.jpg" rev>
           <p>
             I am a window and door man. With a career that has spanned almost 50
@@ -62,13 +64,23 @@ const Context = styled.div`
   gap: calc(4 * ${({ theme }) => theme.gap});
 `;
 
+const Header = styled.div`
+  display: grid;
+  gap: ${({ theme }) => theme.gap};
+`;
+
 const Subtitle = styled.h4`
   display: grid;
 `;
 
 const Text = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.padding};
+  padding: 0 ${({ theme }) => theme.paddingSm};
+  gap: ${({ theme }) => theme.gap};
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    padding: 0 ${({ theme }) => theme.padding};
+  }
 `;
 
 export default frank;

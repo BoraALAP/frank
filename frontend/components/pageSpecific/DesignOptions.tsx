@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { TertiaryButton } from "../UI/Links";
-import Body from "../layout/Body";
+import { TertiaryButton } from "../../UI/Links";
+import { Body } from "../layout/Body";
 
 export const DesignOptions = ({ imageSrc = "" }) => {
   const image = imageSrc || "/homepage2.jpg";
@@ -35,7 +35,7 @@ export const DesignOptions = ({ imageSrc = "" }) => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: ${(props) => (props.simple ? "inherit" : "1fr 1fr")};
-  grid-auto-flow: ${(props) => (props.simple ? "rows" : "columns")};
+  grid-auto-flow: ${(props) => (props.simple ? "row" : "column")};
   grid-template-rows: min-content;
   gap: calc(${({ theme }) => theme.gap} / 2);
 `;
@@ -49,8 +49,12 @@ const ImageContainer = styled.div`
 const Text = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap};
-  padding: ${({ theme }) => theme.padding};
-  color: ${({ theme }) => theme.color.primary}; ;
+  padding: ${({ theme }) => theme.paddingSm};
+  color: ${({ theme }) => theme.color.primary};
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    padding: ${({ theme }) => theme.padding};
+  }
 `;
 
 const Title = styled.h3`

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "../styled-components";
 
 const Message = () => {
   return (
@@ -31,8 +31,12 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.color.lightGrey2};
   background-image: url(${(props) => props.image1});
   padding: ${({ theme }) =>
-    ` calc(2* ${theme.padding}) ${theme.padding} calc(8* ${theme.padding})`};
+    `  ${theme.padding} ${theme.paddingSm} calc(2* ${theme.padding})`};
   gap: calc(2 * ${({ theme }) => theme.gap});
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    padding: ${({ theme }) =>
+      ` calc(2* ${theme.padding}) ${theme.padding} calc(8* ${theme.padding})`};
+  }
 `;
 
 const Top = styled.div`

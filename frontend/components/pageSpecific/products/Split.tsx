@@ -1,11 +1,10 @@
-
-import styled from "styled-components";
+import styled from "../styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { TertiaryButton } from "../../UI/Links";
-import Body from "../../layout/Body";
+import { TertiaryButton } from "../../../UI/Links";
+import { Body } from "../../layout/Body";
 
 const Split = ({ title, subtitle, href, button, image, children, side }) => {
   return (
@@ -45,18 +44,22 @@ const ImageContainer = styled.div`
 const Text = styled.div`
   display: grid;
   gap: calc(${({ theme }) => theme.gap} / 2);
-  padding: ${({ theme }) => theme.padding};
+  padding: ${({ theme }) => theme.paddingSm};
   align-items: center;
   align-content: center;
 
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     order: ${(props) => (props.side ? 0 : -1)};
+    padding: ${({ theme }) => theme.padding};
   }
 `;
 
 const Title = styled.h2`
   display: grid;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    font-size: 4.5rem;
+  }
 `;
 
 const Subtitle = styled.h4`

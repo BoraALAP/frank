@@ -20,47 +20,82 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1{
-    font-size: 4.5rem;
-    line-height: 4.5rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      font-size: 4.5rem;
+      line-height: 4.5rem;
+      }
   }
 
   h2{
-    font-size: 2rem;
+    font-size: 1.5rem;
+    
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      
+      font-size: 2rem;
+      }
 
   }
 
   h3{
-    font-size: 1.75rem;
-    line-height: 2.5rem;
     font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      font-size: 1.75rem;
+      line-height: 2.5rem;
+      }
   }
 
   h4{
-    font-size: 1.5rem;
-    line-height: 2rem;
     font-weight: 600;
+    font-size: 1.125rem;
+      line-height: 1.5rem;
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+          
+      font-size: 1.5rem;
+      line-height: 2rem;
+      }
    
   }
 
   h5{
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    
     font-weight: 400;
-   
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      
+      font-size: 1.25rem;
+      line-height: 2rem;
+          }
   }
 
 
   h6{
-    font-size: 1rem;
     font-weight: 600;
+    font-size: 0.875rem;
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      font-size: 1rem;
+      
+      
+          }
   }
 
   p{
-    font-size: 1rem;
-    line-height: 1.5em;
+    font-size: 0.875rem;
+      line-height: 1.25rem;
+  
     font-weight: 400;
     max-width: 35rem;
     margin: 0;
+
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      font-size: 1rem;
+    line-height: 1.5em;
+      
+          }
   }
 
   ul{
@@ -84,9 +119,13 @@ const GlobalStyle = createGlobalStyle`
 }
 
   a{
-    font-size: 1.125rem;
     text-decoration: none;
     color: ${({ theme }) => theme.color.primary};
+    font-size: 1rem;
+    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+      font-size: 1.125rem;
+          
+      }
   }
   button{
     font-size: 1.125rem;

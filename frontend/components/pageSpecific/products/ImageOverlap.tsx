@@ -1,6 +1,5 @@
-
 import Image from "next/image";
-import styled from "styled-components";
+import styled from "../styled-components";
 import Details from "./Details";
 
 export const ImageOverlap = ({
@@ -48,8 +47,8 @@ const Container = styled.div`
 const Bottom = styled.div`
   display: grid;
 
-  margin-top: ${({ theme }) => `-${theme.padding}`};
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    margin-top: ${({ theme }) => `-${theme.padding}`};
     grid-auto-flow: column;
     grid-template-columns: 50% 50%;
   }
@@ -76,9 +75,10 @@ const Right = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap};
   align-content: start;
-  padding: ${({ theme }) => ` calc(2* ${theme.padding}) ${theme.padding}`};
+  padding: ${({ theme }) => ` calc(2* ${theme.padding}) ${theme.paddingSm}`};
 
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     order: 0;
+    padding: ${({ theme }) => ` calc(2* ${theme.padding}) ${theme.padding}`};
   }
 `;

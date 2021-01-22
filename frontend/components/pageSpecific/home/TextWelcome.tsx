@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styled from "styled-components";
+import styled from "../styled-components";
 
 const TextWelcome = (props) => {
   return (
@@ -85,7 +85,7 @@ const H1 = styled.h1`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.mq.xl}) {
-    font-size: 4rem;
+    font-size: 3.9rem;
     line-height: 7rem;
   }
 `;

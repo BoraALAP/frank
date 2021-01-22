@@ -1,12 +1,12 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled from "../styled-components";
 import ReactPlayer from "react-player";
 
 import Details from "./Details";
 import { Container } from "../../layout/Container";
 
 export const Operations = ({ list }) => {
-  const [videoSrc, setVideoSrc] = useState(list && list[0].video);
+  const [videoSrc, setVideoSrc] = useState(list && list[0]?.video);
   const [operationName, setOperationName] = useState("");
 
   return (
@@ -61,13 +61,15 @@ export const Operations = ({ list }) => {
 const Middle = styled.div`
   display: grid;
   padding: ${({ theme }) =>
-    `calc(${theme.padding} / 4 ) ${theme.padding} ${theme.padding} `};
+    `calc(${theme.padding} / 2 ) ${theme.paddingSm} ${theme.padding} `};
 
   gap: ${({ theme }) => theme.gap};
   align-items: start;
   align-content: start;
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     grid-template-columns: 1fr 1fr;
+    padding: ${({ theme }) =>
+      `calc(${theme.padding} / 4 ) ${theme.padding} ${theme.padding} `};
   }
 `;
 

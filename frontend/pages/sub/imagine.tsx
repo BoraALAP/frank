@@ -6,8 +6,8 @@ import { gql, useQuery } from "@apollo/client";
 
 import { Container } from "../../components/layout/Container";
 
-import Lightbox from "../../components/UI/Lightbox";
-import { ErrorMessage } from "../../components/UI/ErrorMessages";
+import Lightbox from "../../UI/Lightbox";
+import { ErrorMessage } from "../../UI/ErrorMessages";
 import { GlobalContext } from "../../context/context";
 
 const imagine = () => {

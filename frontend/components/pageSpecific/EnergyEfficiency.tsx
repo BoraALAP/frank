@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { TertiaryButton } from "../UI/Links";
-import Body from "../layout/Body";
+import { TertiaryButton } from "../../UI/Links";
+import { Body } from "../layout/Body";
 
 export const EnergyEfficiency = ({ imageSrc = "" }) => {
   const image = imageSrc || "/homepage1.jpg";
@@ -49,9 +49,13 @@ const ImageContainer = styled.div`
 const Text = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.gap};
-  padding: ${({ theme }) => theme.padding};
+  padding: ${({ theme }) => theme.paddingSm};
   color: ${(props) =>
     props.simple ? props.theme.color.secondary : props.theme.color.primary};
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    padding: ${({ theme }) => theme.padding};
+  }
 `;
 
 const Title = styled.h3`

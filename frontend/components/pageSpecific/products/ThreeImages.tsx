@@ -1,7 +1,6 @@
-
-import styled from "styled-components";
+import styled from "../styled-components";
 import Image from "next/image";
-import Body from "../../layout/Body";
+import { Body } from "../../layout/Body";
 
 export const ThreeImages = ({
   imageSrc1,

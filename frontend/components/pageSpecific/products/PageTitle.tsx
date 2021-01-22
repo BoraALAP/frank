@@ -1,30 +1,60 @@
-
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from "../styled-components";
 import { useRouter } from "next/router";
 
-import { NavLinks } from "../../UI/Links";
+import { NavLinks } from "../../../UI/Links";
+import { Body } from "../../layout/Body";
 
-export const PageTitle = ({ title, links }) => {
+interface PageTitle {
+  title: string;
+  links?: any;
+  padding?: boolean;
+  children?: any;
+  id?: string;
+}
+
+interface Breadcrumbs {
+  title: string;
+  links?: any;
+  padding?: boolean;
+  parent: string;
+}
+
+export const PageTitle = ({
+  title,
+  links,
+  padding = false,
+  children,
+  id,
+}: PageTitle) => {
   return (
-    <Context>
+    <Context padding={padding} twoColumn={children && true} id={id}>
       <h1>{title}</h1>
-      <Links>
-        {links?.map((item, index) => (
-          <NavLinks key={index} href={item.href}>
-            {item.name}
-          </NavLinks>
-        ))}
-      </Links>
+      <Bottom twoColumn={children && true}>
+        {children && <Body>{children}</Body>}
+        {links && (
+          <Links>
+            {links?.map((item, index) => (
+              <NavLinks key={index} href={item.href}>
+                {item.name}
+              </NavLinks>
+            ))}
+          </Links>
+        )}
+      </Bottom>
     </Context>
   );
 };
 
-export const Breadcrumbs = ({ links, title, parent }) => {
+export const Breadcrumbs = ({
+  links,
+  title,
+  parent,
+  padding = false,
+}: Breadcrumbs) => {
   const router = useRouter();
 
   return (
-    <Context>
+    <Context padding={padding}>
       <TitleBox>
         <Clickable onClick={() => router.back()}>{parent}</Clickable>
         <Line />
@@ -73,15 +103,23 @@ const Links = styled.div`
 
 const Context = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.padding};
-
+  padding: 0 ${(props) => (props.padding ? props.theme.paddingSm : "0")};
+  gap: ${(props) =>
+    props.twoColumn ? props.theme.gap : `calc(${props.theme.gap} / 2)`};
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    grid-template-columns: auto 25%;
+    padding: 0 ${(props) => (props.padding ? props.theme.padding : "0")};
+    grid-template-columns: ${(props) =>
+      props.twoColumn ? "none" : "auto 25%"};
     align-items: baseline;
   }
 `;
 
-PageTitle.propTypes = {
-  title: PropTypes.string,
-  links: PropTypes.array,
-};
+const Bottom = styled.div`
+  display: grid;
+  gap: ${({ theme }) => theme.gap};
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    grid-template-columns: ${(props) =>
+      props.twoColumn ? "auto 25%" : "none"};
+    align-items: baseline;
+  }
+`;

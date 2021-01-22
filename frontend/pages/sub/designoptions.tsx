@@ -1,19 +1,13 @@
-
 import { useState } from "react";
 import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
 
 const designoptions = () => {
-    const [searchWord, setSearchWord] = useState("")
-    const handleChange = (e) => {
-      e.preventDefault();
-      setSearchWord(e.target.value)
-    }
-  return <Container space padding>
-<input  id="search " name="q" onChange={handleChange} value={searchWord}/>
-</Container>;
+  return (
+    <Container space padding>
+      <p>Design Options will be here</p>
+    </Container>
+  );
 };
-
-
 
 export default designoptions;

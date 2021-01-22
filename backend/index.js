@@ -1,16 +1,14 @@
-const express = require('express')
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
+const { gql } =require( 'apollo-server-express')
 
 const { Keystone } = require("@keystonejs/keystone");
 const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
+// const { StaticApp } = require('@keystonejs/app-static');
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 // const { NextApp } = require('@keystonejs/app-next');
-const { Text, Password} = require("@keystonejs/fields");
+const { DateTimeUtc} = require("@keystonejs/fields");
 
-const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
 
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { GoogleAuthStrategy } = require('@keystonejs/auth-passport');
@@ -18,16 +16,25 @@ const { GoogleAuthStrategy } = require('@keystonejs/auth-passport');
 
 require("dotenv").config();
 
+const BackendUserSchema = require("./lists/BackendUser.ts");
 const OperationSchema = require("./lists/Operation.ts");
 const UserSchema = require("./lists/User.ts");
 const DealerSchema = require("./lists/Dealer.ts");
 const ImagineSchema = require("./lists/Imagine.ts");
+const {CustomSchema, ForgottenPasswordToken} = require("./lists/Custom.js");
+const UserMutationSchema = require("./mutations/User.js")
+const UserQuerySchema = require("./queries/User.js")
 
 const cookieSecret = process.env.COOKIESECRET;
 
 const PROJECT_NAME = "frank";
 const adapterConfig = {
   mongoUri: process.env.DATABASE,
+};
+
+const sessionConfig = {
+  maxAge: 60 * 60 * 24 * 30, // 30 days
+  secret: process.env.COOKIE_SECRET || '',
 };
 
 /**
@@ -40,26 +47,24 @@ const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
   cookie: {
     secure: true,
+    maxAge: 60 * 60 * 24 * 30,
   },
   cookieSecret,
+
 });
 
-keystone.createList('BackEndUser', {
-  fields: {
-    name: { type: Text },
-    email: { type: Text },
-    password: { type: Password },
-
-    // This field name must match the `idField` setting passed to the auth
-    // strategy constructor below
-    googleId: { type: Text },
-  },
-});
-
+keystone.createList('BackEndUser', BackendUserSchema);
 keystone.createList("Operation", OperationSchema);
 keystone.createList("User", UserSchema);
 keystone.createList("Dealer", DealerSchema);
 keystone.createList("Imagine", ImagineSchema);
+keystone.createList("ForgottenPasswordToken", ForgottenPasswordToken);
+
+keystone.extendGraphQLSchema(CustomSchema);
+keystone.extendGraphQLSchema(UserMutationSchema);
+keystone.extendGraphQLSchema(UserQuerySchema);
+
+
 
 // const authStrategy = keystone.createAuthStrategy({
 //   type: PasswordAuthStrategy,
@@ -99,6 +104,31 @@ keystone.createList("Imagine", ImagineSchema);
 //   },
 // });
 
+const authStrategy = keystone.createAuthStrategy({
+  type: PasswordAuthStrategy,
+  list: 'User',
+  config: {
+    identityField: 'email',
+    secretField: 'password',
+  },
+  hooks: {
+    afterAuth: async ({context, token, item}) => {
+      console.log(item);
+      
+      await context.executeGraphQL({
+        query: gql` 
+          mutation($id: String!, $lastLogin:String){
+            updateUser(id: $id , data:{ lastLogin: $lastLogin }){
+             lastLogin
+            }
+          }
+        `,
+        variables:{id: item.id, lastLogin: Date.now().toString()}
+      })
+    },
+  },
+});
+
 module.exports = {
   keystone,
   apps: [
@@ -110,8 +140,42 @@ module.exports = {
   ],
 };
 
+
+// keystone
+//   .prepare({
+//     apps: [new GraphQLApp(),new AdminUIApp(), ],
+//     dev: process.env.NODE_ENV !== 'production',
+//   })
+//   .then(async ({ middlewares }) => {
+//     await keystone.connect();
+//     const app = express();
+
+//     app.use(cors())
+//   app.use(cookieParser(process.env.COOKIESECRET));
+//   app.use(bodyParser.json()); 
+
+//   app.get('/', function (req, res) {
+//     res.send('Hello World!')
+//   })
+
+//   app.use('/api/mail', mailer)
+
+//   app.use(middlewares).listen(process.env.PORT, () => {
+//     console.log(`Example app listening at http://localhost:${process.env.PORT}`)
+//   })
+//   });
+
+
+
 // const dev = process.env.NODE_ENV !== 'production';
-// const apps = [new GraphQLApp(), new AdminUIApp()];
+// const apps = [
+//   new GraphQLApp(), 
+//   new AdminUIApp(), 
+//   // new StaticApp({ path: '/', src: 'public' })
+//   ];
+
+
+
 // const preparations = apps.map(app =>
 //   app.prepareMiddleware({ keystone, dev })
 // );
@@ -119,29 +183,19 @@ module.exports = {
 // Promise.all(preparations).then(async middlewares => {
 //   await keystone.connect();
 //   const app = express();
-  
+//   app.use(cors())
 //   app.use(cookieParser(process.env.COOKIESECRET));
- 
-//   app.use((req, res, next) => {
-//     const { token } = req.cookies;
-  
-//     if (token) {
-//       const { userId } = jwt.verify(token, process.env.APP_SECRET);
-  
-//       req.userId = userId;
-//       //put the user Id onto the req for future request to access
-//     }
-//     next();
-//   });
-
+//   app.use(bodyParser.json()); 
 
 //   app.get('/', function (req, res) {
 //     res.send('Hello World!')
 //   })
 
+//   app.use('/api/mail', mailer)
 
 //   app.use(middlewares).listen(process.env.PORT, () => {
 //     console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 //   })
 // })
-
+// module.exports.keystone = keystone;
+// module.exports.authStrategy = authStrategy;

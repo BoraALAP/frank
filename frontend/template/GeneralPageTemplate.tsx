@@ -32,7 +32,7 @@ const GeneralTemplate = ({
 
   return (
     <>
-      <Breadcrumbs links={links} title={title} parent={parent} />
+      <Breadcrumbs links={links} title={title} parent={parent} padding />
       <ImageOverlap
         detailsTitle={imageOverlapDetailsTitle}
         detailsChildren={imageOverlapDetailsChildren}

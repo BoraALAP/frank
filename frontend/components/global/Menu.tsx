@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLinks } from "../UI/Links";
+import { NavLinks } from "../../UI/Links";
 
 const Menu = (props) => {
   const [imageSrc, setImageSrc] = useState({
@@ -57,7 +57,7 @@ const Menu = (props) => {
         bottom: false,
       },
       {
-        href: "/sub/designOptions",
+        href: "/sub/designoptions",
         name: "Design Options",
         image1: "/menuImages/menu13.jpg",
         image2: "/menuImages/menu14.jpg",
@@ -95,7 +95,7 @@ const Menu = (props) => {
         bottom: true,
       },
       {
-        href: "/user",
+        href: "/dealerlogin",
         name: props.me ? "Account" : "Dealer Login",
         image1: "/menuImages/menu17.jpg",
         image2: "/menuImages/menu18.jpg",
@@ -209,14 +209,15 @@ const Container = styled(motion.div)`
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
-  padding: ${({ theme }) => `130px ${theme.padding} 70px`};
+  padding: ${({ theme }) => `130px ${theme.paddingSm} 70px`};
   height: 100%;
   max-height: 900px;
   box-sizing: border-box;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     grid-template-columns: auto 25%;
     gap: calc(2 * ${({ theme }) => theme.gap});
+    padding: ${({ theme }) => `130px ${theme.padding} 70px`};
   }
 `;
 

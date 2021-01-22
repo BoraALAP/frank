@@ -1,7 +1,6 @@
-
-import styled from "styled-components";
+import styled from "../styled-components";
 import Image from "next/image";
-import { TertiaryButton } from "../../UI/Links";
+import { TertiaryButton } from "../../../UI/Links";
 
 const Category = ({ image, title, subtitle, children, href, rev = false }) => {
   return (
@@ -42,7 +41,7 @@ const Right = styled.div`
   align-content: start;
   gap: ${({ theme }) => theme.gap};
   padding: ${({ theme }) =>
-    `calc(1 * ${theme.padding}) ${theme.padding}  ${theme.padding}`};
+    `calc(1 * ${theme.padding}) ${theme.paddingSm}  ${theme.padding}`};
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     padding: ${({ theme }) =>
       `calc(3 * ${theme.padding}) ${theme.padding} calc(6 * ${theme.padding})`};

@@ -24,7 +24,7 @@ const Home = (props) => {
 
           <Right>
             <Link href="/contactus">Contact Us</Link>
-            <Link href="/user">Dealer Login</Link>
+            <Link href="/dealerlogin">Dealer Login</Link>
             {/* <p>
               Our story starts 35 years ago, with a commitment to quality that
               has remained family owned and operated. Learn more about us{" "}
@@ -95,11 +95,12 @@ const Context = styled.div`
 
 const Welcome = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.padding};
+  padding: 0 ${({ theme }) => theme.paddingSm};
   gap: ${({ theme }) => theme.gap};
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
     grid-template-columns: auto 25%;
     gap: calc(1.5 * ${({ theme }) => theme.gap});
+    padding: 0 ${({ theme }) => theme.padding};
   }
 `;
 

@@ -1,7 +1,7 @@
 import { Field, ErrorMessage, Formik, Form } from "formik";
-import styled from "styled-components";
+import styled from "../styled-components";
 import * as Yup from "yup";
-import { Button } from "../../UI/Links";
+import { Button } from "../../../UI/Links";
 
 const ContactForm = () => {
   return (
@@ -61,7 +61,14 @@ const ContactForm = () => {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND}/api/mail`, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "post",
+            body: JSON.stringify(values),
+          });
           setSubmitting(false);
         }, 400);
       }}
@@ -193,7 +200,7 @@ const ContactForm = () => {
           </FieldSet>
           <FieldSet>
             <label htmlFor="province">Province</label>
-            <Field name="province" type="text" />
+            <Field name="province" type="text" maxLength="2" />
             <ErrorMessageS>
               <ErrorMessage name="province" />
             </ErrorMessageS>

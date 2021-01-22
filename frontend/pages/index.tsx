@@ -70,7 +70,7 @@ const Right = styled(motion.div)`
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  gap: calc(${({ theme }) => theme.padding} / 2);
+  gap: ${({ theme }) => theme.gap};
 `;
 
 const H1 = styled.h1`

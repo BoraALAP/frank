@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import { Container } from "../layout/Container";
-import { FooterButton } from "../UI/Links";
+import { FooterButton } from "../../UI/Links";
 
 const Footer = () => {
   const links = [
     { name: "About us", href: "sub/frank" },
     { name: "Contact us", href: "/contactus" },
-    { name: "Paradigm", href: "" },
+
     { name: "Find a dealer", href: "/sub/dealerfinder" },
-    { name: "Your Projects", href: "" },
+
     { name: "Privacy Policy", href: "/sub/privacypolicy" },
+    { name: "Waranty", href: "/sub/waranty" },
   ];
 
   const socials = [
@@ -73,7 +74,7 @@ const BigContainer = styled.div`
   display: grid;
   background-color: ${({ theme }) => theme.color.lightGrey2};
   border-top: 1px solid ${({ theme }) => theme.grey};
-  padding: ${({ theme }) => theme.paddingSmw};
+  padding: ${({ theme }) => theme.paddingSm};
   @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
     padding: ${({ theme }) => theme.padding};
   }

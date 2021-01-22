@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface Props {
   children: any;
 }
-const Body = ({ children }: Props) => {
+export const Body = ({ children }: Props) => {
   return (
     <Container>
       {Array.isArray(children)
@@ -17,5 +17,3 @@ const Container = styled.div`
   display: grid;
   gap: calc(${({ theme }) => theme.gap} / 2);
 `;
-
-export default Body;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "../styled-components";
 import { Container } from "../../layout/Container";
 
 interface Props {
@@ -24,8 +24,12 @@ const Context = styled.div`
   display: grid;
   background-color: ${(props) =>
     props.transparent ? "none" : props.theme.color.lightGrey};
-  padding: ${({ theme }) => theme.padding};
+  padding: ${({ theme }) => theme.paddingSm};
   gap: ${({ theme }) => theme.gap};
+
+  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+    padding: ${({ theme }) => theme.padding};
+  }
 `;
 
 const Title = styled.h2`

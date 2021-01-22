@@ -10,7 +10,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-import Loading from "../../components/global/Loading";
+import Loading from "../../UI/Loading";
 import { Container } from "../../components/layout/Container";
 
 const DEALER_QUERY = gql`
