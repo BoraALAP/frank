@@ -9,7 +9,7 @@ import { Container } from "../layout/Container";
 
 const onChange = (handler) => (e) => handler(e.target.value);
 
-const SignInForm = ({ onSuccess, onClickForgot }) => {
+const SignInForm = ({ onSuccess }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);

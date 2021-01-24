@@ -5,9 +5,7 @@ import Router from "next/router";
 import { useAuth } from "../../lib/Authentication";
 
 import { Container } from "../../components/layout/Container";
-import SignInForm from "../../components/auth/signinform";
-
-const onChange = (handler) => (e) => handler(e.target.value);
+import SignInForm from "../../components/auth/SignInForm";
 
 const signin = () => {
   const { isAuthenticated } = useAuth();
