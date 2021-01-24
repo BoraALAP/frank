@@ -9,7 +9,7 @@ const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 
-const BackEndUserSchema = require("./lists/BackEndUser.js"); 
+const BackEndUserSchema = require("./lists/BackEndUser.js");
 const OperationSchema = require("./lists/Operation.js");
 const UserSchema = require("./lists/User.js");
 const DealerSchema = require("./lists/Dealer.js");
@@ -74,14 +74,17 @@ const authStrategy = keystone.createAuthStrategy({
 module.exports = {
   keystone,
   apps: [
-    new GraphQLApp({authStrategy: backendAuthStrategy,apiPath: '/admin/api',
-    graphiqlPath: '/admin/graphiql',}),
+    new GraphQLApp({
+      authStrategy: backendAuthStrategy,
+      apiPath: "/admin/api",
+      graphiqlPath: "/admin/graphiql",
+    }),
     new AdminUIApp({
       name: PROJECT_NAME,
-      adminPath: '/admin',
+      adminPath: "/admin",
       authStrategy: backendAuthStrategy,
-       enableDefaultRoute: true,
-      hooks: require.resolve('./admin/'),
+      enableDefaultRoute: true,
+      hooks: require.resolve("./admin/"),
     }),
   ],
 };
