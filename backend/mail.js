@@ -11,7 +11,7 @@ const sendEmail = async(templatePath,props) => {
   }
 
   const options = {
-    subject: 'Your password has been updated',
+    subject: props.subject,
     to: props.recipientEmail,
     from: process.env.MAILGUN_FROM,
     domain: process.env.MAILGUN_DOMAIN,

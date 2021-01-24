@@ -1,4 +1,4 @@
-import styled from "../styled-components";
+import styled from "styled-components";
 import { ImageOverlap } from "../../../components/pageSpecific/products/ImageOverlap";
 import WindowsTemplate from "../../../template/WindowsTemplate";
 

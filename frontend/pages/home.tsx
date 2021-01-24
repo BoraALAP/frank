@@ -24,7 +24,7 @@ const Home = (props) => {
 
           <Right>
             <Link href="/contactus">Contact Us</Link>
-            <Link href="/dealerlogin">Dealer Login</Link>
+            <Link href="/user/signin">Dealer Login</Link>
             {/* <p>
               Our story starts 35 years ago, with a commitment to quality that
               has remained family owned and operated. Learn more about us{" "}

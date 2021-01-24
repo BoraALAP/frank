@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { v4: uuid } = require('uuid');
-const { sendEmail } = require('../mail.js');
+
 
 const {
   Checkbox,
@@ -25,97 +25,15 @@ const DEFAULT_LIST_ACCESS = {
   delete: access.userIsAdmin,
 };
 
-exports.ForgottenPasswordToken = {
-  access: {
-    create: true,
-    read: true,
-    update: access.userIsAdmin,
-    delete: access.userIsAdmin,
-  },
-  fields: {
-    user: {
-      type: Relationship,
-      ref: 'User',
-      access: {
-        read: access.userIsAdmin,
-      },
-    },
-    token: {
-      type: Text,
-      isRequired: true,
-      isUnique: true,
-      access: {
-        read: access.userIsAdmin,
-      },
-    },
-    requestedAt: { type: DateTime, isRequired: true },
-    accessedAt: { type: DateTime },
-    expiresAt: { type: DateTime, isRequired: true },
-  },
-  hooks: {
-    afterChange: async ({ context, updatedItem, existingItem }) => {
-      if (existingItem) return null;
 
-      const now = new Date().toISOString();
-
-      const { errors, data } = await context.executeGraphQL({
-        context: context.createContext({ skipAccessControl: true }),
-        query: `
-        query GetUserAndToken($user: ID!, $now: DateTime!) {
-          User( where: { id: $user }) {
-            id
-            email
-          }
-          allForgottenPasswordTokens( where: { user: { id: $user }, expiresAt_gte: $now }) {
-            token
-            expiresAt
-          }
-        }
-      `,
-        variables: { user: updatedItem.user.toString(), now },
-      });
-
-      if (errors) {
-        console.error(errors, `Unable to construct password updated email.`);
-        return;
-      }
-
-      const { allForgottenPasswordTokens, User } = data;
-      const forgotPasswordKey = allForgottenPasswordTokens[0].token;
-      const url = process.env.SERVER_URL || 'http://localhost:3000';
-
-      const props = {
-        forgotPasswordUrl: `${url}/change-password?key=${forgotPasswordKey}`,
-        recipientEmail: User.email,
-      };
-
-      const options = {
-        subject: 'Request for password reset',
-        to: User.email,
-        from: process.env.MAILGUN_FROM,
-        domain: process.env.MAILGUN_DOMAIN,
-        apiKey: process.env.MAILGUN_API_KEY,
-      };
-
-      await sendEmail('forgot-password.jsx', props, options);
-    },
-  },
-};
-
+module.exports.access = access
 exports.CustomSchema = {
   mutations: [
     {
       schema: 'startPasswordRecovery(email: String!): ForgottenPasswordToken',
       resolver: async (obj, { email }, context) => {
-        const token = uuid();
 
-        const tokenExpiration =
-          parseInt(process.env.RESET_PASSWORD_TOKEN_EXPIRY) || 1000 * 60 * 60 * 24;
-
-        const now = Date.now();
-        const requestedAt = new Date(now).toISOString();
-        const expiresAt = new Date(now + tokenExpiration).toISOString();
-
+        // Step 1 Find the user via Email
         const { errors: userErrors, data: userData } = await context.executeGraphQL({
           context: context.createContext({ skipAccessControl: true }),
           query: `
@@ -128,7 +46,7 @@ exports.CustomSchema = {
           `,
           variables: { email: email },
         });
-
+    
         if (userErrors || !userData.allUsers || !userData.allUsers.length) {
           console.error(
             userErrors,
@@ -138,6 +56,13 @@ exports.CustomSchema = {
         }
 
         const userId = userData.allUsers[0].id;
+        const token = uuid();
+        const tokenExpiration =
+          parseInt(process.env.RESET_PASSWORD_TOKEN_EXPIRY) || 1000 * 60 * 60 * 24;
+        const now = Date.now();
+        const requestedAt = new Date(now).toISOString();
+        const expiresAt = new Date(now + tokenExpiration).toISOString();
+
 
         const result = {
           userId,
@@ -146,7 +71,8 @@ exports.CustomSchema = {
           expiresAt,
         };
 
-        const { errors } = await context.executeGraphQL({
+        // Step 2 Create a Token and connect to the user
+        const { data:data2, errors } = await context.executeGraphQL({
           context: context.createContext({ skipAccessControl: true }),
           query: `
             mutation createForgottenPasswordToken(
@@ -165,6 +91,9 @@ exports.CustomSchema = {
                 token
                 user {
                   id
+                  name
+                  email
+                  companyName
                 }
                 requestedAt
                 expiresAt
@@ -174,12 +103,14 @@ exports.CustomSchema = {
           variables: result,
         });
 
+        console.log(
+          data2
+        );
         if (errors) {
           console.error(errors, `Unable to create forgotten password token.`);
-          return;
+          return false;
         }
-
-        return true;
+          return data2.createForgottenPasswordToken;
       },
     },
     {
@@ -210,7 +141,7 @@ exports.CustomSchema = {
         const user = data.passwordTokens[0].user.id;
         const tokenId = data.passwordTokens[0].id;
 
-        const { errors: passwordError } = await context.executeGraphQL({
+        const { data: dataUserUpdate, errors: passwordError } = await context.executeGraphQL({
           context: context.createContext({ skipAccessControl: true }),
           query: `mutation UpdateUserPassword($user: ID!, $password: String!) {
             updateUser(id: $user, data: { password: $password }) {
@@ -236,7 +167,7 @@ exports.CustomSchema = {
           variables: { tokenId },
         });
 
-        return true;
+        return dataUserUpdate.id;
       },
     },
   ],

@@ -7,7 +7,7 @@ import { gql, useQuery, useMutation, useApolloClient } from "@apollo/client";
  * This is the base react context instance. It should not be used
  * directly but is exported here to simplify testing.
  */
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 /**
  * useAuth
@@ -85,6 +85,7 @@ export const AuthProvider = ({ children, initialUserValue }) => {
       if (item) {
         setUser(item);
       }
+      console.log(client);
     },
     onError: console.error,
   });
@@ -104,6 +105,8 @@ export const AuthProvider = ({ children, initialUserValue }) => {
     },
     onError: console.error,
   });
+  client;
+  user;
 
   return (
     <AuthContext.Provider

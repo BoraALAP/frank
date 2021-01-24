@@ -11,7 +11,7 @@ export const DisplayError = ({ formikError, error }) => {
     error.networkError.result &&
     error.networkError.result.errors.length
   ) {
-    console.log("reading backend");
+    ("reading backend");
     return error.networkError.result.errors.map((error, i) => (
       <ErrorStyles key={i}>
         <p data-test="graphql-error">
@@ -29,7 +29,7 @@ export const DisplayError = ({ formikError, error }) => {
         </p>
         <ul>
           {entries.map((item, index) => {
-            console.log(item);
+            item;
 
             return (
               <li key={index}>

@@ -1,10 +1,7 @@
 const { gql } =require( 'apollo-server-express')
 
-const { transport } =require( "../mail")
-const { newAccount } =require( "../emailTemplate/newAccount.jsx")
-
+// CUSTOM USER CREATION - This one creates user and sends email to both parties for requesting user ID
 const creatingAUser = async (_, { name, email, password, companyName }, context, info, extra) => {
-
 // Check is the user Exist 
   const { data, errors } = await context.executeGraphQL({
     query: gql` 
@@ -37,20 +34,18 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
   })
 
   // Send and request email for userID
-  const newAccountEmail = {
-    from: `alapbora@gmail.com`,
-    to: email,
-    subject: "Message title",
-    html: newAccount()
+  const propsClient = {
+    recipientEmail: process.env.RECEIVER,
+    name: data2.name
   };
 
-  transport.sendMail(newAccountEmail, (error, info) => {
-    console.log(info);
-    
-    if(error) {
-      return console.log(error);
-    }
-  })
+  const propsCustomer = {
+    recipientEmail: existingItem.email,
+    name: data2.name
+  };
+
+  await sendEmail('contactUsClient.jsx', propsClient);
+  await sendEmail('contactUsCustomer.jsx', propsCustomer);
 
   // Return New user
   return data2.createUser

@@ -95,7 +95,7 @@ const Menu = (props) => {
         bottom: true,
       },
       {
-        href: "/dealerlogin",
+        href: "/user/signin",
         name: props.me ? "Account" : "Dealer Login",
         image1: "/menuImages/menu17.jpg",
         image2: "/menuImages/menu18.jpg",

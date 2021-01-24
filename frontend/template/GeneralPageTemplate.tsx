@@ -24,7 +24,7 @@ const GeneralTemplate = ({
   operations,
 }) => {
   const { loading, error, data } = useQuery(OPERATIONS);
-  console.log(data);
+  data;
 
   const operationList = data?.allOperations.filter((item) => {
     return operations.find((operation) => item.name === operation);

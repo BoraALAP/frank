@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "../styled-components";
+import styled from "styled-components";
 import ReactPlayer from "react-player";
 
 import Details from "./Details";

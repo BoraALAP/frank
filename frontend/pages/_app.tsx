@@ -12,17 +12,19 @@ import { initialState, globalReducer } from "../context/reducer";
 import Meta from "../components/global/Meta";
 import { Header } from "../components/global/Header";
 import Footer from "../components/global/Footer";
-import Graphql from "../components/layout/Graphql";
+import { useApollo } from "../lib/ApolloClient";
+import { ApolloProvider } from "@apollo/client";
 
 const MyApp = ({ Component, pageProps }) => {
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
+  const apolloClient = useApollo(pageProps.initialApolloState);
 
   return (
     <GlobalContext.Provider value={{ store, dispatch }}>
       <ThemeProvider theme={primaryTheme}>
         <Meta />
-        <Graphql>
+        <ApolloProvider client={apolloClient}>
           <AuthProvider>
             {router.route !== "/" && <Header />}
             <ComponentS>
@@ -30,7 +32,7 @@ const MyApp = ({ Component, pageProps }) => {
             </ComponentS>
             <Footer />
           </AuthProvider>
-        </Graphql>
+        </ApolloProvider>
         <GlobalStyle />
       </ThemeProvider>
     </GlobalContext.Provider>

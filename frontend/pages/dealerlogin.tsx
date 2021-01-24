@@ -16,7 +16,7 @@ const dealerlogin = () => {
       },
     ],
   });
-  console.log(data, error, loading);
+  data, error, loading;
 
   return (
     <Container space padding>
@@ -32,7 +32,7 @@ const dealerlogin = () => {
           password: Yup.string().min(8, "Must be 8 characters or less"),
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          console.log(values);
+          values;
 
           await signIn({ variables: { ...values } });
           resetForm({ values: { email: "", password: "" } });

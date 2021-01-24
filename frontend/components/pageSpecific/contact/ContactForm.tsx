@@ -1,5 +1,5 @@
 import { Field, ErrorMessage, Formik, Form } from "formik";
-import styled from "../styled-components";
+import styled from "styled-components";
 import * as Yup from "yup";
 import { Button } from "../../../UI/Links";
 

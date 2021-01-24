@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = ({ recipientEmail, signinUrl }) => (`
+module.exports = ({ recipientEmail, signinUrl }) => (
   <html>
     <body>
       <div>
@@ -15,5 +15,5 @@ module.exports = ({ recipientEmail, signinUrl }) => (`
         </div>
       </div>
     </body>
-  </html>`
+  </html>
 );
