@@ -7,6 +7,6 @@ module.exports = {
   password: { type: Password },
   // This field name must match the `idField` setting passed to the auth
   // strategy constructor below
-  googleId: { type: Text },
+  googleId: { type: Text }, 
   isAdmin:{type: Checkbox, defaultValue: false}
 }}
