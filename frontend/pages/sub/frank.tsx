@@ -23,7 +23,8 @@ const frank = () => {
             </Body>
           </Text>
         </Header>
-        <TwoColumn title="Commitment to Quality" imageSrc="/frank2.jpg" rev>
+        <TwoColumn imageSrc="/frank2.jpg" rev>
+          <Subtitle>Commitment to Quality</Subtitle>
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way
@@ -39,7 +40,8 @@ const frank = () => {
           </p>
         </TwoColumn>
 
-        <TwoColumn title="Placeholder copy" imageSrc="/frank3.jpg">
+        <TwoColumn imageSrc="/frank3.jpg">
+          <Subtitle>Placeholder copy</Subtitle>
           <p>
             I am a window and door man. With a career that has spanned almost 50
             years in the industry, I began on the shop floor and worked my way

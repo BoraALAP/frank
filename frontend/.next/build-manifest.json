@@ -29,15 +29,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/products/slidingdoors.js"
     ],
-    "/products/windows": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows.js"
-    ],
     "/sub/dealerfinder": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/sub/dealerfinder.js"
+    ],
+    "/sub/frank": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/sub/frank.js"
     ]
   },
   "ampFirstPages": []
