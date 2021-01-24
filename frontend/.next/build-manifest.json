@@ -24,15 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/sub/dealerfinder": [
+    "/contactus": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/sub/dealerfinder.js"
+      "static/chunks/pages/contactus.js"
     ],
-    "/sub/frank": [
+    "/user/signin": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/sub/frank.js"
+      "static/chunks/pages/user/signin.js"
     ]
   },
   "ampFirstPages": []

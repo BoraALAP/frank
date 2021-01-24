@@ -9,7 +9,7 @@ const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 
-const BackendUserSchema = require("./lists/BackEndUser.js");
+const BackEndUserSchema = require("./lists/BackEndUser.js");
 const OperationSchema = require("./lists/Operation.js");
 const UserSchema = require("./lists/User.js");
 const DealerSchema = require("./lists/Dealer.js");
@@ -36,7 +36,7 @@ const keystone = new Keystone({
   cookieSecret: process.env.COOKIESECRET,
 });
 
-keystone.createList("BackEndUser", BackendUserSchema);
+keystone.createList("BackEndUser", BackEndUserSchema);
 keystone.createList("Operation", OperationSchema);
 keystone.createList("User", UserSchema);
 keystone.createList("Dealer", DealerSchema);
