@@ -76,9 +76,7 @@ const SignInForm = ({ onSuccess, onClickForgot }) => {
           ) : (
             <Button type="submit">Sign in</Button>
           )}
-          <Link href="/user/forgot-password" onClick={onClickForgot}>
-            Forgot password
-          </Link>
+          <Link href="/user/forgot-password">Forgot password</Link>
         </div>
       </form>
     </>

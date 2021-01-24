@@ -17,6 +17,7 @@ export const primaryTheme = {
   gap: "2rem",
   color: {
     primary: "hsl(209,71%,19%)",
+    primaryDisabled: "hsla(209,71%,19%,60%)",
     secondary: "hsl(166, 100%, 28%)",
     grey: "hsl(0, 0%, 40%)",
     lightGrey: "hsl(0, 0%, 84%)",
@@ -24,6 +25,7 @@ export const primaryTheme = {
     bg: "hsl(0, 0%, 95%)",
     black: "hsl(0, 0%, 0%)",
     white: "hsl(0, 0%, 100%)",
+    whiteDisabled: "hsla(0, 0%, 100%,60%)",
     error: "hsl(0, 100%, 15%)",
     whiteBg: "hsla(0, 0%, 100%, 0.5)",
     overlay: "hsla(0, 0%, 0%, 90%)",
