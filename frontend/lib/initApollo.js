@@ -12,7 +12,7 @@ function create(initialState, req) {
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: createUploadLink({
-      uri: `${process.env.NEXT_PUBLIC_BACKEND}/admin/api`, // Server URL (must be absolute)
+      uri: `${process.env.NEXT_PUBLIC_API}`, // Server URL (must be absolute)
       credentials: "include", // Additional fetch() options like `credentials` or `headers`
       fetch,
       headers: req && req.headers,

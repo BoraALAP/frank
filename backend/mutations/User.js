@@ -19,7 +19,7 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
     throw new Error("User is already exists");
   }
 // If not exist Create a user
-  const {data: data2, errors: errors2} = await context.executeGraphQL({
+  const {data: createUserData, errors: createUserErrors} = await context.executeGraphQL({
     query: gql` 
       mutation ($name: String, $email: String, $password: String, $companyName: String){
         createUser(data:{name:$name, email:$email, password:$password, companyName: $companyName}){
@@ -36,19 +36,19 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
   // Send and request email for userID
   const propsClient = {
     recipientEmail: process.env.RECEIVER,
-    name: data2.name
+    name: createUserData.name
   };
 
   const propsCustomer = {
     recipientEmail: existingItem.email,
-    name: data2.name
+    name: createUserData.name
   };
 
   await sendEmail('contactUsClient.jsx', propsClient);
   await sendEmail('contactUsCustomer.jsx', propsCustomer);
 
   // Return New user
-  return data2.createUser
+  return createUserData.createUser
 };
 
 
