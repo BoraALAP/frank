@@ -1,7 +1,7 @@
-const {Text, Relationship, DateTime} = require('@keystonejs/fields')
-const {access} =require('./Custom.js')
+const { Text, Relationship, DateTime } = require("@keystonejs/fields");
+const { access } = require("./Custom.js");
 
-const {sendEmail} = require("../mail.js")
+const { sendEmail } = require("../mail.js");
 
 module.exports = {
   access: {
@@ -15,7 +15,7 @@ module.exports = {
   fields: {
     user: {
       type: Relationship,
-      ref: 'User',
+      ref: "User",
       access: {
         // read: access.userIsAdmin,
         read: true,
@@ -41,7 +41,7 @@ module.exports = {
       console.log(updatedItem);
 
       //Step 3 after token is created because of the change collect all the information
-      const {  data, errors } = await context.executeGraphQL({
+      const { data, errors } = await context.executeGraphQL({
         context: context.createContext({ skipAccessControl: true }),
         query: `
         query GetUserAndToken($user: ID!, $now: DateTime!) {
@@ -70,13 +70,13 @@ module.exports = {
 
       //Step 4 Send an email
       const props = {
-        forgotPasswordUrl: `${process.env.FRONTEND_URL}/change-password?key=${forgotPasswordKey}`,
+        forgotPasswordUrl: `${process.env.FRONTEND_URL}/user/change-password?key=${forgotPasswordKey}`,
         recipientEmail: User.email,
         recipientName: User.name,
-        subject:"Request for password reset"
+        subject: "Request for password reset",
       };
 
-      // await sendEmail('forgot-password.jsx', props);
+      await sendEmail("forgot-password.jsx", props);
     },
   },
 };

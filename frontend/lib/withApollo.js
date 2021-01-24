@@ -6,6 +6,7 @@ import initApollo from "./initApollo";
 import Head from "next/head";
 import { getDataFromTree } from "@apollo/client/react/ssr";
 
+// No Clue what does this do. this also looks like it creates a context for the store
 export default (App) => {
   return class Apollo extends React.Component {
     static displayName = "withApollo(App)";

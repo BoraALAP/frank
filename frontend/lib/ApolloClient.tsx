@@ -4,6 +4,7 @@ import { createUploadLink } from "apollo-upload-client";
 
 let apolloClient;
 
+// To be honest there is 2 different create Apollo so this one is the one I can see connected to actual site
 function createApolloClient(req) {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
@@ -16,6 +17,7 @@ function createApolloClient(req) {
   });
 }
 
+// This keep the store Client
 export function initializeApollo(initialState = null, req?) {
   const _apolloClient = apolloClient ?? createApolloClient(req);
 
@@ -32,6 +34,7 @@ export function initializeApollo(initialState = null, req?) {
   return _apolloClient;
 }
 
+//Turns store a hook
 export function useApollo(initialState) {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;

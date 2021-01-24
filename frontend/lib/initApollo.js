@@ -1,11 +1,11 @@
 import fetch from "isomorphic-unfetch";
-import getConfig from "next/config";
 
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 
 let apolloClient;
 
+// Second Apollo Client which I couldn't find really good connection with the actial app
 function create(initialState, req) {
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
@@ -21,6 +21,7 @@ function create(initialState, req) {
   });
 }
 
+// Initializing above client
 export default function initApollo(initialState, req) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
