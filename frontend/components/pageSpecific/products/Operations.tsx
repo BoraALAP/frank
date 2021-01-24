@@ -5,7 +5,11 @@ import ReactPlayer from "react-player";
 import Details from "./Details";
 import { Container } from "../../layout/Container";
 
-export const Operations = ({ list }) => {
+interface Props {
+  list?: Array<any>;
+}
+
+export const Operations = ({ list }: Props) => {
   const [videoSrc, setVideoSrc] = useState(list && list[0]?.video);
   const [operationName, setOperationName] = useState("");
 

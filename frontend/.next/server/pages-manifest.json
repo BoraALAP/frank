@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/products/slidingdoors": "pages/products/slidingdoors.js",
-  "/sub/frank": "pages/sub/frank.js",
-  "/sub/dealerfinder": "pages/sub/dealerfinder.js"
+  "/sub/dealerfinder": "pages/sub/dealerfinder.js",
+  "/sub/frank": "pages/sub/frank.js"
 }

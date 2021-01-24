@@ -24,11 +24,6 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/products/slidingdoors": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/slidingdoors.js"
-    ],
     "/sub/dealerfinder": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
