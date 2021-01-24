@@ -15,7 +15,7 @@ export const CREATE_FORGOT_PASSWORD_TOKEN = gql`
   }
 `;
 
-const ForgotPasswordForm = ({ onSuccess }) => {
+const ForgotPasswordForm = ({ onSuccess }: any) => {
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const { isAuthenticated } = useAuth();
