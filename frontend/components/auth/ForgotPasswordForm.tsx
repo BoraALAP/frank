@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 
-import NextLink from "next/link";
+import Link from "next/link";
 
 import { useAuth } from "../../lib/Authentication";
 import { Button } from "../../UI/Links";
@@ -15,7 +15,7 @@ export const CREATE_FORGOT_PASSWORD_TOKEN = gql`
   }
 `;
 
-const ForgotPasswordForm = ({ onSuccess, onClickSignin }) => {
+const ForgotPasswordForm = ({ onSuccess }) => {
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const { isAuthenticated } = useAuth();
@@ -66,9 +66,7 @@ const ForgotPasswordForm = ({ onSuccess, onClickSignin }) => {
           ) : (
             <Button type="submit">Send</Button>
           )}
-          <NextLink href="/signin" onClick={onClickSignin}>
-            Sign in
-          </NextLink>
+          <Link href="/user/signin">Sign in</Link>
         </div>
       </form>
     </>
