@@ -24,20 +24,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/contactus": [
+    "/products/slidingdoors": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/contactus.js"
+      "static/chunks/pages/products/slidingdoors.js"
     ],
-    "/home": [
+    "/products/windows": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/home.js"
+      "static/chunks/pages/products/windows.js"
     ],
-    "/user/signin": [
+    "/sub/dealerfinder": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/user/signin.js"
+      "static/chunks/pages/sub/dealerfinder.js"
     ]
   },
   "ampFirstPages": []

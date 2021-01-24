@@ -54,7 +54,7 @@ const UNAUTH_MUTATION = gql`
  * AuthProvider is a component which keeps track of the user's
  * authenticated state and provides methods for managing the auth state.
  */
-export const AuthProvider = ({ children, initialUserValue }) => {
+export const AuthProvider = ({ children, initialUserValue }: any) => {
   const [user, setUser] = useState(initialUserValue);
   const client = useApolloClient();
 
@@ -71,10 +71,7 @@ export const AuthProvider = ({ children, initialUserValue }) => {
   });
 
   const [signin, { loading: authLoading }] = useMutation(AUTH_MUTATION, {
-    onCompleted: async ({
-      authenticateUserWithPassword: { item } = {},
-      error,
-    }) => {
+    onCompleted: async ({ authenticateUserWithPassword: item = {}, error }) => {
       if (error) {
         throw error;
       }
@@ -91,7 +88,7 @@ export const AuthProvider = ({ children, initialUserValue }) => {
   });
 
   const [signout, { loading: unauthLoading }] = useMutation(UNAUTH_MUTATION, {
-    onCompleted: async ({ unauthenticateUser: { success } = {}, error }) => {
+    onCompleted: async ({ unauthenticateUser: success = {}, error }) => {
       if (error) {
         throw error;
       }

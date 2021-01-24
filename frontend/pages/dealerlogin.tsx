@@ -8,15 +8,7 @@ import { Button } from "../UI/Links";
 import { gql, useMutation } from "@apollo/client";
 
 const dealerlogin = () => {
-  const [signIn, { data, error, loading }] = useMutation(SIGNIN_MUTATION, {
-    refetchQueries: [
-      {
-        query: UPDATE_LASTONLINE,
-        variables: { lastLogin: "2021-01-18T07:01:30.205Z" },
-      },
-    ],
-  });
-  data, error, loading;
+  const [signIn, { data, error, loading }] = useMutation(SIGNIN_MUTATION);
 
   return (
     <Container space padding>
