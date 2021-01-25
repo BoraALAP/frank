@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server-express");
 require("dotenv").config();
-var cors = require('cors')
+var cors = require("cors");
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")(expressSession);
 
@@ -31,13 +31,14 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  
+
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
-  cookie: { 
+  cookie: {
     secure: false,
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: false, },
+    sameSite: false,
+  },
 });
 
 keystone.createList("BackEndUser", BackEndUserSchema);
@@ -89,9 +90,9 @@ module.exports = {
   ],
   configureExpress: (app) => {
     app.set("trust proxy", 1);
-    app.use(cors({
-      credentials: "include",
-      origin:process.env.BACKEND_URL
-    }))
+    // app.use(cors({
+    //   credentials: "include",
+    //   origin:process.env.BACKEND_URL
+    // }))
   },
 };
