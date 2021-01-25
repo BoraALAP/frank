@@ -31,14 +31,14 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-
+  secureCookies: true,
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
-  cookie: {
-    secure: false,
-    maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: false,
-  },
+  // cookie: {
+  //   secure: false,
+  //   maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+  //   sameSite: false,
+  // },
 });
 
 keystone.createList("BackEndUser", BackEndUserSchema);
