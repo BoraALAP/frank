@@ -30,11 +30,6 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  cookie: {
-    secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60 * 24 * 30,
-    sameSite: false,
-  },
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
 });
@@ -79,14 +74,10 @@ module.exports = {
   apps: [
     new GraphQLApp({
       authStrategy: backendAuthStrategy,
-      apiPath: "/admin/api",
-      graphiqlPath: "/admin/graphiql",
     }),
     new AdminUIApp({
       name: PROJECT_NAME,
-      adminPath: "/admin",
       authStrategy: backendAuthStrategy,
-      enableDefaultRoute: true,
       hooks: require.resolve("./admin/"),
     }),
   ],
