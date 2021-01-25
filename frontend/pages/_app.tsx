@@ -15,6 +15,7 @@ import Footer from "../components/global/Footer";
 import { useApollo } from "../lib/ApolloClient";
 import { ApolloProvider } from "@apollo/client";
 
+
 const MyApp = ({ Component, pageProps }) => {
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
