@@ -90,9 +90,11 @@ module.exports = {
   ],
   configureExpress: (app) => {
     app.set("trust proxy", 1);
-    // app.use(cors({
-    //   credentials: "include",
-    //   origin:process.env.BACKEND_URL
-    // }))
+    app.use(
+      cors({
+        credentials: true,
+        origin: process.env.FRONTEND_URL,
+      })
+    );
   },
 };
