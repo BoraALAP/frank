@@ -1,5 +1,7 @@
 const { gql } = require("apollo-server-express");
 require("dotenv").config();
+const expressSession = require("express-session");
+const MongoStore = require("connect-mongo")(expressSession);
 
 const { Keystone } = require("@keystonejs/keystone");
 const { GraphQLApp } = require("@keystonejs/app-graphql");
@@ -33,6 +35,7 @@ const keystone = new Keystone({
     maxAge: 60 * 60 * 24 * 30,
     sameSite: false,
   },
+  sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
 });
 
