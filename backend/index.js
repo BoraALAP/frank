@@ -30,7 +30,7 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  sessionStore: new MongoStore({ url: process.env.DATABASE }),
+  // sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
 });
 
@@ -73,11 +73,11 @@ module.exports = {
   keystone,
   apps: [
     new GraphQLApp({
-      authStrategy: backendAuthStrategy,
+      // authStrategy: backendAuthStrategy,
     }),
     new AdminUIApp({
       name: PROJECT_NAME,
-      authStrategy: backendAuthStrategy,
+      // authStrategy: backendAuthStrategy,
       hooks: require.resolve("./admin/"),
     }),
   ],
