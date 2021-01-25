@@ -10,9 +10,10 @@ function createApolloClient(req) {
     ssrMode: typeof window === "undefined",
     link: createUploadLink({
       uri: process.env.NEXT_PUBLIC_API_URL,
-      headers: req && req.headers,
+      // headers: req && req.headers,
       credentials: "include",
     }),
+    credentials: "include",
     cache: new InMemoryCache(),
   });
 }

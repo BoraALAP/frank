@@ -30,7 +30,7 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  secureCookies: process.env.NODE_ENV === 'production',
+  secureCookies: process.env.NODE_ENV === "production",
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
 });
@@ -78,13 +78,11 @@ module.exports = {
     }),
     new AdminUIApp({
       name: PROJECT_NAME,
-
       authStrategy: backendAuthStrategy,
-
       hooks: require.resolve("./admin/"),
     }),
   ],
-  configureExpress: app => {
-    app.set('trust proxy', 1);
-  }
+  configureExpress: (app) => {
+    app.set("trust proxy", 1);
+  },
 };
