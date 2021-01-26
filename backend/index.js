@@ -35,9 +35,9 @@ const keystone = new Keystone({
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
   cookie: {
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: false,
+    sameSite: true,
     httpOnly: true,
     domain: process.env.FRONTEND_URL,
   },
