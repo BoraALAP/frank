@@ -31,7 +31,7 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  secureCookies: true,
+  secureCookies: false,
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
   // cookie: {
@@ -90,11 +90,11 @@ module.exports = {
   ],
   configureExpress: (app) => {
     app.set("trust proxy", 1);
-    // app.use(
-    //   cors({
-    //     credentials: true,
-    //     origin: process.env.FRONTEND_URL,
-    //   })
-    // );
+    app.use(
+      cors({
+        credentials: true,
+        origin: process.env.FRONTEND_URL,
+      })
+    );
   },
 };

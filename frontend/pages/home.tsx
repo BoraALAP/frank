@@ -8,11 +8,13 @@ import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
 import Category from "../components/pageSpecific/home/Category";
+import { useAuth } from "../lib/Authentication";
 
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
 const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
+  const { isAuthenticated } = useAuth();
 
   return (
     <Container space>
@@ -24,7 +26,9 @@ const Home = (props) => {
 
           <Right>
             <Link href="/contactus">Contact Us</Link>
-            <Link href="/user/signin">Dealer Login</Link>
+            <Link href={isAuthenticated ? "/user/account" : "/user/signin"}>
+              {isAuthenticated ? "Account" : "Dealer Login"}
+            </Link>
             {/* <p>
               Our story starts 35 years ago, with a commitment to quality that
               has remained family owned and operated. Learn more about us{" "}

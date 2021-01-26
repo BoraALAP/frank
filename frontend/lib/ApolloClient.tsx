@@ -11,7 +11,7 @@ function createApolloClient(req) {
     link: createUploadLink({
       uri: process.env.NEXT_PUBLIC_API_URL,
       // headers: req && req.headers,
-      credentials: "same-origin",
+      credentials: "include",
     }),
     cache: new InMemoryCache(),
   });

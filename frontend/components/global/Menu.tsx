@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLinks } from "../../UI/Links";
+import { useAuth } from "../../lib/Authentication";
 
 const Menu = (props) => {
+  const { isAuthenticated } = useAuth();
   const [imageSrc, setImageSrc] = useState({
     image1: "/menuImages/menuImage1.jpg",
     image2: "/menuImages/menuImage2.jpg",
@@ -95,8 +97,8 @@ const Menu = (props) => {
         bottom: true,
       },
       {
-        href: "/user/signin",
-        name: props.me ? "Account" : "Dealer Login",
+        href: isAuthenticated ? "/user/account" : "/user/signin",
+        name: isAuthenticated ? "Account" : "Dealer Login",
         image1: "/menuImages/menu17.jpg",
         image2: "/menuImages/menu18.jpg",
         bottom: true,
