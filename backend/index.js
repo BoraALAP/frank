@@ -31,13 +31,13 @@ const adapterConfig = {
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  // secureCookies: false,
+  secureCookies: false,
   sessionStore: new MongoStore({ url: process.env.DATABASE }),
   cookieSecret: process.env.COOKIESECRET,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: true,
+    sameSite: false,
     httpOnly: true,
     domain: process.env.FRONTEND_URL,
   },
