@@ -1,59 +1,47 @@
-// import React, { useEffect } from "react";
-// import styled from "styled-components";
-// import { useQuery } from "@apollo/client";
-
-// import { CURRENT_USER_QUERY } from "../../queries/User";
-// import { useHistory } from "react-router-dom";
-
-// import SignOut from "./SignOut";
-// import UserDashboard from "./component/UserDashboard";
-// import DealerDashboard from "./component/DealerDashboard";
-
-// const account = (props) => {
-//   const history = useHistory();
-//   const { data } = useQuery(CURRENT_USER_QUERY);
-
-//   useEffect(() => {
-//     if (!data?.me) {
-//       history.push("/user/signIn");
-//     }
-//   });
-
-//   if (!data?.me?.verified) {
-//     return (
-//       <Container>
-//         <p>Not verified yet Please check your email</p>
-//       </Container>
-//     );
-//   } else {
-//     return (
-//       <Container>
-//         <h2>{data?.me?.name}</h2>
-//         <SignOut />
-//         {data?.me?.permissions.map((item) => {
-//           if (item === "DEALER") {
-//             return <DealerDashboard />;
-//           } else if (item === "USER") {
-//             return <UserDashboard />;
-//           }
-//         })}
-//       </Container>
-//     );
-//   }
-// };
-
-// const Container = styled.div``;
-
-// export default account;
-
+import { useEffect } from "react";
+import moment from "moment";
 import styled from "styled-components";
+import { gql, useMutation } from "@apollo/client";
+import Router from "next/router";
+import { useAuth } from "../../lib/Authentication";
+import { Container } from "../../components/layout/Container";
+import { TertiaryButton } from "../../UI/Links";
+import signout from "./signout";
+import { Loading } from "../../UI/Loading";
 
 const account = () => {
-  return <Container>account</Container>;
-};
+  const { signout, isAuthenticated, isLoading, user } = useAuth();
+  const onSignout = (event) => {
+    event.preventDefault();
+    signout();
+  };
+  console.log(user);
 
-const Container = styled.div`
-  display: grid;
-`;
+  useEffect(() => {
+    if (!isAuthenticated && !isLoading) {
+      Router.push("/user/signin");
+      return;
+    }
+  }, [isAuthenticated]);
+
+  if (!user) {
+    return <Loading />;
+  }
+
+  return (
+    <Container space padding>
+      <h2>Account</h2>
+      <h4>Hello {user.name}</h4>
+      <p>
+        Last Login{" "}
+        {moment(user.lastLogin).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+      </p>
+
+      <TertiaryButton onClick={onSignout} href="/user/signout">
+        Sign Out
+      </TertiaryButton>
+    </Container>
+  );
+};
 
 export default account;

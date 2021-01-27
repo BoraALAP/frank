@@ -13,7 +13,7 @@ const signin = () => {
   // if the user is logged in, redirect to the homepage
   useEffect(() => {
     if (isAuthenticated) {
-      Router.push("/home");
+      Router.push("/user/account");
     }
   }, [isAuthenticated]);
 

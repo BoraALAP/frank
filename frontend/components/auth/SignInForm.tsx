@@ -77,6 +77,7 @@ const SignInForm = ({ onSuccess }: any) => {
             <Button type="submit">Sign in</Button>
           )}
           <Link href="/user/forgot-password">Forgot password</Link>
+          <Link href="/user/signup">Sign Up</Link>
         </div>
       </form>
     </>

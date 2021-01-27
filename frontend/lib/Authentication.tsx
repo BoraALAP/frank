@@ -20,6 +20,8 @@ const userFragment = `
   id
   name
   isAdmin
+  companyName
+  lastLogin
 `;
 
 const USER_QUERY = gql`
@@ -64,6 +66,7 @@ export const AuthProvider = ({ children, initialUserValue }: any) => {
       if (error) {
         throw error;
       }
+      console.log(authenticatedUser);
 
       setUser(authenticatedUser);
     },

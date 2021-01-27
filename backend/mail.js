@@ -9,7 +9,6 @@ const sendEmail = async(templatePath,props) => {
   if (!templatePath) {
     console.error('No template path provided');
   }
-
   const options = {
     subject: props.subject,
     to: props.recipientEmail,

@@ -1,10 +1,10 @@
 const React = require('react');
 
-module.exports = ({ name= "Bora" }) => {
+module.exports = ({ name= "Client" }) => {
   return (
     <html>
       <body>
-        <div>Hello ${name}</div>
+        <div>Hello {name} Client Email</div>
       </body>
     </html>
   )}

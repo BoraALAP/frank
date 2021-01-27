@@ -1,9 +1,9 @@
 const React = require('react');
 
-module.exports = ({ name= "Bora" }) => (
+module.exports = ({ name= "Client" }) => (
     <html>
       <body>
-        <div>Hello {name}</div>
+        <div>Dear {name} Customer Email</div>
       </body>
     </html>
   );

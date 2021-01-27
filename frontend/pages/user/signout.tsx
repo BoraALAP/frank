@@ -1,34 +1,27 @@
-// import styled from "styled-components";
-// import { gql, useMutation } from "@apollo/client";
-// import { Primary } from "../../components/UI/Button";
+import { useEffect } from "react";
+import Router from "next/router";
 
-// import { CURRENT_USER_QUERY } from "../../queries/User";
-
-// const SIGN_OUT_MUTATION = gql`
-//   mutation SIGN_OUT_MUTATION {
-//     signOut {
-//       message
-//     }
-//   }
-// `;
-
-// const signout = (props) => {
-//   const [signOut, { error, loading }] = useMutation(SIGN_OUT_MUTATION, {
-//     refetchQueries: [{ query: CURRENT_USER_QUERY }],
-//   });
-//   return <Primary onClick={() => signOut()}>Sign Out</Primary>;
-// };
-
-// export default signout;
-
-import styled from "styled-components";
+import { useAuth } from "../../lib/Authentication";
+import { Container } from "../../components/layout/Container";
 
 const signout = () => {
-  return <Container>signout</Container>;
-};
+  const { isAuthenticated, signout } = useAuth();
 
-const Container = styled.div`
-  display: grid;
-`;
+  useEffect(() => {
+    if (!isAuthenticated) {
+      Router.push("/home");
+      return;
+    }
+    signout();
+  }, [isAuthenticated]);
+
+  return (
+    <>
+      <Container space padding>
+        <p>Signing you out...</p>
+      </Container>
+    </>
+  );
+};
 
 export default signout;

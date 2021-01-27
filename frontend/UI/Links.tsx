@@ -19,6 +19,15 @@ interface Props {
   disabled?: boolean;
 }
 
+interface TertiaryProps {
+  href?: string;
+  rev?: boolean;
+  type?: string;
+  children: any;
+  disabled?: boolean;
+  onClick?: any;
+}
+
 export const Button = ({
   href,
   children,
@@ -44,13 +53,18 @@ export const TertiaryButton = ({
   children,
   rev = false,
   disabled = false,
-}) => {
-  return (
+}: TertiaryProps) => {
+  console.log(href);
+  return href ? (
     <Link href={href}>
-      <TertiaryContainer href={href} rev={rev} disabled={disabled}>
+      <TertiaryContainer rev={rev} disabled={disabled}>
         {children}
       </TertiaryContainer>
     </Link>
+  ) : (
+    <TertiaryContainer rev={rev} disabled={disabled}>
+      {children}
+    </TertiaryContainer>
   );
 };
 
@@ -77,7 +91,7 @@ const Container = styled.a`
   font-size: ${(props) => (props.Bottom ? "0.875rem" : "1.125rem")};
 `;
 
-const TertiaryContainer = styled.a`
+const TertiaryContainer = styled.button`
   display: grid;
   color: ${(props) => {
     if (props.rev) {
