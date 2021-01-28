@@ -6,8 +6,9 @@ import styled from "styled-components";
 import { useAuth } from "../../lib/Authentication";
 
 import { Loading } from "../../UI/Loading";
-import { ErrorMessage } from "../../UI/ErrorMessages";
+
 import { Button } from "../../UI/Links";
+import { ErrorMessages } from "../../UI/FormElements";
 
 const CHANGE_PASSWORD = gql`
   mutation ChangePasswordWithToken($token: String!, $password: String!) {
@@ -69,7 +70,6 @@ const ChangePasswordForm = ({ token, accessedAt }) => {
       ) : ( */}
       <>
         {mutationError && <p>Failed to change password</p>}
-
         <form noValidate onSubmit={handleSubmit(startPasswordRecovery)}>
           <fieldset>
             <label htmlFor="password">Password</label>
