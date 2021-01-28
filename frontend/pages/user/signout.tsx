@@ -17,7 +17,7 @@ const signout = () => {
 
   return (
     <>
-      <Container space padding>
+      <Container space padding title="Sign Out">
         <p>Signing you out...</p>
       </Container>
     </>

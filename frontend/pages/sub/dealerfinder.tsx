@@ -99,7 +99,7 @@ const DealerFinder = (props) => {
   };
 
   return (
-    <Container space padding>
+    <Container space padding title="Dealer Finder">
       <Content>
         <Left>
           {locations.length !== 0 ? (

@@ -1,15 +1,27 @@
 import styled from "styled-components";
+import Meta from "../../components/global/Meta";
 
+interface MetaProps {
+  children: any;
+  space?: boolean;
+  gap?: boolean;
+  padding?: boolean;
+  title?: any;
+}
 export const Container = ({
   children,
   space = false,
   gap = false,
   padding = false,
-}) => {
+  title,
+}: MetaProps) => {
   return (
-    <ContainerS space={space} gap={gap} padding={padding}>
-      {children}
-    </ContainerS>
+    <>
+      {title && <Meta title={title} />}
+      <ContainerS space={space} gap={gap} padding={padding}>
+        {children}
+      </ContainerS>
+    </>
   );
 };
 

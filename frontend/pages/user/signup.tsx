@@ -4,7 +4,7 @@ import { Container } from "../../components/layout/Container";
 
 const signup = () => {
   return (
-    <Container space padding>
+    <Container space padding title="Sign Up">
       <SignUpForm />
     </Container>
   );

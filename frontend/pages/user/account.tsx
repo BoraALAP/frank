@@ -29,7 +29,7 @@ const account = () => {
   }
 
   return (
-    <Container space padding>
+    <Container space padding title="My Profile">
       <h2>Account</h2>
       <h4>Hello {user.name}</h4>
       <p>

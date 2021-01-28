@@ -13,7 +13,7 @@ const SlidingDoorTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations
+  operations,
 }) => {
   const links = [
     {
@@ -29,9 +29,9 @@ const SlidingDoorTemplate = ({
       href: "/sub/dealerfinder",
     },
   ];
-  
+
   return (
-    <Container space gap>
+    <Container space gap title={`${title} - Sliding Doors`}>
       <GeneralTemplate
         title={title}
         parent="Sliding Doors"

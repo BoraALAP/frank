@@ -17,7 +17,7 @@ const Home = (props) => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <Container space>
+    <Container space title="Home">
       <Context>
         <Welcome>
           <Left>
@@ -29,11 +29,6 @@ const Home = (props) => {
             <Link href={isAuthenticated ? "/user/account" : "/user/signin"}>
               {isAuthenticated ? "Account" : "Dealer Login"}
             </Link>
-            {/* <p>
-              Our story starts 35 years ago, with a commitment to quality that
-              has remained family owned and operated. Learn more about us{" "}
-              <Link href="/sub/frank">here.</Link>{" "}
-            </p> */}
           </Right>
         </Welcome>
         <Categories>
@@ -46,7 +41,6 @@ const Home = (props) => {
             rev
           >
             <p>Rated Most efficient by Energy Star</p>
-
             <p>
               Warm edge spacers recessed between the panes of glass both
               minimize glass edge conductivity while optimally containing the
@@ -61,7 +55,6 @@ const Home = (props) => {
             image="/homepage5.jpg"
           >
             <p>Rated Most efficient by Energy Star</p>
-
             <p>
               Warm edge spacers recessed between the panes of glass both
               minimize glass edge conductivity while optimally containing the
@@ -77,7 +70,6 @@ const Home = (props) => {
             rev
           >
             <p>Rated Most efficient by Energy Star</p>
-
             <p>
               Warm edge spacers recessed between the panes of glass both
               minimize glass edge conductivity while optimally containing the

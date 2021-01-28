@@ -13,7 +13,7 @@ const EntryDoorTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations
+  operations,
 }) => {
   const links = [
     {
@@ -29,10 +29,9 @@ const EntryDoorTemplate = ({
       href: "/sub/dealerfinder",
     },
   ];
-  
 
   return (
-    <Container space gap>
+    <Container space gap title={`${title} - Entry Doors`}>
       <GeneralTemplate
         title={title}
         parent="Entry Doors"
@@ -54,5 +53,3 @@ const EntryDoorTemplate = ({
 };
 
 export default EntryDoorTemplate;
-
-  

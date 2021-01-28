@@ -1,87 +1,101 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Router from "next/router";
+import * as Yup from "yup";
+import { Formik } from "formik";
 
 import { useAuth } from "../../lib/Authentication";
-import { Button } from "../../UI/Links";
-import { Container } from "../layout/Container";
-
-const onChange = (handler) => (e) => handler(e.target.value);
+import { Button, TertiaryButton } from "../../UI/Links";
+import {
+  ErrorMessages,
+  FieldContainer,
+  FormContainer,
+  InputContainer,
+  Label,
+} from "../../UI/FormElements";
 
 const SignInForm = ({ onSuccess }: any) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorState, setErrorState] = useState(false);
-  const { isAuthenticated, signin } = useAuth();
-
-  // if the user is logged in, redirect to the homepage
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    setIsLoading(true);
-    try {
-      await signin({ variables: { email, password } });
-      setIsLoading(false);
-      setErrorState(false);
-      if (onSuccess && typeof onSuccess === "function") {
-        onSuccess();
-      }
-    } catch (error) {
-      setErrorState(true);
-    }
-  };
+  const { isAuthenticated, signin, isLoading } = useAuth();
 
   return (
-    <>
-      {errorState && (
-        <p>Please check your email and password then try again.</p>
-      )}
+    <Container>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Required"),
+          password: Yup.string()
+            .min(8, "Must be 8 characters or less")
+            .required("Required"),
+        })}
+        onSubmit={async ({ email, password }) => {
+          try {
+            await signin({ variables: { email, password } });
 
-      <form noValidate onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            autoComplete="email"
-            autoFocus
-            disabled={isLoading || isAuthenticated}
-            onChange={onChange(setEmail)}
-            placeholder="you@awesome.com"
-            required
-            type="text"
-            value={email}
-            id="email"
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Password</label>
-          <input
-            autoComplete="password"
-            disabled={isLoading || isAuthenticated}
-            id="password"
-            minLength={8}
-            onChange={onChange(setPassword)}
-            placeholder="supersecret"
-            required
-            type="password"
-            value={password}
-          />
-        </fieldset>
+            if (onSuccess && typeof onSuccess === "function") {
+              onSuccess();
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <FormContainer>
+          <FieldContainer>
+            <Label htmlFor="email">Email</Label>
+            <InputContainer
+              disabled={isLoading || isAuthenticated}
+              placeholder="you@awesome.com"
+              required
+              type="text"
+              id="email"
+              name="email"
+            />
+            <ErrorMessages name="email" />
+          </FieldContainer>
+          <FieldContainer>
+            <Label htmlFor="password">Password</Label>
+            <InputContainer
+              disabled={isLoading || isAuthenticated}
+              id="password"
+              minLength="2"
+              placeholder="supersecret"
+              required
+              type="password"
+              name="password"
+            />
+            <ErrorMessages name="password" />
+          </FieldContainer>
 
-        <div>
           {isLoading ? (
             <Button disabled>Signing in...</Button>
           ) : (
             <Button type="submit">Sign in</Button>
           )}
-          <Link href="/user/forgot-password">Forgot password</Link>
-          <Link href="/user/signup">Sign Up</Link>
-        </div>
-      </form>
-    </>
+        </FormContainer>
+      </Formik>
+      <ButtonContainer>
+        <TertiaryButton href="/user/forgot-password">
+          Forgot Password
+        </TertiaryButton>
+        <TertiaryButton href="/user/signup">Sign Up</TertiaryButton>
+      </ButtonContainer>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: grid;
+  gap: 5rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 40rem;
+`;
 
 export default SignInForm;

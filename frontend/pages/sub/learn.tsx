@@ -19,7 +19,7 @@ const learn = () => {
     { name: "Operations Overview", href: "/sub/learn//#operationsoverview" },
   ];
   return (
-    <Container space>
+    <Container space title="Learn">
       <Context>
         <PageTitle title="Learn" links={links} padding>
           <>

@@ -7,7 +7,7 @@ import { TwoColumn } from "../../UI/TwoColumn";
 
 const frank = () => {
   return (
-    <Container space>
+    <Container space title="Who is Frank?">
       <Context>
         <Header>
           <FullImage imageSrc="/frank.jpg" />

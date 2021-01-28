@@ -6,6 +6,7 @@ import { useAuth } from "../../lib/Authentication";
 
 import { Container } from "../../components/layout/Container";
 import SignInForm from "../../components/auth/SignInForm";
+import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
 
 const signin = () => {
   const { isAuthenticated } = useAuth();
@@ -18,7 +19,8 @@ const signin = () => {
   }, [isAuthenticated]);
 
   return (
-    <Container space padding>
+    <Container space padding gap title="Sign In">
+      <PageTitle title="Sign In" />
       <SignInForm />
     </Container>
   );

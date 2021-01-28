@@ -76,7 +76,8 @@ module.exports = {
         subject: "Request for password reset",
       };
 
-      await sendEmail("forgot-password.jsx", props);
+      // await sendEmail("forgot-password.jsx", props);
+      return allForgottenPasswordTokens.id
     },
   },
 };

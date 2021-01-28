@@ -1,9 +1,20 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
-const Meta = ({ title = "We make Windows and Doors" }) => {
+interface HeadPros {
+  title?: string;
+}
+const Meta = ({ title = "" }: HeadPros) => {
+  const [metatitle, setMetatitle] = useState("");
+  useEffect(() => {
+    setMetatitle(title);
+  }, []);
+
+  console.log(metatitle);
+
   return (
     <Head>
-      <title>Frank - {title} </title>
+      <title>{metatitle} - Frank </title>
       <link rel="canonical" href="http://frankwd.com" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />

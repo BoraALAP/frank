@@ -13,7 +13,7 @@ const WindowsTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations
+  operations,
 }) => {
   const links = [
     {
@@ -31,7 +31,7 @@ const WindowsTemplate = ({
   ];
 
   return (
-    <Container space gap>
+    <Container space gap title={`${title} Windows`}>
       <GeneralTemplate
         title={title}
         parent="Windows"
@@ -47,7 +47,7 @@ const WindowsTemplate = ({
         threeImagesTitle={threeImagesTitle}
         threeImagesDescription={threeImagesDescription}
         operations={operations}
-      />    
+      />
     </Container>
   );
 };

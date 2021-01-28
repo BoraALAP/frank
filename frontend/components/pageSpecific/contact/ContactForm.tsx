@@ -234,12 +234,6 @@ const ContactForm = () => {
   );
 };
 
-// const Form = styled.form`
-//   display: grid;
-//   align-content:start;
-//   align-items:start;
-// `;
-
 const FormS = styled(Form)`
   display: grid;
   gap: 2rem;

@@ -4,7 +4,7 @@ import { FooterButton } from "../../UI/Links";
 
 const Footer = () => {
   const links = [
-    { name: "About us", href: "sub/frank" },
+    { name: "About us", href: "/sub/frank" },
     { name: "Contact us", href: "/contactus" },
 
     { name: "Find a dealer", href: "/sub/dealerfinder" },

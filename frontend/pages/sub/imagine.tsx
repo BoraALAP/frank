@@ -7,8 +7,8 @@ import { gql, useQuery } from "@apollo/client";
 import { Container } from "../../components/layout/Container";
 
 import Lightbox from "../../UI/Lightbox";
-import { ErrorMessage } from "../../UI/ErrorMessages";
 import { GlobalContext } from "../../context/context";
+import { ErrorMessages } from "../../UI/FormElements";
 
 const imagine = () => {
   const breakpointColumnsObj = {
@@ -50,7 +50,7 @@ const imagine = () => {
   const { store, dispatch } = useContext(GlobalContext);
   return (
     <BigContainer>
-      <Container space gap padding>
+      <Container space gap padding title="Imagine Page">
         <Context>
           <Header>
             <h1>Imagine with Frank.</h1>
@@ -83,7 +83,9 @@ const imagine = () => {
                   );
                 })
               ) : (
-                <ErrorMessage error="Sorry no images are coming from our not so awesome database" />
+                <ErrorMessages>
+                  Sorry no images are coming from our not so awesome database"{" "}
+                </ErrorMessages>
               )}
             </Masonry>
           </ImageContainer>
