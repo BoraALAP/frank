@@ -42,7 +42,7 @@ export const Label = ({ children, htmlFor }: LabelProps) => {
 
 const FormS = styled(Form)`
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 40rem;
 `;
 
@@ -69,6 +69,10 @@ const FieldSet = styled.fieldset`
   /* Firefox */
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+
+  textarea {
+    padding: 0.5em 1em;
   }
 `;
 

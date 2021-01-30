@@ -11,9 +11,11 @@ import {
   InputContainer,
   Label,
 } from "../../UI/FormElements";
+import { useState } from "react";
 
 const SignInForm = ({ onSuccess }: any) => {
   const { isAuthenticated, signin, isLoading } = useAuth();
+  const [error, setError] = useState("");
 
   return (
     <Container>
@@ -32,13 +34,16 @@ const SignInForm = ({ onSuccess }: any) => {
         })}
         onSubmit={async ({ email, password }) => {
           try {
-            await signin({ variables: { email, password } });
+            await signin({
+              variables: { email: email.toLowerCase(), password },
+            });
 
             if (onSuccess && typeof onSuccess === "function") {
               onSuccess();
             }
           } catch (error) {
-            console.log(error);
+            // console.log(error?.message);
+            setError("Please check your email and password");
           }
         }}
       >
@@ -68,7 +73,7 @@ const SignInForm = ({ onSuccess }: any) => {
             />
             <ErrorMessages name="password" />
           </FieldContainer>
-
+          <ErrorMessages>{error}</ErrorMessages>
           {isLoading ? (
             <Button disabled>Signing in...</Button>
           ) : (

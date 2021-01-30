@@ -10,8 +10,6 @@ const Meta = ({ title = "" }: HeadPros) => {
     setMetatitle(title);
   }, []);
 
-  console.log(metatitle);
-
   return (
     <Head>
       <title>{metatitle} - Frank </title>

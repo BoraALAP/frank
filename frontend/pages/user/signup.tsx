@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import SignUpForm from "../../components/auth/SignUpForm";
 import { Container } from "../../components/layout/Container";
+import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
 
 const signup = () => {
   return (
-    <Container space padding title="Sign Up">
+    <Container space padding gap title="Sign Up">
+      <PageTitle title="Sign Up" />
       <SignUpForm />
     </Container>
   );

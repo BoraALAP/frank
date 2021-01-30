@@ -52,7 +52,7 @@ exports.CustomSchema = {
             userErrors,
             `Unable to find user when trying to create forgotten password token.`
           );
-          return;
+          throw new Error("There is no user with this email");
         }
 
         const userId = userData.allUsers[0].id;

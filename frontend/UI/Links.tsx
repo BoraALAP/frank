@@ -24,6 +24,7 @@ interface ButtonProps {
   type?: string;
   children: any;
   disabled?: boolean;
+  onClick?: any;
 }
 export const Button = ({
   href,
@@ -31,15 +32,26 @@ export const Button = ({
   rev = false,
   type = "",
   disabled = false,
+  onClick,
 }: ButtonProps) => {
   return href ? (
     <Link href={href}>
-      <ButtonContainer href={href} rev={rev} disabled={disabled}>
+      <ButtonContainer
+        href={href}
+        rev={rev}
+        disabled={disabled}
+        onClick={onClick}
+      >
         {children}
       </ButtonContainer>
     </Link>
   ) : (
-    <ButtonContainer type={type} rev={rev} disabled={disabled}>
+    <ButtonContainer
+      type={type}
+      rev={rev}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </ButtonContainer>
   );

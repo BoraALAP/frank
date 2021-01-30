@@ -147,12 +147,13 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  input{
+  input, textarea{
     padding: ${({ theme }) => theme.buttonPadding}; 
     border: 1px solid ${({ theme }) => theme.color.grey};
     min-height: 32px;
     font-size: 0.875rem;
     box-sizing: border-box;
+    font: 400 0.875rem ${({ theme }) => theme.font.family.main};
   }
 
   

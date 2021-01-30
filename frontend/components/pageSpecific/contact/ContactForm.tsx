@@ -1,9 +1,29 @@
-import { Field, ErrorMessage, Formik, Form } from "formik";
+import { Formik } from "formik";
+import { gql, useMutation } from "@apollo/client";
 import styled from "styled-components";
 import * as Yup from "yup";
+import {
+  ErrorMessages,
+  FieldContainer,
+  FormContainer,
+  InputContainer,
+  Label,
+} from "../../../UI/FormElements";
 import { Button } from "../../../UI/Links";
+import { useState } from "react";
 
 const ContactForm = () => {
+  const [createContactUsForm, { data, error, loading }] = useMutation(
+    CONTACT_QUERY,
+    {
+      onCompleted: () => {
+        setFormSent(true);
+      },
+    }
+  );
+
+  const [formSent, setFormSent] = useState(false);
+  const [errors, setErrors] = useState("");
   return (
     <Formik
       initialValues={{
@@ -60,209 +80,220 @@ const ContactForm = () => {
           .min(1, "At least one checkbox is required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          fetch(`${process.env.NEXT_PUBLIC_BACKEND}/api/mail`, {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
+        console.log("submited");
+
+        try {
+          createContactUsForm({
+            variables: {
+              firstName: values.firstName,
+              lastName: values.lastName,
+              email: values.email,
+              phone: values.phone,
+              company: values.company,
+              address: values.address,
+              city: values.city,
+              province: values.province,
+              postal: values.postal,
+              country: values.country,
+              comments: values.comments,
+              iam: values.iam.toString(),
+              ineed: values.ineed.toString(),
             },
-            method: "post",
-            body: JSON.stringify(values),
           });
-          setSubmitting(false);
-        }, 400);
+        } catch (error) {
+          setErrors(error.message);
+          console.log("error", error.message);
+        }
       }}
     >
-      <FormS>
-        <InRow two>
-          <FieldSet>
-            <label htmlFor="firstName">First Name</label>
-            <Field name="firstName" type="text" />
-            <ErrorMessageS>
-              <ErrorMessage name="firstName" />
-            </ErrorMessageS>
-          </FieldSet>
-          <FieldSet>
-            <label htmlFor="lastName">Last Name</label>
-            <Field name="lastName" type="text" />
-            <ErrorMessageS>
-              <ErrorMessage name="lastName" />
-            </ErrorMessageS>
-          </FieldSet>
-        </InRow>
-        <List role="group" name="iam" aria-labelledby="checkbox-group">
-          <h6>I am a...*</h6>
-          <ErrorMessageS>
-            <ErrorMessage name="iam" />
-          </ErrorMessageS>
-          <label>
-            <Field type="checkbox" name="iam" value="Homeowner" />
-            Homeowner
-          </label>
-          <label>
-            <Field type="checkbox" name="iam" value="Architect/Designer" />
-            Architect/Designer
-          </label>
-          <label>
-            <Field type="checkbox" name="iam" value="Residential Contractor" />
-            Residential Contractor
-          </label>
-          <label>
-            <Field
-              type="checkbox"
-              name="iam"
-              value="Commercial/Non-Residential Builder"
-            />
-            Commercial/Non-Residential Builder
-          </label>
-          <label>
-            <Field type="checkbox" name="iam" value="Distributor/Dealer" />
-            Distributor/Dealer
-          </label>
-          <label>
-            <Field type="checkbox" name="iam" value="Other" />
-            Other
-          </label>
-        </List>
-        <List role="group" name="ineed" aria-labelledby="checkbox-group">
-          <h6>I need help with...*</h6>
-          <ErrorMessageS>
-            <ErrorMessage name="ineed" />
-          </ErrorMessageS>
-          <label>
-            <Field
-              type="checkbox"
-              name="ineed"
-              value="Pre-purchase product questions"
-            />
-            Pre-purchase product questions
-          </label>
-          <label>
-            <Field
-              type="checkbox"
-              name="ineed"
-              value="An existing window/door order"
-            />
-            An existing window/door order
-          </label>
-          <label>
-            <Field
-              type="checkbox"
-              name="ineed"
-              value="Architectural/technical support for professionals"
-            />
-            Architectural/technical support for professionals
-          </label>
-          <label>
-            <Field type="checkbox" name="ineed" value="Service/warranty" />
-            Service/warranty
-          </label>
-          <label>
-            <Field type="checkbox" name="ineed" value="Other" />
-            Other
-          </label>
-        </List>
-        <FieldSet>
-          <label htmlFor="email">Email Address</label>
-          <Field name="email" type="email" />
-          <ErrorMessageS>
-            <ErrorMessage name="email" />
-          </ErrorMessageS>
-        </FieldSet>
-        <FieldSet>
-          <label htmlFor="phone">Phone Number</label>
-          <Field name="phone" type="number" />
-          <ErrorMessageS>
-            <ErrorMessage name="phone" />
-          </ErrorMessageS>
-        </FieldSet>
-        <FieldSet>
-          <label htmlFor="company">Company</label>
-          <Field name="company" type="text" />
-          <ErrorMessageS>
-            <ErrorMessage name="company" />
-          </ErrorMessageS>
-        </FieldSet>
-        <FieldSet>
-          <label htmlFor="address">Address</label>
-          <Field name="address" type="text" />
-          <ErrorMessageS>
-            <ErrorMessage name="address" />
-          </ErrorMessageS>
-        </FieldSet>
-        <InRow>
-          <FieldSet>
-            <label htmlFor="city">City</label>
-            <Field name="city" type="text" />
-            <ErrorMessageS>
-              <ErrorMessage name="city" />
-            </ErrorMessageS>
-          </FieldSet>
-          <FieldSet>
-            <label htmlFor="province">Province</label>
-            <Field name="province" type="text" maxLength="2" />
-            <ErrorMessageS>
-              <ErrorMessage name="province" />
-            </ErrorMessageS>
-          </FieldSet>
-          <FieldSet>
-            <label htmlFor="postal">Postal Code</label>
-            <Field name="postal" type="text" />
-            <ErrorMessageS>
-              <ErrorMessage name="postal" />
-            </ErrorMessageS>
-          </FieldSet>
-          <FieldSet>
-            <label htmlFor="country">Country</label>
-            <Field name="country" type="text" />
-            <ErrorMessageS>
-              <ErrorMessage name="country" />
-            </ErrorMessageS>
-          </FieldSet>
-        </InRow>
-        <FieldSet>
-          <label htmlFor="comments">Comments</label>
-          <Field name="comments" type="textarea" />
-          <ErrorMessageS>
-            <ErrorMessage name="comments" />
-          </ErrorMessageS>
-        </FieldSet>
+      {(props) =>
+        formSent ? (
+          <FormSent>
+            <h6>Hello {props.values.firstName}</h6>
+            <p>
+              We got your message. We will get in touch with you as soon as we
+              can.
+            </p>
+          </FormSent>
+        ) : (
+          <FormContainer>
+            <InRow two>
+              <FieldContainer>
+                <Label htmlFor="firstName">First Name</Label>
+                <InputContainer name="firstName" type="text" />
 
-        <Button type="submit">Submit</Button>
-      </FormS>
+                <ErrorMessages name="firstName" />
+              </FieldContainer>
+              <FieldContainer>
+                <Label htmlFor="lastName">Last Name</Label>
+                <InputContainer name="lastName" type="text" />
+
+                <ErrorMessages name="lastName" />
+              </FieldContainer>
+            </InRow>
+            <List role="group" name="iam" aria-labelledby="checkbox-group">
+              <h6>I am a...*</h6>
+
+              <ErrorMessages name="iam" />
+
+              <Label>
+                <InputContainer type="checkbox" name="iam" value="Homeowner" />
+                Homeowner
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="iam"
+                  value="Architect/Designer"
+                />
+                Architect/Designer
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="iam"
+                  value="Residential Contractor"
+                />
+                Residential Contractor
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="iam"
+                  value="Commercial/Non-Residential Builder"
+                />
+                Commercial/Non-Residential Builder
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="iam"
+                  value="Distributor/Dealer"
+                />
+                Distributor/Dealer
+              </Label>
+              <Label>
+                <InputContainer type="checkbox" name="iam" value="Other" />
+                Other
+              </Label>
+            </List>
+            <List role="group" name="ineed" aria-labelledby="checkbox-group">
+              <h6>I need help with...*</h6>
+
+              <ErrorMessages name="ineed" />
+
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="ineed"
+                  value="Pre-purchase product questions"
+                />
+                Pre-purchase product questions
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="ineed"
+                  value="An existing window/door order"
+                />
+                An existing window/door order
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="ineed"
+                  value="Architectural/technical support for professionals"
+                />
+                Architectural/technical support for professionals
+              </Label>
+              <Label>
+                <InputContainer
+                  type="checkbox"
+                  name="ineed"
+                  value="Service/warranty"
+                />
+                Service/warranty
+              </Label>
+              <Label>
+                <InputContainer type="checkbox" name="ineed" value="Other" />
+                Other
+              </Label>
+            </List>
+            <InRow two>
+              <FieldContainer>
+                <Label htmlFor="email">Email Address</Label>
+                <InputContainer name="email" type="email" />
+
+                <ErrorMessages name="email" />
+              </FieldContainer>
+              <FieldContainer>
+                <Label htmlFor="phone">Phone Number</Label>
+                <InputContainer name="phone" type="number" />
+
+                <ErrorMessages name="phone" />
+              </FieldContainer>
+            </InRow>
+            <FieldContainer>
+              <Label htmlFor="company">Company</Label>
+              <InputContainer name="company" type="text" />
+
+              <ErrorMessages name="company" />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="address">Address</Label>
+              <InputContainer name="address" type="text" />
+
+              <ErrorMessages name="address" />
+            </FieldContainer>
+            <InRow>
+              <FieldContainer>
+                <Label htmlFor="city">City</Label>
+                <InputContainer name="city" type="text" />
+
+                <ErrorMessages name="city" />
+              </FieldContainer>
+              <FieldContainer>
+                <Label htmlFor="province">Province</Label>
+                <InputContainer name="province" type="text" maxLength="2" />
+
+                <ErrorMessages name="province" />
+              </FieldContainer>
+
+              <FieldContainer>
+                <Label htmlFor="country">Country</Label>
+                <InputContainer name="country" type="text" />
+
+                <ErrorMessages name="country" />
+              </FieldContainer>
+              <FieldContainer>
+                <Label htmlFor="postal">Postal Code</Label>
+                <InputContainer name="postal" type="text" />
+
+                <ErrorMessages name="postal" />
+              </FieldContainer>
+            </InRow>
+            <FieldContainer>
+              <Label htmlFor="comments">Comments</Label>
+              <InputContainer
+                name="comments"
+                type="text"
+                component="textarea"
+                rows="4"
+              />
+
+              <ErrorMessages name="comments" />
+            </FieldContainer>
+
+            <Button type="submit">Submit</Button>
+          </FormContainer>
+        )
+      }
     </Formik>
   );
 };
 
-const FormS = styled(Form)`
+const FormSent = styled.div`
   display: grid;
-  gap: 2rem;
-  max-width: 40rem;
-`;
-
-const FieldSet = styled.fieldset`
-  display: grid;
-  border: none;
-  gap: 0.5rem;
-  align-content: start;
-
-  margin: 0;
-  padding: 0;
-  /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-`;
-
-const ErrorMessageS = styled.small`
-  color: ${({ theme }) => theme.color.error};
 `;
 
 const InRow = styled.div`
@@ -284,6 +315,46 @@ const List = styled.div`
     grid-auto-flow: column;
     justify-content: start;
     gap: 1rem;
+  }
+`;
+
+export const CONTACT_QUERY = gql`
+  mutation CONTACT_QUERY(
+    $firstName: String
+    $lastName: String
+    $email: String
+    $phone: Float
+    $company: String
+    $address: String
+    $city: String
+    $province: String
+    $postal: String
+    $country: String
+    $comments: String
+    $iam: String
+    $ineed: String
+  ) {
+    createContactUsForm(
+      data: {
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        phone: $phone
+        company: $company
+        address: $address
+        city: $city
+        province: $province
+        postal: $postal
+        country: $country
+        comments: $comments
+        iam: $iam
+        ineed: $ineed
+      }
+    ) {
+      id
+      iam
+      ineed
+    }
   }
 `;
 

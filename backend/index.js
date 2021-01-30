@@ -15,6 +15,7 @@ const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 const BackEndUserSchema = require("./lists/BackEndUser.js");
 const OperationSchema = require("./lists/Operation.js");
 const UserSchema = require("./lists/User.js");
+const ContactUsFormSchema = require("./lists/ContactUsForm.js");
 const DealerSchema = require("./lists/Dealer.js");
 const ImagineSchema = require("./lists/Imagine.js");
 const ForgottenPasswordTokenSchema = require("./lists/ForgottenPasswordToken.js");
@@ -44,6 +45,7 @@ const keystone = new Keystone({
 keystone.createList("BackEndUser", BackEndUserSchema);
 keystone.createList("Operation", OperationSchema);
 keystone.createList("User", UserSchema);
+keystone.createList("ContactUsForm", ContactUsFormSchema);
 keystone.createList("Dealer", DealerSchema);
 keystone.createList("Imagine", ImagineSchema);
 keystone.createList("ForgottenPasswordToken", ForgottenPasswordTokenSchema);
@@ -64,13 +66,13 @@ const authStrategy = keystone.createAuthStrategy({
     afterAuth: async ({ context, item }) => {
       await context.executeGraphQL({
         query: gql`
-          mutation($id: String!, $lastLogin: String) {
-            updateUser(id: $id, data: { lastLogin: $lastLogin }) {
+          mutation($id: String!, $lastLogin: String, $updatedAt:String) {
+            updateUser(id: $id, data: { updatedAt:$updatedAt, lastLogin: $lastLogin }) {
               lastLogin
             }
           }
         `,
-        variables: { id: item.id, lastLogin: Date.now().toString() },
+        variables: { id: item.id, updatedAt:item.updatedAt,  lastLogin: Date.now().toString() },
       });
     },
   },

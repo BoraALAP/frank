@@ -5,10 +5,8 @@ import { gql, useMutation } from "@apollo/client";
 import * as Yup from "yup";
 import { Formik } from "formik";
 
-import Link from "next/link";
-
 import { useAuth } from "../../lib/Authentication";
-import { Button } from "../../UI/Links";
+import { Button, TertiaryButton } from "../../UI/Links";
 import {
   ErrorMessages,
   FieldContainer,
@@ -28,43 +26,45 @@ export const CREATE_FORGOT_PASSWORD_TOKEN = gql`
 const ForgotPasswordForm = ({ onSuccess }: any) => {
   const { isAuthenticated, isLoading } = useAuth();
   const [emailSent, setEmailSent] = useState(false);
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(5);
+  const [errors, setErrors] = useState("");
 
-  let s;
+  if (seconds === -1) {
+    setSeconds(59);
+    setMinutes((minutes) => minutes - 1);
+  }
+  const timer = () => {
+    const sec = setInterval(() => {
+      setSeconds((seconds) => seconds - 1);
+      console.log("running");
+    }, 1000);
+    setTimeout(() => {
+      console.log("cleared");
 
-  useEffect(() => {
-    if (emailSent) {
-      s = setInterval(() => {
-        console.log(seconds - 1);
-        setSeconds(seconds - 1);
-      }, 1000);
+      clearInterval(sec);
+    }, 300000);
+  };
+  if (seconds === 0 && minutes === 0) {
+    setEmailSent(false);
 
-      // setInterval(() => {
-      //   setMinutes(minutes - 1 );
-      // }, 60000);
+    setMinutes(5);
+    setSeconds(0);
+  }
 
-      if (minutes <= 0 && seconds <= 0) {
-        clearInterval(s);
-        setEmailSent(false);
-      }
+  const [startPasswordRecovery, { data, error, loading }] = useMutation(
+    CREATE_FORGOT_PASSWORD_TOKEN,
+    {
+      onCompleted: () => {
+        setEmailSent(true);
+        timer();
+        if (onSuccess && typeof onSuccess === "function") {
+          onSuccess();
+        }
+        // console.log(data);
+      },
     }
-  }, [emailSent]);
-
-  console.log(seconds);
-
-  const [
-    startPasswordRecovery,
-    { data, error: mutationError, loading },
-  ] = useMutation(CREATE_FORGOT_PASSWORD_TOKEN, {
-    onCompleted: () => {
-      setEmailSent(true);
-
-      if (onSuccess && typeof onSuccess === "function") {
-        onSuccess();
-      }
-    },
-  });
+  );
 
   return (
     <Container>
@@ -85,17 +85,18 @@ const ForgotPasswordForm = ({ onSuccess }: any) => {
               onSuccess();
             }
           } catch (error) {
-            console.log(error);
+            setErrors(error?.message);
           }
         }}
       >
         {(props) =>
           emailSent ? (
             <SentEmail>
-              <h4>Email has been sent to {props.values.email}</h4>
-              <h6>
-                {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-              </h6>
+              <h6>Email has been sent to {props.values.email}</h6>
+              <p>
+                Please wait {minutes}:{seconds < 10 ? `0${seconds}` : seconds}{" "}
+                for requesting a new one
+              </p>
             </SentEmail>
           ) : (
             <FormContainer>
@@ -111,7 +112,7 @@ const ForgotPasswordForm = ({ onSuccess }: any) => {
                 />
                 <ErrorMessages name="email" />
               </FieldContainer>
-
+              <ErrorMessages>{errors}</ErrorMessages>
               {isLoading || loading ? (
                 <Button disabled>Email is sending...</Button>
               ) : (
@@ -121,6 +122,9 @@ const ForgotPasswordForm = ({ onSuccess }: any) => {
           )
         }
       </Formik>
+      <ButtonContainer>
+        <TertiaryButton href="/user/signin">Sign In</TertiaryButton>
+      </ButtonContainer>
     </Container>
   );
 };
@@ -128,6 +132,13 @@ const ForgotPasswordForm = ({ onSuccess }: any) => {
 const Container = styled.div`
   display: grid;
   gap: 5rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 40rem;
 `;
 
 const SentEmail = styled.div`

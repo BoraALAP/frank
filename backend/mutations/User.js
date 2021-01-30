@@ -4,6 +4,7 @@ const {sendEmail} = require('../mail')
 // CUSTOM USER CREATION - This one creates user and sends email to both parties for requesting user ID
 const creatingAUser = async (_, { name, email, password, companyName }, context, info, extra) => {
 // Check is the user Exist 
+const emailLow = email.toLowerCase()
   const { data, errors } = await context.executeGraphQL({
     query: gql` 
       query ($email: String){
@@ -12,12 +13,11 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
       }
       }
     `,
-    variables:{email: email}
+    variables:{email: emailLow}
   });
 
 
   if( errors ) {
-    console.log(errors);
     throw new Error(errors);
   }
 
@@ -38,7 +38,7 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
         }
       }
     `,
-    variables:{name: name, email: email, password: password, companyName: companyName}
+    variables:{name: name, email: emailLow, password: password, companyName: companyName}
   })
 
   if( createUserErrors ) {
@@ -63,13 +63,67 @@ const creatingAUser = async (_, { name, email, password, companyName }, context,
   return createUserData.createUser
 };
 
+const signAUser = async (_, { email, password}, context, info, extra) => {
+  // Check is the user Exist 
+  const emailLow = email.toLowerCase()
+    const { data:queryData, errors:queryErrors } = await context.executeGraphQL({
+      query: gql` 
+        query ($email: String){
+          allUsers(where:{email: $email}){
+            email
+          }
+        }
+      `,
+      variables:{email: emailLow}
+    });
+    console.log(queryData, queryErrors);
+  
+    if( queryErrors ) {
+      throw new Error(queryErrors);
+    }
+  
+    // If exist give error
+    if( queryData.allUsers.length < 1 ) {
+      throw new Error("There is no user with that email");
+    }
+
+  // If user is exist Sign in
+  const { data: authData, errors: authErrors } = await context.executeGraphQL({
+    query: gql` 
+      mutation ($email: String, $password: String){
+        authenticateUserWithPassword(email:$email, password:$password){
+          item{
+            id
+          }
+          token
+        }
+      }
+    `,
+    variables:{email: emailLow, password}
+  });
+  console.log(authData, authErrors);
+  
+    if( authErrors ) {
+      console.log(authErrors);
+      throw new Error(authErrors);
+    }
+  
+    console.log(authData);
+    // Return New user
+    return authData.authenticateUserWithPassword.item.id
+  };
+
 
 module.exports = {
   
-   mutations: [
-       {
-         schema: 'createAUser(name: String, email: String, password: String, companyName: String): User',
-       resolver: creatingAUser,
-      },
-   ],
-  }
+  mutations: [
+    {
+      schema: 'createAUser(name: String, email: String, password: String, companyName: String): User',
+      resolver: creatingAUser,
+    },
+    // {
+    //   schema: 'signAUser(email: String, password: String): User',
+    //   resolver: signAUser,
+    // },
+  ],
+}

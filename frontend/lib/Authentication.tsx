@@ -66,8 +66,6 @@ export const AuthProvider = ({ children, initialUserValue }: any) => {
       if (error) {
         throw error;
       }
-      console.log(authenticatedUser);
-
       setUser(authenticatedUser);
     },
     onError: console.error,
@@ -85,9 +83,8 @@ export const AuthProvider = ({ children, initialUserValue }: any) => {
       if (item) {
         setUser(item);
       }
-      console.log(client);
     },
-    onError: console.error,
+    // onError: console.error,
   });
 
   const [signout, { loading: unauthLoading }] = useMutation(UNAUTH_MUTATION, {
@@ -105,8 +102,6 @@ export const AuthProvider = ({ children, initialUserValue }: any) => {
     },
     onError: console.error,
   });
-  client;
-  user;
 
   return (
     <AuthContext.Provider

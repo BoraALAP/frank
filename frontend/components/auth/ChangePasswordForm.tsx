@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
-import { gql, useQuery, useMutation } from "@apollo/client";
-import Router from "next/router";
 import styled from "styled-components";
+import * as Yup from "yup";
+import { Formik } from "formik";
 
 import { useAuth } from "../../lib/Authentication";
+import { Button, TertiaryButton } from "../../UI/Links";
+import {
+  ErrorMessages,
+  FieldContainer,
+  FormContainer,
+  InputContainer,
+  Label,
+} from "../../UI/FormElements";
 
-import { Loading } from "../../UI/Loading";
-
-import { Button } from "../../UI/Links";
-import { ErrorMessages } from "../../UI/FormElements";
+import { gql, useQuery, useMutation } from "@apollo/client";
+import Router from "next/router";
+import { useState } from "react";
 
 const CHANGE_PASSWORD = gql`
   mutation ChangePasswordWithToken($token: String!, $password: String!) {
@@ -29,30 +35,15 @@ const GET_PASSWORD_TOKEN = gql`
 `;
 
 const ChangePasswordForm = ({ token, accessedAt }) => {
-  const [password, setPassword] = useState("");
-  const [confirmedPassword, setConfirmedPassword] = useState("");
-  const [errorState, setErrorState] = useState("");
-  const { isAuthenticated } = useAuth();
-
-  const minPasswordLength = 8;
-
-  const handleSubmit = (changePasswordWithToken) => (event) => {
-    event.preventDefault();
-    if (password !== confirmedPassword) {
-      setErrorState("Passwords do not match");
-    } else if (password.length < minPasswordLength) {
-      setErrorState("Passwords must be longer than 8 characters");
-    } else {
-      setErrorState("");
-      changePasswordWithToken({ variables: { token, password } });
-    }
-  };
-
+  const { isAuthenticated, isLoading } = useAuth();
+  const [show, setShow] = useState(false);
   const { data, loading, error } = useQuery(GET_PASSWORD_TOKEN, {
     variables: { token, accessedAt },
   });
 
-  const [startPasswordRecovery, { error: mutationError }] = useMutation(
+  console.log(data);
+
+  const [ChangePasswordWithToken, { error: mutationError }] = useMutation(
     CHANGE_PASSWORD,
     {
       onCompleted: () => {
@@ -62,51 +53,88 @@ const ChangePasswordForm = ({ token, accessedAt }) => {
   );
 
   return (
-    <div>
-      {/* {loading && data ? (
-        <Loading />
-      ) : error || !data?.passwordTokens || !data?.passwordTokens.length ? (
-        <ErrorMessage>Invalid or expired token</ErrorMessage>
-      ) : ( */}
-      <>
-        {mutationError && <p>Failed to change password</p>}
-        <form noValidate onSubmit={handleSubmit(startPasswordRecovery)}>
-          <fieldset>
-            <label htmlFor="password">Password</label>
-            <input
+    <Container>
+      <Formik
+        initialValues={{
+          confirmPassword: "",
+          password: "",
+        }}
+        validationSchema={Yup.object({
+          password: Yup.string()
+            .min(8, "Must be 8 characters or less")
+            .required("Required"),
+          confirmPassword: Yup.string().oneOf(
+            [Yup.ref("password"), null],
+            "Passwords must match"
+          ),
+        })}
+        onSubmit={async ({ password }) => {
+          try {
+            await ChangePasswordWithToken({ variables: { token, password } });
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <FormContainer>
+          <FieldContainer>
+            <Label htmlFor="password">Password</Label>
+            <InputContainer
+              disabled={isLoading || isAuthenticated}
               required
-              type="password"
+              type={show ? "text" : "password"}
               id="password"
-              minLength={minPasswordLength}
+              name="password"
+              minLength={8}
               autoFocus
               autoComplete="password"
-              placeholder="supersecret"
-              disabled={isAuthenticated}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
             />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="confirmedPassword">Confirm password</label>
-            <input
+            <ErrorMessages name="password" />
+            <Button type="button" onClick={() => setShow(!show)}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </FieldContainer>
+          <FieldContainer>
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <InputContainer
+              disabled={isLoading || isAuthenticated}
+              placeholder="Re-enter Password"
               required
-              type="password"
-              id="confirmedPassword"
-              minLength={minPasswordLength}
-              autoComplete="password"
-              placeholder="supersecret"
-              disabled={isAuthenticated}
-              value={confirmedPassword}
-              onChange={(e) => setConfirmedPassword(e.target.value)}
+              type={show ? "text" : "password"}
+              id="confirmPassword"
+              name="confirmPassword"
             />
-          </fieldset>
-          {errorState ? <p>{errorState}</p> : null}
-          <Button type="submit">Change password</Button>
-        </form>
-      </>
-      {/* )} */}
-    </div>
+            <ErrorMessages name="confirmPassword" />
+          </FieldContainer>
+
+          {isLoading ? (
+            <Button disabled>Signing in...</Button>
+          ) : (
+            <Button type="submit">Sign in</Button>
+          )}
+        </FormContainer>
+      </Formik>
+      <ButtonContainer>
+        <TertiaryButton href="/user/forgot-password">
+          Forgot Password
+        </TertiaryButton>
+        <TertiaryButton href="/user/signup">Sign Up</TertiaryButton>
+      </ButtonContainer>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: grid;
+  gap: 5rem;
+`;
+
+const ButtonContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  max-width: 40rem;
+`;
 
 export default ChangePasswordForm;
