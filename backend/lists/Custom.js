@@ -44,7 +44,7 @@ exports.CustomSchema = {
               }
             }
           `,
-          variables: { email: email },
+          variables: { email: email.toLowerCase() },
         });
     
         if (userErrors || !userData.allUsers || !userData.allUsers.length) {

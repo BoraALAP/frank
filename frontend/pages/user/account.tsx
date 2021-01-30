@@ -6,7 +6,6 @@ import Router from "next/router";
 import { useAuth } from "../../lib/Authentication";
 import { Container } from "../../components/layout/Container";
 import { TertiaryButton } from "../../UI/Links";
-import signout from "./signout";
 import { Loading } from "../../UI/Loading";
 
 const account = () => {
@@ -24,7 +23,7 @@ const account = () => {
     }
   }, [isAuthenticated]);
 
-  if (!user) {
+  if (!user && isLoading) {
     return <Loading />;
   }
 
