@@ -37,6 +37,7 @@ export const Operations = ({
               playing
               loop
               muted
+              controls
               width="100%"
               height="100%"
             />
