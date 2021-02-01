@@ -27,21 +27,6 @@ const core = () => {
       threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
       threeImagesDescription={["Missing"]}
-      operations={[
-        "Awning",
-        "Casement",
-        "Fixed Casement",
-        "Panoramic",
-        "Single Slider",
-        "Double Slider",
-        "Three Lite Slider",
-        "Single Hung",
-        "Double Hung",
-        "Round",
-        "Rectangle",
-        "Triangle",
-        "Octagon",
-      ]}
     />
   );
 };

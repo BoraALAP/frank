@@ -18,16 +18,6 @@ const classic = () => {
       threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
       threeImagesDescription={["Missing"]}
-      operations={[
-        "Left Hand Inswing",
-        "Right Hand Inswing",
-        "Left Hand Outswing",
-        "Right Hand Outswing",
-        "Left Hand Inswing Right Hand Fixed",
-        "Left Hand Fixed Right Hand Inswing",
-        "Left Hand Outswing Right Hand Fixed",
-        "Left Hand Fixed Right Hand Outswing",
-      ]}
     />
   );
 };

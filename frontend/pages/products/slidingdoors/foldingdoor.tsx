@@ -19,13 +19,6 @@ const foldingdoor = () => {
       threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
       threeImagesDescription={["Missing"]}
-      operations={[
-        "Left Hand Door",
-        "Right Hand Door",
-        "Double Door",
-        "Right Operator",
-        "Left Operator",
-      ]}
     />
   );
 };

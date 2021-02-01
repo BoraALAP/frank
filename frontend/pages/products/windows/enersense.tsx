@@ -34,15 +34,6 @@ const enersense = () => {
       threeImagesProductImage3="/product/productImage3.jpg"
       threeImagesTitle="Missing"
       threeImagesDescription={["Missing"]}
-      operations={[
-        "Awning",
-        "Casement",
-        "Fixed Casement",
-        "Round",
-        "Rectangle",
-        "Triangle",
-        "Octagon",
-      ]}
     />
   );
 };

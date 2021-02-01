@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sub/learn": "pages/sub/learn.js",
-  "/products/windows/core": "pages/products/windows/core.js"
+  "/products/windows/core": "pages/products/windows/core.js",
+  "/sub/learn": "pages/sub/learn.js"
 }
