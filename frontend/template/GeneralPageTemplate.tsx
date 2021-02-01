@@ -21,14 +21,16 @@ const GeneralTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations,
+  operationsTitle,
+  operationsSubTitle,
 }) => {
-  const { loading, error, data } = useQuery(OPERATIONS);
-  data;
-
-  const operationList = data?.allOperations.filter((item) => {
-    return operations.find((operation) => item.name === operation);
+  const { loading, error, data } = useQuery(PRODUCT_QUERY, {
+    variables: { ProductName: title },
   });
+
+  console.log(data, error, title);
+
+  const operationList = data?.allProducts[0].operations;
 
   return (
     <>
@@ -47,20 +49,36 @@ const GeneralTemplate = ({
         title={threeImagesTitle}
         description={threeImagesDescription}
       />
-      <Operations list={operationList} />
+      <Operations
+        title={operationsTitle}
+        subTitle={operationsSubTitle}
+        list={operationList}
+        video
+      >
+        <p>
+          Placeholder - Marco please advise. The choice of colour can have a big
+          impact, or be a subtle accent to your home’s exterior. Select from our
+          wide range of standard colour coating options, or request a custom
+          colour match – the options are endless.
+        </p>
+      </Operations>
       <DesignOptions />
       <EnergyEfficiency />
     </>
   );
 };
 
-const OPERATIONS = gql`
-  query Operation {
-    allOperations {
+const PRODUCT_QUERY = gql`
+  query PRODUCT_QUERY($ProductName: String) {
+    allProducts(where: { name_contains: $ProductName }) {
       id
       name
-      defaultImage
-      video
+      operations {
+        id
+        name
+        defaultImage
+        video
+      }
     }
   }
 `;

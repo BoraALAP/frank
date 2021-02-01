@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { gql, useQuery } from "@apollo/client";
 import WindowsTemplate from "../../../template/WindowsTemplate";
 
 const prism = () => {

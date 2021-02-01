@@ -18,7 +18,7 @@ const liftandslidedoor = () => {
       threeImagesProductImage3="/product/productImage3"
       threeImagesTitle="Missing"
       threeImagesDescription={["Missing"]}
-      operations={["Missing"]}
+      operations={["Left Hand Door", "Right Hand Door"]}
     />
   );
 };

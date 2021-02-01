@@ -79,7 +79,9 @@ const ForgotPasswordForm = ({ onSuccess }: any) => {
         })}
         onSubmit={async ({ email }) => {
           try {
-            await startPasswordRecovery({ variables: { email } });
+            await startPasswordRecovery({
+              variables: { email: email.toLowerCase() },
+            });
 
             if (onSuccess && typeof onSuccess === "function") {
               onSuccess();

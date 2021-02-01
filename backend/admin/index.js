@@ -12,8 +12,18 @@ export default {
       label: 'Content',
       children: [
         { label: 'Imagine Page', listKey: 'Imagine' },
-        { label: 'Product Operations', listKey: 'Operation' },
+        
         { label: 'Dealers', listKey: 'Dealer' },
+      ],
+    },
+    {
+      label: 'Design Options',
+      children: [
+        { label: 'Options', listKey: 'Option' },
+        { label: 'Option Categories', listKey: 'OptionCategory' },
+        { label: 'Products', listKey: 'Product' },
+        { label: 'Product Categories', listKey: 'ProductCategory' },
+        { label: 'Operations', listKey: 'Operation' },
       ],
     },
   ],

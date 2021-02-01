@@ -6,6 +6,7 @@ import { Body } from "../../layout/Body";
 
 interface PageTitle {
   title: string;
+  subtitle?: string;
   links?: any;
   padding?: boolean;
   children?: any;
@@ -21,16 +22,24 @@ interface Breadcrumbs {
 
 export const PageTitle = ({
   title,
+  subtitle,
   links,
   padding = false,
   children,
   id,
 }: PageTitle) => {
   return (
-    <Context padding={padding} twoColumn={children && true} id={id}>
+    <Context
+      padding={padding}
+      subtitle={subtitle && true}
+      twoColumn={children && true}
+      id={id}
+    >
       <h1>{title}</h1>
+
+      {subtitle && <h3>{subtitle}</h3>}
       <Bottom twoColumn={children && true}>
-        {children && <Body>{children}</Body>}
+        {children && <div>{children}</div>}
         {links && (
           <Links>
             {links?.map((item, index) => (
@@ -111,6 +120,10 @@ const Context = styled.div`
     grid-template-columns: ${(props) =>
       props.twoColumn ? "none" : "auto 25%"};
     align-items: baseline;
+  }
+
+  h1 {
+    grid-column: ${(props) => (props.subtitle ? "1 / -1" : "inherit")};
   }
 `;
 

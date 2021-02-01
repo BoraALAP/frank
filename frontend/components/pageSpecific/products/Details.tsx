@@ -2,16 +2,23 @@ import styled from "styled-components";
 import { Container } from "../../layout/Container";
 
 interface Props {
-  title?: string;
-  subtitle?: string;
-  transparent?: boolean;
+  title?: String;
+  subtitle?: String;
+  transparent?: Boolean;
+  padding?: Boolean;
   children: any;
 }
 
-const Details = ({ title, subtitle, children, transparent = false }: Props) => {
+const Details = ({
+  title,
+  subtitle,
+  children,
+  padding = false,
+  transparent = false,
+}: Props) => {
   return (
     <Container>
-      <Context transparent={transparent}>
+      <Context padding={padding} transparent={transparent}>
         <Title>{title}</Title>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
         <Descriptions>{children}</Descriptions>
@@ -24,11 +31,11 @@ const Context = styled.div`
   display: grid;
   background-color: ${(props) =>
     props.transparent ? "none" : props.theme.color.lightGrey};
-  padding: ${({ theme }) => theme.paddingSm};
+  padding: ${(props) => (props.padding ? props.theme.paddingSm : "inherit")};
   gap: ${({ theme }) => theme.gap};
 
   @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: ${({ theme }) => theme.padding};
+    padding: ${(props) => (props.padding ? props.theme.padding : "inherit")};
   }
 `;
 

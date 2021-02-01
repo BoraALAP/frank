@@ -11,7 +11,7 @@ export const ImageOverlap = ({
 }) => {
   return (
     <Container>
-      <Details title={detailsTitle}>
+      <Details title={detailsTitle} padding>
         {detailsChildren?.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

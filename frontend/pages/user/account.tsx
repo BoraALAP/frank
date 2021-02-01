@@ -30,10 +30,10 @@ const account = () => {
   return (
     <Container space padding title="My Profile">
       <h2>Account</h2>
-      <h4>Hello {user.name}</h4>
+      <h4>Hello {user?.name}</h4>
       <p>
         Last Login{" "}
-        {moment(user.lastLogin).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+        {moment(user?.lastLogin).format("dddd, MMMM Do YYYY, h:mm:ss a")}
       </p>
 
       <TertiaryButton onClick={onSignout} href="/user/signout">

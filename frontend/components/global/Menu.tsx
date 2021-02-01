@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLinks } from "../../UI/Links";
 import { useAuth } from "../../lib/Authentication";
+import Image from "next/image";
 
 const Menu = (props) => {
   const { isAuthenticated } = useAuth();
   const [imageSrc, setImageSrc] = useState({
     image1: "/menuImages/menuImage1.jpg",
     image2: "/menuImages/menuImage2.jpg",
+    name: "Windows",
   });
 
   const opacity = {
@@ -143,6 +145,8 @@ const Menu = (props) => {
                   <ImageS
                     layout="fill"
                     objectFit="cover"
+                    rel="preload"
+                    alt={`${imageSrc.name} Image 1`}
                     src={imageSrc.image1}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -156,6 +160,8 @@ const Menu = (props) => {
                   <ImageS
                     layout="fill"
                     objectFit="cover"
+                    rel="preload"
+                    alt={`${imageSrc.name} Image 2`}
                     src={imageSrc.image2}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -187,6 +193,7 @@ const Menu = (props) => {
                             setImageSrc({
                               image1: item.image1,
                               image2: item.image2,
+                              name: item.name,
                             });
                           }}
                         >

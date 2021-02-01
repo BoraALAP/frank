@@ -1,11 +1,7 @@
-const { Text, Url, Select } = require("@keystonejs/fields");
+const { Text, Url, Relationship } = require("@keystonejs/fields");
 const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
 
-const operationOptions = [
-"WINDOW",
-"ENTRYDOOR",
- "SLIDINGDOOR"
-]
+
 
 module.exports = {
   fields: {
@@ -21,12 +17,16 @@ module.exports = {
       type: Url,
       defaultValue: false,
     },
-    place:{
-      type: Select , 
-      options: operationOptions,
-      dataType: "enum",
-      isRequired: true,
-    }
+    productCategories:{
+      type: Relationship , 
+      ref: 'ProductCategory.operations',
+      many: true
+    },
+    products:{
+      type: Relationship , 
+      ref: 'Product.operations',
+      many: true
+    },
   },
 
 };

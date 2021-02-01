@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/user/signup": "pages/user/signup.js",
-  "/contactus": "pages/contactus.js"
+  "/products/windows/coreplus": "pages/products/windows/coreplus.js",
+  "/products/slidingdoors/mooseplus": "pages/products/slidingdoors/mooseplus.js"
 }

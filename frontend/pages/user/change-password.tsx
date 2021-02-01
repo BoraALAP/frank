@@ -19,7 +19,7 @@ const changepassword = ({ token, accessedAt }) => {
   }, [isAuthenticated]);
 
   return (
-    <Container space padding title="Change Password">
+    <Container space padding gap title="Change Password">
       <PageTitle title="Change Password" />
       <ChangePasswordForm token={token} accessedAt={accessedAt} />
     </Container>

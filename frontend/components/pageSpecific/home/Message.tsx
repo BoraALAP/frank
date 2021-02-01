@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Message = () => {
   return (
-    <Container image1="homepage4.jpg">
+    <Container image1="/homepage4.jpg">
       <Top>
         <Left>
           Frank is proudly Made in Ontario and serves customers across Canada.
@@ -10,10 +10,10 @@ const Message = () => {
           products, and customer driven innovation. This is what Frank does - we
           make windows and doors.
         </Left>
-        <Right>
+        {/* <Right>
           With over four decades of experience, our values and beliefs remain
           true to the founding of the company. Learn more about us here.
-        </Right>
+        </Right> */}
       </Top>
       <Bottom>
         <p>Small blurb on photography used here.</p>
@@ -29,7 +29,7 @@ const Message = () => {
 const Container = styled.div`
   display: grid;
   background-color: ${({ theme }) => theme.color.lightGrey2};
-  background-image: url(${(props) => props.image1});
+  background: url(${(props) => `${props.image1}`});
   padding: ${({ theme }) =>
     `  ${theme.padding} ${theme.paddingSm} calc(2* ${theme.padding})`};
   gap: calc(2 * ${({ theme }) => theme.gap});

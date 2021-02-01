@@ -6,37 +6,53 @@ import Details from "./Details";
 import { Container } from "../../layout/Container";
 
 interface Props {
-  list?: Array<any>;
+  list?: any;
+  video?: Boolean;
+  title: String;
+  subTitle: String;
+  children?: any;
 }
 
-export const Operations = ({ list }: Props) => {
+export const Operations = ({
+  list,
+  video = false,
+  title = "Operations",
+  subTitle,
+  children,
+}: Props) => {
   const [videoSrc, setVideoSrc] = useState(list && list[0]?.video);
-  const [operationName, setOperationName] = useState("");
+  const [imageSrc, setImageSrc] = useState(list && list[0]?.defaultImage);
+  const [operationName, setOperationName] = useState(list && list[0]?.name);
 
   return (
     <Container>
-      <Details
-        title="Operations"
-        subtitle="Placeholder Copy (Addressing this with Marco)"
-        transparent
-      >
-        <p>
-          Placeholder - Marco please advise. The choice of colour can have a big
-          impact, or be a subtle accent to your home’s exterior. Select from our
-          wide range of standard colour coating options, or request a custom
-          colour match – the options are endless.
-        </p>
+      <Details title={title} subtitle={subTitle} transparent padding>
+        {children}
       </Details>
       <Middle>
         <Left>
-          <ReactPlayer
-            url={videoSrc}
-            playing
-            loop
-            muted
-            width="100%"
-            height="100%"
-          />
+          {videoSrc && video ? (
+            <ReactPlayer
+              url={videoSrc}
+              playing
+              loop
+              muted
+              width="100%"
+              height="100%"
+            />
+          ) : (
+            <ImageS
+              layout="fill"
+              objectFit="cover"
+              rel="preload"
+              alt={operationName}
+              src={imageSrc}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 2 }}
+            />
+          )}
           <h6>{operationName}</h6>
         </Left>
         <Right>
@@ -45,12 +61,15 @@ export const Operations = ({ list }: Props) => {
               <ImageContainer
                 key={item.id}
                 src={item.defaultImage}
+                alt={item.name}
                 onMouseEnter={() => {
-                  setVideoSrc(item.video);
+                  item.video && setVideoSrc(item.video);
+                  item.defaultImage && setImageSrc(item.defaultImage);
                   setOperationName(item.name);
                 }}
                 onClick={() => {
                   setVideoSrc(item.video);
+                  item.defaultImage && setImageSrc(item.defaultImage);
                   setOperationName(item.name);
                 }}
               />
@@ -81,6 +100,16 @@ const Left = styled.div`
   display: grid;
   align-content: start;
   gap: ${({ theme }) => `calc(${theme.gap} / 2)`};
+
+  /* can be deleted after all of them set  */
+  div {
+    height: 400px;
+    @media screen and (max-width: ${({ theme }) => theme.mq.tablet}) {
+      max-height: 250px;
+      height: 250px;
+      min-height: 250px;
+    }
+  }
 `;
 
 const Right = styled.div`
@@ -97,4 +126,14 @@ const ImageContainer = styled.div`
   width: 4rem;
   background-color: #c3c3c3;
   background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
+`;
+
+const ImageS = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 `;
