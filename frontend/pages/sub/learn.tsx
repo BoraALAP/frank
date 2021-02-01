@@ -126,7 +126,7 @@ const learn = () => {
           </>
         </TwoColumn>
         <DesignOptions />
-        <Operations />
+        {/* <Operations /> */}
       </Context>
     </Container>
   );
