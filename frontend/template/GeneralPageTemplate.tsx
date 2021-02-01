@@ -7,6 +7,24 @@ import { ThreeImages } from "../components/pageSpecific/products/ThreeImages";
 import { DesignOptions } from "../components/pageSpecific/DesignOptions";
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 
+interface Props {
+  title: any;
+  parent: any;
+  links: any;
+  imageOverlapDetailsTitle: any;
+  imageOverlapDetailsChildren: any;
+  imageOverlapImageSrc: any;
+  imageOverlapImageTitle: any;
+  imageOverlapImageChildren: any;
+  threeImagesProductImage1: any;
+  threeImagesProductImage2: any;
+  threeImagesProductImage3: any;
+  threeImagesTitle: any;
+  threeImagesDescription: any;
+  operationsTitle?: any;
+  operationsSubTitle?: any;
+}
+
 const GeneralTemplate = ({
   title,
   parent,
@@ -23,7 +41,7 @@ const GeneralTemplate = ({
   threeImagesDescription,
   operationsTitle,
   operationsSubTitle,
-}) => {
+}: Props) => {
   const { loading, error, data } = useQuery(PRODUCT_QUERY, {
     variables: { ProductName: title },
   });

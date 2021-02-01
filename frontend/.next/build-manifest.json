@@ -24,20 +24,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/next/dist/pages/_error": [
+    "/products/windows/core": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/next/dist/pages/_error.js"
-    ],
-    "/products/slidingdoors/mooseplus": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/slidingdoors/mooseplus.js"
-    ],
-    "/products/windows/coreplus": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows/coreplus.js"
+      "static/chunks/pages/products/windows/core.js"
     ],
     "/sub/learn": [
       "static/chunks/main.js",

@@ -2,8 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/products/windows/coreplus": "pages/products/windows/coreplus.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/sub/learn": "pages/sub/learn.js",
-  "/products/slidingdoors/mooseplus": "pages/products/slidingdoors/mooseplus.js"
+  "/products/windows/core": "pages/products/windows/core.js"
 }

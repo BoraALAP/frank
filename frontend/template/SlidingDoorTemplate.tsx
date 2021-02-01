@@ -13,7 +13,6 @@ const SlidingDoorTemplate = ({
   threeImagesProductImage3,
   threeImagesTitle,
   threeImagesDescription,
-  operations,
 }) => {
   const links = [
     {
@@ -46,7 +45,6 @@ const SlidingDoorTemplate = ({
         threeImagesProductImage3={threeImagesProductImage3}
         threeImagesTitle={threeImagesTitle}
         threeImagesDescription={threeImagesDescription}
-        operations={operations}
       />
     </Container>
   );
