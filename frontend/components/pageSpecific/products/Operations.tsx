@@ -37,7 +37,7 @@ export const Operations = ({
               playing
               loop
               muted
-              controls
+              // controls
               width="100%"
               height="100%"
             />
@@ -84,28 +84,27 @@ export const Operations = ({
 
 const Middle = styled.div`
   display: grid;
-  padding: ${({ theme }) =>
-    `calc(${theme.padding} / 2 ) ${theme.paddingSm} ${theme.padding} `};
+  padding: calc(var(--padding) / 2) var(--padding) var(--padding);
 
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   align-items: start;
   align-content: start;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    padding: ${({ theme }) =>
-      `calc(${theme.padding} / 4 ) ${theme.padding} ${theme.padding} `};
+    padding: calc(var(--padding) / 4) var(--padding) var(--padding);
   }
 `;
 
 const Left = styled.div`
   display: grid;
   align-content: start;
-  gap: ${({ theme }) => `calc(${theme.gap} / 2)`};
+  gap: calc(var(--gap) / 2);
 
   /* can be deleted after all of them set  */
   div {
     height: 400px;
-    @media screen and (max-width: ${({ theme }) => theme.mq.tablet}) {
+
+    @media screen and (min-width: 768px) {
       max-height: 250px;
       height: 250px;
       min-height: 250px;
@@ -115,7 +114,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 4);
+  gap: calc(var(--gap) / 4);
   grid-template-columns: repeat(auto-fit, minmax(4rem, 4rem));
   justify-content: start;
   align-content: start;

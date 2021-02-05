@@ -14,8 +14,15 @@ const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 
 const BackEndUserSchema = require("./lists/BackEndUser.js");
 const OperationSchema = require("./lists/Operation.js");
-const OptionCategorySchema = require("./lists/OptionCategory.js");
-const OptionSchema = require("./lists/Option.js");
+
+const ExteriorOptionSchema = require("./lists/Options/Exterior.js");
+const InteriorOptionSchema = require("./lists/Options/Interior.js");
+const ScreenOptionSchema = require("./lists/Options/Screen.js");
+const HardwareOptionSchema = require("./lists/Options/Hardware.js");
+const GlassOptionSchema = require("./lists/Options/Glass.js");
+const DividedLiteOptionSchema = require("./lists/Options/DividedLite.js");
+const BrickmoldAndTrimOptionSchema = require("./lists/Options/BrickmoldAndTrim.js");
+
 const ProductCategorySchema = require("./lists/ProductCategory.js");
 const ProductSchema = require("./lists/Product.js");
 const UserSchema = require("./lists/User.js");
@@ -48,8 +55,15 @@ const keystone = new Keystone({
 
 keystone.createList("BackEndUser", BackEndUserSchema);
 keystone.createList("Operation", OperationSchema);
-keystone.createList("OptionCategory", OptionCategorySchema);
-keystone.createList("Option", OptionSchema);
+
+keystone.createList("ExteriorOption", ExteriorOptionSchema);
+keystone.createList("InteriorOption", InteriorOptionSchema);
+keystone.createList("ScreenOption", ScreenOptionSchema);
+keystone.createList("HardwareOption", HardwareOptionSchema);
+keystone.createList("GlassOption", GlassOptionSchema);
+keystone.createList("DividedLiteOption", DividedLiteOptionSchema);
+keystone.createList("BrickmoldAndTrimOption", BrickmoldAndTrimOptionSchema);
+
 keystone.createList("ProductCategory", ProductCategorySchema);
 keystone.createList("Product", ProductSchema);
 keystone.createList("User", UserSchema);

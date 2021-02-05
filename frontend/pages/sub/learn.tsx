@@ -134,7 +134,7 @@ const learn = () => {
 
 const Context = styled.div`
   display: grid;
-  gap: calc(4 * ${({ theme }) => theme.gap});
+  gap: calc(4 * var(--gap));
 `;
 
 export default learn;

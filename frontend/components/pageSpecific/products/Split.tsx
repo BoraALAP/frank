@@ -36,28 +36,28 @@ const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 300px;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     height: 100%;
   }
 `;
 
 const Text = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 2);
-  padding: ${({ theme }) => theme.paddingSm};
+  gap: calc(var(--gap) / 2);
+  padding: var(--padding);
   align-items: center;
   align-content: center;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: ${(props) => (props.side ? 0 : -1)};
-    padding: ${({ theme }) => theme.padding};
+    padding: var(--padding);
   }
 `;
 
 const Title = styled.h2`
   display: grid;
   font-size: 2.5rem;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     font-size: 4.5rem;
   }
 `;
@@ -73,11 +73,11 @@ const Container = styled.div`
   box-sizing: border-box;
 
   color: ${(props) =>
-    props.side ? props.theme.color.primary : props.theme.color.white};
+    props.side ? `var(--color-primary)` : `var(--color-white)`};
   background-color: ${(props) =>
-    props.side ? props.theme.color.bg : props.theme.color.primary};
+    props.side ? `var(--color-bg)` : `var(--color-primary)`};
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) => (props.side ? "2fr 3fr" : "3fr 2fr")};
     min-height: ${(props) => (props.side ? "50rem" : "31rem")};
   }

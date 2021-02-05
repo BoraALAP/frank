@@ -218,27 +218,26 @@ const Container = styled(motion.div)`
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
-  padding: ${({ theme }) => `130px ${theme.paddingSm} 70px`};
+  padding: 130px var(--padding) 70px;
   height: 100%;
   max-height: 900px;
   box-sizing: border-box;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: auto 25%;
-    gap: calc(2 * ${({ theme }) => theme.gap});
-    padding: ${({ theme }) => `130px ${theme.padding} 70px`};
+    gap: calc(2 * var(--gap));
   }
 `;
 
 const Context = styled.div`
   display: grid;
   position: absolute;
-  background-color: ${({ theme }) => theme.color.bg};
+  background-color: var(--color-bg);
   top: 0;
   z-index: 800;
   height: 100vh;
   width: 100%;
-  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
+  @media screen and (min-width: 414px) {
     width: 100vw;
   }
 `;
@@ -255,10 +254,10 @@ const ImgContainer = styled(motion.div)`
   position: relative;
   height: 100%;
   display: none;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   grid-template-columns: 1fr 1fr;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: grid;
   }
 `;
@@ -271,7 +270,7 @@ const ImgCont = styled.div`
 
 const Right = styled(motion.div)`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   align-items: start;
   align-content: start;
 
@@ -283,13 +282,7 @@ const Right = styled(motion.div)`
 
 const Divide = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 4);
-`;
-
-const HR = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.color.primary};
+  gap: calc(var(--gap) / 4);
 `;
 
 export default Menu;

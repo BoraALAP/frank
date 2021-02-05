@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 import { useRouter } from "next/router";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
+import { ApolloProvider } from "@apollo/client";
 
-import { primaryTheme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
 import { AuthProvider } from "../lib/Authentication";
 
@@ -12,7 +12,6 @@ import { initialState, globalReducer } from "../context/reducer";
 import { Header } from "../components/global/Header";
 import Footer from "../components/global/Footer";
 import { useApollo } from "../lib/ApolloClient";
-import { ApolloProvider } from "@apollo/client";
 
 const MyApp = ({ Component, pageProps }) => {
   const [store, dispatch] = useReducer(globalReducer, initialState);
@@ -21,18 +20,16 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <GlobalContext.Provider value={{ store, dispatch }}>
-      <ThemeProvider theme={primaryTheme}>
-        <ApolloProvider client={apolloClient}>
-          <AuthProvider>
-            {router.route !== "/" && <Header />}
-            <ComponentS>
-              <Component {...pageProps} />
-            </ComponentS>
-            <Footer />
-          </AuthProvider>
-        </ApolloProvider>
-        <GlobalStyle />
-      </ThemeProvider>
+      <ApolloProvider client={apolloClient}>
+        <AuthProvider>
+          <GlobalStyle />
+          {router.route !== "/" && <Header />}
+          <ComponentS>
+            <Component {...pageProps} />
+          </ComponentS>
+          {router.route !== "/" && <Footer />}
+        </AuthProvider>
+      </ApolloProvider>
     </GlobalContext.Provider>
   );
 };

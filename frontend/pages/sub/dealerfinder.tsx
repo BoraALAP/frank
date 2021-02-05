@@ -199,7 +199,7 @@ const Content = styled.div`
   display: grid;
   gap: 3rem;
   grid-auto-flow: row;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-auto-flow: column;
     grid-template-columns: 2fr 3fr;
   }
@@ -208,7 +208,7 @@ const Content = styled.div`
 const GoogleContainer = styled.div`
   display: grid;
   order: 0;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: 1;
   }
 `;
@@ -216,7 +216,7 @@ const GoogleContainer = styled.div`
 const Input = styled.input`
   display: grid;
   order: 1;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: 0;
   }
 `;
@@ -232,7 +232,7 @@ const Left = styled.ol`
 const Right = styled.aside`
   display: grid;
   order: 0;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: 1;
   }
 `;
@@ -252,7 +252,7 @@ const Dealer = styled.li`
   grid-gap: 0.5em;
   h6,
   h4 {
-    color: ${(props) => props.active && props.theme.color.secondary};
+    color: ${(props) => props.active && `var(--color-secondary)`};
   }
 `;
 

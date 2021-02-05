@@ -47,8 +47,8 @@ const Container = styled.div`
 const Bottom = styled.div`
   display: grid;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    margin-top: ${({ theme }) => `-${theme.padding}`};
+  @media screen and (min-width: 768px) {
+    margin-top: var(--padding);
     grid-auto-flow: column;
     grid-template-columns: 50% 50%;
   }
@@ -58,7 +58,7 @@ const Left = styled.div`
   display: grid;
   position: relative;
   min-height: 550px;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: 1;
   }
 `;
@@ -73,12 +73,11 @@ const List = styled.ul`
 
 const Right = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   align-content: start;
-  padding: ${({ theme }) => ` calc(2* ${theme.padding}) ${theme.paddingSm}`};
+  padding: calc(2 * var(--padding)) var(--padding);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: 0;
-    padding: ${({ theme }) => ` calc(2* ${theme.padding}) ${theme.padding}`};
   }
 `;

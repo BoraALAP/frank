@@ -56,8 +56,8 @@ const contactus = () => {
 
 const Content = styled.div`
   display: grid;
-  gap: ${({ theme }) => `calc( 2 * ${theme.gap})`};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  gap: calc(2 * var(--gap));
+  @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 3fr;
   }
 `;
@@ -74,7 +74,7 @@ const Left = styled.div`
     font-weight: 600;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     position: sticky;
     height: min-content;
     top: 5rem;
@@ -83,7 +83,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const Detail = styled.div`

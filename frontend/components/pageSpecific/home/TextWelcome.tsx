@@ -56,11 +56,11 @@ const TextWelcome = (props) => {
 const Container = styled.div``;
 
 const Inwrap = styled.div`
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
-    gap: calc(${({ theme }) => theme.gap} / 2);
+    gap: calc(var(--gap) / 2);
   }
 `;
 
@@ -70,21 +70,21 @@ const H1 = styled.h1`
   line-height: 15vw;
   margin: 0;
   /* white-space: nowrap; */
-  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
+  @media screen and (min-width: 414px) {
     font-size: 5.9vw;
     line-height: 10vw;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     font-size: 3.8vw;
     line-height: 8vw;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.desktop}) {
+  @media screen and (min-width: var(--mq-desktop)) {
     line-height: 7vw;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.xl}) {
+  @media screen and (min-width: var(--mq-xl)) {
     font-size: 3.9rem;
     line-height: 7rem;
   }
@@ -92,21 +92,21 @@ const H1 = styled.h1`
 
 const H1Small = styled(H1)`
   display: grid;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `;
 
 const H1Big = styled(H1)`
   display: none;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: grid;
   }
 `;
 
 const ImageS = styled.div`
   display: none;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: grid;
     height: 6vw;
     width: 100%;

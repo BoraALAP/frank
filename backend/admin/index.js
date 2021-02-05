@@ -12,18 +12,25 @@ export default {
       label: 'Content',
       children: [
         { label: 'Imagine Page', listKey: 'Imagine' },
-        
         { label: 'Dealers', listKey: 'Dealer' },
+        { label: 'Operations', listKey: 'Operation' },
+        { label: 'Products', listKey: 'Product' },
+        { label: 'Product Categories', listKey: 'ProductCategory' },
       ],
     },
     {
       label: 'Design Options',
       children: [
-        { label: 'Options', listKey: 'Option' },
-        { label: 'Option Categories', listKey: 'OptionCategory' },
-        { label: 'Products', listKey: 'Product' },
-        { label: 'Product Categories', listKey: 'ProductCategory' },
-        { label: 'Operations', listKey: 'Operation' },
+        { label: 'Exterior Options', listKey: 'ExteriorOption' },
+        { label: 'Interior Options', listKey: 'InteriorOption' },
+        { label: 'Screen Options', listKey: 'ScreenOption' },
+        { label: 'Hardware Options', listKey: 'HardwareOption' },
+        { label: 'Glass Options', listKey: 'GlassOption' },
+        { label: 'Divided Lite Options', listKey: 'DividedLiteOption' },
+        { label: 'Brickmold and Trim Options', listKey: 'BrickmoldAndTrimOption' },
+        
+
+        
       ],
     },
   ],

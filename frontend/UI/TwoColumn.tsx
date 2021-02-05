@@ -26,11 +26,10 @@ export const TwoColumn = ({ imageSrc, children, rev = false, id }: Props) => {
 
 const Context = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.paddingSm};
-  gap: ${({ theme }) => theme.gap};
+  padding: 0 var(--padding);
+  gap: var(--gap);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: 0 ${({ theme }) => theme.padding};
+  @media screen and (min-width: 768px) {
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
   }
@@ -41,18 +40,18 @@ const ImageContainer = styled.div`
   position: relative;
   min-height: 300px;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     order: ${(props) => (props.rev ? "1" : "0")};
   }
 `;
 
 const Text = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   align-items: start;
   align-content: start;
   div {
     display: grid;
-    gap: ${({ theme }) => `calc(${theme.gap} /2)`};
+    gap: calc(var(--gap) / 2);
   }
 `;

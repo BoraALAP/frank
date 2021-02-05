@@ -1,18 +1,57 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  
+  :root{
+    --font-main: 'Heebo', sans-serif;
+    --boxShadow: 0 0.25em 2em 0.25em rgba(0,0,0,0.15);
+    --buttonPadding: 0.5em 1em;
+    --boxPadding: 1em;
+    --boxRadius: 0;
+    --cardRadius: 1em;
+    --cardShadow: 0 0.25em 2em 0.25em rgba(0,0,0,0.15);
+    --cardPadding: 3em 3em;
+    --contentPadding: 2.5vw;
+    --padding: 2rem;
+    --gap: 2rem;
+
+    --color-primary: hsl(209,71%,19%);
+    --color-primaryDisabled: hsla(209,71%,19%,60%);
+    --color-secondary: hsl(166, 100%, 28%);
+    --color-grey: hsl(0, 0%, 40%);
+    --color-lightGrey: hsl(0, 0%, 84%);
+    --color-lightGrey2: hsl(0, 0%, 89%);
+    --color-bg: hsl(0, 0%, 95%);
+    --color-black: hsl(0, 0%, 0%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-whiteDisabled: hsla(0, 0%, 100%,60%);
+    --color-error: hsl(0, 100%, 15%);
+    --color-whiteBg: hsla(0, 0%, 100%, 0.5);
+    --color-overlay: hsla(0, 0%, 0%, 90%);
+
+    --mq-small: 414px;
+    --mq-tablet: 768px;
+    --mq-desktop: 991px;
+    --mq-xl: 1440px;
+
+    --color-gray: var(--color-grey);
+    --color-lightGray: var(--color-lightGrey);
+    --color-lightGray2: var(--color-lightGrey2);
+
+    @media screen and (min-width: 768px){
+      --padding: 3.5rem;
+    }
+  }
 
   body{
-    font-family: ${({ theme }) => theme.font.family.main};
-    font-weight: 600;
+    font-family: var(--font-main);
+    font-weight: 400;
     margin: 0;
-    color:  ${({ theme }) => theme.color.primary};
-    background-color: ${({ theme }) => theme.color.bg};
+    color:  var(--color-primary);
+    background-color: var(--color-bg);
   }
 
   small{
-    color: ${({ theme }) => theme.color.grey};
+    color: var(--color-grey);
   }
 
   h1,h2,h3,h4,h5,h6{
@@ -22,7 +61,7 @@ const GlobalStyle = createGlobalStyle`
   h1{
     font-size: 2.5rem;
     line-height: 2.5rem;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       font-size: 4.5rem;
       line-height: 4.5rem;
       }
@@ -31,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
   h2{
     font-size: 1.5rem;
     
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       
       font-size: 2rem;
       }
@@ -39,10 +78,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h3{
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.25rem;
     line-height: 2rem;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       font-size: 1.75rem;
       line-height: 2.5rem;
       }
@@ -52,7 +91,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     font-size: 1.125rem;
       line-height: 1.5rem;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
           
       font-size: 1.5rem;
       line-height: 2rem;
@@ -65,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.125rem;
     
     font-weight: 400;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       
       font-size: 1.25rem;
       line-height: 2rem;
@@ -76,7 +115,7 @@ const GlobalStyle = createGlobalStyle`
   h6{
     font-weight: 600;
     font-size: 0.875rem;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       font-size: 1rem;
       
       
@@ -91,7 +130,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 35rem;
     margin: 0;
 
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       font-size: 1rem;
     line-height: 1.5em;
       
@@ -111,7 +150,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: baseline;
     font-size: 0.875rem;
     font-weight: 400;
-      color: ${({ theme }) => theme.color.primary};
+      color: var(--color-primary);
       h4{
         margin: 0;
       }
@@ -120,9 +159,9 @@ const GlobalStyle = createGlobalStyle`
 
   a{
     text-decoration: none;
-    color: ${({ theme }) => theme.color.primary};
+    color: var(--color-primary);
     font-size: 1rem;
-    @media screen and (min-width: ${({ theme }) => theme.mq.tablet}){
+    @media screen and (min-width: 768px){
       font-size: 1.125rem;
           
       }
@@ -132,10 +171,11 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     outline: none;
     border: none;
+    padding: 0;
     &:disabled{
-      background-color: ${({ theme }) => theme.color.grey};
+      background-color: var(--color-grey);
       border: none;
-      color: ${({ theme }) => theme.color.lightGrey};
+      color: var(--color-lightGrey);
     }
   }
 
@@ -148,12 +188,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea{
-    padding: ${({ theme }) => theme.buttonPadding}; 
-    border: 1px solid ${({ theme }) => theme.color.grey};
+    padding: var(--buttonPadding); 
+    border: 1px solid var(--color-grey);
     min-height: 32px;
     font-size: 0.875rem;
     box-sizing: border-box;
-    font: 400 0.875rem ${({ theme }) => theme.font.family.main};
+    font: 400 0.875rem var(--font-main);
   }
 
   

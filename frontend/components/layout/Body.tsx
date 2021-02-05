@@ -15,5 +15,5 @@ export const Body = ({ children }: Props) => {
 
 const Container = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 2);
+  gap: calc(var(--gap) / 2);
 `;

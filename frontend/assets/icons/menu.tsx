@@ -19,7 +19,7 @@ const Svg = styled.svg`
   display: grid;
   height: 100%;
   width: 100%;
-  fill: ${({ theme }) => theme.color.secondary};
+  fill: var(--color-secondary);
   z-index: 10;
 `;
 

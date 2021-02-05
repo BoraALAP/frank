@@ -72,18 +72,18 @@ const Footer = () => {
 
 const BigContainer = styled.div`
   display: grid;
-  background-color: ${({ theme }) => theme.color.lightGrey2};
-  border-top: 1px solid ${({ theme }) => theme.grey};
-  padding: ${({ theme }) => theme.paddingSm};
-  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
-    padding: ${({ theme }) => theme.padding};
+  background-color: var(--color-lightGrey2);
+  border-top: 1px solid var(--color-grey);
+  padding: var(--padding);
+  @media screen and (min-width: 414px) {
+    padding: var(--padding);
   }
 `;
 
 const Context = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  gap: var(--gap);
+  @media screen and (min-width: 768px) {
     grid-template-columns: repeat(5, 1fr);
   }
 `;
@@ -91,9 +91,9 @@ const Context = styled.div`
 const Left = styled.div`
   display: grid;
   align-content: start;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-column: span 3;
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -102,18 +102,18 @@ const Left = styled.div`
 const Middle = styled.div`
   display: grid;
   align-content: start;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const Right = styled.div`
   display: grid;
   font-size: 0.75rem;
-  gap: calc(${({ theme }) => theme.gap} / 4);
+  gap: calc(var(--gap) / 4);
   a,
   p,
   span {
     font-size: 0.75rem;
-    color: ${({ theme }) => theme.color.grey};
+    color: var(--color-grey);
     line-height: 1.5rem;
   }
 `;

@@ -63,12 +63,12 @@ const frank = () => {
 
 const Context = styled.div`
   display: grid;
-  gap: calc(4 * ${({ theme }) => theme.gap});
+  gap: calc(4 * var(--gap));
 `;
 
 const Header = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const Subtitle = styled.h4`
@@ -77,12 +77,8 @@ const Subtitle = styled.h4`
 
 const Text = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.paddingSm};
-  gap: ${({ theme }) => theme.gap};
-
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: 0 ${({ theme }) => theme.padding};
-  }
+  padding: 0 var(--padding);
+  gap: var(--gap);
 `;
 
 export default frank;

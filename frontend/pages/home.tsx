@@ -86,23 +86,23 @@ const Home = (props) => {
 
 const Context = styled.div`
   display: grid;
-  gap: calc(2 * ${({ theme }) => theme.gap});
+  gap: calc(2 * var(--gap));
 `;
 
 const Welcome = styled.div`
   display: grid;
-  padding: 0 ${({ theme }) => theme.paddingSm};
-  gap: ${({ theme }) => theme.gap};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  padding: 0 var(--padding);
+  gap: var(--gap);
+  @media screen and (min-width: 768px) {
     grid-template-columns: auto 25%;
-    gap: calc(1.5 * ${({ theme }) => theme.gap});
-    padding: 0 ${({ theme }) => theme.padding};
+    gap: calc(1.5 * var(--gap));
+    padding: 0 var(--padding);
   }
 `;
 
 const Categories = styled.div`
   display: grid;
-  gap: calc(2 * ${({ theme }) => theme.gap});
+  gap: calc(2 * var(--gap));
 `;
 
 const Category1 = styled(Category)`
@@ -127,9 +127,9 @@ const Right = styled.div`
   grid-auto-flow: row;
   align-items: end;
   align-content: end;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     display: grid;
     position: sticky;
     height: min-content;

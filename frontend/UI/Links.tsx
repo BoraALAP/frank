@@ -14,7 +14,7 @@ const Container = styled.a`
   display: grid;
   padding: 0.5rem 0;
   color: ${(props) =>
-    props.Bottom ? props.theme.color.primary : props.theme.color.grey};
+    props.Bottom ? `var(--color-primary)` : `var(--color-grey)`};
   font-size: ${(props) => (props.Bottom ? "0.875rem" : "1.125rem")};
 `;
 
@@ -60,24 +60,24 @@ const ButtonContainer = styled.button`
   display: grid;
   color: ${(props) => {
     if (props.rev) {
-      return props.theme.color.primary;
+      return `var(--color-primary)`;
     } else if (props.rev && props.disabled) {
-      return props.theme.color.primaryDisabled;
+      return `var(--color-primaryDisabled)`;
     } else if (props.disabled) {
-      return props.theme.color.whiteDisabled;
+      return `var(--color-whiteDisabled)`;
     } else {
-      return props.theme.color.white;
+      return `var(--color-white)`;
     }
   }};
   background-color: ${(props) => {
     if (props.rev) {
-      return props.theme.color.white;
+      return `var(--color-white)`;
     } else if (props.rev && props.disabled) {
-      return props.theme.color.whiteDisabled;
+      return `var(--color-whiteDisabled)`;
     } else if (props.disabled) {
-      return props.theme.color.primaryDisabled;
+      return `var(--color-primaryDisabled)`;
     } else {
-      return props.theme.color.primary;
+      return `var(--color-primary)`;
     }
   }};
   padding: 0.75rem 1.5rem;
@@ -113,13 +113,13 @@ const TertiaryContainer = styled.button`
   display: grid;
   color: ${(props) => {
     if (props.rev) {
-      return props.theme.color.white;
+      return `var(--color-white)`;
     } else if (props.rev && props.disabled) {
-      return props.theme.color.whiteDisabled;
+      return `var(--color-whiteDisabled)`;
     } else if (props.disabled) {
-      return props.theme.color.primaryDisabled;
+      return `var(--color-primaryDisabled)`;
     } else {
-      return props.theme.color.primary;
+      return `var(--color-primary)`;
     }
   }};
   font-size: 1.125rem;
@@ -152,6 +152,6 @@ const FooterButtonContainer = styled.button`
   display: grid;
   font-size: 0.875rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.primary};
+  color: var(--color-primary);
   width: max-content;
 `;

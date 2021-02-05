@@ -4,8 +4,11 @@ import { Breadcrumbs } from "../components/pageSpecific/products/PageTitle";
 import { Operations } from "../components/pageSpecific/products/Operations";
 import { ImageOverlap } from "../components/pageSpecific/products/ImageOverlap";
 import { ThreeImages } from "../components/pageSpecific/products/ThreeImages";
-import { DesignOptions } from "../components/pageSpecific/DesignOptions";
-import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
+
+import {
+  DesignOptions,
+  EnergyEfficiency,
+} from "../components/pageSpecific/EnergyEfficiency";
 
 interface Props {
   title: any;

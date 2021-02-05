@@ -9,7 +9,7 @@ module.exports = {
       type: Text,
       isRequired: true,
     },
-    bodyCopy:{
+    description:{
       type: Text,
     },
     products:{
@@ -17,14 +17,39 @@ module.exports = {
       ref: 'Product.productCategories',
       many: true
     },
-    options:{
+    exteriorOptions:{
       type: Relationship , 
-      ref: 'Option.productCategories',
+      ref: 'ExteriorOption.productCategories',
       many: true
     },
-    optionCategories:{
+    interiorOptions:{
       type: Relationship , 
-      ref: 'OptionCategory.productCategories',
+      ref: 'InteriorOption.productCategories',
+      many: true
+    },
+    hardwareOptions:{
+      type: Relationship , 
+      ref: 'HardwareOption.productCategories',
+      many: true
+    },
+    glassOptions:{
+      type: Relationship , 
+      ref: 'GlassOption.productCategories',
+      many: true
+    },
+    screenOptions:{
+      type: Relationship , 
+      ref: 'ScreenOption.productCategories',
+      many: true
+    },
+    dividedLiteOptions:{
+      type: Relationship , 
+      ref: 'DividedLiteOption.productCategories',
+      many: true
+    },
+    brickmoldAndTrimOptions:{
+      type: Relationship , 
+      ref: 'BrickmoldAndTrimOption.productCategories',
       many: true
     },
     operations:{

@@ -28,22 +28,20 @@ const Message = () => {
 
 const Container = styled.div`
   display: grid;
-  background-color: ${({ theme }) => theme.color.lightGrey2};
+  background-color: var(--color-lightGrey2);
   background: url(${(props) => `${props.image1}`});
-  padding: ${({ theme }) =>
-    `  ${theme.padding} ${theme.paddingSm} calc(2* ${theme.padding})`};
-  gap: calc(2 * ${({ theme }) => theme.gap});
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: ${({ theme }) =>
-      ` calc(2* ${theme.padding}) ${theme.padding} calc(8* ${theme.padding})`};
+  padding: var(--padding) var(--padding) calc(2 * var(--padding));
+  gap: calc(2 * var(--gap));
+  @media screen and (min-width: 768px) {
+    padding: calc(2 * var(--padding)) var(--padding) calc(8 * var(--padding));
   }
 `;
 
 const Top = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: auto 25%;
   }
 `;
@@ -55,14 +53,14 @@ const Left = styled.h3`
 
 const Right = styled.p`
   display: grid;
-  color: ${({ theme }) => theme.color.primary};
+  color: var(--color-primary);
   margin: 0px;
 `;
 
 const Bottom = styled.div`
   display: grid;
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     width: 50%;
   }
 `;

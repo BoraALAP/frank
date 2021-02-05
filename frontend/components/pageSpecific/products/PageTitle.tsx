@@ -86,7 +86,7 @@ export const TitleBox = styled.div`
   grid-auto-flow: column;
   align-items: baseline;
   justify-content: start;
-  gap: calc(${({ theme }) => theme.gap} / 2);
+  gap: calc(var(--gap) / 2);
 `;
 
 const Clickable = styled.h4`
@@ -103,7 +103,7 @@ const Line = styled.div`
   display: grid;
   width: 3rem;
   height: 1px;
-  background-color: ${({ theme }) => theme.color.secondary};
+  background-color: var(--color-secondary);
 `;
 
 const Links = styled.div`
@@ -112,11 +112,10 @@ const Links = styled.div`
 
 const Context = styled.div`
   display: grid;
-  padding: 0 ${(props) => (props.padding ? props.theme.paddingSm : "0")};
-  gap: ${(props) =>
-    props.twoColumn ? props.theme.gap : `calc(${props.theme.gap} / 2)`};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: 0 ${(props) => (props.padding ? props.theme.padding : "0")};
+
+  padding: 0 ${(props) => (props.padding ? `var(--padding)` : "0")};
+  gap: ${(props) => (props.twoColumn ? `var(--gap)` : `calc( var(--gap) / 2)`)};
+  @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) =>
       props.twoColumn ? "none" : "auto 25%"};
     align-items: baseline;
@@ -129,8 +128,8 @@ const Context = styled.div`
 
 const Bottom = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  gap: var(--gap);
+  @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) =>
       props.twoColumn ? "auto 25%" : "none"};
     align-items: baseline;

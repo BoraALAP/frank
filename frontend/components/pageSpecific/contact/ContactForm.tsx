@@ -300,7 +300,7 @@ const InRow = styled.div`
   gap: 2rem;
   display: grid;
   grid-auto-flow: row;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px;
     grid-template-columns: ${(props) =>
       props.two ? ` repeat(2, 1fr)` : `repeat(auto-fill, minmax(170px, 1fr))`};
   }

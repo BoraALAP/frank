@@ -124,7 +124,7 @@ const Context = styled.div`
   z-index: 1000;
   width: 100%;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.color.bg};
+  background-color: var(--color-bg);
   transition: top 1s ease;
   top: ${(props) => (props.show ? "0" : "-30vh")};
 `;
@@ -136,16 +136,13 @@ const HeaderS = styled.div`
   grid-template-columns: auto 25%;
   align-items: center;
   z-index: 1000;
-  padding: 2.5vh ${({ theme }) => theme.paddingSm};
-  @media screen and (min-width: ${({ theme }) => theme.mq.small}) {
-    padding: 2.5vh ${({ theme }) => theme.padding};
-  }
+  padding: 2.5vh var(--padding);
 `;
 
 const Left = styled.div`
   grid-auto-flow: column;
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
   align-items: center;
 `;
 
@@ -158,7 +155,7 @@ const Right = styled.div`
 
 const H4 = styled.h4`
   display: none;
-  color: ${({ theme }) => theme.color.primary};
+  color: var(--color-primary);
   margin: 0;
   line-height: 1.4rem;
   font-size: 1.0625rem;
@@ -175,7 +172,7 @@ const MenuIconS = styled.div`
   width: 32px;
   box-sizing: border-box;
   &:hover {
-    filter: ${({ theme }) => `drop-shadow(2px 2px 2px rgba(0,0,0,0.3))`};
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
   }
 `;
 

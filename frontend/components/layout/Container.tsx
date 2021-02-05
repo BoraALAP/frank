@@ -32,23 +32,23 @@ const ContainerS = styled.div`
   box-sizing: border-box;
   justify-self: center;
   margin: auto;
-  gap: ${(props) => (props.gap ? `calc( 2 * ${props.theme.gap})` : `0`)};
+  gap: ${(props) => (props.gap ? `calc( 2 * var(--gap))` : `0`)};
   padding: ${(props) =>
     props.space && props.padding
-      ? `7rem ${props.theme.paddingSm}`
+      ? `7rem var(--padding)`
       : props.padding
-      ? `0 ${props.theme.paddingSm}`
+      ? `0 var(--padding)`
       : props.space
       ? `7rem 0`
       : `0`};
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    gap: ${(props) => (props.gap ? props.theme.gap : `0`)};
+  @media screen and (min-width: 768px) {
+    gap: ${(props) => (props.gap ? `var(--gap)` : `0`)};
     padding: ${(props) =>
       props.space && props.padding
-        ? `10rem ${props.theme.padding}`
+        ? `10rem var(--padding)`
         : props.padding
-        ? `0 ${props.theme.padding}`
+        ? `0 var(--padding)`
         : props.space
         ? `10rem 0`
         : `0`};

@@ -9,7 +9,7 @@ module.exports = {
       type: Text,
       isRequired: true,
     },
-    defaultImage: {
+    image: {
       type: Url,
       defaultValue: false,
     },

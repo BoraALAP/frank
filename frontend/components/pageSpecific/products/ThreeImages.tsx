@@ -30,9 +30,9 @@ export const ThreeImages = ({
 
 const Container = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 2);
+  gap: calc(var(--gap) / 2);
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: columns;
     grid-template-rows: min-content;
@@ -47,9 +47,8 @@ const ImageContainer = styled.div`
 
 const Text = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
-  padding: ${({ theme }) =>
-    `${theme.padding} ${theme.padding} calc(2 * ${theme.padding} )`};
+  gap: var(--gap);
+  padding: var(--padding) var(--padding) calc(2 * var(--padding));
 `;
 
 const Title = styled.h3`

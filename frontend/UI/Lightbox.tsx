@@ -134,7 +134,7 @@ const Context = styled.div`
 const Middle = styled.div`
   display: grid;
   justify-items: end;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const Details = styled.div`
@@ -142,13 +142,13 @@ const Details = styled.div`
   justify-content: start;
   justify-items: start;
   justify-self: start;
-  color: ${({ theme }) => theme.color.white};
+  color: var(--color-white);
   z-index: 10;
   width: 70vw;
   max-width: 900px;
-  gap: ${({ theme }) => `calc(${theme.gap} / 2)`};
+  gap: calc(var(--gap) / 2);
   a {
-    color: ${({ theme }) => theme.color.white};
+    color: var(--color-white);
   }
 `;
 
@@ -158,7 +158,7 @@ const BG = styled.div`
   height: 100%;
   z-index: 2;
   position: absolute;
-  background-color: ${({ theme }) => theme.color.overlay};
+  background-color: var(--color-overlay);
 `;
 
 const ImageContainer = styled.div`

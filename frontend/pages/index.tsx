@@ -6,8 +6,15 @@ import Logo from "../assets/branding/frank_logo";
 import ArrowRight from "../assets/icons/arrowRight";
 
 import Meta from "../components/global/Meta";
+import { useEffect } from "react";
+import Router from "next/router";
 
 const Home = () => {
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     Router.push("/home");
+  //   }, 3000);
+  // }, []);
   return (
     <Container
       bg="/videography.jpg"
@@ -32,7 +39,7 @@ const Home = () => {
             transition={{ delay: 1.5, duration: 0.75 }}
           >
             <H1>Continue to Frank</H1>
-            <ArrowRight color="white" />
+            <ArrowRight color="black" />
           </Right>
         </Link>
       </Header>
@@ -41,6 +48,7 @@ const Home = () => {
 };
 
 const Container = styled(motion.div)`
+  display: grid;
   background-image: ${(props) => `url(${props.bg})`};
   background-position: center center;
   background-size: cover;
@@ -51,13 +59,18 @@ const Container = styled(motion.div)`
 const Header = styled.div`
   width: 100%;
   display: grid;
-  grid-auto-flow: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 2.5vh ${({ theme }) => theme.pagePaddingW};
-  background-color: ${({ theme }) => theme.color.whiteBg};
+  padding: 2.5vh var(--padding);
   box-sizing: border-box;
-  border-bottom: 1px solid ${({ theme }) => theme.color.primary};
+  justify-content: center;
+  align-content: center;
+  background-color: var(--color-whiteBg);
+  gap: var(--gap);
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    grid-auto-flow: column;
+    border-bottom: 1px solid var(--color-primary);
+  }
 `;
 
 const LogoS = styled(motion.custom(Logo))`
@@ -70,7 +83,7 @@ const Right = styled(motion.div)`
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const H1 = styled.h1`

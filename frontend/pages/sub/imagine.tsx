@@ -111,7 +111,7 @@ const BigContainer = styled.div`
 
 const Context = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} * 2);
+  gap: calc(var(--gap) * 2);
 `;
 
 const ImageContainer = styled.div`
@@ -127,7 +127,7 @@ const ImageContainer = styled.div`
     img {
       width: 100%;
       padding-bottom: 30px;
-      @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+      @media screen and (min-width: 768px) {
         padding-bottom: 15px;
       }
     }
@@ -140,11 +140,11 @@ const ImageContainer = styled.div`
   /* Style your items */
   .my-masonry-grid_column > div {
     /* change div to reference your elements you put in <Masonry> */
-    background: ${({ theme }) => theme.color.white};
+    background: var(--color-white);
     margin-bottom: 30px;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     .my-masonry-grid {
       margin-left: -15px; /* gutter size offset */
     }
@@ -159,7 +159,7 @@ const ImageContainer = styled.div`
 
 const Header = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.gap};
+  gap: var(--gap);
 `;
 
 const images = gql`

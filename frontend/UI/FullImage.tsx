@@ -16,14 +16,14 @@ export const FullImage = ({ imageSrc, height = "100%" }) => {
 
 const AnotherContainer = styled.div`
   display: grid;
-  padding: 0 0 calc(${({ theme }) => theme.padding});
+  padding: 0 0 calc(var(--padding) ;);
 `;
 
 const ImageContainer = styled.div`
   display: grid;
   position: relative;
   height: ${(props) => props.height};
-  margin: calc(${({ theme }) => theme.padding} / 2);
+  margin: calc(var(--padding) ; / 2);
 
   min-height: 300px;
 `;

@@ -20,8 +20,8 @@ const Category = ({ image, title, subtitle, children, href, rev = false }) => {
 
 const Container = styled.div`
   display: grid;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    margin-top: ${({ theme }) => `calc(2* -${theme.padding})`};
+  @media screen and (min-width: 768px) {
+    margin-top: calc(2 * var(--padding));
     grid-template-columns: ${(props) => (props.rev ? "2fr 3fr" : "3fr 2fr")};
   }
 `;
@@ -30,7 +30,7 @@ const Left = styled.div`
   display: grid;
   position: relative;
   height: 300px;
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
+  @media screen and (min-width: 768px) {
     height: 100%;
     order: ${(props) => (props.rev ? "1" : "0")};
   }
@@ -39,12 +39,10 @@ const Left = styled.div`
 const Right = styled.div`
   display: grid;
   align-content: start;
-  gap: ${({ theme }) => theme.gap};
-  padding: ${({ theme }) =>
-    `calc(1 * ${theme.padding}) ${theme.paddingSm}  ${theme.padding}`};
-  @media screen and (min-width: ${({ theme }) => theme.mq.tablet}) {
-    padding: ${({ theme }) =>
-      `calc(3 * ${theme.padding}) ${theme.padding} calc(6 * ${theme.padding})`};
+  gap: var(--gap);
+  padding: var(--padding) var(--padding) var(--padding);
+  @media screen and (min-width: 768px) {
+    padding: calc(3 * var(--padding)) var(--padding) calc(6 * var(--padding));
   }
 `;
 
@@ -58,7 +56,7 @@ const Subtitle = styled.h6`
 
 const Body = styled.div`
   display: grid;
-  gap: calc(${({ theme }) => theme.gap} / 4);
+  gap: calc(var(--gap) / 4);
 `;
 
 export default Category;

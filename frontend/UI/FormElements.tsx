@@ -48,7 +48,7 @@ const FormS = styled(Form)`
 
 const FieldS = styled(Field)`
   border: ${(props) =>
-    props.disabled ? "none" : `1px solid ${props.theme.color.primary}`};
+    props.disabled ? "none" : `1px solid var(--color-primary)`};
 `;
 
 const FieldSet = styled.fieldset`
@@ -77,7 +77,7 @@ const FieldSet = styled.fieldset`
 `;
 
 const ErrorMessageS = styled.small`
-  color: ${({ theme }) => theme.color.error};
+  color: var(--color-error);
 `;
 
 const LabelS = styled.label`
