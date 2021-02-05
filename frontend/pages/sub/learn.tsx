@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Container } from "../../components/layout/Container";
-import { DesignOptions } from "../../components/pageSpecific/DesignOptions";
+import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
