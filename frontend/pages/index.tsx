@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import Logo from "../assets/branding/frank_logo";
+import frank_logo from "../assets/branding/frank_logo";
 import ArrowRight from "../assets/icons/arrowRight";
 
 import Meta from "../components/global/Meta";
@@ -10,11 +10,11 @@ import { useEffect } from "react";
 import Router from "next/router";
 
 const Home = () => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     Router.push("/home");
-  //   }, 3000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      Router.push("/home");
+    }, 3000);
+  }, []);
   return (
     <Container
       bg="/videography.jpg"
@@ -73,7 +73,7 @@ const Header = styled.div`
   }
 `;
 
-const LogoS = styled(motion.custom(Logo))`
+const LogoS = styled(motion.custom(frank_logo))`
   display: grid;
   height: 80px;
   width: auto;

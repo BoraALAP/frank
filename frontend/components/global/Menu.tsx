@@ -14,12 +14,6 @@ const Menu = (props) => {
     name: "Windows",
   });
 
-  const opacity = {
-    initial: { x: -10, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: 10, opacity: 0 },
-  };
-
   const links = [
     [
       {
@@ -116,6 +110,24 @@ const Menu = (props) => {
     bottom?: boolean;
   }
 
+  const opacity = {
+    initial: { x: -10, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: 10, opacity: 0 },
+  };
+
+  const variants = {
+    enter: {
+      opacity: 0,
+    },
+    center: {
+      opacity: 1,
+    },
+    exit: {
+      opacity: 0,
+    },
+  };
+
   return (
     <AnimatePresence exitBeforeEnter>
       {props.open && (
@@ -138,35 +150,33 @@ const Menu = (props) => {
               animate="animate"
               exit="exit"
               variants={opacity}
-              transition={{ delay: 0.35, duration: 0.75 }}
+              transition={{ delay: 1, duration: 0.75 }}
             >
               <ImgCont>
                 <AnimatePresence exitBeforeEnter>
                   <ImageS
-                    layout="fill"
-                    objectFit="cover"
-                    rel="preload"
                     alt={`${imageSrc.name} Image 1`}
                     src={imageSrc.image1}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    key={imageSrc.image1}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.25, delay: 0.25 }}
                   />
                 </AnimatePresence>
               </ImgCont>
               <ImgCont>
                 <AnimatePresence exitBeforeEnter>
                   <ImageS
-                    layout="fill"
-                    objectFit="cover"
-                    rel="preload"
                     alt={`${imageSrc.name} Image 2`}
                     src={imageSrc.image2}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 2 }}
+                    key={imageSrc.image2}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.25, delay: 0.3 }}
                   />
                 </AnimatePresence>
               </ImgCont>

@@ -21,7 +21,7 @@ const Category = ({ image, title, subtitle, children, href, rev = false }) => {
 const Container = styled.div`
   display: grid;
   @media screen and (min-width: 768px) {
-    margin-top: calc(2 * var(--padding));
+    margin-top: calc(-2 * var(--padding));
     grid-template-columns: ${(props) => (props.rev ? "2fr 3fr" : "3fr 2fr")};
   }
 `;

@@ -97,7 +97,7 @@ const PRODUCT_QUERY = gql`
       operations {
         id
         name
-        defaultImage
+        image
         video
       }
     }

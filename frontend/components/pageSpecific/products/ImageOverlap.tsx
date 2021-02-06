@@ -48,7 +48,7 @@ const Bottom = styled.div`
   display: grid;
 
   @media screen and (min-width: 768px) {
-    margin-top: var(--padding);
+    margin-top: calc(-1 * var(--padding));
     grid-auto-flow: column;
     grid-template-columns: 50% 50%;
   }

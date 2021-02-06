@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/home.js"
     ],
-    "/products/windows/core": [
+    "/sub/designoptions": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/products/windows/core.js"
+      "static/chunks/pages/sub/designoptions.js"
     ]
   },
   "ampFirstPages": []

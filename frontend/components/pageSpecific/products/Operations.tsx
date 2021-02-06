@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Details from "./Details";
 import { Container } from "../../layout/Container";
@@ -13,6 +14,18 @@ interface Props {
   children?: any;
 }
 
+const variants = {
+  enter: {
+    opacity: 0,
+  },
+  center: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
 export const Operations = ({
   list,
   video = false,
@@ -20,9 +33,16 @@ export const Operations = ({
   subTitle,
   children,
 }: Props) => {
-  const [videoSrc, setVideoSrc] = useState(list && list[0]?.video);
-  const [imageSrc, setImageSrc] = useState(list && list[0]?.defaultImage);
-  const [operationName, setOperationName] = useState(list && list[0]?.name);
+  const [videoSrc, setVideoSrc] = useState();
+  const [imageSrc, setImageSrc] = useState();
+  const [operationName, setOperationName] = useState();
+  const [description, setDescription] = useState();
+  const [active, setActive] = useState();
+  useEffect(() => {
+    setImageSrc(list && list[0]?.image);
+    setVideoSrc(list && list[0]?.video);
+    setOperationName(list && list[0]?.name);
+  }, [list]);
 
   return (
     <Container>
@@ -42,35 +62,44 @@ export const Operations = ({
               height="100%"
             />
           ) : (
-            <ImageS
-              layout="fill"
-              objectFit="cover"
-              rel="preload"
-              alt={operationName}
-              src={imageSrc}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 2 }}
-            />
+            <AnimatePresence exitBeforeEnter>
+              <ImageS
+                alt={operationName}
+                key={imageSrc}
+                src={imageSrc}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.15 }}
+              />
+            </AnimatePresence>
           )}
-          <h6>{operationName}</h6>
+          <AnimatePresence exitBeforeEnter>
+            <h6>{operationName}</h6>
+            <p>{description}</p>
+          </AnimatePresence>
         </Left>
         <Right>
           {list?.map((item) => {
             return (
               <ImageContainer
                 key={item.id}
-                src={item.defaultImage}
+                src={item.image}
                 alt={item.name}
+                active={item.id === active}
                 onMouseEnter={() => {
                   item.video && setVideoSrc(item.video);
-                  item.defaultImage && setImageSrc(item.defaultImage);
+                  item.image && setImageSrc(item.image);
                   setOperationName(item.name);
+                  setDescription(item.description);
+                  setActive(item.id);
                 }}
                 onClick={() => {
                   setVideoSrc(item.video);
-                  item.defaultImage && setImageSrc(item.defaultImage);
+                  item.image && setImageSrc(item.image);
+                  setDescription(item.description);
+                  setActive(item.id);
                   setOperationName(item.name);
                 }}
               />
@@ -116,7 +145,7 @@ const Right = styled.div`
   display: grid;
   gap: calc(var(--gap) / 4);
   grid-template-columns: repeat(auto-fit, minmax(4rem, 4rem));
-  justify-content: start;
+  justify-content: center;
   align-content: start;
 `;
 
@@ -128,9 +157,21 @@ const ImageContainer = styled.div`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
+  border: ${(props) =>
+    props.active
+      ? `1px solid var(--color-primary)`
+      : `0px solid var(--color-primary)`};
+  outline: ${(props) =>
+    props.active
+      ? `1px solid var(--color-white)`
+      : `0px solid var(--color-primary)`};
+  box-shadow: ${(props) => props.active && `var(--boxShadow)`};
+  box-sizing: border-box;
+
+  transition: box-shadow 0.35s ease-in-out, border 0.15s ease-in-out;
 `;
 
-const ImageS = styled.div`
+const ImageS = styled(motion.div)`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;

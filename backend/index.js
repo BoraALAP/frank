@@ -20,6 +20,7 @@ const InteriorOptionSchema = require("./lists/Options/Interior.js");
 const ScreenOptionSchema = require("./lists/Options/Screen.js");
 const HardwareOptionSchema = require("./lists/Options/Hardware.js");
 const GlassOptionSchema = require("./lists/Options/Glass.js");
+const GlassColorSchema = require("./lists/Options/GlassColor.js");
 const DividedLiteOptionSchema = require("./lists/Options/DividedLite.js");
 const BrickmoldAndTrimOptionSchema = require("./lists/Options/BrickmoldAndTrim.js");
 
@@ -61,6 +62,7 @@ keystone.createList("InteriorOption", InteriorOptionSchema);
 keystone.createList("ScreenOption", ScreenOptionSchema);
 keystone.createList("HardwareOption", HardwareOptionSchema);
 keystone.createList("GlassOption", GlassOptionSchema);
+keystone.createList("GlassColor", GlassColorSchema);
 keystone.createList("DividedLiteOption", DividedLiteOptionSchema);
 keystone.createList("BrickmoldAndTrimOption", BrickmoldAndTrimOptionSchema);
 

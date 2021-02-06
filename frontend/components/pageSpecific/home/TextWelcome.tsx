@@ -7,34 +7,34 @@ const TextWelcome = (props) => {
       <H1Big>
         Frank is a people person, and a real window and door guy. With
         <Inwrap>
-          over four decades of
+          <Span>over four decades of</Span>
           <ImageS>
             <Image
-              src="/homepage1.jpg"
+              src="/homePage1.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
             />
           </ImageS>
         </Inwrap>
-        experience, Frank’s success is
-        <Inwrap>
+        <Span>experience, Frank’s success is</Span>
+        <Inwrap rev>
           <ImageS>
             <Image
-              src="/homepage2.jpg"
+              src="/homePage2.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
             />
           </ImageS>
-          all about strong industry
+          <Span>all about strong industry</Span>
         </Inwrap>
-        partnerships, loyal customers, and longstanding employees.
+        <Span>partnerships, loyal customers, and longstanding employees.</Span>
         <Inwrap>
-          Frank is like family.
+          <Span>Frank is like family.</Span>
           <ImageS>
             <Image
-              src="/homepage3.jpg"
+              src="/homePage3.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
@@ -61,6 +61,8 @@ const Inwrap = styled.div`
     grid-auto-flow: column;
     align-items: center;
     gap: calc(var(--gap) / 2);
+    grid-template-columns: ${(props) =>
+      props.rev ? ` auto max-content ` : `max-content auto`};
   }
 `;
 
@@ -76,7 +78,7 @@ const H1 = styled.h1`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 3.8vw;
+    font-size: 3.5vw;
     line-height: 8vw;
   }
 
@@ -102,6 +104,11 @@ const H1Big = styled(H1)`
   @media screen and (min-width: 768px) {
     display: grid;
   }
+`;
+
+const Span = styled.span`
+  display: grid;
+  justify-self: start;
 `;
 
 const ImageS = styled.div`

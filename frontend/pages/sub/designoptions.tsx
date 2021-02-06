@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
-
+import { gql, useQuery } from "@apollo/client";
 const links = [
   {
     name: "Exterior Finish",
@@ -35,22 +35,32 @@ const links = [
   },
 ];
 const designoptions = () => {
+  const { data } = useQuery(OPTIONS);
+
+  console.log(data);
+
   return (
-    <Container space padding gap title="Design Options">
-      <PageTitle
-        title="Design Options"
-        subtitle="Overview (all window and door design options)"
-        links={links}
+    <Container space gap title="Design Options">
+      <Container padding>
+        <PageTitle
+          title="Design Options"
+          subtitle="Overview (all window and door design options)"
+          links={links}
+        >
+          <p>Product Design Options (Overview)</p>
+          <p>
+            Deciding on the product that’s right for your project is just the
+            beginning. With an extensive array of design options to choose from,
+            you can customize your windows and doors to reflect your home’s
+            architecture, character, and personality.
+          </p>
+        </PageTitle>
+      </Container>
+      <Operations
+        title="Exterior Finish"
+        subTitle="Product Design Options"
+        list={data?.allExteriorOptions}
       >
-        <p>Product Design Options (Overview)</p>
-        <p>
-          Deciding on the product that’s right for your project is just the
-          beginning. With an extensive array of design options to choose from,
-          you can customize your windows and doors to reflect your home’s
-          architecture, character, and personality.
-        </p>
-      </PageTitle>
-      <Operations title="Exterior Finish" subTitle="Product Design Options">
         <p>
           The choice of colour can have a big impact, or be a subtle accent to
           your home’s exterior. Select from our wide range of standard colour
@@ -58,7 +68,11 @@ const designoptions = () => {
           endless.
         </p>
       </Operations>
-      <Operations title="Interior Finish" subTitle="Product Design Options">
+      <Operations
+        title="Interior Finish"
+        subTitle="Product Design Options"
+        list={data?.allInteriorOptions}
+      >
         <p>
           White is the everyday standard of interior for products, though the
           choice is yours. Stand out and colour coat the interior, or clad it
@@ -74,7 +88,11 @@ const designoptions = () => {
           and suit your taste.
         </p>
       </Operations>
-      <Operations title="Glass" subTitle="Product Design Options">
+      <Operations
+        title="Glass"
+        subTitle="Product Design Options"
+        list={data?.allGlassOptions}
+      >
         <p>
           Glass is a critical aspect of the function and aesthetic of your
           product. What do you want to achieve – added security and privacy, a
@@ -89,14 +107,22 @@ const designoptions = () => {
           retractable screens.
         </p>
       </Operations>
-      <Operations title="Divided Lites" subTitle="Product Design Options">
+      <Operations
+        title="Divided Lites"
+        subTitle="Product Design Options"
+        list={data?.allDividedLiteOptions}
+      >
         <p>
           Add refinement to any glass surface with divided lites. Presented in a
           variety of patterns and in a range of materials and finishes, the
           details make the difference.
         </p>
       </Operations>
-      <Operations title="Brickmold and Trim" subTitle="Product Design Options">
+      <Operations
+        title="Brickmold and Trim"
+        subTitle="Product Design Options"
+        list={data?.allBrickmoldAndTrimOptions}
+      >
         <p>
           Exterior brickmold is available in an assortment of styles suitable
           for every application and aesthetic. Similarly, factory stained or
@@ -109,3 +135,38 @@ const designoptions = () => {
 };
 
 export default designoptions;
+
+const OPTIONS = gql`
+  query OPTIONS {
+    allExteriorOptions {
+      id
+      name
+      image
+      description
+    }
+    allInteriorOptions {
+      id
+      name
+      image
+      description
+    }
+    allGlassOptions {
+      id
+      name
+      image
+      description
+    }
+    allDividedLiteOptions(sortBy: name_ASC) {
+      id
+      name
+      image
+      description
+    }
+    allBrickmoldAndTrimOptions {
+      id
+      name
+      image
+      description
+    }
+  }
+`;

@@ -30,7 +30,7 @@ const Details = ({
 const Context = styled.div`
   display: grid;
   background-color: ${(props) =>
-    props.transparent ? "none" : `var(--color-lightGray)`};
+    props.transparent ? "transparent" : `var(--color-lightGray)`};
   padding: ${(props) => (props.padding ? `var(--padding)` : "inherit")};
   gap: var(--gap);
 `;

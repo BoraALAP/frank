@@ -136,11 +136,11 @@ const ContactForm = () => {
 
               <ErrorMessages name="iam" />
 
-              <Label>
+              <Label checkbox>
                 <InputContainer type="checkbox" name="iam" value="Homeowner" />
                 Homeowner
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="iam"
@@ -148,7 +148,7 @@ const ContactForm = () => {
                 />
                 Architect/Designer
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="iam"
@@ -156,7 +156,7 @@ const ContactForm = () => {
                 />
                 Residential Contractor
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="iam"
@@ -164,7 +164,7 @@ const ContactForm = () => {
                 />
                 Commercial/Non-Residential Builder
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="iam"
@@ -172,7 +172,7 @@ const ContactForm = () => {
                 />
                 Distributor/Dealer
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer type="checkbox" name="iam" value="Other" />
                 Other
               </Label>
@@ -182,7 +182,7 @@ const ContactForm = () => {
 
               <ErrorMessages name="ineed" />
 
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="ineed"
@@ -190,7 +190,7 @@ const ContactForm = () => {
                 />
                 Pre-purchase product questions
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="ineed"
@@ -198,7 +198,7 @@ const ContactForm = () => {
                 />
                 An existing window/door order
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="ineed"
@@ -206,7 +206,7 @@ const ContactForm = () => {
                 />
                 Architectural/technical support for professionals
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer
                   type="checkbox"
                   name="ineed"
@@ -214,7 +214,7 @@ const ContactForm = () => {
                 />
                 Service/warranty
               </Label>
-              <Label>
+              <Label checkbox>
                 <InputContainer type="checkbox" name="ineed" value="Other" />
                 Other
               </Label>
@@ -297,10 +297,10 @@ const FormSent = styled.div`
 `;
 
 const InRow = styled.div`
-  gap: 2rem;
   display: grid;
   grid-auto-flow: row;
-  @media screen and (min-width: 768px;
+  gap: var(--gap);
+  @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) =>
       props.two ? ` repeat(2, 1fr)` : `repeat(auto-fill, minmax(170px, 1fr))`};
   }

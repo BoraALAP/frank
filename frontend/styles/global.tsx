@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root{
     --font-main: 'Heebo', sans-serif;
-    --boxShadow: 0 0.25em 2em 0.25em rgba(0,0,0,0.15);
+    --boxShadow: 0.1em 0.1em 0.3em 0.1em rgba(0,0,0,0.4);
     --buttonPadding: 0.5em 1em;
     --boxPadding: 1em;
     --boxRadius: 0;
@@ -161,6 +161,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: var(--color-primary);
     font-size: 1rem;
+    font-weight: 500;
     @media screen and (min-width: 768px){
       font-size: 1.125rem;
           

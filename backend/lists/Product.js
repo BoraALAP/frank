@@ -20,7 +20,7 @@ module.exports = {
     },
     exteriorOptions:{
       type: Relationship , 
-      ref: 'ExteriorOption.products',
+      ref: 'ExteriorOption.products', 
       many: true
     },
     interiorOptions:{

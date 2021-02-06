@@ -35,14 +35,19 @@ export const InputContainer = (props) => {
 interface LabelProps {
   children?: any;
   htmlFor?: string;
+  checkbox?: boolean;
 }
-export const Label = ({ children, htmlFor }: LabelProps) => {
-  return <LabelS htmlFor={htmlFor}>{children}</LabelS>;
+export const Label = ({ children, htmlFor, checkbox }: LabelProps) => {
+  return (
+    <LabelS htmlFor={htmlFor} checkbox={checkbox}>
+      {children}
+    </LabelS>
+  );
 };
 
 const FormS = styled(Form)`
   display: grid;
-  gap: 1.5rem;
+  gap: var(--gap);
   max-width: 40rem;
 `;
 
@@ -82,4 +87,9 @@ const ErrorMessageS = styled.small`
 
 const LabelS = styled.label`
   display: grid;
+
+  grid-auto-flow: ${(props) => props.checkbox && `column`};
+  justify-content: ${(props) => props.checkbox && `start`};
+  align-items: ${(props) => props.checkbox && `center`};
+  gap: ${(props) => props.checkbox && `1rem`};
 `;

@@ -24,6 +24,12 @@ module.exports = {
       ref: 'ProductCategory.glassOptions',
       many: true
     },
+    colors:{
+      type: Relationship , 
+      ref: 'GlassColor.parent',
+      many: true
+    },
+
   },
   plugins: [
     atTracking({
