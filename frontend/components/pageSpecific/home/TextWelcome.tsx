@@ -10,7 +10,7 @@ const TextWelcome = (props) => {
           <Span>over four decades of</Span>
           <ImageS>
             <Image
-              src="/homePage1.jpg"
+              src="/homepage1.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
@@ -21,7 +21,7 @@ const TextWelcome = (props) => {
         <Inwrap rev>
           <ImageS>
             <Image
-              src="/homePage2.jpg"
+              src="/homepage2.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
@@ -34,7 +34,7 @@ const TextWelcome = (props) => {
           <Span>Frank is like family.</Span>
           <ImageS>
             <Image
-              src="/homePage3.jpg"
+              src="/homepage3.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
