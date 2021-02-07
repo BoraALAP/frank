@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/home.js"
     ],
-    "/sub/designoptions": [
+    "/products/slidingdoors": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/sub/designoptions.js"
+      "static/chunks/pages/products/slidingdoors.js"
     ]
   },
   "ampFirstPages": []

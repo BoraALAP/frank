@@ -59,7 +59,7 @@ export const Operations = ({
               muted
               // controls
               width="100%"
-              height="100%"
+              // height="100%"
             />
           ) : (
             <AnimatePresence exitBeforeEnter>
@@ -131,7 +131,7 @@ const Left = styled.div`
 
   /* can be deleted after all of them set  */
   div {
-    height: 400px;
+    height: 300px;
 
     @media screen and (min-width: 768px) {
       max-height: 250px;

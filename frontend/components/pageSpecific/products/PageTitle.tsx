@@ -43,7 +43,7 @@ export const PageTitle = ({
         {links && (
           <Links>
             {links?.map((item, index) => (
-              <NavLinks key={index} href={item.href}>
+              <NavLinks key={index} href={item.href && item.href}>
                 {item.name}
               </NavLinks>
             ))}

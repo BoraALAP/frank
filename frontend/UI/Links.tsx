@@ -2,20 +2,26 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const NavLinks = (props) => {
-  return (
+  return props.href ? (
     <Link href={props.href}>
       <Container href={props.href} {...props} disabled={props.disabled}>
         {props.children}
       </Container>
     </Link>
+  ) : (
+    <Container href={props.href} {...props} disabled={props.disabled}>
+      {props.children}
+    </Container>
   );
 };
+
 const Container = styled.a`
   display: grid;
   padding: 0.5rem 0;
   color: ${(props) =>
     props.Bottom ? `var(--color-primary)` : `var(--color-grey)`};
   font-size: ${(props) => (props.Bottom ? "0.875rem" : "1.125rem")};
+  cursor: pointer;
 `;
 
 interface ButtonProps {
