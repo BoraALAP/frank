@@ -6,7 +6,7 @@ const {
   Checkbox,
   DateTime,
   Integer,
-  Password,
+  Password, 
   Relationship,
   Select,
   Text,
