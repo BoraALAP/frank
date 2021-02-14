@@ -1,11 +1,11 @@
-const { emailSender } = require('@keystonejs/email');
+import { emailSender } from '@keystonejs/email';
 
 const jsxEmailSender = emailSender.jsx({
   root: `${__dirname}/emailTemplate`,
   transport: 'mailgun',
 });
 
-const sendEmail = async(templatePath,props) => {
+export const sendEmail = async(templatePath,props) => {
   if (!templatePath) {
     console.error('No template path provided');
   }
@@ -20,6 +20,4 @@ const sendEmail = async(templatePath,props) => {
   await jsxEmailSender(templatePath).send(props, options);
 };
 
-module.exports = {
-  sendEmail,
-};
+

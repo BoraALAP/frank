@@ -1,16 +1,15 @@
 require('dotenv').config();
-const { v4: uuid } = require('uuid');
+import { uuid } from 'uuid';
+import { list } from '@keystone-next/keystone/schema';
 
-
-const {
-  Checkbox,
-  DateTime,
-  Integer,
-  Password,
-  Relationship,
-  Select,
-  Text,
-} = require('@keystonejs/fields');
+import {
+  checkbox,
+  integer,
+  password,
+  relationship,
+  select,
+  text,
+} from '@keystone-next/fields';
 
 const access = {
   userIsAdmin: ({ authentication: { item: user } }) => Boolean(user && user.isAdmin),

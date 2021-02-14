@@ -1,16 +1,16 @@
-const { gql } = require("apollo-server-express");
+import { gql } = require("apollo-server-express");
 require("dotenv").config();
 var cors = require("cors");
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")(expressSession);
 
-const { Keystone } = require("@keystonejs/keystone");
-const { GraphQLApp } = require("@keystonejs/app-graphql");
-const { AdminUIApp } = require("@keystonejs/app-admin-ui");
+import { Keystone } = require("@keystonejs/keystone");
+import { GraphQLApp } = require("@keystonejs/app-graphql");
+import { AdminUIApp } = require("@keystonejs/app-admin-ui");
 
-const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
+import { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
-const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
+import { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 
 const BackEndUserSchema = require("./lists/BackEndUser.js");
 const OperationSchema = require("./lists/Operation.js");
@@ -31,7 +31,7 @@ const ContactUsFormSchema = require("./lists/ContactUsForm.js");
 const DealerSchema = require("./lists/Dealer.js");
 const ImagineSchema = require("./lists/Imagine.js");
 const ForgottenPasswordTokenSchema = require("./lists/ForgottenPasswordToken.js");
-const { CustomSchema } = require("./lists/Custom.js");
+import { CustomSchema } = require("./lists/Custom.js");
 const UserMutationSchema = require("./mutations/User.js");
 
 const PROJECT_NAME = "Frank";

@@ -1,21 +1,19 @@
-const { Text, Select } = require("@keystonejs/fields");
-const { atTracking, createdAtField, updatedAtField } = require('@keystonejs/list-plugins');
-
+import { text, select, relationship } from "@keystone-next/fields";
+import { atTracking, createdAtField, updatedAtField } from '@keystonejs/list-plugins';
+import { list } from '@keystone-next/keystone/schema';
 const productOptions = [{value:"CORE", label: "Core"}, {value:"COREPLUS", label: "Core+"}, {value:"ENERSENSE", label: "Enersense"}, {value:"PRISM", label: "Prism"}, {value:"DESIGNER", label: "Designer"}, {value:"CLASSIC", label: "Classic"}, {value:"ARTISAN", label: "Artisan"}, {value:"MOOSE", label: "Moose"}, {value:"MOOSEPLUS", label: "Moose+"}, {value:"ORCHESTRADOOR", label: "Orchestra Door"}, {value:"FOLDINGDOOR", label: "Folding Door"}, {value:"LIFTANDSLIDE", label: "Lift And Slide"}]
 
-module.exports = {
+export const Imagine = list({
   fields: {
-    src:{
-      type: Text,
+    src:text({
       isRequired: true,
-    },
-    description:{
-      type: Text,
-    },
-    productName:{
-      type:Select,
-      options: productOptions
-    },
+    }),
+    description:text({
+    }),
+    product:relationship({
+      ref:'Product',
+      many:true
+    })
   },
   plugins: [
     atTracking({
@@ -23,4 +21,4 @@ module.exports = {
       updatedAtField
     }),
   ],
-}
+})

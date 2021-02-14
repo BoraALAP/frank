@@ -1,5 +1,5 @@
-const { gql } =require( 'apollo-server-express')
-const {sendEmail} = require('../mail')
+import { gql } from 'apollo-server-express'
+import {sendEmail} from '../mail'
 
 // CUSTOM USER CREATION - This one creates user and sends email to both parties for requesting user ID
 const creatingAUser = async (_, { name, email, password, companyName }, context, info, extra) => {
