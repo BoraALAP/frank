@@ -24,15 +24,15 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/home": [
+    "/products/slidingdoors/moose": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/home.js"
+      "static/chunks/pages/products/slidingdoors/moose.js"
     ],
-    "/user/account": [
+    "/products/windows/core": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/user/account.js"
+      "static/chunks/pages/products/windows/core.js"
     ]
   },
   "ampFirstPages": []

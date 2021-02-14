@@ -6,7 +6,7 @@ import { NavLinks } from "../../UI/Links";
 import { useAuth } from "../../lib/Authentication";
 import Image from "next/image";
 
-const Menu = (props) => {
+export const Menu = (props) => {
   const { isAuthenticated } = useAuth();
   const [imageSrc, setImageSrc] = useState({
     image1: "/menuImages/menuImage1.jpg",
@@ -64,8 +64,8 @@ const Menu = (props) => {
       {
         href: "/sub/learn",
         name: "Learn",
-        image1: "/menuImages/menu13.jpg",
-        image2: "/menuImages/menu14.jpg",
+        image1: "/menuImages/menu11.jpg",
+        image2: "/menuImages/menu12.jpg",
         bottom: false,
       },
       // {
@@ -128,127 +128,112 @@ const Menu = (props) => {
     },
   };
 
-  return (
-    <AnimatePresence exitBeforeEnter>
-      {props.open && (
-        <Context
-          initial={{ y: "-100vh" }}
-          animate={{ y: "0vh" }}
-          transition={{ duration: 0.25 }}
-          exit={{ y: "-100vh" }}
-          key="context"
-        >
-          <Container
-            initial={{ y: "-100vh" }}
-            animate={{ y: "0vh" }}
-            transition={{ duration: 0.25 }}
-            exit={{ y: "-100vh" }}
-            key="context"
-          >
-            <ImgContainer
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={opacity}
-              transition={{ delay: 1, duration: 0.75 }}
-            >
-              <ImgCont>
-                <AnimatePresence exitBeforeEnter>
-                  <ImageS
-                    alt={`${imageSrc.name} Image 1`}
-                    src={imageSrc.image1}
-                    key={imageSrc.image1}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.25, delay: 0.25 }}
-                  />
-                </AnimatePresence>
-              </ImgCont>
-              <ImgCont>
-                <AnimatePresence exitBeforeEnter>
-                  <ImageS
-                    alt={`${imageSrc.name} Image 2`}
-                    src={imageSrc.image2}
-                    key={imageSrc.image2}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.25, delay: 0.3 }}
-                  />
-                </AnimatePresence>
-              </ImgCont>
-            </ImgContainer>
+  const ContextVariants = {
+    open: { y: "0vh" },
+    closed: { y: "-100vh" },
+  };
 
-            <Right
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={opacity}
-              transition={{ delay: 0.65, duration: 0.75 }}
-            >
-              {links.map((pages, index) => {
-                return (
-                  <Divide key={index}>
-                    {pages.map((item: Item, index) => {
-                      return (
-                        <NavLinks
-                          href={item.href}
-                          Bottom={item.bottom}
-                          onClick={props.onClick}
-                          key={index}
-                          onMouseEnter={() => {
-                            setImageSrc({
-                              image1: item.image1,
-                              image2: item.image2,
-                              name: item.name,
-                            });
-                          }}
-                        >
-                          {item.name}
-                        </NavLinks>
-                      );
-                    })}
-                  </Divide>
-                );
-              })}
-            </Right>
-          </Container>
-        </Context>
-      )}
-    </AnimatePresence>
+  return (
+    <Context
+      variants={ContextVariants}
+      animate={props.isOpen ? "open" : "closed"}
+    >
+      <Container>
+        <ImgContainer>
+          <ImgCont>
+            <AnimatePresence exitBeforeEnter>
+              <ImageS
+                alt={`${imageSrc.name} Image 1`}
+                src={imageSrc.image1}
+                layout="fill"
+                objectFit="cover"
+                priority
+                key={imageSrc.image1}
+                variant={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+              />
+            </AnimatePresence>
+          </ImgCont>
+
+          <ImgCont>
+            <AnimatePresence exitBeforeEnter>
+              <ImageS
+                alt={`${imageSrc.name} Image 2`}
+                src={imageSrc.image2}
+                layout="fill"
+                objectFit="cover"
+                priority
+                key={imageSrc.image2}
+                variant={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ delay: 0.2 }}
+              />
+            </AnimatePresence>
+          </ImgCont>
+        </ImgContainer>
+
+        <Right>
+          {links.map((pages, index) => {
+            return (
+              <Divide key={index}>
+                {pages.map((item: Item, index) => {
+                  return (
+                    <NavLinks
+                      href={item.href}
+                      Bottom={item.bottom}
+                      onClick={props.onClick}
+                      key={index}
+                      onMouseEnter={() => {
+                        setImageSrc({
+                          image1: item.image1,
+                          image2: item.image2,
+                          name: item.name,
+                        });
+                      }}
+                    >
+                      {item.name}
+                    </NavLinks>
+                  );
+                })}
+              </Divide>
+            );
+          })}
+        </Right>
+      </Container>
+    </Context>
   );
 };
 
+const Context = styled(motion.div)`
+  display: grid;
+  position: fixed;
+  background-color: var(--color-bg);
+  height: 100vh;
+  top: 0;
+  z-index: 800;
+  width: 100%;
+  @media screen and (min-width: 414px) {
+    width: 100vw;
+  }
+`;
+
 const Container = styled(motion.div)`
   display: grid;
-
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
   padding: 130px var(--padding) 70px;
-  height: 100%;
+  height: 100vh;
   max-height: 900px;
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: auto 25%;
     gap: calc(2 * var(--gap));
-  }
-`;
-
-const Context = styled.div`
-  display: grid;
-  position: absolute;
-  background-color: var(--color-bg);
-  top: 0;
-  z-index: 800;
-  height: 100vh;
-  width: 100%;
-  @media screen and (min-width: 414px) {
-    width: 100vw;
   }
 `;
 
@@ -272,18 +257,19 @@ const ImgContainer = styled(motion.div)`
   }
 `;
 
-const ImgCont = styled.div`
+const ImgCont = styled(motion.div)`
   display: grid;
   position: relative;
   height: 100%;
+  width: 100%;
 `;
 
-const Right = styled(motion.div)`
+const Right = styled(motion.nav)`
   display: grid;
   gap: var(--gap);
   align-items: start;
   align-content: start;
-
+  overflow-y: scroll;
   @media (min-width: 768px) {
     align-content: start;
     height: 100%;
@@ -294,5 +280,3 @@ const Divide = styled.div`
   display: grid;
   gap: calc(var(--gap) / 4);
 `;
-
-export default Menu;

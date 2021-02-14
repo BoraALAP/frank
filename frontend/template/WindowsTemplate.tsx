@@ -17,7 +17,7 @@ const WindowsTemplate = ({
   const links = [
     {
       name: "Design Options",
-      href: "/sub/designoptions",
+      href: `/sub/designoptions`,
     },
     {
       name: "Energy Efficiency",

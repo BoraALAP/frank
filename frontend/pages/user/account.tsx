@@ -7,6 +7,7 @@ import { useAuth } from "../../lib/Authentication";
 import { Container } from "../../components/layout/Container";
 import { TertiaryButton } from "../../UI/Links";
 import { Loading } from "../../UI/Loading";
+import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
 
 const account = () => {
   const { signout, isAuthenticated, isLoading, user } = useAuth();
@@ -28,8 +29,8 @@ const account = () => {
   }
 
   return (
-    <Container space padding title="My Profile">
-      <h2>Account</h2>
+    <Container space padding gap title="My Profile">
+      <PageTitle title="Account" />
       <h4>Hello {user?.name}</h4>
       <p>
         Last Login{" "}

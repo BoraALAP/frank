@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AnimatePresence, motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
 
 interface MetaProps {
@@ -8,6 +9,7 @@ interface MetaProps {
   padding?: boolean;
   title?: any;
 }
+
 export const Container = ({
   children,
   space = false,
@@ -18,20 +20,31 @@ export const Container = ({
   return (
     <>
       {title && <Meta title={title} />}
-      <ContainerS space={space} gap={gap} padding={padding}>
+      <ContainerS
+        space={space}
+        gap={gap}
+        padding={padding}
+        style={{ visibility: "visible" }}
+        layoutId="page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.35 }}
+      >
         {children}
       </ContainerS>
     </>
   );
 };
 
-const ContainerS = styled.div`
+const ContainerS = styled(motion.div)`
   display: grid;
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;
   justify-self: center;
   margin: auto;
+  visibility: "visible";
   gap: ${(props) => (props.gap ? `calc( 2 * var(--gap))` : `0`)};
   padding: ${(props) =>
     props.space && props.padding

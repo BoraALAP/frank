@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Details from "./Details";
 
 export const ImageOverlap = ({
-  detailsTitle,
+  title,
   detailsChildren,
   imageSrc,
   imageTitle,
@@ -11,7 +11,7 @@ export const ImageOverlap = ({
 }) => {
   return (
     <Container>
-      <Details title={detailsTitle} padding>
+      <Details title={title} padding>
         {detailsChildren?.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

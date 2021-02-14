@@ -197,6 +197,10 @@ const GlobalStyle = createGlobalStyle`
     font: 400 0.875rem var(--font-main);
   }
 
+
+.lock{
+  overflow: hidden;
+}
   
 `;
 

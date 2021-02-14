@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { ApolloProvider } from "@apollo/client";
 
+import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion";
 import GlobalStyle from "../styles/global";
 import { AuthProvider } from "../lib/Authentication";
 
@@ -24,9 +25,13 @@ const MyApp = ({ Component, pageProps }) => {
         <AuthProvider>
           <GlobalStyle />
           {router.route !== "/" && <Header />}
+
           <ComponentS>
-            <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter initial={false}>
+              <Component {...pageProps} key={router.pathname} />
+            </AnimatePresence>
           </ComponentS>
+
           {router.route !== "/" && <Footer />}
         </AuthProvider>
       </ApolloProvider>
@@ -34,7 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-const ComponentS = styled.main`
+const ComponentS = styled(motion.main)`
   display: grid;
 `;
 

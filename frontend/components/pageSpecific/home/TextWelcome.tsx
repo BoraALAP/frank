@@ -5,9 +5,7 @@ const TextWelcome = (props) => {
   return (
     <Container>
       <H1Big>
-        Frank is a people person, and a real window and door guy. With
-        <Inwrap>
-          <Span>over four decades of</Span>
+        <Inwrap rev>
           <ImageS>
             <Image
               src="/homepage1.jpg"
@@ -16,8 +14,15 @@ const TextWelcome = (props) => {
               objectPosition="50% 50%"
             />
           </ImageS>
+          <Span>
+            Frank is a real window and door guy and a people person. Over four
+            decades, Frank has established strong partnerships, a trusted team,
+            and loyal customers. Frank is like a family.
+          </Span>
         </Inwrap>
-        <Span>experience, Frank’s success is</Span>
+        {/* Frank is a real window and door guy, and a people person.
+        
+        <Span>Frank has established</Span>
         <Inwrap rev>
           <ImageS>
             <Image
@@ -27,9 +32,9 @@ const TextWelcome = (props) => {
               objectPosition="50% 50%"
             />
           </ImageS>
-          <Span>all about strong industry</Span>
+          <Span>strong partnerships</Span>
         </Inwrap>
-        <Span>partnerships, loyal customers, and longstanding employees.</Span>
+        <Span>a team of longstanding employees and loyal customers</Span>
         <Inwrap>
           <Span>Frank is like family.</Span>
           <ImageS>
@@ -40,14 +45,13 @@ const TextWelcome = (props) => {
               objectPosition="50% 50%"
             />
           </ImageS>
-        </Inwrap>
+        </Inwrap> */}
       </H1Big>
 
       <H1Small>
-        Frank is a people person, and a real window and door guy. With over four
-        decades of experience, Frank’s success is all about strong industry
-        partnerships, loyal customers, and longstanding employees. Frank is like
-        family.
+        Frank is a real window and door guy and a people person. Over four
+        decades, Frank has established strong partnerships, a trusted team, and
+        loyal customers. Frank is like a family.
       </H1Small>
     </Container>
   );
@@ -56,13 +60,13 @@ const TextWelcome = (props) => {
 const Container = styled.div``;
 
 const Inwrap = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 991px) {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
-    gap: calc(var(--gap) / 2);
+    gap: calc(var(--gap));
     grid-template-columns: ${(props) =>
-      props.rev ? ` auto max-content ` : `max-content auto`};
+      props.rev ? ` 1fr 2fr ` : `max-content auto`};
   }
 `;
 
@@ -73,13 +77,13 @@ const H1 = styled.h1`
   margin: 0;
   /* white-space: nowrap; */
   @media screen and (min-width: 414px) {
-    font-size: 5.9vw;
-    line-height: 10vw;
+    font-size: 2rem;
+    line-height: 2.25rem;
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 3.5vw;
-    line-height: 8vw;
+    font-size: 2.25rem;
+    line-height: 2.75rem;
   }
 
   @media screen and (min-width: var(--mq-desktop)) {
@@ -101,6 +105,7 @@ const H1Small = styled(H1)`
 
 const H1Big = styled(H1)`
   display: none;
+  gap: var(--gap);
   @media screen and (min-width: 768px) {
     display: grid;
   }
@@ -113,9 +118,9 @@ const Span = styled.span`
 
 const ImageS = styled.div`
   display: none;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 991px) {
     display: grid;
-    height: 6vw;
+    height: 100%;
     width: 100%;
     min-width: 60px;
     position: relative;

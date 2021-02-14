@@ -1,25 +1,30 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const menu = () => {
   return (
     <Svg
-      width="31"
-      height="31"
-      viewBox="0 0 31 31"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      variants={{
+        closed: { rotate: 0 },
+        open: { rotate: 45 },
+      }}
     >
-      <path d="M13 0L13 31L17 31L17 -1.74846e-07L13 0Z" />
-      <path d="M0 18L31 18L31 14L-3.49691e-07 14L0 18Z" />
+      <path d="M0 12H24" strokeWidth="3" />
+      <path d="M12 0L12 24" strokeWidth="3" />
     </Svg>
   );
 };
 
-const Svg = styled.svg`
+const Svg = styled(motion.svg)`
   display: grid;
   height: 100%;
   width: 100%;
-  fill: var(--color-secondary);
+  stroke: var(--color-secondary);
   z-index: 10;
 `;
 

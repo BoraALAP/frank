@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 
 import { NavLinks } from "../../../UI/Links";
-import { Body } from "../../layout/Body";
 
 interface PageTitle {
   title: string;
@@ -43,7 +42,17 @@ export const PageTitle = ({
         {links && (
           <Links>
             {links?.map((item, index) => (
-              <NavLinks key={index} href={item.href && item.href}>
+              <NavLinks
+                key={index}
+                href={
+                  item.href === "/sub/designoptions"
+                    ? {
+                        pathname: `${item.href}`,
+                        query: { category: `${title}` },
+                      }
+                    : item.href
+                }
+              >
                 {item.name}
               </NavLinks>
             ))}
@@ -66,13 +75,19 @@ export const Breadcrumbs = ({
     <Context padding={padding}>
       <TitleBox>
         <Clickable onClick={() => router.back()}>{parent}</Clickable>
-        <Line />
-        <H1>{title}</H1>
+        <H2>/ {title}</H2>
       </TitleBox>
 
       <Links>
         {links?.map((item, index) => (
-          <NavLinks href={item.href} key={index}>
+          <NavLinks
+            href={
+              item.href === "/sub/designoptions"
+                ? { pathname: `${item.href}`, query: { product: `${title}` } }
+                : item.href
+            }
+            key={index}
+          >
             {item.name}
           </NavLinks>
         ))}
@@ -86,17 +101,16 @@ export const TitleBox = styled.div`
   grid-auto-flow: column;
   align-items: baseline;
   justify-content: start;
-  gap: calc(var(--gap) / 2);
+  gap: calc(var(--gap) / 4);
+`;
+const H2 = styled.h2`
+  display: grid;
+  font-weight: 500;
 `;
 
-const Clickable = styled.h4`
+const Clickable = styled(H2)`
   display: grid;
   cursor: pointer;
-`;
-
-const H1 = styled.h1`
-  display: grid;
-  font-size: 1.5rem;
 `;
 
 const Line = styled.div`

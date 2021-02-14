@@ -41,6 +41,11 @@ const adapterConfig = {
   mongoUri: process.env.DATABASE,
 };
 
+const sessionConfig = {
+  secure: process.env.NODE_ENV === 'production',
+  maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+}
+
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
@@ -48,7 +53,7 @@ const keystone = new Keystone({
   cookieSecret: process.env.COOKIESECRET,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
-    maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+  maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
     sameSite: true,
     // domain: process.env.FRONTEND_URL,
   },

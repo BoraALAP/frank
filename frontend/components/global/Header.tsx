@@ -1,19 +1,40 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-
-import disableScroll from "disable-scroll";
+import { motion, useCycle } from "framer-motion";
 
 import Logo from "../../assets/branding/frank_logo";
 import MenuIcon from "../../assets/icons/menu";
 
-import MenuComp from "./Menu";
+import { Menu } from "./Menu";
 import { Container } from "../layout/Container";
 import { GlobalContext } from "../../context/context";
 
+const background = {
+  open: (height = 1000) => ({
+    clipPath: `inset(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "inset(30px at 40px 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
 export const Header = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
-  const [menuState, setMenuState] = useState(false);
+
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
 
   const [sticky, setSticky] = useState(store.headerShow);
 
@@ -48,30 +69,33 @@ export const Header = (props) => {
   // END -- Getting PAGE Y Off
 
   //  Menu State
-  useEffect(() => {
-    if (menuState) {
-      disableScroll.on();
-    } else {
-      disableScroll.off();
-    }
-  }, [menuState]);
+  // useEffect(() => {
+  //   if (menuState) {
+  //     disableScroll.on();
+  //   } else {
+  //     disableScroll.off();
+  //   }
+  // }, [menuState]);
 
   useEffect(() => {
-    // dispatch({ type: "HEADER_SHOW", headerShow: sticky });
+    dispatch({ type: "HEADER_SHOW", payload: sticky });
   }, [sticky]);
 
-  // props.history.listen((location) => {
-  //   setMenuState(false);
-  // });
-
   const handleMenu = () => {
-    setMenuState(!menuState);
+    dispatch({ type: "MENU_SHOW", payload: !store.menuShow });
+    toggleOpen();
   };
 
+  useEffect(() => {
+    store.menuShow
+      ? document.body.classList.add("lock")
+      : document.body.classList.remove("lock");
+  }, [store.menuShow]);
+
   return (
-    <Context show={sticky}>
+    <Context>
       <Container>
-        <HeaderS>
+        <HeaderS show={store.headerShow}>
           <Link href="/home">
             <Left>
               <LogoS />
@@ -82,37 +106,20 @@ export const Header = (props) => {
               </H4>
             </Left>
           </Link>
-          {/* <Nav>
-        {data?.me ? (
-          <>
-            <Link href="/user/account">
-              <p>{data?.me?.name ? data.me.name : "Account"}</p>
-            </Link>
-            <SignOut />
-          </>
-        ) : (
-          <Link href="/user/signIn">
-            <p>Sign In</p>
-          </Link>
-        )}
-        <Link href="/application">
-          <p>App</p>
-        </Link>
-      </Nav> */}
           <Right>
             <MenuIconS
-              menuprop={menuState}
-              onClick={handleMenu}
+              initial={false}
+              animate={isOpen ? "open" : "closed"}
+              ref={containerRef}
               aria-label="Open Close Toggle"
+              onClick={handleMenu}
             >
               <MenuIcon />
             </MenuIconS>
-            {/* <SearchIcon /> */}
           </Right>
         </HeaderS>
-        {/* <Search /> */}
-        <MenuComp open={menuState} onClick={handleMenu} />
       </Container>
+      <Menu onClick={handleMenu} isOpen={isOpen} />
     </Context>
   );
 };
@@ -120,23 +127,25 @@ export const Header = (props) => {
 const Context = styled.div`
   display: grid;
   align-items: center;
-  position: fixed;
-  z-index: 1000;
-  width: 100%;
-  box-sizing: border-box;
   background-color: var(--color-bg);
-  transition: top 1s ease;
-  top: ${(props) => (props.show ? "0" : "-30vh")};
+  z-index: 2000;
 `;
 
-const HeaderS = styled.div`
+const HeaderS = styled.header`
   display: grid;
   grid-auto-flow: column;
   justify-content: space-between;
   grid-template-columns: auto 25%;
+  box-sizing: border-box;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  max-width: 1440px;
   z-index: 1000;
   padding: 2.5vh var(--padding);
+  top: ${(props) => (props.show ? "0" : "-30vh")};
+  transition: top 1s ease;
+  background-color: var(--color-bg);
 `;
 
 const Left = styled.div`
@@ -144,6 +153,7 @@ const Left = styled.div`
   display: grid;
   gap: var(--gap);
   align-items: center;
+  z-index: 1000;
 `;
 
 const Right = styled.div`
@@ -151,6 +161,7 @@ const Right = styled.div`
   display: grid;
   justify-content: space-between;
   grid-auto-flow: column;
+  z-index: 1000;
 `;
 
 const H4 = styled.h4`
@@ -164,9 +175,7 @@ const H4 = styled.h4`
   }
 `;
 
-const MenuIconS = styled.div`
-  transform: ${(props) => (props.menuprop ? "rotate(-45deg)" : "rotate(0)")};
-  transition: all 0.75s ease;
+const MenuIconS = styled(motion.div)`
   padding: 4px;
   height: 32px;
   width: 32px;

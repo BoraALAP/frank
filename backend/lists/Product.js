@@ -9,6 +9,10 @@ module.exports = {
       type: Text,
       isRequired: true,
     },
+    subtitle: {
+      type: Text,
+      isRequired: true,
+    },
     image: {
       type: Url,
       defaultValue: false,
@@ -16,6 +20,42 @@ module.exports = {
     productCategories:{
       type: Relationship , 
       ref: 'ProductCategory.products',
+      many: true
+    },
+    
+    imageTitle: {
+      type: Text,
+      isRequired: true,
+    },imageDescription: {
+      type: Text,
+     
+      isMultiline: true
+    },specs: {
+      type: Text,
+      isRequired: true,
+      isMultiline: true
+    },threeImageTitle: {
+      type: Text,
+    },threeImageDescription: {
+      type: Text,
+      isMultiline: true
+      
+    },operationsTitle: {
+      type: Text,
+      
+    },
+    operationsSubTitle: {
+      type: Text,
+      
+    },
+    operationsDescription: {
+      type: Text,
+      isMultiline: true
+      
+    },
+    operations:{
+      type: Relationship , 
+      ref: 'Operation.products',
       many: true
     },
     exteriorOptions:{
@@ -53,11 +93,7 @@ module.exports = {
       ref: 'BrickmoldAndTrimOption.products',
       many: true
     },
-    operations:{
-      type: Relationship , 
-      ref: 'Operation.products',
-      many: true
-    }
+    
   },
   plugins: [
     atTracking({

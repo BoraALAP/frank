@@ -35,7 +35,7 @@ const Context = styled.div`
   gap: var(--gap);
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   display: grid;
 `;
 

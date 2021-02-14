@@ -1,14 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container } from "../../components/layout/Container";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { gql, useQuery } from "@apollo/client";
 import { NavLinks } from "../../UI/Links";
+import { useRouter } from "next/router";
 
 const designoptions = () => {
-  const { data } = useQuery(OPTIONS);
+  const router = useRouter();
+
+  const { data: allOptions } = useQuery(OPTIONS);
+  const { data: productOptions } = useQuery(PRODUCTOPTIONS, {
+    variables: { product: router.query?.product },
+  });
+  const { data: categoryOptions } = useQuery(CATEGORYOPTIONS, {
+    variables: { category: router.query?.category },
+  });
 
   const [display, setDisplay] = useState("");
+  const [list, setList] = useState({
+    allBrickmoldAndTrimOptions: [],
+    allDividedLiteOptions: [],
+    allExteriorOptions: [],
+    allGlassOptions: [],
+    allInteriorOptions: [],
+  });
+
+  useEffect(() => {
+    if (router.query?.product) {
+      setList({
+        allBrickmoldAndTrimOptions:
+          productOptions?.allProducts[0]?.brickmoldAndTrimOptions,
+
+        allDividedLiteOptions:
+          productOptions?.allProducts[0]?.dividedLiteOptions,
+
+        allExteriorOptions: productOptions?.allProducts[0]?.exteriorOptions,
+
+        allGlassOptions: productOptions?.allProducts[0]?.glassOptions,
+        allInteriorOptions: productOptions?.allProducts[0]?.interiorOptions,
+      });
+    } else if (router.query?.category) {
+      setList({
+        allBrickmoldAndTrimOptions:
+          categoryOptions?.allProductCategories[0]?.brickmoldAndTrimOptions,
+
+        allDividedLiteOptions:
+          categoryOptions?.allProductCategories[0]?.dividedLiteOptions,
+
+        allExteriorOptions:
+          categoryOptions?.allProductCategories[0]?.exteriorOptions,
+
+        allGlassOptions: categoryOptions?.allProductCategories[0]?.glassOptions,
+        allInteriorOptions:
+          categoryOptions?.allProductCategories[0]?.interiorOptions,
+      });
+    } else {
+      setList(allOptions);
+    }
+  }, [allOptions, productOptions]);
 
   const links = [
     {
@@ -35,8 +85,8 @@ const designoptions = () => {
   ];
 
   return (
-    <Container space gap title="Design Options">
-      <Container padding>
+    <Container space gap padding title="Design Options">
+      <Container>
         <Context twoColumn>
           <h1>Design Options</h1>
           <h3>Overview (all window and door design options)</h3>
@@ -64,7 +114,7 @@ const designoptions = () => {
         <Operations
           title="Exterior Finish"
           subTitle="Product Design Options"
-          list={data?.allExteriorOptions}
+          list={list?.allExteriorOptions}
         >
           <p>
             The choice of colour can have a big impact, or be a subtle accent to
@@ -78,7 +128,7 @@ const designoptions = () => {
         <Operations
           title="Interior Finish"
           subTitle="Product Design Options"
-          list={data?.allInteriorOptions}
+          list={list?.allInteriorOptions}
         >
           <p>
             White is the everyday standard of interior for products, though the
@@ -102,7 +152,7 @@ const designoptions = () => {
         <Operations
           title="Glass"
           subTitle="Product Design Options"
-          list={data?.allGlassOptions}
+          list={list?.allGlassOptions}
         >
           <p>
             Glass is a critical aspect of the function and aesthetic of your
@@ -125,7 +175,7 @@ const designoptions = () => {
         <Operations
           title="Divided Lites"
           subTitle="Product Design Options"
-          list={data?.allDividedLiteOptions}
+          list={list?.allDividedLiteOptions}
         >
           <p>
             Add refinement to any glass surface with divided lites. Presented in
@@ -138,7 +188,7 @@ const designoptions = () => {
         <Operations
           title="Brickmould and Trim"
           subTitle="Product Design Options"
-          list={data?.allBrickmoldAndTrimOptions}
+          list={list?.allBrickmoldAndTrimOptions}
         >
           <p>
             Exterior brickmold is available in an assortment of styles suitable
@@ -185,7 +235,7 @@ const Bottom = styled.div`
 `;
 
 const OPTIONS = gql`
-  query OPTIONS {
+  query allOptions {
     allExteriorOptions {
       id
       name
@@ -215,6 +265,82 @@ const OPTIONS = gql`
       name
       image
       description
+    }
+  }
+`;
+
+const PRODUCTOPTIONS = gql`
+  query productOptions($product: String) {
+    allProducts(where: { name_i: $product }) {
+      name
+      exteriorOptions {
+        id
+        name
+        image
+        description
+      }
+      interiorOptions {
+        id
+        name
+        image
+        description
+      }
+      glassOptions {
+        id
+        name
+        image
+        description
+      }
+      dividedLiteOptions(sortBy: name_ASC) {
+        id
+        name
+        image
+        description
+      }
+      brickmoldAndTrimOptions {
+        id
+        name
+        image
+        description
+      }
+    }
+  }
+`;
+
+const CATEGORYOPTIONS = gql`
+  query categoryOptions($category: String) {
+    allProductCategories(where: { name_i: $category }) {
+      name
+      exteriorOptions {
+        id
+        name
+        image
+        description
+      }
+      interiorOptions {
+        id
+        name
+        image
+        description
+      }
+      glassOptions {
+        id
+        name
+        image
+        description
+      }
+      dividedLiteOptions(sortBy: name_ASC) {
+        id
+        name
+        image
+        description
+      }
+      brickmoldAndTrimOptions {
+        id
+        name
+        image
+        description
+      }
     }
   }
 `;

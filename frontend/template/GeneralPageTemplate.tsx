@@ -14,11 +14,11 @@ interface Props {
   title: any;
   parent: any;
   links: any;
-  imageOverlapDetailsTitle: any;
-  imageOverlapDetailsChildren: any;
+  imageOverlapGreyChildren: any;
   imageOverlapImageSrc: any;
-  imageOverlapImageTitle: any;
-  imageOverlapImageChildren: any;
+  imageOverlapWhiteTitle: any;
+  imageOverlapWhiteChildren: any;
+  imageOverlapSpec: any;
   threeImagesProductImage1: any;
   threeImagesProductImage2: any;
   threeImagesProductImage3: any;
@@ -32,11 +32,11 @@ const GeneralTemplate = ({
   title,
   parent,
   links,
-  imageOverlapDetailsTitle,
-  imageOverlapDetailsChildren,
+  imageOverlapGreyChildren,
   imageOverlapImageSrc,
-  imageOverlapImageTitle,
-  imageOverlapImageChildren,
+  imageOverlapWhiteTitle,
+  imageOverlapWhiteChildren,
+  imageOverlapSpec,
   threeImagesProductImage1,
   threeImagesProductImage2,
   threeImagesProductImage3,
@@ -57,11 +57,12 @@ const GeneralTemplate = ({
     <>
       <Breadcrumbs links={links} title={title} parent={parent} padding />
       <ImageOverlap
-        detailsTitle={imageOverlapDetailsTitle}
-        detailsChildren={imageOverlapDetailsChildren}
+        title={title}
+        detailsChildren={imageOverlapGreyChildren}
         imageSrc={imageOverlapImageSrc}
-        imageTitle={imageOverlapImageTitle}
-        imageChildren={imageOverlapImageChildren}
+        imageTitle={imageOverlapWhiteTitle}
+        imageChildren={imageOverlapWhiteChildren}
+        spec={imageOverlapSpec}
       />
       <ThreeImages
         imageSrc1={threeImagesProductImage1}
@@ -91,9 +92,22 @@ const GeneralTemplate = ({
 
 const PRODUCT_QUERY = gql`
   query PRODUCT_QUERY($ProductName: String) {
-    allProducts(where: { name_contains: $ProductName }) {
+    allProducts(where: { name_i: $ProductName }) {
       id
       name
+      subtitle
+      image
+      productCategories {
+        name
+      }
+      imageTitle
+      imageDescription
+      specs
+      threeImageTitle
+      threeImageDescription
+      operationsTitle
+      operationsSubTitle
+      operationsDescription
       operations {
         id
         name

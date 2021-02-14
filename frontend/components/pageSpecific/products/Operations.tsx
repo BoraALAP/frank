@@ -37,11 +37,13 @@ export const Operations = ({
   const [imageSrc, setImageSrc] = useState();
   const [operationName, setOperationName] = useState();
   const [description, setDescription] = useState();
+  const [id, setId] = useState();
   const [active, setActive] = useState();
   useEffect(() => {
     setImageSrc(list && list[0]?.image);
     setVideoSrc(list && list[0]?.video);
     setOperationName(list && list[0]?.name);
+    setId(list && list[0]?.id);
   }, [list]);
 
   return (
@@ -65,7 +67,7 @@ export const Operations = ({
             <AnimatePresence exitBeforeEnter>
               <ImageS
                 alt={operationName}
-                key={imageSrc}
+                key={id}
                 src={imageSrc}
                 variants={variants}
                 initial="enter"
@@ -75,10 +77,8 @@ export const Operations = ({
               />
             </AnimatePresence>
           )}
-          <AnimatePresence exitBeforeEnter>
-            <h6>{operationName}</h6>
-            <p>{description}</p>
-          </AnimatePresence>
+          <h6>{operationName}</h6>
+          <p>{description}</p>
         </Left>
         <Right>
           {list?.map((item) => {
@@ -94,6 +94,7 @@ export const Operations = ({
                   setOperationName(item.name);
                   setDescription(item.description);
                   setActive(item.id);
+                  setId(item.id);
                 }}
                 onClick={() => {
                   setVideoSrc(item.video);
@@ -101,6 +102,7 @@ export const Operations = ({
                   setDescription(item.description);
                   setActive(item.id);
                   setOperationName(item.name);
+                  setId(item.id);
                 }}
               />
             );
