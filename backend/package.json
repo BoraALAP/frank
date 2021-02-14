@@ -7,16 +7,39 @@
   "repository": "https://github.com/BoraALAP/frank",
   "homepage": "https://frankbackend.herokuapp.com/",
   "license": "MIT",
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "scripts": {
     "dev": "keystone-next",
     "dev2": "cross-env NODE_ENV=development DISABLE_LOGGING=true keystone dev",
-    "devmon": "cross-env NODE_ENV=development DISABLE_LOGGING=true nodemon --exec keystone dev",
+    "devmon": "nodemon --exec keystone-next",
     "build": "cross-env NODE_ENV=production keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
     "create-tables": "cross-env keystone create-tables"
+  },
+  "eslintConfig": {
+    "extends": "/typescript.js",
+    "rules": {
+      "@typescript-eslint/no-unsafe-assignment": 0
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 10,
+            "browsers": [
+              "last 2 chrome versions",
+              "last 2 firefox versions",
+              "last 2 safari versions",
+              "last 2 edge versions"
+            ]
+          }
+        }
+      ],
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.12.16",
@@ -29,11 +52,11 @@
     "@keystonejs/email": "^5.2.0",
     "@keystonejs/fields-location-google": "^3.2.0",
     "@keystonejs/list-plugins": "^7.1.5",
+    "@keystonejs/server-side-graphql-client": "^1.1.2",
     "@types/nodemailer": "^6.4.0",
     "dotenv": "^8.2.0",
     "next": "^10.0.5",
     "nodemailer": "^6.4.17",
-    "nodemon": "^2.0.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "stripe": "^8.130.0"
@@ -56,30 +79,7 @@
     "prettier": "^2.2.1",
     "typescript": "^4.1.2"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": 10,
-            "browsers": [
-              "last 2 chrome versions",
-              "last 2 firefox versions",
-              "last 2 safari versions",
-              "last 2 edge versions"
-            ]
-          }
-        }
-      ],
-      "@babel/preset-react",
-      "@babel/preset-typescript"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "/typescript.js",
-    "rules": {
-      "@typescript-eslint/no-unsafe-assignment": 0
-    }
+  "engines": {
+    "node": ">=10.0.0"
   }
 }

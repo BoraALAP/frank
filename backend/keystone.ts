@@ -4,37 +4,33 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
-import { permissionsList } from './schemas/fields';
-
-//Options
-        import {Screen} from "./lists/Options/Screen"
-        import {Interior} from "./lists/Options/Interior"
-        import {HardwareKit} from "./lists/Options/HardwareKit"
-        import {GlassColor} from "./lists/Options/GlassColor"
-        import {Glass} from "./lists/Options/Glass"
-        import {Exterior} from "./lists/Options/Exterior"
-        import {DividedLite} from "./lists/Options/DividedLite"
-        import {BrickmoldAndTrim} from "./lists/Options/BrickmoldAndTrim"
-
-        //Main
-        import {User} from "./lists/User"
-        import {ProductCategory} from "./lists/ProductCategory"
-        import {Product} from "./lists/Product"
-        import {Operation} from "./lists/Operation"
-        import {Imagine} from "./lists/Imagine"
-        import {ForgottenPasswordToken} from "./lists/ForgottenPasswordToken"
-        import {Dealer} from "./lists/Dealer"
-        // import {Custom} from "./lists/Custom"
-        import {ContactUsForm} from "./lists/ContactUsForm"
-        import {BackEndUser} from "./lists/BackendUser"
-
 import 'dotenv/config';
+import { permissionsList } from './schemas/fields';
+import { Role } from './schemas/Role';
+//Options
+import {Screen} from "./schemas/Options/Screen"
+import {Interior} from "./schemas/Options/Interior"
+import {HardwareKit} from "./schemas/Options/HardwareKit"
+import {GlassColor} from "./schemas/Options/GlassColor"
+import {Glass} from "./schemas/Options/Glass"
+import {Exterior} from "./schemas/Options/Exterior"
+import {DividedLite} from "./schemas/Options/DividedLite"
+import {BrickmoldAndTrim} from "./schemas/Options/BrickmoldAndTrim"
 
-import { sendEmail } from "./mail";
+//Main
+import {User} from "./schemas/User"
+import {ProductCategory} from "./schemas/ProductCategory"
+import {Product} from "./schemas/Product"
+import {Operation} from "./schemas/Operation"
+import {Imagine} from "./schemas/Imagine"
+import {ForgottenPasswordToken} from "./schemas/ForgottenPasswordToken"
+import {Dealer} from "./schemas/Dealer"
+import {ContactUsForm} from "./schemas/ContactUsForm"
+import {BackEndUser} from "./schemas/BackendUser"
+
 import { extendGraphqlSchema } from './mutations';
 
 function check(name: string) {}
-
 
   const sessionConfig = {
     maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
@@ -50,17 +46,17 @@ function check(name: string) {}
       fields: ['name', 'email', 'password'],
       // TODO: Add in inital roles here
     },
-    passwordResetLink: {
-      async sendToken(args) {
-        // send the email
-        await sendEmail(args.token, args.identity);
-      },
-    },
+    // passwordResetLink: {
+    //   async sendToken(args) {
+    //     // send the email
+    //     // await sendEmail(args.token, args.identity);
+    //   },
+    // },
   });
 
   export default withAuth(
     config({
-      // @ts-ignore
+    
       server: {
         cors: {
           origin: [process.env.FRONTEND_URL],
@@ -68,7 +64,7 @@ function check(name: string) {}
         },
       },
       db: {
-        adapter: 'mongoose',
+        adapter:"mongoose",
         url: process.env.DATABASE,
         // async onConnect(keystone) {
         //   console.log('Connected to the database!');
@@ -83,7 +79,7 @@ function check(name: string) {}
         Imagine,
         ForgottenPasswordToken,
         Dealer,
-        // Custom,
+        
         ContactUsForm,
         BackEndUser,
         // Options
@@ -94,14 +90,16 @@ function check(name: string) {}
         Glass,
         Exterior,
         DividedLite,
-        BrickmoldAndTrim
+        BrickmoldAndTrim,
+        Role
       }),
       extendGraphqlSchema,
       ui: {
         // Show the UI only for poeple who pass this test
-        isAccessAllowed: ({ session }) =>
+        isAccessAllowed: ({ session }) =>{
           // console.log(session);
-          !!session?.data,
+          return session?.data
+      }
       },
       session: withItemData(statelessSessions(sessionConfig), {
         // GraphQL Query

@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server-express'
-import {sendEmail} from '../mail'
+// import {sendEmail} from '../mail'
 
 // CUSTOM USER CREATION - This one creates user and sends email to both parties for requesting user ID
 const creatingAUser = async (_, { name, email, password, companyName }, context, info, extra) => {
@@ -56,8 +56,8 @@ const emailLow = email.toLowerCase()
     name: createUserData.createUser.name
   };
 
-  await sendEmail('contactUsClient.jsx', propsClient);
-  await sendEmail('contactUsCustomer.jsx', propsCustomer);
+  // await sendEmail('contactUsClient.jsx', propsClient);
+  // await sendEmail('contactUsCustomer.jsx', propsCustomer);
 
   // Return New user
   return createUserData.createUser
