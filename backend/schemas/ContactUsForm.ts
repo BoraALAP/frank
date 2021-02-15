@@ -1,5 +1,5 @@
 import { text, integer  } from "@keystone-next/fields";
-import { atTracking, createdAtField, updatedAtField } from '@keystonejs/list-plugins';
+ 
 // import { sendEmail } from "../mail";
 import { list } from '@keystone-next/keystone/schema';
 
@@ -46,12 +46,7 @@ export const ContactUsForm = list({
       isRequired: true,
     }),
   },
-  plugins: [
-    atTracking({
-      createdAtField,
-      updatedAtField
-    }),
-  ],
+  
   // hooks:{
   //   afterChange: async({updatedItem, existingItem}) => {
   //     console.log(updatedItem , "updated");

@@ -1,5 +1,5 @@
 import { text,  relationship } from "@keystone-next/fields";
-import { atTracking, createdAtField, updatedAtField } from '@keystonejs/list-plugins';
+ 
 import { list } from '@keystone-next/keystone/schema';
 export const GlassColor = list({
   fields: {
@@ -14,11 +14,6 @@ export const GlassColor = list({
       many: true
     })
   },
-  plugins: [
-    atTracking({
-      createdAtField,
-      updatedAtField
-    }),
-  ],
+  
 
 });

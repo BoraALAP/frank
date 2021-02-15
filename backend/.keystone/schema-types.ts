@@ -2593,6 +2593,10 @@ export type RoleWhereInput = {
   readonly canManageUsers_not?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
   readonly canManageRoles_not?: Scalars['Boolean'] | null;
+  readonly canManageCart?: Scalars['Boolean'] | null;
+  readonly canManageCart_not?: Scalars['Boolean'] | null;
+  readonly canManageOrders?: Scalars['Boolean'] | null;
+  readonly canManageOrders_not?: Scalars['Boolean'] | null;
   readonly assignedTo_every?: UserWhereInput | null;
   readonly assignedTo_some?: UserWhereInput | null;
   readonly assignedTo_none?: UserWhereInput | null;
@@ -2615,6 +2619,10 @@ export type SortRolesBy =
   | 'canManageUsers_DESC'
   | 'canManageRoles_ASC'
   | 'canManageRoles_DESC'
+  | 'canManageCart_ASC'
+  | 'canManageCart_DESC'
+  | 'canManageOrders_ASC'
+  | 'canManageOrders_DESC'
   | 'assignedTo_ASC'
   | 'assignedTo_DESC';
 
@@ -2624,6 +2632,8 @@ export type RoleUpdateInput = {
   readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
   readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
+  readonly canManageCart?: Scalars['Boolean'] | null;
+  readonly canManageOrders?: Scalars['Boolean'] | null;
   readonly assignedTo?: UserRelateToManyInput | null;
 };
 
@@ -2638,6 +2648,8 @@ export type RoleCreateInput = {
   readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
   readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
+  readonly canManageCart?: Scalars['Boolean'] | null;
+  readonly canManageOrders?: Scalars['Boolean'] | null;
   readonly assignedTo?: UserRelateToManyInput | null;
 };
 
@@ -2665,7 +2677,21 @@ export type CreateInitialUserInput = {
   readonly name?: Scalars['String'] | null;
   readonly email?: Scalars['String'] | null;
   readonly password?: Scalars['String'] | null;
+  readonly companyName?: Scalars['String'] | null;
 };
+
+export type PasswordResetRequestErrorCode =
+  | 'IDENTITY_NOT_FOUND'
+  | 'MULTIPLE_IDENTITY_MATCHES';
+
+export type PasswordResetRedemptionErrorCode =
+  | 'FAILURE'
+  | 'IDENTITY_NOT_FOUND'
+  | 'MULTIPLE_IDENTITY_MATCHES'
+  | 'TOKEN_NOT_SET'
+  | 'TOKEN_MISMATCH'
+  | 'TOKEN_EXPIRED'
+  | 'TOKEN_REDEEMED';
 
 export type KeystoneAdminUIFieldMetaCreateViewFieldMode = 'edit' | 'hidden';
 
@@ -3447,6 +3473,8 @@ export type RoleListTypeInfo = {
     | 'canSeeOtherUsers'
     | 'canManageUsers'
     | 'canManageRoles'
+    | 'canManageCart'
+    | 'canManageOrders'
     | 'assignedTo';
   backing: {
     readonly id: string;
@@ -3455,6 +3483,8 @@ export type RoleListTypeInfo = {
     readonly canSeeOtherUsers?: boolean | null;
     readonly canManageUsers?: boolean | null;
     readonly canManageRoles?: boolean | null;
+    readonly canManageCart?: boolean | null;
+    readonly canManageOrders?: boolean | null;
     readonly assignedTo?: string | null;
   };
   inputs: {

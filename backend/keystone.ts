@@ -4,10 +4,8 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
-import 'dotenv/config';
 import { permissionsList } from './schemas/fields';
 import { Role } from './schemas/Role';
-//Options
 import {Screen} from "./schemas/Options/Screen"
 import {Interior} from "./schemas/Options/Interior"
 import {HardwareKit} from "./schemas/Options/HardwareKit"
@@ -28,52 +26,59 @@ import {Dealer} from "./schemas/Dealer"
 import {ContactUsForm} from "./schemas/ContactUsForm"
 import {BackEndUser} from "./schemas/BackendUser"
 
+import 'dotenv/config';
+
+import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 
 function check(name: string) {}
 
-  const sessionConfig = {
-    maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
-    secret: process.env.COOKIE_SECRET,
-  };
+const databaseURL =
+  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
 
+const sessionConfig = {
+  maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
+  secret: process.env.COOKIE_SECRET,
+};
 
-  const { withAuth } = createAuth({
-    listKey: 'User',
-    identityField: 'email',
-    secretField: 'password',
-    initFirstItem: {
-      fields: ['name', 'email', 'password'],
-      // TODO: Add in inital roles here
+const { withAuth } = createAuth({
+  listKey: 'User',
+  identityField: 'email',
+  secretField: 'password',
+  initFirstItem: {
+    fields: ['name', 'email', 'password', 'companyName'],
+    // TODO: Add in inital roles here
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      // send the email
+      await sendPasswordResetEmail(args.token, args.identity);
     },
-    // passwordResetLink: {
-    //   async sendToken(args) {
-    //     // send the email
-    //     // await sendEmail(args.token, args.identity);
-    //   },
-    // },
-  });
+  },
+});
 
-  export default withAuth(
-    config({
-    
-      server: {
-        cors: {
-          origin: [process.env.FRONTEND_URL],
-          credentials: true,
-        },
+export default withAuth(
+  config({
+    // @ts-ignore
+    server: {
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
       },
-      db: {
-        adapter:"mongoose",
-        url: process.env.DATABASE,
-        // async onConnect(keystone) {
-        //   console.log('Connected to the database!');
-        // },
+    },
+    db: {
+      adapter: 'mongoose',
+      url: databaseURL,
+      async onConnect(keystone) {
+        console.log('Connected to the database!');
+        
       },
-      lists: createSchema({
-        // Schema items go in here
-        User,
-        ProductCategory,
+    },
+    lists: createSchema({
+      // Schema items go in here
+      User,
+ 
+   ProductCategory,
         Product,
         Operation,
         Imagine,
@@ -91,19 +96,18 @@ function check(name: string) {}
         Exterior,
         DividedLite,
         BrickmoldAndTrim,
-        Role
-      }),
-      extendGraphqlSchema,
-      ui: {
-        // Show the UI only for poeple who pass this test
-        isAccessAllowed: ({ session }) =>{
-          // console.log(session);
-          return session?.data
-      }
-      },
-      session: withItemData(statelessSessions(sessionConfig), {
-        // GraphQL Query
-        User: `id name email role { ${permissionsList.join(' ')} }`,
-      }),
-    })
-  );
+      Role,
+    }),
+    extendGraphqlSchema,
+    ui: {
+      // Show the UI only for poeple who pass this test
+      isAccessAllowed: ({ session }) =>
+        // console.log(session);
+        !!session?.data,
+    },
+    session: withItemData(statelessSessions(sessionConfig), {
+      // GraphQL Query
+      User: `id name email role { ${permissionsList.join(' ')} }`,
+    }),
+  })
+);

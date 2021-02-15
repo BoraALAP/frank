@@ -1,5 +1,5 @@
 import { text,  relationship } from "@keystone-next/fields";
-import { atTracking, createdAtField, updatedAtField } from '@keystonejs/list-plugins';
+ 
 import { list } from '@keystone-next/keystone/schema';
 
 export const DividedLite = list({
@@ -19,11 +19,6 @@ export const DividedLite = list({
       many: true
     }),
   },
-  plugins: [
-    atTracking({
-      createdAtField,
-      updatedAtField
-    }),
-  ],
+  
 
 });
