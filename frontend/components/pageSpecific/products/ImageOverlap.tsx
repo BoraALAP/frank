@@ -4,10 +4,11 @@ import Details from "./Details";
 
 export const ImageOverlap = ({
   title,
-  detailsChildren,
+  subtitle
   imageSrc,
   imageTitle,
   imageChildren,
+  spec
 }) => {
   return (
     <Container>

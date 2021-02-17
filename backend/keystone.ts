@@ -1,40 +1,38 @@
-import { createAuth } from '@keystone-next/auth';
-import { config, createSchema } from '@keystone-next/keystone/schema';
+import { createAuth } from "@keystone-next/auth";
+import { config, createSchema } from "@keystone-next/keystone/schema";
 import {
   withItemData,
   statelessSessions,
-} from '@keystone-next/keystone/session';
-import { permissionsList } from './schemas/fields';
-import { Role } from './schemas/Role';
-import {Screen} from "./schemas/Options/Screen"
-import {Interior} from "./schemas/Options/Interior"
-import {HardwareKit} from "./schemas/Options/HardwareKit"
-import {GlassColor} from "./schemas/Options/GlassColor"
-import {Glass} from "./schemas/Options/Glass"
-import {Exterior} from "./schemas/Options/Exterior"
-import {DividedLite} from "./schemas/Options/DividedLite"
-import {BrickmoldAndTrim} from "./schemas/Options/BrickmoldAndTrim"
+} from "@keystone-next/keystone/session";
+import { permissionsList } from "./schemas/fields";
+import { Role } from "./schemas/Role";
+import { Screen } from "./schemas/Options/Screen";
+import { Interior } from "./schemas/Options/Interior";
+import { HardwareKit } from "./schemas/Options/HardwareKit";
+import { GlassColor } from "./schemas/Options/GlassColor";
+import { Glass } from "./schemas/Options/Glass";
+import { Exterior } from "./schemas/Options/Exterior";
+import { DividedLite } from "./schemas/Options/DividedLite";
+import { BrickmouldAndTrim } from "./schemas/Options/BrickmouldAndTrim";
 
 //Main
-import {User} from "./schemas/User"
-import {ProductCategory} from "./schemas/ProductCategory"
-import {Product} from "./schemas/Product"
-import {Operation} from "./schemas/Operation"
-import {Imagine} from "./schemas/Imagine"
-import {ForgottenPasswordToken} from "./schemas/ForgottenPasswordToken"
-import {Dealer} from "./schemas/Dealer"
-import {ContactUsForm} from "./schemas/ContactUsForm"
-import {BackEndUser} from "./schemas/BackendUser"
+import { User } from "./schemas/User";
+import { ProductCategory } from "./schemas/ProductCategory";
+import { Product } from "./schemas/Product";
+import { Operation } from "./schemas/Operation";
+import { Imagine } from "./schemas/Imagine";
+import { Dealer } from "./schemas/Dealer";
+import { ContactUsForm } from "./schemas/ContactUsForm";
 
-import 'dotenv/config';
+import "dotenv/config";
 
-import { sendPasswordResetEmail } from './lib/mail';
-import { extendGraphqlSchema } from './mutations';
+import { sendPasswordResetEmail } from "./lib/mail";
+import { extendGraphqlSchema } from "./mutations";
 
 function check(name: string) {}
 
 const databaseURL =
-  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
+  process.env.DATABASE_URL || "mongodb://localhost/keystone-sick-fits-tutorial";
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
@@ -42,11 +40,11 @@ const sessionConfig = {
 };
 
 const { withAuth } = createAuth({
-  listKey: 'User',
-  identityField: 'email',
-  secretField: 'password',
+  listKey: "User",
+  identityField: "email",
+  secretField: "password",
   initFirstItem: {
-    fields: ['name', 'email', 'password', 'companyName'],
+    fields: ["name", "email", "password", "companyName"],
     // TODO: Add in inital roles here
   },
   passwordResetLink: {
@@ -67,47 +65,44 @@ export default withAuth(
       },
     },
     db: {
-      adapter: 'mongoose',
+      adapter: "mongoose",
       url: databaseURL,
       async onConnect(keystone) {
-        console.log('Connected to the database!');
-        
+        console.log("Connected to the database!");
       },
     },
+
     lists: createSchema({
       // Schema items go in here
       User,
- 
-   ProductCategory,
-        Product,
-        Operation,
-        Imagine,
-        ForgottenPasswordToken,
-        Dealer,
-        
-        ContactUsForm,
-        BackEndUser,
-        // Options
-        Screen,
-        Interior,
-        HardwareKit,
-        GlassColor,
-        Glass,
-        Exterior,
-        DividedLite,
-        BrickmoldAndTrim,
+      ProductCategory,
+      Product,
+      Operation,
+      Imagine,
+      Dealer,
+      ContactUsForm,
+      // Options
+      Screen,
+      Interior,
+      HardwareKit,
+      GlassColor,
+      Glass,
+      Exterior,
+      DividedLite,
+      BrickmouldAndTrim,
       Role,
     }),
     extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
-      isAccessAllowed: ({ session }) =>
-        // console.log(session);
-        !!session?.data,
+      isAccessAllowed: ({ session }) => {
+        console.log(session);
+        return !!session?.data;
+      },
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
-      User: `id name email role { ${permissionsList.join(' ')} }`,
+      User: `id name email role { ${permissionsList.join(" ")} }`,
     }),
   })
 );

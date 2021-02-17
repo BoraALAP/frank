@@ -12,8 +12,7 @@ type User {
   email: String
   password_is_set: Boolean
   companyName: String
-  permission: String
-  isDealer: Boolean
+  dealerId: String
   role: Role
   passwordResetToken_is_set: Boolean
   passwordResetIssuedAt: String
@@ -85,26 +84,24 @@ input UserWhereInput {
   companyName_not_ends_with_i: String
   companyName_in: [String]
   companyName_not_in: [String]
-  permission: String
-  permission_not: String
-  permission_contains: String
-  permission_not_contains: String
-  permission_starts_with: String
-  permission_not_starts_with: String
-  permission_ends_with: String
-  permission_not_ends_with: String
-  permission_i: String
-  permission_not_i: String
-  permission_contains_i: String
-  permission_not_contains_i: String
-  permission_starts_with_i: String
-  permission_not_starts_with_i: String
-  permission_ends_with_i: String
-  permission_not_ends_with_i: String
-  permission_in: [String]
-  permission_not_in: [String]
-  isDealer: Boolean
-  isDealer_not: Boolean
+  dealerId: String
+  dealerId_not: String
+  dealerId_contains: String
+  dealerId_not_contains: String
+  dealerId_starts_with: String
+  dealerId_not_starts_with: String
+  dealerId_ends_with: String
+  dealerId_not_ends_with: String
+  dealerId_i: String
+  dealerId_not_i: String
+  dealerId_contains_i: String
+  dealerId_not_contains_i: String
+  dealerId_starts_with_i: String
+  dealerId_not_starts_with_i: String
+  dealerId_ends_with_i: String
+  dealerId_not_ends_with_i: String
+  dealerId_in: [String]
+  dealerId_not_in: [String]
   role: RoleWhereInput
   role_is_null: Boolean
   passwordResetToken_is_set: Boolean
@@ -156,10 +153,8 @@ enum SortUsersBy {
   email_DESC
   companyName_ASC
   companyName_DESC
-  permission_ASC
-  permission_DESC
-  isDealer_ASC
-  isDealer_DESC
+  dealerId_ASC
+  dealerId_DESC
   role_ASC
   role_DESC
   passwordResetIssuedAt_ASC
@@ -177,8 +172,7 @@ input UserUpdateInput {
   email: String
   password: String
   companyName: String
-  permission: String
-  isDealer: Boolean
+  dealerId: String
   role: RoleRelateToOneInput
   passwordResetToken: String
   passwordResetIssuedAt: String
@@ -198,8 +192,7 @@ input UserCreateInput {
   email: String
   password: String
   companyName: String
-  permission: String
-  isDealer: Boolean
+  dealerId: String
   role: RoleRelateToOneInput
   passwordResetToken: String
   passwordResetIssuedAt: String
@@ -211,6 +204,55 @@ input UserCreateInput {
 
 input UsersCreateInput {
   data: UserCreateInput
+}
+
+type CloudinaryImage_File {
+  id: ID
+  path: String
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
+}
+
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """ Rewrites the filename to be this pretty string. Do not include `/` or `.` 
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
 }
 
 input ProductRelateToManyInput {
@@ -262,10 +304,10 @@ input DividedLiteRelateToManyInput {
   disconnectAll: Boolean
 }
 
-input BrickmoldAndTrimRelateToManyInput {
-  create: [BrickmoldAndTrimCreateInput]
-  connect: [BrickmoldAndTrimWhereUniqueInput]
-  disconnect: [BrickmoldAndTrimWhereUniqueInput]
+input BrickmouldAndTrimRelateToManyInput {
+  create: [BrickmouldAndTrimCreateInput]
+  connect: [BrickmouldAndTrimWhereUniqueInput]
+  disconnect: [BrickmouldAndTrimWhereUniqueInput]
   disconnectAll: Boolean
 }
 
@@ -280,7 +322,9 @@ input OperationRelateToManyInput {
 type ProductCategory {
   id: ID!
   name: String
+  subtitle: String
   description: String
+  image: CloudinaryImage_File
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   exteriorOptions(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): [Exterior!]!
@@ -295,8 +339,8 @@ type ProductCategory {
   _screenOptionsMeta(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   dividedLiteOptions(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): [DividedLite!]!
   _dividedLiteOptionsMeta(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
-  brickmoldAndTrimOptions(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmoldAndTrim!]!
-  _brickmoldAndTrimOptionsMeta(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  brickmouldAndTrimOptions(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim!]!
+  _brickmouldAndTrimOptionsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   operations(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): [Operation!]!
   _operationsMeta(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 }
@@ -326,6 +370,24 @@ input ProductCategoryWhereInput {
   name_not_ends_with_i: String
   name_in: [String]
   name_not_in: [String]
+  subtitle: String
+  subtitle_not: String
+  subtitle_contains: String
+  subtitle_not_contains: String
+  subtitle_starts_with: String
+  subtitle_not_starts_with: String
+  subtitle_ends_with: String
+  subtitle_not_ends_with: String
+  subtitle_i: String
+  subtitle_not_i: String
+  subtitle_contains_i: String
+  subtitle_not_contains_i: String
+  subtitle_starts_with_i: String
+  subtitle_not_starts_with_i: String
+  subtitle_ends_with_i: String
+  subtitle_not_ends_with_i: String
+  subtitle_in: [String]
+  subtitle_not_in: [String]
   description: String
   description_not: String
   description_contains: String
@@ -344,6 +406,10 @@ input ProductCategoryWhereInput {
   description_not_ends_with_i: String
   description_in: [String]
   description_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
 
   """ condition must be true for all nodes """
   products_every: ProductWhereInput
@@ -409,13 +475,13 @@ input ProductCategoryWhereInput {
   dividedLiteOptions_none: DividedLiteWhereInput
 
   """ condition must be true for all nodes """
-  brickmoldAndTrimOptions_every: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_every: BrickmouldAndTrimWhereInput
 
   """ condition must be true for at least 1 node """
-  brickmoldAndTrimOptions_some: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_some: BrickmouldAndTrimWhereInput
 
   """ condition must be false for all nodes """
-  brickmoldAndTrimOptions_none: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_none: BrickmouldAndTrimWhereInput
 
   """ condition must be true for all nodes """
   operations_every: OperationWhereInput
@@ -436,6 +502,8 @@ enum SortProductCategoriesBy {
   id_DESC
   name_ASC
   name_DESC
+  subtitle_ASC
+  subtitle_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -452,15 +520,17 @@ enum SortProductCategoriesBy {
   screenOptions_DESC
   dividedLiteOptions_ASC
   dividedLiteOptions_DESC
-  brickmoldAndTrimOptions_ASC
-  brickmoldAndTrimOptions_DESC
+  brickmouldAndTrimOptions_ASC
+  brickmouldAndTrimOptions_DESC
   operations_ASC
   operations_DESC
 }
 
 input ProductCategoryUpdateInput {
   name: String
+  subtitle: String
   description: String
+  image: Upload
   products: ProductRelateToManyInput
   exteriorOptions: ExteriorRelateToManyInput
   interiorOptions: InteriorRelateToManyInput
@@ -468,7 +538,7 @@ input ProductCategoryUpdateInput {
   glassOptions: GlassRelateToManyInput
   screenOptions: ScreenRelateToManyInput
   dividedLiteOptions: DividedLiteRelateToManyInput
-  brickmoldAndTrimOptions: BrickmoldAndTrimRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
   operations: OperationRelateToManyInput
 }
 
@@ -479,7 +549,9 @@ input ProductCategoriesUpdateInput {
 
 input ProductCategoryCreateInput {
   name: String
+  subtitle: String
   description: String
+  image: Upload
   products: ProductRelateToManyInput
   exteriorOptions: ExteriorRelateToManyInput
   interiorOptions: InteriorRelateToManyInput
@@ -487,7 +559,7 @@ input ProductCategoryCreateInput {
   glassOptions: GlassRelateToManyInput
   screenOptions: ScreenRelateToManyInput
   dividedLiteOptions: DividedLiteRelateToManyInput
-  brickmoldAndTrimOptions: BrickmoldAndTrimRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
   operations: OperationRelateToManyInput
 }
 
@@ -507,14 +579,21 @@ type Product {
   id: ID!
   name: String
   subtitle: String
-  image: String
+  excerpt: String
+  image: CloudinaryImage_File
   productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
   _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  pageSubtitle: String
+  productImage: CloudinaryImage_File
   imageTitle: String
   imageDescription: String
   specs: String
-  threeImageTitle: String
-  threeImageDescription: String
+  productImage1: CloudinaryImage_File
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: CloudinaryImage_File
+  productImage3: CloudinaryImage_File
+  productImage4: CloudinaryImage_File
   operationsTitle: String
   operationsSubTitle: String
   operationsDescription: String
@@ -532,8 +611,8 @@ type Product {
   _screenOptionsMeta(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   dividedLiteOptions(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): [DividedLite!]!
   _dividedLiteOptionsMeta(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
-  brickmoldAndTrimOptions(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmoldAndTrim!]!
-  _brickmoldAndTrimOptionsMeta(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  brickmouldAndTrimOptions(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim!]!
+  _brickmouldAndTrimOptionsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 }
 
 input ProductWhereInput {
@@ -579,22 +658,26 @@ input ProductWhereInput {
   subtitle_not_ends_with_i: String
   subtitle_in: [String]
   subtitle_not_in: [String]
+  excerpt: String
+  excerpt_not: String
+  excerpt_contains: String
+  excerpt_not_contains: String
+  excerpt_starts_with: String
+  excerpt_not_starts_with: String
+  excerpt_ends_with: String
+  excerpt_not_ends_with: String
+  excerpt_i: String
+  excerpt_not_i: String
+  excerpt_contains_i: String
+  excerpt_not_contains_i: String
+  excerpt_starts_with_i: String
+  excerpt_not_starts_with_i: String
+  excerpt_ends_with_i: String
+  excerpt_not_ends_with_i: String
+  excerpt_in: [String]
+  excerpt_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
 
@@ -606,6 +689,28 @@ input ProductWhereInput {
 
   """ condition must be false for all nodes """
   productCategories_none: ProductCategoryWhereInput
+  pageSubtitle: String
+  pageSubtitle_not: String
+  pageSubtitle_contains: String
+  pageSubtitle_not_contains: String
+  pageSubtitle_starts_with: String
+  pageSubtitle_not_starts_with: String
+  pageSubtitle_ends_with: String
+  pageSubtitle_not_ends_with: String
+  pageSubtitle_i: String
+  pageSubtitle_not_i: String
+  pageSubtitle_contains_i: String
+  pageSubtitle_not_contains_i: String
+  pageSubtitle_starts_with_i: String
+  pageSubtitle_not_starts_with_i: String
+  pageSubtitle_ends_with_i: String
+  pageSubtitle_not_ends_with_i: String
+  pageSubtitle_in: [String]
+  pageSubtitle_not_in: [String]
+  productImage: String
+  productImage_not: String
+  productImage_in: [String]
+  productImage_not_in: [String]
   imageTitle: String
   imageTitle_not: String
   imageTitle_contains: String
@@ -660,42 +765,58 @@ input ProductWhereInput {
   specs_not_ends_with_i: String
   specs_in: [String]
   specs_not_in: [String]
-  threeImageTitle: String
-  threeImageTitle_not: String
-  threeImageTitle_contains: String
-  threeImageTitle_not_contains: String
-  threeImageTitle_starts_with: String
-  threeImageTitle_not_starts_with: String
-  threeImageTitle_ends_with: String
-  threeImageTitle_not_ends_with: String
-  threeImageTitle_i: String
-  threeImageTitle_not_i: String
-  threeImageTitle_contains_i: String
-  threeImageTitle_not_contains_i: String
-  threeImageTitle_starts_with_i: String
-  threeImageTitle_not_starts_with_i: String
-  threeImageTitle_ends_with_i: String
-  threeImageTitle_not_ends_with_i: String
-  threeImageTitle_in: [String]
-  threeImageTitle_not_in: [String]
-  threeImageDescription: String
-  threeImageDescription_not: String
-  threeImageDescription_contains: String
-  threeImageDescription_not_contains: String
-  threeImageDescription_starts_with: String
-  threeImageDescription_not_starts_with: String
-  threeImageDescription_ends_with: String
-  threeImageDescription_not_ends_with: String
-  threeImageDescription_i: String
-  threeImageDescription_not_i: String
-  threeImageDescription_contains_i: String
-  threeImageDescription_not_contains_i: String
-  threeImageDescription_starts_with_i: String
-  threeImageDescription_not_starts_with_i: String
-  threeImageDescription_ends_with_i: String
-  threeImageDescription_not_ends_with_i: String
-  threeImageDescription_in: [String]
-  threeImageDescription_not_in: [String]
+  productImage1: String
+  productImage1_not: String
+  productImage1_in: [String]
+  productImage1_not_in: [String]
+  secondaryDetailsTitle: String
+  secondaryDetailsTitle_not: String
+  secondaryDetailsTitle_contains: String
+  secondaryDetailsTitle_not_contains: String
+  secondaryDetailsTitle_starts_with: String
+  secondaryDetailsTitle_not_starts_with: String
+  secondaryDetailsTitle_ends_with: String
+  secondaryDetailsTitle_not_ends_with: String
+  secondaryDetailsTitle_i: String
+  secondaryDetailsTitle_not_i: String
+  secondaryDetailsTitle_contains_i: String
+  secondaryDetailsTitle_not_contains_i: String
+  secondaryDetailsTitle_starts_with_i: String
+  secondaryDetailsTitle_not_starts_with_i: String
+  secondaryDetailsTitle_ends_with_i: String
+  secondaryDetailsTitle_not_ends_with_i: String
+  secondaryDetailsTitle_in: [String]
+  secondaryDetailsTitle_not_in: [String]
+  secondaryDetailsDescription: String
+  secondaryDetailsDescription_not: String
+  secondaryDetailsDescription_contains: String
+  secondaryDetailsDescription_not_contains: String
+  secondaryDetailsDescription_starts_with: String
+  secondaryDetailsDescription_not_starts_with: String
+  secondaryDetailsDescription_ends_with: String
+  secondaryDetailsDescription_not_ends_with: String
+  secondaryDetailsDescription_i: String
+  secondaryDetailsDescription_not_i: String
+  secondaryDetailsDescription_contains_i: String
+  secondaryDetailsDescription_not_contains_i: String
+  secondaryDetailsDescription_starts_with_i: String
+  secondaryDetailsDescription_not_starts_with_i: String
+  secondaryDetailsDescription_ends_with_i: String
+  secondaryDetailsDescription_not_ends_with_i: String
+  secondaryDetailsDescription_in: [String]
+  secondaryDetailsDescription_not_in: [String]
+  productImage2: String
+  productImage2_not: String
+  productImage2_in: [String]
+  productImage2_not_in: [String]
+  productImage3: String
+  productImage3_not: String
+  productImage3_in: [String]
+  productImage3_not_in: [String]
+  productImage4: String
+  productImage4_not: String
+  productImage4_in: [String]
+  productImage4_not_in: [String]
   operationsTitle: String
   operationsTitle_not: String
   operationsTitle_contains: String
@@ -815,13 +936,13 @@ input ProductWhereInput {
   dividedLiteOptions_none: DividedLiteWhereInput
 
   """ condition must be true for all nodes """
-  brickmoldAndTrimOptions_every: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_every: BrickmouldAndTrimWhereInput
 
   """ condition must be true for at least 1 node """
-  brickmoldAndTrimOptions_some: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_some: BrickmouldAndTrimWhereInput
 
   """ condition must be false for all nodes """
-  brickmoldAndTrimOptions_none: BrickmoldAndTrimWhereInput
+  brickmouldAndTrimOptions_none: BrickmouldAndTrimWhereInput
 }
 
 input ProductWhereUniqueInput {
@@ -835,20 +956,22 @@ enum SortProductsBy {
   name_DESC
   subtitle_ASC
   subtitle_DESC
-  image_ASC
-  image_DESC
+  excerpt_ASC
+  excerpt_DESC
   productCategories_ASC
   productCategories_DESC
+  pageSubtitle_ASC
+  pageSubtitle_DESC
   imageTitle_ASC
   imageTitle_DESC
   imageDescription_ASC
   imageDescription_DESC
   specs_ASC
   specs_DESC
-  threeImageTitle_ASC
-  threeImageTitle_DESC
-  threeImageDescription_ASC
-  threeImageDescription_DESC
+  secondaryDetailsTitle_ASC
+  secondaryDetailsTitle_DESC
+  secondaryDetailsDescription_ASC
+  secondaryDetailsDescription_DESC
   operationsTitle_ASC
   operationsTitle_DESC
   operationsSubTitle_ASC
@@ -869,20 +992,27 @@ enum SortProductsBy {
   screenOptions_DESC
   dividedLiteOptions_ASC
   dividedLiteOptions_DESC
-  brickmoldAndTrimOptions_ASC
-  brickmoldAndTrimOptions_DESC
+  brickmouldAndTrimOptions_ASC
+  brickmouldAndTrimOptions_DESC
 }
 
 input ProductUpdateInput {
   name: String
   subtitle: String
-  image: String
+  excerpt: String
+  image: Upload
   productCategories: ProductCategoryRelateToManyInput
+  pageSubtitle: String
+  productImage: Upload
   imageTitle: String
   imageDescription: String
   specs: String
-  threeImageTitle: String
-  threeImageDescription: String
+  productImage1: Upload
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: Upload
+  productImage3: Upload
+  productImage4: Upload
   operationsTitle: String
   operationsSubTitle: String
   operationsDescription: String
@@ -893,7 +1023,7 @@ input ProductUpdateInput {
   glassOptions: GlassRelateToManyInput
   screenOptions: ScreenRelateToManyInput
   dividedLiteOptions: DividedLiteRelateToManyInput
-  brickmoldAndTrimOptions: BrickmoldAndTrimRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
 }
 
 input ProductsUpdateInput {
@@ -904,13 +1034,20 @@ input ProductsUpdateInput {
 input ProductCreateInput {
   name: String
   subtitle: String
-  image: String
+  excerpt: String
+  image: Upload
   productCategories: ProductCategoryRelateToManyInput
+  pageSubtitle: String
+  productImage: Upload
   imageTitle: String
   imageDescription: String
   specs: String
-  threeImageTitle: String
-  threeImageDescription: String
+  productImage1: Upload
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: Upload
+  productImage3: Upload
+  productImage4: Upload
   operationsTitle: String
   operationsSubTitle: String
   operationsDescription: String
@@ -921,7 +1058,7 @@ input ProductCreateInput {
   glassOptions: GlassRelateToManyInput
   screenOptions: ScreenRelateToManyInput
   dividedLiteOptions: DividedLiteRelateToManyInput
-  brickmoldAndTrimOptions: BrickmoldAndTrimRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
 }
 
 input ProductsCreateInput {
@@ -932,7 +1069,7 @@ input ProductsCreateInput {
 type Operation {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   video: String
   productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
   _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -967,20 +1104,6 @@ input OperationWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   video: String
@@ -1030,8 +1153,6 @@ enum SortOperationsBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   video_ASC
   video_DESC
   productCategories_ASC
@@ -1042,7 +1163,7 @@ enum SortOperationsBy {
 
 input OperationUpdateInput {
   name: String
-  image: String
+  image: Upload
   video: String
   productCategories: ProductCategoryRelateToManyInput
   products: ProductRelateToManyInput
@@ -1055,7 +1176,7 @@ input OperationsUpdateInput {
 
 input OperationCreateInput {
   name: String
-  image: String
+  image: Upload
   video: String
   productCategories: ProductCategoryRelateToManyInput
   products: ProductRelateToManyInput
@@ -1162,120 +1283,6 @@ input ImagineCreateInput {
 
 input ImaginesCreateInput {
   data: ImagineCreateInput
-}
-
-input UserRelateToOneInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
-  disconnect: UserWhereUniqueInput
-  disconnectAll: Boolean
-}
-
-""" A keystone list """
-type ForgottenPasswordToken {
-  id: ID!
-  user: User
-  token: String
-  requestedAt: String
-  accessedAt: String
-  expiresAt: String
-}
-
-input ForgottenPasswordTokenWhereInput {
-  AND: [ForgottenPasswordTokenWhereInput]
-  OR: [ForgottenPasswordTokenWhereInput]
-  id: ID
-  id_not: ID
-  id_in: [ID]
-  id_not_in: [ID]
-  user: UserWhereInput
-  user_is_null: Boolean
-  token: String
-  token_not: String
-  token_contains: String
-  token_not_contains: String
-  token_starts_with: String
-  token_not_starts_with: String
-  token_ends_with: String
-  token_not_ends_with: String
-  token_i: String
-  token_not_i: String
-  token_contains_i: String
-  token_not_contains_i: String
-  token_starts_with_i: String
-  token_not_starts_with_i: String
-  token_ends_with_i: String
-  token_not_ends_with_i: String
-  token_in: [String]
-  token_not_in: [String]
-  requestedAt: String
-  requestedAt_not: String
-  requestedAt_lt: String
-  requestedAt_lte: String
-  requestedAt_gt: String
-  requestedAt_gte: String
-  requestedAt_in: [String]
-  requestedAt_not_in: [String]
-  accessedAt: String
-  accessedAt_not: String
-  accessedAt_lt: String
-  accessedAt_lte: String
-  accessedAt_gt: String
-  accessedAt_gte: String
-  accessedAt_in: [String]
-  accessedAt_not_in: [String]
-  expiresAt: String
-  expiresAt_not: String
-  expiresAt_lt: String
-  expiresAt_lte: String
-  expiresAt_gt: String
-  expiresAt_gte: String
-  expiresAt_in: [String]
-  expiresAt_not_in: [String]
-}
-
-input ForgottenPasswordTokenWhereUniqueInput {
-  id: ID!
-}
-
-enum SortForgottenPasswordTokensBy {
-  id_ASC
-  id_DESC
-  user_ASC
-  user_DESC
-  token_ASC
-  token_DESC
-  requestedAt_ASC
-  requestedAt_DESC
-  accessedAt_ASC
-  accessedAt_DESC
-  expiresAt_ASC
-  expiresAt_DESC
-}
-
-input ForgottenPasswordTokenUpdateInput {
-  user: UserRelateToOneInput
-  token: String
-  requestedAt: String
-  accessedAt: String
-  expiresAt: String
-}
-
-input ForgottenPasswordTokensUpdateInput {
-  id: ID!
-  data: ForgottenPasswordTokenUpdateInput
-}
-
-input ForgottenPasswordTokenCreateInput {
-  user: UserRelateToOneInput
-  token: String
-  requestedAt: String
-  accessedAt: String
-  expiresAt: String
-}
-
-input ForgottenPasswordTokensCreateInput {
-  data: ForgottenPasswordTokenCreateInput
 }
 
 """ A keystone list """
@@ -1795,101 +1802,6 @@ input ContactUsFormsCreateInput {
 }
 
 """ A keystone list """
-type BackEndUser {
-  id: ID!
-  name: String
-  email: String
-  password_is_set: Boolean
-  isAdmin: Boolean
-}
-
-input BackEndUserWhereInput {
-  AND: [BackEndUserWhereInput]
-  OR: [BackEndUserWhereInput]
-  id: ID
-  id_not: ID
-  id_in: [ID]
-  id_not_in: [ID]
-  name: String
-  name_not: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  name_i: String
-  name_not_i: String
-  name_contains_i: String
-  name_not_contains_i: String
-  name_starts_with_i: String
-  name_not_starts_with_i: String
-  name_ends_with_i: String
-  name_not_ends_with_i: String
-  name_in: [String]
-  name_not_in: [String]
-  email: String
-  email_not: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  email_i: String
-  email_not_i: String
-  email_contains_i: String
-  email_not_contains_i: String
-  email_starts_with_i: String
-  email_not_starts_with_i: String
-  email_ends_with_i: String
-  email_not_ends_with_i: String
-  email_in: [String]
-  email_not_in: [String]
-  password_is_set: Boolean
-  isAdmin: Boolean
-  isAdmin_not: Boolean
-}
-
-input BackEndUserWhereUniqueInput {
-  id: ID!
-}
-
-enum SortBackEndUsersBy {
-  id_ASC
-  id_DESC
-  name_ASC
-  name_DESC
-  email_ASC
-  email_DESC
-  isAdmin_ASC
-  isAdmin_DESC
-}
-
-input BackEndUserUpdateInput {
-  name: String
-  email: String
-  password: String
-  isAdmin: Boolean
-}
-
-input BackEndUsersUpdateInput {
-  id: ID!
-  data: BackEndUserUpdateInput
-}
-
-input BackEndUserCreateInput {
-  name: String
-  email: String
-  password: String
-  isAdmin: Boolean
-}
-
-input BackEndUsersCreateInput {
-  data: BackEndUserCreateInput
-}
-
-""" A keystone list """
 type Screen {
   id: ID!
   name: String
@@ -2167,7 +2079,7 @@ input InteriorsCreateInput {
 type HardwareKit {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2202,20 +2114,6 @@ input HardwareKitWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2265,8 +2163,6 @@ enum SortHardwareKitsBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2277,7 +2173,7 @@ enum SortHardwareKitsBy {
 
 input HardwareKitUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2290,7 +2186,7 @@ input HardwareKitsUpdateInput {
 
 input HardwareKitCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2304,7 +2200,7 @@ input HardwareKitsCreateInput {
 type GlassColor {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   parent(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): [Glass!]!
   _parentMeta(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2337,20 +2233,6 @@ input GlassColorWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2391,8 +2273,6 @@ enum SortGlassColorsBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   parent_ASC
@@ -2401,7 +2281,7 @@ enum SortGlassColorsBy {
 
 input GlassColorUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   parent: GlassRelateToManyInput
 }
@@ -2413,7 +2293,7 @@ input GlassColorsUpdateInput {
 
 input GlassColorCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   parent: GlassRelateToManyInput
 }
@@ -2433,7 +2313,7 @@ input GlassColorRelateToManyInput {
 type Glass {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2470,20 +2350,6 @@ input GlassWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2542,8 +2408,6 @@ enum SortGlassesBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2556,7 +2420,7 @@ enum SortGlassesBy {
 
 input GlassUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2570,7 +2434,7 @@ input GlassesUpdateInput {
 
 input GlassCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2585,7 +2449,7 @@ input GlassesCreateInput {
 type Exterior {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2620,20 +2484,6 @@ input ExteriorWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2683,8 +2533,6 @@ enum SortExteriorsBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2695,7 +2543,7 @@ enum SortExteriorsBy {
 
 input ExteriorUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2708,7 +2556,7 @@ input ExteriorsUpdateInput {
 
 input ExteriorCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2722,7 +2570,7 @@ input ExteriorsCreateInput {
 type DividedLite {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2757,20 +2605,6 @@ input DividedLiteWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2820,8 +2654,6 @@ enum SortDividedLitesBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2832,7 +2664,7 @@ enum SortDividedLitesBy {
 
 input DividedLiteUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2845,7 +2677,7 @@ input DividedLitesUpdateInput {
 
 input DividedLiteCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2856,10 +2688,10 @@ input DividedLitesCreateInput {
 }
 
 """ A keystone list """
-type BrickmoldAndTrim {
+type BrickmouldAndTrim {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2867,9 +2699,9 @@ type BrickmoldAndTrim {
   _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 }
 
-input BrickmoldAndTrimWhereInput {
-  AND: [BrickmoldAndTrimWhereInput]
-  OR: [BrickmoldAndTrimWhereInput]
+input BrickmouldAndTrimWhereInput {
+  AND: [BrickmouldAndTrimWhereInput]
+  OR: [BrickmouldAndTrimWhereInput]
   id: ID
   id_not: ID
   id_in: [ID]
@@ -2894,20 +2726,6 @@ input BrickmoldAndTrimWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -2948,17 +2766,15 @@ input BrickmoldAndTrimWhereInput {
   productCategories_none: ProductCategoryWhereInput
 }
 
-input BrickmoldAndTrimWhereUniqueInput {
+input BrickmouldAndTrimWhereUniqueInput {
   id: ID!
 }
 
-enum SortBrickmoldAndTrimsBy {
+enum SortBrickmouldAndTrimsBy {
   id_ASC
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2967,29 +2783,29 @@ enum SortBrickmoldAndTrimsBy {
   productCategories_DESC
 }
 
-input BrickmoldAndTrimUpdateInput {
+input BrickmouldAndTrimUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
 }
 
-input BrickmoldAndTrimsUpdateInput {
+input BrickmouldAndTrimsUpdateInput {
   id: ID!
-  data: BrickmoldAndTrimUpdateInput
+  data: BrickmouldAndTrimUpdateInput
 }
 
-input BrickmoldAndTrimCreateInput {
+input BrickmouldAndTrimCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
 }
 
-input BrickmoldAndTrimsCreateInput {
-  data: BrickmoldAndTrimCreateInput
+input BrickmouldAndTrimsCreateInput {
+  data: BrickmouldAndTrimCreateInput
 }
 
 input UserRelateToManyInput {
@@ -3003,12 +2819,13 @@ input UserRelateToManyInput {
 type Role {
   id: ID!
   name: String
-  canManageProducts: Boolean
-  canSeeOtherUsers: Boolean
-  canManageUsers: Boolean
   canManageRoles: Boolean
-  canManageCart: Boolean
-  canManageOrders: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
   assignedTo(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): [User!]!
   _assignedToMeta(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 }
@@ -3038,18 +2855,20 @@ input RoleWhereInput {
   name_not_ends_with_i: String
   name_in: [String]
   name_not_in: [String]
-  canManageProducts: Boolean
-  canManageProducts_not: Boolean
-  canSeeOtherUsers: Boolean
-  canSeeOtherUsers_not: Boolean
-  canManageUsers: Boolean
-  canManageUsers_not: Boolean
   canManageRoles: Boolean
   canManageRoles_not: Boolean
-  canManageCart: Boolean
-  canManageCart_not: Boolean
-  canManageOrders: Boolean
-  canManageOrders_not: Boolean
+  canManageUsers: Boolean
+  canManageUsers_not: Boolean
+  canManageProducts: Boolean
+  canManageProducts_not: Boolean
+  canManageOptions: Boolean
+  canManageOptions_not: Boolean
+  canManageContactForm: Boolean
+  canManageContactForm_not: Boolean
+  canManageLists: Boolean
+  canManageLists_not: Boolean
+  hide: Boolean
+  hide_not: Boolean
 
   """ condition must be true for all nodes """
   assignedTo_every: UserWhereInput
@@ -3070,30 +2889,33 @@ enum SortRolesBy {
   id_DESC
   name_ASC
   name_DESC
-  canManageProducts_ASC
-  canManageProducts_DESC
-  canSeeOtherUsers_ASC
-  canSeeOtherUsers_DESC
-  canManageUsers_ASC
-  canManageUsers_DESC
   canManageRoles_ASC
   canManageRoles_DESC
-  canManageCart_ASC
-  canManageCart_DESC
-  canManageOrders_ASC
-  canManageOrders_DESC
+  canManageUsers_ASC
+  canManageUsers_DESC
+  canManageProducts_ASC
+  canManageProducts_DESC
+  canManageOptions_ASC
+  canManageOptions_DESC
+  canManageContactForm_ASC
+  canManageContactForm_DESC
+  canManageLists_ASC
+  canManageLists_DESC
+  hide_ASC
+  hide_DESC
   assignedTo_ASC
   assignedTo_DESC
 }
 
 input RoleUpdateInput {
   name: String
-  canManageProducts: Boolean
-  canSeeOtherUsers: Boolean
-  canManageUsers: Boolean
   canManageRoles: Boolean
-  canManageCart: Boolean
-  canManageOrders: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
   assignedTo: UserRelateToManyInput
 }
 
@@ -3104,12 +2926,13 @@ input RolesUpdateInput {
 
 input RoleCreateInput {
   name: String
-  canManageProducts: Boolean
-  canSeeOtherUsers: Boolean
-  canManageUsers: Boolean
   canManageRoles: Boolean
-  canManageCart: Boolean
-  canManageOrders: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
   assignedTo: UserRelateToManyInput
 }
 
@@ -3362,20 +3185,6 @@ type Query {
   """ Retrieve the meta-data for the Imagine list. """
   _ImaginesMeta: _ListMeta
 
-  """ Search for all ForgottenPasswordToken items which match the where clause. 
-  """
-  allForgottenPasswordTokens(where: ForgottenPasswordTokenWhereInput, search: String, sortBy: [SortForgottenPasswordTokensBy!], orderBy: String, first: Int, skip: Int): [ForgottenPasswordToken]
-
-  """ Search for the ForgottenPasswordToken item with the matching ID. """
-  ForgottenPasswordToken(where: ForgottenPasswordTokenWhereUniqueInput!): ForgottenPasswordToken
-
-  """ Perform a meta-query on all ForgottenPasswordToken items which match the where clause. 
-  """
-  _allForgottenPasswordTokensMeta(where: ForgottenPasswordTokenWhereInput, search: String, sortBy: [SortForgottenPasswordTokensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
-
-  """ Retrieve the meta-data for the ForgottenPasswordToken list. """
-  _ForgottenPasswordTokensMeta: _ListMeta
-
   """ Search for all Dealer items which match the where clause. """
   allDealers(where: DealerWhereInput, search: String, sortBy: [SortDealersBy!], orderBy: String, first: Int, skip: Int): [Dealer]
 
@@ -3401,19 +3210,6 @@ type Query {
 
   """ Retrieve the meta-data for the ContactUsForm list. """
   _ContactUsFormsMeta: _ListMeta
-
-  """ Search for all BackEndUser items which match the where clause. """
-  allBackEndUsers(where: BackEndUserWhereInput, search: String, sortBy: [SortBackEndUsersBy!], orderBy: String, first: Int, skip: Int): [BackEndUser]
-
-  """ Search for the BackEndUser item with the matching ID. """
-  BackEndUser(where: BackEndUserWhereUniqueInput!): BackEndUser
-
-  """ Perform a meta-query on all BackEndUser items which match the where clause. 
-  """
-  _allBackEndUsersMeta(where: BackEndUserWhereInput, search: String, sortBy: [SortBackEndUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
-
-  """ Retrieve the meta-data for the BackEndUser list. """
-  _BackEndUsersMeta: _ListMeta
 
   """ Search for all Screen items which match the where clause. """
   allScreens(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): [Screen]
@@ -3506,18 +3302,18 @@ type Query {
   """ Retrieve the meta-data for the DividedLite list. """
   _DividedLitesMeta: _ListMeta
 
-  """ Search for all BrickmoldAndTrim items which match the where clause. """
-  allBrickmoldAndTrims(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmoldAndTrim]
+  """ Search for all BrickmouldAndTrim items which match the where clause. """
+  allBrickmouldAndTrims(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim]
 
-  """ Search for the BrickmoldAndTrim item with the matching ID. """
-  BrickmoldAndTrim(where: BrickmoldAndTrimWhereUniqueInput!): BrickmoldAndTrim
+  """ Search for the BrickmouldAndTrim item with the matching ID. """
+  BrickmouldAndTrim(where: BrickmouldAndTrimWhereUniqueInput!): BrickmouldAndTrim
 
-  """ Perform a meta-query on all BrickmoldAndTrim items which match the where clause. 
+  """ Perform a meta-query on all BrickmouldAndTrim items which match the where clause. 
   """
-  _allBrickmoldAndTrimsMeta(where: BrickmoldAndTrimWhereInput, search: String, sortBy: [SortBrickmoldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  _allBrickmouldAndTrimsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 
-  """ Retrieve the meta-data for the BrickmoldAndTrim list. """
-  _BrickmoldAndTrimsMeta: _ListMeta
+  """ Retrieve the meta-data for the BrickmouldAndTrim list. """
+  _BrickmouldAndTrimsMeta: _ListMeta
 
   """ Search for all Role items which match the where clause. """
   allRoles(where: RoleWhereInput, search: String, sortBy: [SortRolesBy!], orderBy: String, first: Int, skip: Int): [Role]
@@ -3632,24 +3428,6 @@ type Mutation {
   """ Delete multiple Imagine items by ID. """
   deleteImagines(ids: [ID!]): [Imagine]
 
-  """ Create a single ForgottenPasswordToken item. """
-  createForgottenPasswordToken(data: ForgottenPasswordTokenCreateInput): ForgottenPasswordToken
-
-  """ Create multiple ForgottenPasswordToken items. """
-  createForgottenPasswordTokens(data: [ForgottenPasswordTokensCreateInput]): [ForgottenPasswordToken]
-
-  """ Update a single ForgottenPasswordToken item by ID. """
-  updateForgottenPasswordToken(id: ID!, data: ForgottenPasswordTokenUpdateInput): ForgottenPasswordToken
-
-  """ Update multiple ForgottenPasswordToken items by ID. """
-  updateForgottenPasswordTokens(data: [ForgottenPasswordTokensUpdateInput]): [ForgottenPasswordToken]
-
-  """ Delete a single ForgottenPasswordToken item by ID. """
-  deleteForgottenPasswordToken(id: ID!): ForgottenPasswordToken
-
-  """ Delete multiple ForgottenPasswordToken items by ID. """
-  deleteForgottenPasswordTokens(ids: [ID!]): [ForgottenPasswordToken]
-
   """ Create a single Dealer item. """
   createDealer(data: DealerCreateInput): Dealer
 
@@ -3685,24 +3463,6 @@ type Mutation {
 
   """ Delete multiple ContactUsForm items by ID. """
   deleteContactUsForms(ids: [ID!]): [ContactUsForm]
-
-  """ Create a single BackEndUser item. """
-  createBackEndUser(data: BackEndUserCreateInput): BackEndUser
-
-  """ Create multiple BackEndUser items. """
-  createBackEndUsers(data: [BackEndUsersCreateInput]): [BackEndUser]
-
-  """ Update a single BackEndUser item by ID. """
-  updateBackEndUser(id: ID!, data: BackEndUserUpdateInput): BackEndUser
-
-  """ Update multiple BackEndUser items by ID. """
-  updateBackEndUsers(data: [BackEndUsersUpdateInput]): [BackEndUser]
-
-  """ Delete a single BackEndUser item by ID. """
-  deleteBackEndUser(id: ID!): BackEndUser
-
-  """ Delete multiple BackEndUser items by ID. """
-  deleteBackEndUsers(ids: [ID!]): [BackEndUser]
 
   """ Create a single Screen item. """
   createScreen(data: ScreenCreateInput): Screen
@@ -3830,23 +3590,23 @@ type Mutation {
   """ Delete multiple DividedLite items by ID. """
   deleteDividedLites(ids: [ID!]): [DividedLite]
 
-  """ Create a single BrickmoldAndTrim item. """
-  createBrickmoldAndTrim(data: BrickmoldAndTrimCreateInput): BrickmoldAndTrim
+  """ Create a single BrickmouldAndTrim item. """
+  createBrickmouldAndTrim(data: BrickmouldAndTrimCreateInput): BrickmouldAndTrim
 
-  """ Create multiple BrickmoldAndTrim items. """
-  createBrickmoldAndTrims(data: [BrickmoldAndTrimsCreateInput]): [BrickmoldAndTrim]
+  """ Create multiple BrickmouldAndTrim items. """
+  createBrickmouldAndTrims(data: [BrickmouldAndTrimsCreateInput]): [BrickmouldAndTrim]
 
-  """ Update a single BrickmoldAndTrim item by ID. """
-  updateBrickmoldAndTrim(id: ID!, data: BrickmoldAndTrimUpdateInput): BrickmoldAndTrim
+  """ Update a single BrickmouldAndTrim item by ID. """
+  updateBrickmouldAndTrim(id: ID!, data: BrickmouldAndTrimUpdateInput): BrickmouldAndTrim
 
-  """ Update multiple BrickmoldAndTrim items by ID. """
-  updateBrickmoldAndTrims(data: [BrickmoldAndTrimsUpdateInput]): [BrickmoldAndTrim]
+  """ Update multiple BrickmouldAndTrim items by ID. """
+  updateBrickmouldAndTrims(data: [BrickmouldAndTrimsUpdateInput]): [BrickmouldAndTrim]
 
-  """ Delete a single BrickmoldAndTrim item by ID. """
-  deleteBrickmoldAndTrim(id: ID!): BrickmoldAndTrim
+  """ Delete a single BrickmouldAndTrim item by ID. """
+  deleteBrickmouldAndTrim(id: ID!): BrickmouldAndTrim
 
-  """ Delete multiple BrickmoldAndTrim items by ID. """
-  deleteBrickmoldAndTrims(ids: [ID!]): [BrickmoldAndTrim]
+  """ Delete multiple BrickmouldAndTrim items by ID. """
+  deleteBrickmouldAndTrims(ids: [ID!]): [BrickmouldAndTrim]
 
   """ Create a single Role item. """
   createRole(data: RoleCreateInput): Role

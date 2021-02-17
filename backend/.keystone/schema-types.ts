@@ -76,26 +76,24 @@ export type UserWhereInput = {
   readonly companyName_not_ends_with_i?: Scalars['String'] | null;
   readonly companyName_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly companyName_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly permission?: Scalars['String'] | null;
-  readonly permission_not?: Scalars['String'] | null;
-  readonly permission_contains?: Scalars['String'] | null;
-  readonly permission_not_contains?: Scalars['String'] | null;
-  readonly permission_starts_with?: Scalars['String'] | null;
-  readonly permission_not_starts_with?: Scalars['String'] | null;
-  readonly permission_ends_with?: Scalars['String'] | null;
-  readonly permission_not_ends_with?: Scalars['String'] | null;
-  readonly permission_i?: Scalars['String'] | null;
-  readonly permission_not_i?: Scalars['String'] | null;
-  readonly permission_contains_i?: Scalars['String'] | null;
-  readonly permission_not_contains_i?: Scalars['String'] | null;
-  readonly permission_starts_with_i?: Scalars['String'] | null;
-  readonly permission_not_starts_with_i?: Scalars['String'] | null;
-  readonly permission_ends_with_i?: Scalars['String'] | null;
-  readonly permission_not_ends_with_i?: Scalars['String'] | null;
-  readonly permission_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly permission_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly isDealer?: Scalars['Boolean'] | null;
-  readonly isDealer_not?: Scalars['Boolean'] | null;
+  readonly dealerId?: Scalars['String'] | null;
+  readonly dealerId_not?: Scalars['String'] | null;
+  readonly dealerId_contains?: Scalars['String'] | null;
+  readonly dealerId_not_contains?: Scalars['String'] | null;
+  readonly dealerId_starts_with?: Scalars['String'] | null;
+  readonly dealerId_not_starts_with?: Scalars['String'] | null;
+  readonly dealerId_ends_with?: Scalars['String'] | null;
+  readonly dealerId_not_ends_with?: Scalars['String'] | null;
+  readonly dealerId_i?: Scalars['String'] | null;
+  readonly dealerId_not_i?: Scalars['String'] | null;
+  readonly dealerId_contains_i?: Scalars['String'] | null;
+  readonly dealerId_not_contains_i?: Scalars['String'] | null;
+  readonly dealerId_starts_with_i?: Scalars['String'] | null;
+  readonly dealerId_not_starts_with_i?: Scalars['String'] | null;
+  readonly dealerId_ends_with_i?: Scalars['String'] | null;
+  readonly dealerId_not_ends_with_i?: Scalars['String'] | null;
+  readonly dealerId_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly dealerId_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly role?: RoleWhereInput | null;
   readonly role_is_null?: Scalars['Boolean'] | null;
   readonly passwordResetToken_is_set?: Scalars['Boolean'] | null;
@@ -163,10 +161,8 @@ export type SortUsersBy =
   | 'email_DESC'
   | 'companyName_ASC'
   | 'companyName_DESC'
-  | 'permission_ASC'
-  | 'permission_DESC'
-  | 'isDealer_ASC'
-  | 'isDealer_DESC'
+  | 'dealerId_ASC'
+  | 'dealerId_DESC'
   | 'role_ASC'
   | 'role_DESC'
   | 'passwordResetIssuedAt_ASC'
@@ -183,8 +179,7 @@ export type UserUpdateInput = {
   readonly email?: Scalars['String'] | null;
   readonly password?: Scalars['String'] | null;
   readonly companyName?: Scalars['String'] | null;
-  readonly permission?: Scalars['String'] | null;
-  readonly isDealer?: Scalars['Boolean'] | null;
+  readonly dealerId?: Scalars['String'] | null;
   readonly role?: RoleRelateToOneInput | null;
   readonly passwordResetToken?: Scalars['String'] | null;
   readonly passwordResetIssuedAt?: Scalars['String'] | null;
@@ -204,8 +199,7 @@ export type UserCreateInput = {
   readonly email?: Scalars['String'] | null;
   readonly password?: Scalars['String'] | null;
   readonly companyName?: Scalars['String'] | null;
-  readonly permission?: Scalars['String'] | null;
-  readonly isDealer?: Scalars['Boolean'] | null;
+  readonly dealerId?: Scalars['String'] | null;
   readonly role?: RoleRelateToOneInput | null;
   readonly passwordResetToken?: Scalars['String'] | null;
   readonly passwordResetIssuedAt?: Scalars['String'] | null;
@@ -217,6 +211,38 @@ export type UserCreateInput = {
 
 export type UsersCreateInput = {
   readonly data?: UserCreateInput | null;
+};
+
+export type CloudinaryImageFormat = {
+  readonly prettyName?: Scalars['String'] | null;
+  readonly width?: Scalars['String'] | null;
+  readonly height?: Scalars['String'] | null;
+  readonly crop?: Scalars['String'] | null;
+  readonly aspect_ratio?: Scalars['String'] | null;
+  readonly gravity?: Scalars['String'] | null;
+  readonly zoom?: Scalars['String'] | null;
+  readonly x?: Scalars['String'] | null;
+  readonly y?: Scalars['String'] | null;
+  readonly format?: Scalars['String'] | null;
+  readonly fetch_format?: Scalars['String'] | null;
+  readonly quality?: Scalars['String'] | null;
+  readonly radius?: Scalars['String'] | null;
+  readonly angle?: Scalars['String'] | null;
+  readonly effect?: Scalars['String'] | null;
+  readonly opacity?: Scalars['String'] | null;
+  readonly border?: Scalars['String'] | null;
+  readonly background?: Scalars['String'] | null;
+  readonly overlay?: Scalars['String'] | null;
+  readonly underlay?: Scalars['String'] | null;
+  readonly default_image?: Scalars['String'] | null;
+  readonly delay?: Scalars['String'] | null;
+  readonly color?: Scalars['String'] | null;
+  readonly color_space?: Scalars['String'] | null;
+  readonly dpr?: Scalars['String'] | null;
+  readonly page?: Scalars['String'] | null;
+  readonly density?: Scalars['String'] | null;
+  readonly flags?: Scalars['String'] | null;
+  readonly transformation?: Scalars['String'] | null;
 };
 
 export type ProductRelateToManyInput = {
@@ -268,10 +294,10 @@ export type DividedLiteRelateToManyInput = {
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
-export type BrickmoldAndTrimRelateToManyInput = {
-  readonly create?: ReadonlyArray<BrickmoldAndTrimCreateInput | null> | null;
-  readonly connect?: ReadonlyArray<BrickmoldAndTrimWhereUniqueInput | null> | null;
-  readonly disconnect?: ReadonlyArray<BrickmoldAndTrimWhereUniqueInput | null> | null;
+export type BrickmouldAndTrimRelateToManyInput = {
+  readonly create?: ReadonlyArray<BrickmouldAndTrimCreateInput | null> | null;
+  readonly connect?: ReadonlyArray<BrickmouldAndTrimWhereUniqueInput | null> | null;
+  readonly disconnect?: ReadonlyArray<BrickmouldAndTrimWhereUniqueInput | null> | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
@@ -307,6 +333,24 @@ export type ProductCategoryWhereInput = {
   readonly name_not_ends_with_i?: Scalars['String'] | null;
   readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly subtitle?: Scalars['String'] | null;
+  readonly subtitle_not?: Scalars['String'] | null;
+  readonly subtitle_contains?: Scalars['String'] | null;
+  readonly subtitle_not_contains?: Scalars['String'] | null;
+  readonly subtitle_starts_with?: Scalars['String'] | null;
+  readonly subtitle_not_starts_with?: Scalars['String'] | null;
+  readonly subtitle_ends_with?: Scalars['String'] | null;
+  readonly subtitle_not_ends_with?: Scalars['String'] | null;
+  readonly subtitle_i?: Scalars['String'] | null;
+  readonly subtitle_not_i?: Scalars['String'] | null;
+  readonly subtitle_contains_i?: Scalars['String'] | null;
+  readonly subtitle_not_contains_i?: Scalars['String'] | null;
+  readonly subtitle_starts_with_i?: Scalars['String'] | null;
+  readonly subtitle_not_starts_with_i?: Scalars['String'] | null;
+  readonly subtitle_ends_with_i?: Scalars['String'] | null;
+  readonly subtitle_not_ends_with_i?: Scalars['String'] | null;
+  readonly subtitle_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly subtitle_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
   readonly description_not?: Scalars['String'] | null;
   readonly description_contains?: Scalars['String'] | null;
@@ -325,6 +369,10 @@ export type ProductCategoryWhereInput = {
   readonly description_not_ends_with_i?: Scalars['String'] | null;
   readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly image?: Scalars['String'] | null;
+  readonly image_not?: Scalars['String'] | null;
+  readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly products_every?: ProductWhereInput | null;
   readonly products_some?: ProductWhereInput | null;
   readonly products_none?: ProductWhereInput | null;
@@ -346,9 +394,9 @@ export type ProductCategoryWhereInput = {
   readonly dividedLiteOptions_every?: DividedLiteWhereInput | null;
   readonly dividedLiteOptions_some?: DividedLiteWhereInput | null;
   readonly dividedLiteOptions_none?: DividedLiteWhereInput | null;
-  readonly brickmoldAndTrimOptions_every?: BrickmoldAndTrimWhereInput | null;
-  readonly brickmoldAndTrimOptions_some?: BrickmoldAndTrimWhereInput | null;
-  readonly brickmoldAndTrimOptions_none?: BrickmoldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_every?: BrickmouldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_some?: BrickmouldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_none?: BrickmouldAndTrimWhereInput | null;
   readonly operations_every?: OperationWhereInput | null;
   readonly operations_some?: OperationWhereInput | null;
   readonly operations_none?: OperationWhereInput | null;
@@ -363,6 +411,8 @@ export type SortProductCategoriesBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'subtitle_ASC'
+  | 'subtitle_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -379,14 +429,16 @@ export type SortProductCategoriesBy =
   | 'screenOptions_DESC'
   | 'dividedLiteOptions_ASC'
   | 'dividedLiteOptions_DESC'
-  | 'brickmoldAndTrimOptions_ASC'
-  | 'brickmoldAndTrimOptions_DESC'
+  | 'brickmouldAndTrimOptions_ASC'
+  | 'brickmouldAndTrimOptions_DESC'
   | 'operations_ASC'
   | 'operations_DESC';
 
 export type ProductCategoryUpdateInput = {
   readonly name?: Scalars['String'] | null;
+  readonly subtitle?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly exteriorOptions?: ExteriorRelateToManyInput | null;
   readonly interiorOptions?: InteriorRelateToManyInput | null;
@@ -394,7 +446,7 @@ export type ProductCategoryUpdateInput = {
   readonly glassOptions?: GlassRelateToManyInput | null;
   readonly screenOptions?: ScreenRelateToManyInput | null;
   readonly dividedLiteOptions?: DividedLiteRelateToManyInput | null;
-  readonly brickmoldAndTrimOptions?: BrickmoldAndTrimRelateToManyInput | null;
+  readonly brickmouldAndTrimOptions?: BrickmouldAndTrimRelateToManyInput | null;
   readonly operations?: OperationRelateToManyInput | null;
 };
 
@@ -405,7 +457,9 @@ export type ProductCategoriesUpdateInput = {
 
 export type ProductCategoryCreateInput = {
   readonly name?: Scalars['String'] | null;
+  readonly subtitle?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly exteriorOptions?: ExteriorRelateToManyInput | null;
   readonly interiorOptions?: InteriorRelateToManyInput | null;
@@ -413,7 +467,7 @@ export type ProductCategoryCreateInput = {
   readonly glassOptions?: GlassRelateToManyInput | null;
   readonly screenOptions?: ScreenRelateToManyInput | null;
   readonly dividedLiteOptions?: DividedLiteRelateToManyInput | null;
-  readonly brickmoldAndTrimOptions?: BrickmoldAndTrimRelateToManyInput | null;
+  readonly brickmouldAndTrimOptions?: BrickmouldAndTrimRelateToManyInput | null;
   readonly operations?: OperationRelateToManyInput | null;
 };
 
@@ -471,27 +525,53 @@ export type ProductWhereInput = {
   readonly subtitle_not_ends_with_i?: Scalars['String'] | null;
   readonly subtitle_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly subtitle_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly excerpt?: Scalars['String'] | null;
+  readonly excerpt_not?: Scalars['String'] | null;
+  readonly excerpt_contains?: Scalars['String'] | null;
+  readonly excerpt_not_contains?: Scalars['String'] | null;
+  readonly excerpt_starts_with?: Scalars['String'] | null;
+  readonly excerpt_not_starts_with?: Scalars['String'] | null;
+  readonly excerpt_ends_with?: Scalars['String'] | null;
+  readonly excerpt_not_ends_with?: Scalars['String'] | null;
+  readonly excerpt_i?: Scalars['String'] | null;
+  readonly excerpt_not_i?: Scalars['String'] | null;
+  readonly excerpt_contains_i?: Scalars['String'] | null;
+  readonly excerpt_not_contains_i?: Scalars['String'] | null;
+  readonly excerpt_starts_with_i?: Scalars['String'] | null;
+  readonly excerpt_not_starts_with_i?: Scalars['String'] | null;
+  readonly excerpt_ends_with_i?: Scalars['String'] | null;
+  readonly excerpt_not_ends_with_i?: Scalars['String'] | null;
+  readonly excerpt_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly excerpt_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly productCategories_every?: ProductCategoryWhereInput | null;
   readonly productCategories_some?: ProductCategoryWhereInput | null;
   readonly productCategories_none?: ProductCategoryWhereInput | null;
+  readonly pageSubtitle?: Scalars['String'] | null;
+  readonly pageSubtitle_not?: Scalars['String'] | null;
+  readonly pageSubtitle_contains?: Scalars['String'] | null;
+  readonly pageSubtitle_not_contains?: Scalars['String'] | null;
+  readonly pageSubtitle_starts_with?: Scalars['String'] | null;
+  readonly pageSubtitle_not_starts_with?: Scalars['String'] | null;
+  readonly pageSubtitle_ends_with?: Scalars['String'] | null;
+  readonly pageSubtitle_not_ends_with?: Scalars['String'] | null;
+  readonly pageSubtitle_i?: Scalars['String'] | null;
+  readonly pageSubtitle_not_i?: Scalars['String'] | null;
+  readonly pageSubtitle_contains_i?: Scalars['String'] | null;
+  readonly pageSubtitle_not_contains_i?: Scalars['String'] | null;
+  readonly pageSubtitle_starts_with_i?: Scalars['String'] | null;
+  readonly pageSubtitle_not_starts_with_i?: Scalars['String'] | null;
+  readonly pageSubtitle_ends_with_i?: Scalars['String'] | null;
+  readonly pageSubtitle_not_ends_with_i?: Scalars['String'] | null;
+  readonly pageSubtitle_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly pageSubtitle_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage?: Scalars['String'] | null;
+  readonly productImage_not?: Scalars['String'] | null;
+  readonly productImage_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly imageTitle?: Scalars['String'] | null;
   readonly imageTitle_not?: Scalars['String'] | null;
   readonly imageTitle_contains?: Scalars['String'] | null;
@@ -548,46 +628,80 @@ export type ProductWhereInput = {
   readonly specs_not_ends_with_i?: Scalars['String'] | null;
   readonly specs_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly specs_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly threeImageTitle?: Scalars['String'] | null;
-  readonly threeImageTitle_not?: Scalars['String'] | null;
-  readonly threeImageTitle_contains?: Scalars['String'] | null;
-  readonly threeImageTitle_not_contains?: Scalars['String'] | null;
-  readonly threeImageTitle_starts_with?: Scalars['String'] | null;
-  readonly threeImageTitle_not_starts_with?: Scalars['String'] | null;
-  readonly threeImageTitle_ends_with?: Scalars['String'] | null;
-  readonly threeImageTitle_not_ends_with?: Scalars['String'] | null;
-  readonly threeImageTitle_i?: Scalars['String'] | null;
-  readonly threeImageTitle_not_i?: Scalars['String'] | null;
-  readonly threeImageTitle_contains_i?: Scalars['String'] | null;
-  readonly threeImageTitle_not_contains_i?: Scalars['String'] | null;
-  readonly threeImageTitle_starts_with_i?: Scalars['String'] | null;
-  readonly threeImageTitle_not_starts_with_i?: Scalars['String'] | null;
-  readonly threeImageTitle_ends_with_i?: Scalars['String'] | null;
-  readonly threeImageTitle_not_ends_with_i?: Scalars['String'] | null;
-  readonly threeImageTitle_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly threeImageTitle_not_in?: ReadonlyArray<
+  readonly productImage1?: Scalars['String'] | null;
+  readonly productImage1_not?: Scalars['String'] | null;
+  readonly productImage1_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage1_not_in?: ReadonlyArray<
     Scalars['String'] | null
   > | null;
-  readonly threeImageDescription?: Scalars['String'] | null;
-  readonly threeImageDescription_not?: Scalars['String'] | null;
-  readonly threeImageDescription_contains?: Scalars['String'] | null;
-  readonly threeImageDescription_not_contains?: Scalars['String'] | null;
-  readonly threeImageDescription_starts_with?: Scalars['String'] | null;
-  readonly threeImageDescription_not_starts_with?: Scalars['String'] | null;
-  readonly threeImageDescription_ends_with?: Scalars['String'] | null;
-  readonly threeImageDescription_not_ends_with?: Scalars['String'] | null;
-  readonly threeImageDescription_i?: Scalars['String'] | null;
-  readonly threeImageDescription_not_i?: Scalars['String'] | null;
-  readonly threeImageDescription_contains_i?: Scalars['String'] | null;
-  readonly threeImageDescription_not_contains_i?: Scalars['String'] | null;
-  readonly threeImageDescription_starts_with_i?: Scalars['String'] | null;
-  readonly threeImageDescription_not_starts_with_i?: Scalars['String'] | null;
-  readonly threeImageDescription_ends_with_i?: Scalars['String'] | null;
-  readonly threeImageDescription_not_ends_with_i?: Scalars['String'] | null;
-  readonly threeImageDescription_in?: ReadonlyArray<
+  readonly secondaryDetailsTitle?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_contains?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_contains?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_starts_with?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_starts_with?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_ends_with?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_ends_with?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_contains_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_contains_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_starts_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_starts_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_ends_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_not_ends_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsTitle_in?: ReadonlyArray<
     Scalars['String'] | null
   > | null;
-  readonly threeImageDescription_not_in?: ReadonlyArray<
+  readonly secondaryDetailsTitle_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly secondaryDetailsDescription?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_contains?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_contains?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_starts_with?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_starts_with?:
+    | Scalars['String']
+    | null;
+  readonly secondaryDetailsDescription_ends_with?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_ends_with?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_i?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_i?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_contains_i?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_contains_i?:
+    | Scalars['String']
+    | null;
+  readonly secondaryDetailsDescription_starts_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_starts_with_i?:
+    | Scalars['String']
+    | null;
+  readonly secondaryDetailsDescription_ends_with_i?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription_not_ends_with_i?:
+    | Scalars['String']
+    | null;
+  readonly secondaryDetailsDescription_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly secondaryDetailsDescription_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly productImage2?: Scalars['String'] | null;
+  readonly productImage2_not?: Scalars['String'] | null;
+  readonly productImage2_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage2_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly productImage3?: Scalars['String'] | null;
+  readonly productImage3_not?: Scalars['String'] | null;
+  readonly productImage3_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage3_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly productImage4?: Scalars['String'] | null;
+  readonly productImage4_not?: Scalars['String'] | null;
+  readonly productImage4_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly productImage4_not_in?: ReadonlyArray<
     Scalars['String'] | null
   > | null;
   readonly operationsTitle?: Scalars['String'] | null;
@@ -675,9 +789,9 @@ export type ProductWhereInput = {
   readonly dividedLiteOptions_every?: DividedLiteWhereInput | null;
   readonly dividedLiteOptions_some?: DividedLiteWhereInput | null;
   readonly dividedLiteOptions_none?: DividedLiteWhereInput | null;
-  readonly brickmoldAndTrimOptions_every?: BrickmoldAndTrimWhereInput | null;
-  readonly brickmoldAndTrimOptions_some?: BrickmoldAndTrimWhereInput | null;
-  readonly brickmoldAndTrimOptions_none?: BrickmoldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_every?: BrickmouldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_some?: BrickmouldAndTrimWhereInput | null;
+  readonly brickmouldAndTrimOptions_none?: BrickmouldAndTrimWhereInput | null;
 };
 
 export type ProductWhereUniqueInput = {
@@ -691,20 +805,22 @@ export type SortProductsBy =
   | 'name_DESC'
   | 'subtitle_ASC'
   | 'subtitle_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
+  | 'excerpt_ASC'
+  | 'excerpt_DESC'
   | 'productCategories_ASC'
   | 'productCategories_DESC'
+  | 'pageSubtitle_ASC'
+  | 'pageSubtitle_DESC'
   | 'imageTitle_ASC'
   | 'imageTitle_DESC'
   | 'imageDescription_ASC'
   | 'imageDescription_DESC'
   | 'specs_ASC'
   | 'specs_DESC'
-  | 'threeImageTitle_ASC'
-  | 'threeImageTitle_DESC'
-  | 'threeImageDescription_ASC'
-  | 'threeImageDescription_DESC'
+  | 'secondaryDetailsTitle_ASC'
+  | 'secondaryDetailsTitle_DESC'
+  | 'secondaryDetailsDescription_ASC'
+  | 'secondaryDetailsDescription_DESC'
   | 'operationsTitle_ASC'
   | 'operationsTitle_DESC'
   | 'operationsSubTitle_ASC'
@@ -725,19 +841,26 @@ export type SortProductsBy =
   | 'screenOptions_DESC'
   | 'dividedLiteOptions_ASC'
   | 'dividedLiteOptions_DESC'
-  | 'brickmoldAndTrimOptions_ASC'
-  | 'brickmoldAndTrimOptions_DESC';
+  | 'brickmouldAndTrimOptions_ASC'
+  | 'brickmouldAndTrimOptions_DESC';
 
 export type ProductUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly subtitle?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly excerpt?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
+  readonly pageSubtitle?: Scalars['String'] | null;
+  readonly productImage?: any | null;
   readonly imageTitle?: Scalars['String'] | null;
   readonly imageDescription?: Scalars['String'] | null;
   readonly specs?: Scalars['String'] | null;
-  readonly threeImageTitle?: Scalars['String'] | null;
-  readonly threeImageDescription?: Scalars['String'] | null;
+  readonly productImage1?: any | null;
+  readonly secondaryDetailsTitle?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription?: Scalars['String'] | null;
+  readonly productImage2?: any | null;
+  readonly productImage3?: any | null;
+  readonly productImage4?: any | null;
   readonly operationsTitle?: Scalars['String'] | null;
   readonly operationsSubTitle?: Scalars['String'] | null;
   readonly operationsDescription?: Scalars['String'] | null;
@@ -748,7 +871,7 @@ export type ProductUpdateInput = {
   readonly glassOptions?: GlassRelateToManyInput | null;
   readonly screenOptions?: ScreenRelateToManyInput | null;
   readonly dividedLiteOptions?: DividedLiteRelateToManyInput | null;
-  readonly brickmoldAndTrimOptions?: BrickmoldAndTrimRelateToManyInput | null;
+  readonly brickmouldAndTrimOptions?: BrickmouldAndTrimRelateToManyInput | null;
 };
 
 export type ProductsUpdateInput = {
@@ -759,13 +882,20 @@ export type ProductsUpdateInput = {
 export type ProductCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly subtitle?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly excerpt?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
+  readonly pageSubtitle?: Scalars['String'] | null;
+  readonly productImage?: any | null;
   readonly imageTitle?: Scalars['String'] | null;
   readonly imageDescription?: Scalars['String'] | null;
   readonly specs?: Scalars['String'] | null;
-  readonly threeImageTitle?: Scalars['String'] | null;
-  readonly threeImageDescription?: Scalars['String'] | null;
+  readonly productImage1?: any | null;
+  readonly secondaryDetailsTitle?: Scalars['String'] | null;
+  readonly secondaryDetailsDescription?: Scalars['String'] | null;
+  readonly productImage2?: any | null;
+  readonly productImage3?: any | null;
+  readonly productImage4?: any | null;
   readonly operationsTitle?: Scalars['String'] | null;
   readonly operationsSubTitle?: Scalars['String'] | null;
   readonly operationsDescription?: Scalars['String'] | null;
@@ -776,7 +906,7 @@ export type ProductCreateInput = {
   readonly glassOptions?: GlassRelateToManyInput | null;
   readonly screenOptions?: ScreenRelateToManyInput | null;
   readonly dividedLiteOptions?: DividedLiteRelateToManyInput | null;
-  readonly brickmoldAndTrimOptions?: BrickmoldAndTrimRelateToManyInput | null;
+  readonly brickmouldAndTrimOptions?: BrickmouldAndTrimRelateToManyInput | null;
 };
 
 export type ProductsCreateInput = {
@@ -810,20 +940,6 @@ export type OperationWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly video?: Scalars['String'] | null;
@@ -861,8 +977,6 @@ export type SortOperationsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'video_ASC'
   | 'video_DESC'
   | 'productCategories_ASC'
@@ -872,7 +986,7 @@ export type SortOperationsBy =
 
 export type OperationUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly video?: Scalars['String'] | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
   readonly products?: ProductRelateToManyInput | null;
@@ -885,7 +999,7 @@ export type OperationsUpdateInput = {
 
 export type OperationCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly video?: Scalars['String'] | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
   readonly products?: ProductRelateToManyInput | null;
@@ -976,109 +1090,6 @@ export type ImagineCreateInput = {
 
 export type ImaginesCreateInput = {
   readonly data?: ImagineCreateInput | null;
-};
-
-export type UserRelateToOneInput = {
-  readonly create?: UserCreateInput | null;
-  readonly connect?: UserWhereUniqueInput | null;
-  readonly disconnect?: UserWhereUniqueInput | null;
-  readonly disconnectAll?: Scalars['Boolean'] | null;
-};
-
-export type ForgottenPasswordTokenWhereInput = {
-  readonly AND?: ReadonlyArray<ForgottenPasswordTokenWhereInput | null> | null;
-  readonly OR?: ReadonlyArray<ForgottenPasswordTokenWhereInput | null> | null;
-  readonly id?: Scalars['ID'] | null;
-  readonly id_not?: Scalars['ID'] | null;
-  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly user?: UserWhereInput | null;
-  readonly user_is_null?: Scalars['Boolean'] | null;
-  readonly token?: Scalars['String'] | null;
-  readonly token_not?: Scalars['String'] | null;
-  readonly token_contains?: Scalars['String'] | null;
-  readonly token_not_contains?: Scalars['String'] | null;
-  readonly token_starts_with?: Scalars['String'] | null;
-  readonly token_not_starts_with?: Scalars['String'] | null;
-  readonly token_ends_with?: Scalars['String'] | null;
-  readonly token_not_ends_with?: Scalars['String'] | null;
-  readonly token_i?: Scalars['String'] | null;
-  readonly token_not_i?: Scalars['String'] | null;
-  readonly token_contains_i?: Scalars['String'] | null;
-  readonly token_not_contains_i?: Scalars['String'] | null;
-  readonly token_starts_with_i?: Scalars['String'] | null;
-  readonly token_not_starts_with_i?: Scalars['String'] | null;
-  readonly token_ends_with_i?: Scalars['String'] | null;
-  readonly token_not_ends_with_i?: Scalars['String'] | null;
-  readonly token_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly token_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly requestedAt?: Scalars['String'] | null;
-  readonly requestedAt_not?: Scalars['String'] | null;
-  readonly requestedAt_lt?: Scalars['String'] | null;
-  readonly requestedAt_lte?: Scalars['String'] | null;
-  readonly requestedAt_gt?: Scalars['String'] | null;
-  readonly requestedAt_gte?: Scalars['String'] | null;
-  readonly requestedAt_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly requestedAt_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly accessedAt?: Scalars['String'] | null;
-  readonly accessedAt_not?: Scalars['String'] | null;
-  readonly accessedAt_lt?: Scalars['String'] | null;
-  readonly accessedAt_lte?: Scalars['String'] | null;
-  readonly accessedAt_gt?: Scalars['String'] | null;
-  readonly accessedAt_gte?: Scalars['String'] | null;
-  readonly accessedAt_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly accessedAt_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly expiresAt?: Scalars['String'] | null;
-  readonly expiresAt_not?: Scalars['String'] | null;
-  readonly expiresAt_lt?: Scalars['String'] | null;
-  readonly expiresAt_lte?: Scalars['String'] | null;
-  readonly expiresAt_gt?: Scalars['String'] | null;
-  readonly expiresAt_gte?: Scalars['String'] | null;
-  readonly expiresAt_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly expiresAt_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-};
-
-export type ForgottenPasswordTokenWhereUniqueInput = {
-  readonly id: Scalars['ID'];
-};
-
-export type SortForgottenPasswordTokensBy =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'user_ASC'
-  | 'user_DESC'
-  | 'token_ASC'
-  | 'token_DESC'
-  | 'requestedAt_ASC'
-  | 'requestedAt_DESC'
-  | 'accessedAt_ASC'
-  | 'accessedAt_DESC'
-  | 'expiresAt_ASC'
-  | 'expiresAt_DESC';
-
-export type ForgottenPasswordTokenUpdateInput = {
-  readonly user?: UserRelateToOneInput | null;
-  readonly token?: Scalars['String'] | null;
-  readonly requestedAt?: Scalars['String'] | null;
-  readonly accessedAt?: Scalars['String'] | null;
-  readonly expiresAt?: Scalars['String'] | null;
-};
-
-export type ForgottenPasswordTokensUpdateInput = {
-  readonly id: Scalars['ID'];
-  readonly data?: ForgottenPasswordTokenUpdateInput | null;
-};
-
-export type ForgottenPasswordTokenCreateInput = {
-  readonly user?: UserRelateToOneInput | null;
-  readonly token?: Scalars['String'] | null;
-  readonly requestedAt?: Scalars['String'] | null;
-  readonly accessedAt?: Scalars['String'] | null;
-  readonly expiresAt?: Scalars['String'] | null;
-};
-
-export type ForgottenPasswordTokensCreateInput = {
-  readonly data?: ForgottenPasswordTokenCreateInput | null;
 };
 
 export type DealerWhereInput = {
@@ -1565,91 +1576,6 @@ export type ContactUsFormsCreateInput = {
   readonly data?: ContactUsFormCreateInput | null;
 };
 
-export type BackEndUserWhereInput = {
-  readonly AND?: ReadonlyArray<BackEndUserWhereInput | null> | null;
-  readonly OR?: ReadonlyArray<BackEndUserWhereInput | null> | null;
-  readonly id?: Scalars['ID'] | null;
-  readonly id_not?: Scalars['ID'] | null;
-  readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly name?: Scalars['String'] | null;
-  readonly name_not?: Scalars['String'] | null;
-  readonly name_contains?: Scalars['String'] | null;
-  readonly name_not_contains?: Scalars['String'] | null;
-  readonly name_starts_with?: Scalars['String'] | null;
-  readonly name_not_starts_with?: Scalars['String'] | null;
-  readonly name_ends_with?: Scalars['String'] | null;
-  readonly name_not_ends_with?: Scalars['String'] | null;
-  readonly name_i?: Scalars['String'] | null;
-  readonly name_not_i?: Scalars['String'] | null;
-  readonly name_contains_i?: Scalars['String'] | null;
-  readonly name_not_contains_i?: Scalars['String'] | null;
-  readonly name_starts_with_i?: Scalars['String'] | null;
-  readonly name_not_starts_with_i?: Scalars['String'] | null;
-  readonly name_ends_with_i?: Scalars['String'] | null;
-  readonly name_not_ends_with_i?: Scalars['String'] | null;
-  readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly email?: Scalars['String'] | null;
-  readonly email_not?: Scalars['String'] | null;
-  readonly email_contains?: Scalars['String'] | null;
-  readonly email_not_contains?: Scalars['String'] | null;
-  readonly email_starts_with?: Scalars['String'] | null;
-  readonly email_not_starts_with?: Scalars['String'] | null;
-  readonly email_ends_with?: Scalars['String'] | null;
-  readonly email_not_ends_with?: Scalars['String'] | null;
-  readonly email_i?: Scalars['String'] | null;
-  readonly email_not_i?: Scalars['String'] | null;
-  readonly email_contains_i?: Scalars['String'] | null;
-  readonly email_not_contains_i?: Scalars['String'] | null;
-  readonly email_starts_with_i?: Scalars['String'] | null;
-  readonly email_not_starts_with_i?: Scalars['String'] | null;
-  readonly email_ends_with_i?: Scalars['String'] | null;
-  readonly email_not_ends_with_i?: Scalars['String'] | null;
-  readonly email_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly email_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly password_is_set?: Scalars['Boolean'] | null;
-  readonly isAdmin?: Scalars['Boolean'] | null;
-  readonly isAdmin_not?: Scalars['Boolean'] | null;
-};
-
-export type BackEndUserWhereUniqueInput = {
-  readonly id: Scalars['ID'];
-};
-
-export type SortBackEndUsersBy =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-  | 'email_ASC'
-  | 'email_DESC'
-  | 'isAdmin_ASC'
-  | 'isAdmin_DESC';
-
-export type BackEndUserUpdateInput = {
-  readonly name?: Scalars['String'] | null;
-  readonly email?: Scalars['String'] | null;
-  readonly password?: Scalars['String'] | null;
-  readonly isAdmin?: Scalars['Boolean'] | null;
-};
-
-export type BackEndUsersUpdateInput = {
-  readonly id: Scalars['ID'];
-  readonly data?: BackEndUserUpdateInput | null;
-};
-
-export type BackEndUserCreateInput = {
-  readonly name?: Scalars['String'] | null;
-  readonly email?: Scalars['String'] | null;
-  readonly password?: Scalars['String'] | null;
-  readonly isAdmin?: Scalars['Boolean'] | null;
-};
-
-export type BackEndUsersCreateInput = {
-  readonly data?: BackEndUserCreateInput | null;
-};
-
 export type ScreenWhereInput = {
   readonly AND?: ReadonlyArray<ScreenWhereInput | null> | null;
   readonly OR?: ReadonlyArray<ScreenWhereInput | null> | null;
@@ -1901,20 +1827,6 @@ export type HardwareKitWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -1952,8 +1864,6 @@ export type SortHardwareKitsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -1963,7 +1873,7 @@ export type SortHardwareKitsBy =
 
 export type HardwareKitUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -1976,7 +1886,7 @@ export type HardwareKitsUpdateInput = {
 
 export type HardwareKitCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2013,20 +1923,6 @@ export type GlassColorWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -2061,8 +1957,6 @@ export type SortGlassColorsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'parent_ASC'
@@ -2070,7 +1964,7 @@ export type SortGlassColorsBy =
 
 export type GlassColorUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly parent?: GlassRelateToManyInput | null;
 };
@@ -2082,7 +1976,7 @@ export type GlassColorsUpdateInput = {
 
 export type GlassColorCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly parent?: GlassRelateToManyInput | null;
 };
@@ -2125,20 +2019,6 @@ export type GlassWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -2179,8 +2059,6 @@ export type SortGlassesBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -2192,7 +2070,7 @@ export type SortGlassesBy =
 
 export type GlassUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2206,7 +2084,7 @@ export type GlassesUpdateInput = {
 
 export type GlassCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2244,20 +2122,6 @@ export type ExteriorWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -2295,8 +2159,6 @@ export type SortExteriorsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -2306,7 +2168,7 @@ export type SortExteriorsBy =
 
 export type ExteriorUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2319,7 +2181,7 @@ export type ExteriorsUpdateInput = {
 
 export type ExteriorCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2356,20 +2218,6 @@ export type DividedLiteWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -2407,8 +2255,6 @@ export type SortDividedLitesBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -2418,7 +2264,7 @@ export type SortDividedLitesBy =
 
 export type DividedLiteUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2431,7 +2277,7 @@ export type DividedLitesUpdateInput = {
 
 export type DividedLiteCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2441,9 +2287,9 @@ export type DividedLitesCreateInput = {
   readonly data?: DividedLiteCreateInput | null;
 };
 
-export type BrickmoldAndTrimWhereInput = {
-  readonly AND?: ReadonlyArray<BrickmoldAndTrimWhereInput | null> | null;
-  readonly OR?: ReadonlyArray<BrickmoldAndTrimWhereInput | null> | null;
+export type BrickmouldAndTrimWhereInput = {
+  readonly AND?: ReadonlyArray<BrickmouldAndTrimWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<BrickmouldAndTrimWhereInput | null> | null;
   readonly id?: Scalars['ID'] | null;
   readonly id_not?: Scalars['ID'] | null;
   readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
@@ -2468,20 +2314,6 @@ export type BrickmoldAndTrimWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -2510,17 +2342,15 @@ export type BrickmoldAndTrimWhereInput = {
   readonly productCategories_none?: ProductCategoryWhereInput | null;
 };
 
-export type BrickmoldAndTrimWhereUniqueInput = {
+export type BrickmouldAndTrimWhereUniqueInput = {
   readonly id: Scalars['ID'];
 };
 
-export type SortBrickmoldAndTrimsBy =
+export type SortBrickmouldAndTrimsBy =
   | 'id_ASC'
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -2528,29 +2358,29 @@ export type SortBrickmoldAndTrimsBy =
   | 'productCategories_ASC'
   | 'productCategories_DESC';
 
-export type BrickmoldAndTrimUpdateInput = {
+export type BrickmouldAndTrimUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
 };
 
-export type BrickmoldAndTrimsUpdateInput = {
+export type BrickmouldAndTrimsUpdateInput = {
   readonly id: Scalars['ID'];
-  readonly data?: BrickmoldAndTrimUpdateInput | null;
+  readonly data?: BrickmouldAndTrimUpdateInput | null;
 };
 
-export type BrickmoldAndTrimCreateInput = {
+export type BrickmouldAndTrimCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
 };
 
-export type BrickmoldAndTrimsCreateInput = {
-  readonly data?: BrickmoldAndTrimCreateInput | null;
+export type BrickmouldAndTrimsCreateInput = {
+  readonly data?: BrickmouldAndTrimCreateInput | null;
 };
 
 export type UserRelateToManyInput = {
@@ -2585,18 +2415,20 @@ export type RoleWhereInput = {
   readonly name_not_ends_with_i?: Scalars['String'] | null;
   readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
-  readonly canManageProducts_not?: Scalars['Boolean'] | null;
-  readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
-  readonly canSeeOtherUsers_not?: Scalars['Boolean'] | null;
-  readonly canManageUsers?: Scalars['Boolean'] | null;
-  readonly canManageUsers_not?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
   readonly canManageRoles_not?: Scalars['Boolean'] | null;
-  readonly canManageCart?: Scalars['Boolean'] | null;
-  readonly canManageCart_not?: Scalars['Boolean'] | null;
-  readonly canManageOrders?: Scalars['Boolean'] | null;
-  readonly canManageOrders_not?: Scalars['Boolean'] | null;
+  readonly canManageUsers?: Scalars['Boolean'] | null;
+  readonly canManageUsers_not?: Scalars['Boolean'] | null;
+  readonly canManageProducts?: Scalars['Boolean'] | null;
+  readonly canManageProducts_not?: Scalars['Boolean'] | null;
+  readonly canManageOptions?: Scalars['Boolean'] | null;
+  readonly canManageOptions_not?: Scalars['Boolean'] | null;
+  readonly canManageContactForm?: Scalars['Boolean'] | null;
+  readonly canManageContactForm_not?: Scalars['Boolean'] | null;
+  readonly canManageLists?: Scalars['Boolean'] | null;
+  readonly canManageLists_not?: Scalars['Boolean'] | null;
+  readonly hide?: Scalars['Boolean'] | null;
+  readonly hide_not?: Scalars['Boolean'] | null;
   readonly assignedTo_every?: UserWhereInput | null;
   readonly assignedTo_some?: UserWhereInput | null;
   readonly assignedTo_none?: UserWhereInput | null;
@@ -2611,29 +2443,32 @@ export type SortRolesBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'canManageProducts_ASC'
-  | 'canManageProducts_DESC'
-  | 'canSeeOtherUsers_ASC'
-  | 'canSeeOtherUsers_DESC'
-  | 'canManageUsers_ASC'
-  | 'canManageUsers_DESC'
   | 'canManageRoles_ASC'
   | 'canManageRoles_DESC'
-  | 'canManageCart_ASC'
-  | 'canManageCart_DESC'
-  | 'canManageOrders_ASC'
-  | 'canManageOrders_DESC'
+  | 'canManageUsers_ASC'
+  | 'canManageUsers_DESC'
+  | 'canManageProducts_ASC'
+  | 'canManageProducts_DESC'
+  | 'canManageOptions_ASC'
+  | 'canManageOptions_DESC'
+  | 'canManageContactForm_ASC'
+  | 'canManageContactForm_DESC'
+  | 'canManageLists_ASC'
+  | 'canManageLists_DESC'
+  | 'hide_ASC'
+  | 'hide_DESC'
   | 'assignedTo_ASC'
   | 'assignedTo_DESC';
 
 export type RoleUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
-  readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
-  readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
-  readonly canManageCart?: Scalars['Boolean'] | null;
-  readonly canManageOrders?: Scalars['Boolean'] | null;
+  readonly canManageUsers?: Scalars['Boolean'] | null;
+  readonly canManageProducts?: Scalars['Boolean'] | null;
+  readonly canManageOptions?: Scalars['Boolean'] | null;
+  readonly canManageContactForm?: Scalars['Boolean'] | null;
+  readonly canManageLists?: Scalars['Boolean'] | null;
+  readonly hide?: Scalars['Boolean'] | null;
   readonly assignedTo?: UserRelateToManyInput | null;
 };
 
@@ -2644,12 +2479,13 @@ export type RolesUpdateInput = {
 
 export type RoleCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
-  readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
-  readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
-  readonly canManageCart?: Scalars['Boolean'] | null;
-  readonly canManageOrders?: Scalars['Boolean'] | null;
+  readonly canManageUsers?: Scalars['Boolean'] | null;
+  readonly canManageProducts?: Scalars['Boolean'] | null;
+  readonly canManageOptions?: Scalars['Boolean'] | null;
+  readonly canManageContactForm?: Scalars['Boolean'] | null;
+  readonly canManageLists?: Scalars['Boolean'] | null;
+  readonly hide?: Scalars['Boolean'] | null;
   readonly assignedTo?: UserRelateToManyInput | null;
 };
 
@@ -2712,8 +2548,7 @@ export type UserListTypeInfo = {
     | 'email'
     | 'password'
     | 'companyName'
-    | 'permission'
-    | 'isDealer'
+    | 'dealerId'
     | 'role'
     | 'passwordResetToken'
     | 'passwordResetIssuedAt'
@@ -2727,8 +2562,7 @@ export type UserListTypeInfo = {
     readonly email?: string | null;
     readonly password?: string | null;
     readonly companyName?: string | null;
-    readonly permission?: string | null;
-    readonly isDealer?: boolean | null;
+    readonly dealerId?: string | null;
     readonly role?: string | null;
     readonly passwordResetToken?: string | null;
     readonly passwordResetIssuedAt?: Date | null;
@@ -2767,7 +2601,9 @@ export type ProductCategoryListTypeInfo = {
   fields:
     | 'id'
     | 'name'
+    | 'subtitle'
     | 'description'
+    | 'image'
     | 'products'
     | 'exteriorOptions'
     | 'interiorOptions'
@@ -2775,12 +2611,14 @@ export type ProductCategoryListTypeInfo = {
     | 'glassOptions'
     | 'screenOptions'
     | 'dividedLiteOptions'
-    | 'brickmoldAndTrimOptions'
+    | 'brickmouldAndTrimOptions'
     | 'operations';
   backing: {
     readonly id: string;
     readonly name?: string | null;
+    readonly subtitle?: string | null;
     readonly description?: string | null;
+    readonly image?: any;
     readonly products?: string | null;
     readonly exteriorOptions?: string | null;
     readonly interiorOptions?: string | null;
@@ -2788,7 +2626,7 @@ export type ProductCategoryListTypeInfo = {
     readonly glassOptions?: string | null;
     readonly screenOptions?: string | null;
     readonly dividedLiteOptions?: string | null;
-    readonly brickmoldAndTrimOptions?: string | null;
+    readonly brickmouldAndTrimOptions?: string | null;
     readonly operations?: string | null;
   };
   inputs: {
@@ -2822,13 +2660,20 @@ export type ProductListTypeInfo = {
     | 'id'
     | 'name'
     | 'subtitle'
+    | 'excerpt'
     | 'image'
     | 'productCategories'
+    | 'pageSubtitle'
+    | 'productImage'
     | 'imageTitle'
     | 'imageDescription'
     | 'specs'
-    | 'threeImageTitle'
-    | 'threeImageDescription'
+    | 'productImage1'
+    | 'secondaryDetailsTitle'
+    | 'secondaryDetailsDescription'
+    | 'productImage2'
+    | 'productImage3'
+    | 'productImage4'
     | 'operationsTitle'
     | 'operationsSubTitle'
     | 'operationsDescription'
@@ -2839,18 +2684,25 @@ export type ProductListTypeInfo = {
     | 'glassOptions'
     | 'screenOptions'
     | 'dividedLiteOptions'
-    | 'brickmoldAndTrimOptions';
+    | 'brickmouldAndTrimOptions';
   backing: {
     readonly id: string;
     readonly name?: string | null;
     readonly subtitle?: string | null;
-    readonly image?: string | null;
+    readonly excerpt?: string | null;
+    readonly image?: any;
     readonly productCategories?: string | null;
+    readonly pageSubtitle?: string | null;
+    readonly productImage?: any;
     readonly imageTitle?: string | null;
     readonly imageDescription?: string | null;
     readonly specs?: string | null;
-    readonly threeImageTitle?: string | null;
-    readonly threeImageDescription?: string | null;
+    readonly productImage1?: any;
+    readonly secondaryDetailsTitle?: string | null;
+    readonly secondaryDetailsDescription?: string | null;
+    readonly productImage2?: any;
+    readonly productImage3?: any;
+    readonly productImage4?: any;
     readonly operationsTitle?: string | null;
     readonly operationsSubTitle?: string | null;
     readonly operationsDescription?: string | null;
@@ -2861,7 +2713,7 @@ export type ProductListTypeInfo = {
     readonly glassOptions?: string | null;
     readonly screenOptions?: string | null;
     readonly dividedLiteOptions?: string | null;
-    readonly brickmoldAndTrimOptions?: string | null;
+    readonly brickmouldAndTrimOptions?: string | null;
   };
   inputs: {
     where: ProductWhereInput;
@@ -2894,7 +2746,7 @@ export type OperationListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly video?: string | null;
     readonly productCategories?: string | null;
     readonly products?: string | null;
@@ -2956,42 +2808,6 @@ export type ImagineListFn = (
 ) => import('@keystone-next/keystone/schema').ListConfig<
   ImagineListTypeInfo,
   ImagineListTypeInfo['fields']
->;
-
-export type ForgottenPasswordTokenListTypeInfo = {
-  key: 'ForgottenPasswordToken';
-  fields: 'id' | 'user' | 'token' | 'requestedAt' | 'accessedAt' | 'expiresAt';
-  backing: {
-    readonly id: string;
-    readonly user?: string | null;
-    readonly token?: string | null;
-    readonly requestedAt?: Date | null;
-    readonly accessedAt?: Date | null;
-    readonly expiresAt?: Date | null;
-  };
-  inputs: {
-    where: ForgottenPasswordTokenWhereInput;
-    create: ForgottenPasswordTokenCreateInput;
-    update: ForgottenPasswordTokenUpdateInput;
-  };
-  args: {
-    listQuery: {
-      readonly where?: ForgottenPasswordTokenWhereInput | null;
-      readonly sortBy?: ReadonlyArray<SortForgottenPasswordTokensBy> | null;
-      readonly first?: Scalars['Int'] | null;
-      readonly skip?: Scalars['Int'] | null;
-    };
-  };
-};
-
-export type ForgottenPasswordTokenListFn = (
-  listConfig: import('@keystone-next/keystone/schema').ListConfig<
-    ForgottenPasswordTokenListTypeInfo,
-    ForgottenPasswordTokenListTypeInfo['fields']
-  >
-) => import('@keystone-next/keystone/schema').ListConfig<
-  ForgottenPasswordTokenListTypeInfo,
-  ForgottenPasswordTokenListTypeInfo['fields']
 >;
 
 export type DealerListTypeInfo = {
@@ -3098,41 +2914,6 @@ export type ContactUsFormListFn = (
   ContactUsFormListTypeInfo['fields']
 >;
 
-export type BackEndUserListTypeInfo = {
-  key: 'BackEndUser';
-  fields: 'id' | 'name' | 'email' | 'password' | 'isAdmin';
-  backing: {
-    readonly id: string;
-    readonly name?: string | null;
-    readonly email?: string | null;
-    readonly password?: string | null;
-    readonly isAdmin?: boolean | null;
-  };
-  inputs: {
-    where: BackEndUserWhereInput;
-    create: BackEndUserCreateInput;
-    update: BackEndUserUpdateInput;
-  };
-  args: {
-    listQuery: {
-      readonly where?: BackEndUserWhereInput | null;
-      readonly sortBy?: ReadonlyArray<SortBackEndUsersBy> | null;
-      readonly first?: Scalars['Int'] | null;
-      readonly skip?: Scalars['Int'] | null;
-    };
-  };
-};
-
-export type BackEndUserListFn = (
-  listConfig: import('@keystone-next/keystone/schema').ListConfig<
-    BackEndUserListTypeInfo,
-    BackEndUserListTypeInfo['fields']
-  >
-) => import('@keystone-next/keystone/schema').ListConfig<
-  BackEndUserListTypeInfo,
-  BackEndUserListTypeInfo['fields']
->;
-
 export type ScreenListTypeInfo = {
   key: 'Screen';
   fields:
@@ -3229,7 +3010,7 @@ export type HardwareKitListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -3265,7 +3046,7 @@ export type GlassColorListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly parent?: string | null;
   };
@@ -3307,7 +3088,7 @@ export type GlassListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -3350,7 +3131,7 @@ export type ExteriorListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -3392,7 +3173,7 @@ export type DividedLiteListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -3422,8 +3203,8 @@ export type DividedLiteListFn = (
   DividedLiteListTypeInfo['fields']
 >;
 
-export type BrickmoldAndTrimListTypeInfo = {
-  key: 'BrickmoldAndTrim';
+export type BrickmouldAndTrimListTypeInfo = {
+  key: 'BrickmouldAndTrim';
   fields:
     | 'id'
     | 'name'
@@ -3434,34 +3215,34 @@ export type BrickmoldAndTrimListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
   };
   inputs: {
-    where: BrickmoldAndTrimWhereInput;
-    create: BrickmoldAndTrimCreateInput;
-    update: BrickmoldAndTrimUpdateInput;
+    where: BrickmouldAndTrimWhereInput;
+    create: BrickmouldAndTrimCreateInput;
+    update: BrickmouldAndTrimUpdateInput;
   };
   args: {
     listQuery: {
-      readonly where?: BrickmoldAndTrimWhereInput | null;
-      readonly sortBy?: ReadonlyArray<SortBrickmoldAndTrimsBy> | null;
+      readonly where?: BrickmouldAndTrimWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortBrickmouldAndTrimsBy> | null;
       readonly first?: Scalars['Int'] | null;
       readonly skip?: Scalars['Int'] | null;
     };
   };
 };
 
-export type BrickmoldAndTrimListFn = (
+export type BrickmouldAndTrimListFn = (
   listConfig: import('@keystone-next/keystone/schema').ListConfig<
-    BrickmoldAndTrimListTypeInfo,
-    BrickmoldAndTrimListTypeInfo['fields']
+    BrickmouldAndTrimListTypeInfo,
+    BrickmouldAndTrimListTypeInfo['fields']
   >
 ) => import('@keystone-next/keystone/schema').ListConfig<
-  BrickmoldAndTrimListTypeInfo,
-  BrickmoldAndTrimListTypeInfo['fields']
+  BrickmouldAndTrimListTypeInfo,
+  BrickmouldAndTrimListTypeInfo['fields']
 >;
 
 export type RoleListTypeInfo = {
@@ -3469,22 +3250,24 @@ export type RoleListTypeInfo = {
   fields:
     | 'id'
     | 'name'
-    | 'canManageProducts'
-    | 'canSeeOtherUsers'
-    | 'canManageUsers'
     | 'canManageRoles'
-    | 'canManageCart'
-    | 'canManageOrders'
+    | 'canManageUsers'
+    | 'canManageProducts'
+    | 'canManageOptions'
+    | 'canManageContactForm'
+    | 'canManageLists'
+    | 'hide'
     | 'assignedTo';
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly canManageProducts?: boolean | null;
-    readonly canSeeOtherUsers?: boolean | null;
-    readonly canManageUsers?: boolean | null;
     readonly canManageRoles?: boolean | null;
-    readonly canManageCart?: boolean | null;
-    readonly canManageOrders?: boolean | null;
+    readonly canManageUsers?: boolean | null;
+    readonly canManageProducts?: boolean | null;
+    readonly canManageOptions?: boolean | null;
+    readonly canManageContactForm?: boolean | null;
+    readonly canManageLists?: boolean | null;
+    readonly hide?: boolean | null;
     readonly assignedTo?: string | null;
   };
   inputs: {
@@ -3518,10 +3301,8 @@ export type KeystoneListsTypeInfo = {
   readonly Product: ProductListTypeInfo;
   readonly Operation: OperationListTypeInfo;
   readonly Imagine: ImagineListTypeInfo;
-  readonly ForgottenPasswordToken: ForgottenPasswordTokenListTypeInfo;
   readonly Dealer: DealerListTypeInfo;
   readonly ContactUsForm: ContactUsFormListTypeInfo;
-  readonly BackEndUser: BackEndUserListTypeInfo;
   readonly Screen: ScreenListTypeInfo;
   readonly Interior: InteriorListTypeInfo;
   readonly HardwareKit: HardwareKitListTypeInfo;
@@ -3529,6 +3310,6 @@ export type KeystoneListsTypeInfo = {
   readonly Glass: GlassListTypeInfo;
   readonly Exterior: ExteriorListTypeInfo;
   readonly DividedLite: DividedLiteListTypeInfo;
-  readonly BrickmoldAndTrim: BrickmoldAndTrimListTypeInfo;
+  readonly BrickmouldAndTrim: BrickmouldAndTrimListTypeInfo;
   readonly Role: RoleListTypeInfo;
 };

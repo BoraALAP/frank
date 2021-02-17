@@ -13,6 +13,7 @@ import { initialState, globalReducer } from "../context/reducer";
 import { Header } from "../components/global/Header";
 import Footer from "../components/global/Footer";
 import { useApollo } from "../lib/ApolloClient";
+import { Loading } from "../UI/Loading";
 
 const MyApp = ({ Component, pageProps }) => {
   const [store, dispatch] = useReducer(globalReducer, initialState);
@@ -28,7 +29,11 @@ const MyApp = ({ Component, pageProps }) => {
 
           <ComponentS>
             <AnimatePresence exitBeforeEnter initial={false}>
+              {/* {loading ? (
+                <Loading />
+              ) : ( */}
               <Component {...pageProps} key={router.pathname} />
+              {/* )} */}
             </AnimatePresence>
           </ComponentS>
 

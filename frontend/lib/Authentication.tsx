@@ -17,26 +17,38 @@ export const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
 const userFragment = `
-  id
-  name
-  isAdmin
-  companyName
-  lastLogin
+name
+email
+companyName
+dealerId
+role{
+  canManageRoles
+  canManageUsers
+  canManageProducts
+  canManageOptions
+  canManageContactForm
+  canManageLists
+}
 `;
 
 const USER_QUERY = gql`
   query {
-    authenticatedUser {
+  authenticatedItem{
+    ... on User {
       ${userFragment}
     }
   }
+}
 `;
 
 const AUTH_MUTATION = gql`
   mutation signin($email: String, $password: String) {
     authenticateUserWithPassword(email: $email, password: $password) {
-      item {
-        ${userFragment}
+      ...on UserAuthenticationWithPasswordSuccess{
+        sessionToken
+        item{
+          ${userFragment}
+        }
       }
     }
   }

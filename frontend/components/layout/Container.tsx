@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
+import { Loading } from "../../UI/Loading";
 
 interface MetaProps {
   children: any;
@@ -8,6 +9,7 @@ interface MetaProps {
   gap?: boolean;
   padding?: boolean;
   title?: any;
+  loading?: boolean;
 }
 
 export const Container = ({
@@ -16,6 +18,7 @@ export const Container = ({
   gap = false,
   padding = false,
   title,
+  loading = false,
 }: MetaProps) => {
   return (
     <>

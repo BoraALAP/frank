@@ -16,8 +16,12 @@ const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
   const { isAuthenticated } = useAuth();
 
+  const { data, error, loading } = useQuery(CATEGORIES);
+
+  console.log(data);
+
   return (
-    <Container space title="Home">
+    <Container space title="Home" loading={loading}>
       <Context>
         <Welcome>
           <Left>
@@ -33,50 +37,19 @@ const Home = (props) => {
         </Welcome>
         <Categories>
           <Message />
-          <Category1
-            title="Windows"
-            subtitle="Maximize your living space."
-            href="/products/windows"
-            image="/homepage4.jpg"
-            rev
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category1>
-          <Category2
-            title="Entry Door"
-            subtitle="Maximize your living space."
-            href="/products/entrydoors"
-            image="/homepage5.jpg"
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category2>
-          <Category3
-            title="Sliding Doors"
-            subtitle="Maximize your living space."
-            href="/products/slidingdoors"
-            image="/homepage6.jpg"
-            rev
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category3>
+          {!loading &&
+            data?.allProductCategories.map((category, index) => {
+              return (
+                <Category1
+                  title={category.name}
+                  subtitle={category.subtitle}
+                  href={`/products/${category.name}`}
+                  image={category.image.publicUrl}
+                  description={category.description}
+                  rev={index! % 2}
+                />
+              );
+            })}
         </Categories>
         <EnergyEfficiency />
       </Context>
@@ -137,11 +110,18 @@ const Right = styled.div`
   }
 `;
 
-const ME = gql`
-  query Operation {
-    allOperations {
+const CATEGORIES = gql`
+  query CATEGORIES {
+    allProductCategories {
       id
       name
+      subtitle
+      description
+      image {
+        id
+        filename
+        publicUrl
+      }
     }
   }
 `;

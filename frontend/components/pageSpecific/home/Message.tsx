@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 const Message = () => {
@@ -5,23 +6,28 @@ const Message = () => {
     <Container image1="/homepage4.jpg">
       <Top>
         <Left>
-          Frank is proudly Made in Ontario and serves customers across Canada.
-          Differentiating itself through unparalleled custom options, quality
-          products, and customer driven innovation. This is what Frank does - we
-          make windows and doors.
+          <h3>
+            Frank is proudly Made in Ontario and services an exclusive network
+            of dealers across Canada. What differentiates us from our
+            competitors is our ability to customize each order, deliver a
+            quality product everytime, and innovate ahead of the curve.
+          </h3>
+          <p>
+            Learn more about us{" "}
+            <a href="https://www.supportontariomade.ca/search-results?query=ostaco">
+              here.
+            </a>{" "}
+          </p>
         </Left>
-        {/* <Right>
-          With over four decades of experience, our values and beliefs remain
-          true to the founding of the company. Learn more about us here.
-        </Right> */}
+        <Right>
+          <Image
+            src="/ontarioMadeLogo.png"
+            layout="fixed"
+            width={96}
+            height={96}
+          />
+        </Right>
       </Top>
-      <Bottom>
-        <p>Small blurb on photography used here.</p>
-        <p>
-          Placeholder: With over four decades of experience, our values and
-          beliefs remain true to the founding of the company.
-        </p>
-      </Bottom>
     </Container>
   );
 };
@@ -46,23 +52,16 @@ const Top = styled.div`
   }
 `;
 
-const Left = styled.h3`
+const Left = styled.div`
   display: grid;
   width: 80%;
+  gap: var(--gap);
 `;
 
 const Right = styled.p`
   display: grid;
   color: var(--color-primary);
   margin: 0px;
-`;
-
-const Bottom = styled.div`
-  display: grid;
-
-  @media screen and (min-width: 768px) {
-    width: 50%;
-  }
 `;
 
 export default Message;

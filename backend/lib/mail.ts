@@ -1,5 +1,7 @@
 import { createTransport, getTestMessageUrl } from 'nodemailer';
 
+// TODO - IMPLEMENT MAILGUN FOR EMAIL
+
 const transport = createTransport({
   host: process.env.MAIL_HOST,
   port: process.env.MAIL_PORT,

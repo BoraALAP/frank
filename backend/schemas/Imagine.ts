@@ -1,19 +1,29 @@
 import { text, select, relationship } from "@keystone-next/fields";
- 
-import { list } from '@keystone-next/keystone/schema';
-const productOptions = [{value:"CORE", label: "Core"}, {value:"COREPLUS", label: "Core+"}, {value:"ENERSENSE", label: "Enersense"}, {value:"PRISM", label: "Prism"}, {value:"DESIGNER", label: "Designer"}, {value:"CLASSIC", label: "Classic"}, {value:"ARTISAN", label: "Artisan"}, {value:"MOOSE", label: "Moose"}, {value:"MOOSEPLUS", label: "Moose+"}, {value:"ORCHESTRADOOR", label: "Orchestra Door"}, {value:"FOLDINGDOOR", label: "Folding Door"}, {value:"LIFTANDSLIDE", label: "Lift And Slide"}]
+
+import { list } from "@keystone-next/keystone/schema";
+import { permissions } from "../access";
 
 export const Imagine = list({
+  access: {
+    create: permissions.canManageProducts,
+    read: () => true,
+    update: permissions.canManageProducts,
+    delete: permissions.canManageProducts,
+  },
+  ui: {
+    // hide the backend UI from regular users
+    hideCreate: (args) => !permissions.canManageProducts(args),
+    hideDelete: (args) => !permissions.canManageProducts(args),
+    isHidden: (args) => !permissions.canManageProducts(args),
+  },
   fields: {
-    src:text({
+    src: text({
       isRequired: true,
     }),
-    description:text({
+    description: text({}),
+    product: relationship({
+      ref: "Product",
+      many: true,
     }),
-    product:relationship({
-      ref:'Product',
-      many:true
-    })
   },
-  
-})
+});

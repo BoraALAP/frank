@@ -36,16 +36,10 @@ export default function Home() {
           Imagine: _allImaginesMeta {
             count
           }
-          ForgottenPasswordToken: _allForgottenPasswordTokensMeta {
-            count
-          }
           Dealer: _allDealersMeta {
             count
           }
           ContactUsForm: _allContactUsFormsMeta {
-            count
-          }
-          BackEndUser: _allBackEndUsersMeta {
             count
           }
           Screen: _allScreensMeta {
@@ -69,7 +63,7 @@ export default function Home() {
           DividedLite: _allDividedLitesMeta {
             count
           }
-          BrickmoldAndTrim: _allBrickmoldAndTrimsMeta {
+          BrickmouldAndTrim: _allBrickmouldAndTrimsMeta {
             count
           }
           Role: _allRolesMeta {
