@@ -6,7 +6,7 @@ import { useAuth } from "../../lib/Authentication";
 
 import ChangePasswordForm from "../../components/auth/ChangePasswordForm";
 import { Container } from "../../components/layout/Container";
-import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
+import { PageTitle } from "../../components/layout/PageTitle";
 
 const changepassword = ({ token, accessedAt }) => {
   const { isAuthenticated } = useAuth();
@@ -19,7 +19,7 @@ const changepassword = ({ token, accessedAt }) => {
   }, [isAuthenticated]);
 
   return (
-    <Container space padding gap title="Change Password">
+    <Container space padding pageGap title="Change Password">
       <PageTitle title="Change Password" />
       <ChangePasswordForm token={token} accessedAt={accessedAt} />
     </Container>

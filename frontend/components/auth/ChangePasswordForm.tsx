@@ -41,8 +41,6 @@ const ChangePasswordForm = ({ token, accessedAt }) => {
     variables: { token, accessedAt },
   });
 
-  console.log(data);
-
   const [ChangePasswordWithToken, { error: mutationError }] = useMutation(
     CHANGE_PASSWORD,
     {

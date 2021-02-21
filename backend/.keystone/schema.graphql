@@ -1189,7 +1189,7 @@ input OperationsCreateInput {
 """ A keystone list """
 type Imagine {
   id: ID!
-  src: String
+  image: CloudinaryImage_File
   description: String
   product(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -1202,24 +1202,10 @@ input ImagineWhereInput {
   id_not: ID
   id_in: [ID]
   id_not_in: [ID]
-  src: String
-  src_not: String
-  src_contains: String
-  src_not_contains: String
-  src_starts_with: String
-  src_not_starts_with: String
-  src_ends_with: String
-  src_not_ends_with: String
-  src_i: String
-  src_not_i: String
-  src_contains_i: String
-  src_not_contains_i: String
-  src_starts_with_i: String
-  src_not_starts_with_i: String
-  src_ends_with_i: String
-  src_not_ends_with_i: String
-  src_in: [String]
-  src_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
   description: String
   description_not: String
   description_contains: String
@@ -1256,8 +1242,6 @@ input ImagineWhereUniqueInput {
 enum SortImaginesBy {
   id_ASC
   id_DESC
-  src_ASC
-  src_DESC
   description_ASC
   description_DESC
   product_ASC
@@ -1265,7 +1249,7 @@ enum SortImaginesBy {
 }
 
 input ImagineUpdateInput {
-  src: String
+  image: Upload
   description: String
   product: ProductRelateToManyInput
 }
@@ -1276,7 +1260,7 @@ input ImaginesUpdateInput {
 }
 
 input ImagineCreateInput {
-  src: String
+  image: Upload
   description: String
   product: ProductRelateToManyInput
 }
@@ -1289,9 +1273,13 @@ input ImaginesCreateInput {
 type Dealer {
   id: ID!
   name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
   city: String
   postal: String
-  phone: Int
+  phone: String
   email: String
   person: String
   province: String
@@ -1322,6 +1310,78 @@ input DealerWhereInput {
   name_not_ends_with_i: String
   name_in: [String]
   name_not_in: [String]
+  googlePlaceID: String
+  googlePlaceID_not: String
+  googlePlaceID_contains: String
+  googlePlaceID_not_contains: String
+  googlePlaceID_starts_with: String
+  googlePlaceID_not_starts_with: String
+  googlePlaceID_ends_with: String
+  googlePlaceID_not_ends_with: String
+  googlePlaceID_i: String
+  googlePlaceID_not_i: String
+  googlePlaceID_contains_i: String
+  googlePlaceID_not_contains_i: String
+  googlePlaceID_starts_with_i: String
+  googlePlaceID_not_starts_with_i: String
+  googlePlaceID_ends_with_i: String
+  googlePlaceID_not_ends_with_i: String
+  googlePlaceID_in: [String]
+  googlePlaceID_not_in: [String]
+  formattedAddress: String
+  formattedAddress_not: String
+  formattedAddress_contains: String
+  formattedAddress_not_contains: String
+  formattedAddress_starts_with: String
+  formattedAddress_not_starts_with: String
+  formattedAddress_ends_with: String
+  formattedAddress_not_ends_with: String
+  formattedAddress_i: String
+  formattedAddress_not_i: String
+  formattedAddress_contains_i: String
+  formattedAddress_not_contains_i: String
+  formattedAddress_starts_with_i: String
+  formattedAddress_not_starts_with_i: String
+  formattedAddress_ends_with_i: String
+  formattedAddress_not_ends_with_i: String
+  formattedAddress_in: [String]
+  formattedAddress_not_in: [String]
+  lat: String
+  lat_not: String
+  lat_contains: String
+  lat_not_contains: String
+  lat_starts_with: String
+  lat_not_starts_with: String
+  lat_ends_with: String
+  lat_not_ends_with: String
+  lat_i: String
+  lat_not_i: String
+  lat_contains_i: String
+  lat_not_contains_i: String
+  lat_starts_with_i: String
+  lat_not_starts_with_i: String
+  lat_ends_with_i: String
+  lat_not_ends_with_i: String
+  lat_in: [String]
+  lat_not_in: [String]
+  lng: String
+  lng_not: String
+  lng_contains: String
+  lng_not_contains: String
+  lng_starts_with: String
+  lng_not_starts_with: String
+  lng_ends_with: String
+  lng_not_ends_with: String
+  lng_i: String
+  lng_not_i: String
+  lng_contains_i: String
+  lng_not_contains_i: String
+  lng_starts_with_i: String
+  lng_not_starts_with_i: String
+  lng_ends_with_i: String
+  lng_not_ends_with_i: String
+  lng_in: [String]
+  lng_not_in: [String]
   city: String
   city_not: String
   city_contains: String
@@ -1358,14 +1418,24 @@ input DealerWhereInput {
   postal_not_ends_with_i: String
   postal_in: [String]
   postal_not_in: [String]
-  phone: Int
-  phone_not: Int
-  phone_lt: Int
-  phone_lte: Int
-  phone_gt: Int
-  phone_gte: Int
-  phone_in: [Int]
-  phone_not_in: [Int]
+  phone: String
+  phone_not: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  phone_i: String
+  phone_not_i: String
+  phone_contains_i: String
+  phone_not_contains_i: String
+  phone_starts_with_i: String
+  phone_not_starts_with_i: String
+  phone_ends_with_i: String
+  phone_not_ends_with_i: String
+  phone_in: [String]
+  phone_not_in: [String]
   email: String
   email_not: String
   email_contains: String
@@ -1431,6 +1501,14 @@ enum SortDealersBy {
   id_DESC
   name_ASC
   name_DESC
+  googlePlaceID_ASC
+  googlePlaceID_DESC
+  formattedAddress_ASC
+  formattedAddress_DESC
+  lat_ASC
+  lat_DESC
+  lng_ASC
+  lng_DESC
   city_ASC
   city_DESC
   postal_ASC
@@ -1447,9 +1525,13 @@ enum SortDealersBy {
 
 input DealerUpdateInput {
   name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
   city: String
   postal: String
-  phone: Int
+  phone: String
   email: String
   person: String
   province: String
@@ -1462,9 +1544,13 @@ input DealersUpdateInput {
 
 input DealerCreateInput {
   name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
   city: String
   postal: String
-  phone: Int
+  phone: String
   email: String
   person: String
   province: String
@@ -1805,7 +1891,7 @@ input ContactUsFormsCreateInput {
 type Screen {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -1840,20 +1926,6 @@ input ScreenWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
   description: String
@@ -1903,8 +1975,6 @@ enum SortScreensBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -1915,7 +1985,7 @@ enum SortScreensBy {
 
 input ScreenUpdateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -1928,7 +1998,7 @@ input ScreensUpdateInput {
 
 input ScreenCreateInput {
   name: String
-  image: String
+  image: Upload
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -1942,7 +2012,8 @@ input ScreensCreateInput {
 type Interior {
   id: ID!
   name: String
-  image: String
+  image: CloudinaryImage_File
+  hex: String
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -1977,22 +2048,26 @@ input InteriorWhereInput {
   name_not_in: [String]
   image: String
   image_not: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
-  image_i: String
-  image_not_i: String
-  image_contains_i: String
-  image_not_contains_i: String
-  image_starts_with_i: String
-  image_not_starts_with_i: String
-  image_ends_with_i: String
-  image_not_ends_with_i: String
   image_in: [String]
   image_not_in: [String]
+  hex: String
+  hex_not: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
+  hex_i: String
+  hex_not_i: String
+  hex_contains_i: String
+  hex_not_contains_i: String
+  hex_starts_with_i: String
+  hex_not_starts_with_i: String
+  hex_ends_with_i: String
+  hex_not_ends_with_i: String
+  hex_in: [String]
+  hex_not_in: [String]
   description: String
   description_not: String
   description_contains: String
@@ -2040,8 +2115,8 @@ enum SortInteriorsBy {
   id_DESC
   name_ASC
   name_DESC
-  image_ASC
-  image_DESC
+  hex_ASC
+  hex_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2052,7 +2127,8 @@ enum SortInteriorsBy {
 
 input InteriorUpdateInput {
   name: String
-  image: String
+  image: Upload
+  hex: String
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2065,7 +2141,8 @@ input InteriorsUpdateInput {
 
 input InteriorCreateInput {
   name: String
-  image: String
+  image: Upload
+  hex: String
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2450,6 +2527,7 @@ type Exterior {
   id: ID!
   name: String
   image: CloudinaryImage_File
+  hex: String
   description: String
   products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
   _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
@@ -2486,6 +2564,24 @@ input ExteriorWhereInput {
   image_not: String
   image_in: [String]
   image_not_in: [String]
+  hex: String
+  hex_not: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
+  hex_i: String
+  hex_not_i: String
+  hex_contains_i: String
+  hex_not_contains_i: String
+  hex_starts_with_i: String
+  hex_not_starts_with_i: String
+  hex_ends_with_i: String
+  hex_not_ends_with_i: String
+  hex_in: [String]
+  hex_not_in: [String]
   description: String
   description_not: String
   description_contains: String
@@ -2533,6 +2629,8 @@ enum SortExteriorsBy {
   id_DESC
   name_ASC
   name_DESC
+  hex_ASC
+  hex_DESC
   description_ASC
   description_DESC
   products_ASC
@@ -2544,6 +2642,7 @@ enum SortExteriorsBy {
 input ExteriorUpdateInput {
   name: String
   image: Upload
+  hex: String
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput
@@ -2557,6 +2656,7 @@ input ExteriorsUpdateInput {
 input ExteriorCreateInput {
   name: String
   image: Upload
+  hex: String
   description: String
   products: ProductRelateToManyInput
   productCategories: ProductCategoryRelateToManyInput

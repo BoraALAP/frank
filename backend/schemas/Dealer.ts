@@ -1,5 +1,5 @@
 import { text, integer } from "@keystone-next/fields";
-// import { LocationGoogle } from "@keystonejs/fields-location-google";
+import { LocationGoogle } from "@keystonejs/fields-location-google";
 
 import { list } from "@keystone-next/keystone/schema";
 import { permissions } from "../access";
@@ -20,10 +20,13 @@ export const Dealer = list({
     name: text({
       isRequired: true,
     }),
-
+    googlePlaceID: text({}),
+    formattedAddress: text({}),
+    lat: text({}),
+    lng: text({}),
     city: text({}),
     postal: text({}),
-    phone: integer({}),
+    phone: text({}),
     email: text({}),
     person: text({}),
     province: text({}),

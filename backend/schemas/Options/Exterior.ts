@@ -24,6 +24,7 @@ export const Exterior = list({
       cloudinary,
       label: "Source",
     }),
+    hex: text({}),
     description: text({}),
     products: relationship({
       ref: "Product.exteriorOptions",

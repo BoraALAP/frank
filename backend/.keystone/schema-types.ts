@@ -1016,24 +1016,10 @@ export type ImagineWhereInput = {
   readonly id_not?: Scalars['ID'] | null;
   readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
   readonly id_not_in?: ReadonlyArray<Scalars['ID'] | null> | null;
-  readonly src?: Scalars['String'] | null;
-  readonly src_not?: Scalars['String'] | null;
-  readonly src_contains?: Scalars['String'] | null;
-  readonly src_not_contains?: Scalars['String'] | null;
-  readonly src_starts_with?: Scalars['String'] | null;
-  readonly src_not_starts_with?: Scalars['String'] | null;
-  readonly src_ends_with?: Scalars['String'] | null;
-  readonly src_not_ends_with?: Scalars['String'] | null;
-  readonly src_i?: Scalars['String'] | null;
-  readonly src_not_i?: Scalars['String'] | null;
-  readonly src_contains_i?: Scalars['String'] | null;
-  readonly src_not_contains_i?: Scalars['String'] | null;
-  readonly src_starts_with_i?: Scalars['String'] | null;
-  readonly src_not_starts_with_i?: Scalars['String'] | null;
-  readonly src_ends_with_i?: Scalars['String'] | null;
-  readonly src_not_ends_with_i?: Scalars['String'] | null;
-  readonly src_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly src_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly image?: Scalars['String'] | null;
+  readonly image_not?: Scalars['String'] | null;
+  readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
   readonly description_not?: Scalars['String'] | null;
   readonly description_contains?: Scalars['String'] | null;
@@ -1064,15 +1050,13 @@ export type ImagineWhereUniqueInput = {
 export type SortImaginesBy =
   | 'id_ASC'
   | 'id_DESC'
-  | 'src_ASC'
-  | 'src_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'product_ASC'
   | 'product_DESC';
 
 export type ImagineUpdateInput = {
-  readonly src?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly product?: ProductRelateToManyInput | null;
 };
@@ -1083,7 +1067,7 @@ export type ImaginesUpdateInput = {
 };
 
 export type ImagineCreateInput = {
-  readonly src?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly product?: ProductRelateToManyInput | null;
 };
@@ -1117,6 +1101,82 @@ export type DealerWhereInput = {
   readonly name_not_ends_with_i?: Scalars['String'] | null;
   readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly googlePlaceID?: Scalars['String'] | null;
+  readonly googlePlaceID_not?: Scalars['String'] | null;
+  readonly googlePlaceID_contains?: Scalars['String'] | null;
+  readonly googlePlaceID_not_contains?: Scalars['String'] | null;
+  readonly googlePlaceID_starts_with?: Scalars['String'] | null;
+  readonly googlePlaceID_not_starts_with?: Scalars['String'] | null;
+  readonly googlePlaceID_ends_with?: Scalars['String'] | null;
+  readonly googlePlaceID_not_ends_with?: Scalars['String'] | null;
+  readonly googlePlaceID_i?: Scalars['String'] | null;
+  readonly googlePlaceID_not_i?: Scalars['String'] | null;
+  readonly googlePlaceID_contains_i?: Scalars['String'] | null;
+  readonly googlePlaceID_not_contains_i?: Scalars['String'] | null;
+  readonly googlePlaceID_starts_with_i?: Scalars['String'] | null;
+  readonly googlePlaceID_not_starts_with_i?: Scalars['String'] | null;
+  readonly googlePlaceID_ends_with_i?: Scalars['String'] | null;
+  readonly googlePlaceID_not_ends_with_i?: Scalars['String'] | null;
+  readonly googlePlaceID_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly googlePlaceID_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly formattedAddress?: Scalars['String'] | null;
+  readonly formattedAddress_not?: Scalars['String'] | null;
+  readonly formattedAddress_contains?: Scalars['String'] | null;
+  readonly formattedAddress_not_contains?: Scalars['String'] | null;
+  readonly formattedAddress_starts_with?: Scalars['String'] | null;
+  readonly formattedAddress_not_starts_with?: Scalars['String'] | null;
+  readonly formattedAddress_ends_with?: Scalars['String'] | null;
+  readonly formattedAddress_not_ends_with?: Scalars['String'] | null;
+  readonly formattedAddress_i?: Scalars['String'] | null;
+  readonly formattedAddress_not_i?: Scalars['String'] | null;
+  readonly formattedAddress_contains_i?: Scalars['String'] | null;
+  readonly formattedAddress_not_contains_i?: Scalars['String'] | null;
+  readonly formattedAddress_starts_with_i?: Scalars['String'] | null;
+  readonly formattedAddress_not_starts_with_i?: Scalars['String'] | null;
+  readonly formattedAddress_ends_with_i?: Scalars['String'] | null;
+  readonly formattedAddress_not_ends_with_i?: Scalars['String'] | null;
+  readonly formattedAddress_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly formattedAddress_not_in?: ReadonlyArray<
+    Scalars['String'] | null
+  > | null;
+  readonly lat?: Scalars['String'] | null;
+  readonly lat_not?: Scalars['String'] | null;
+  readonly lat_contains?: Scalars['String'] | null;
+  readonly lat_not_contains?: Scalars['String'] | null;
+  readonly lat_starts_with?: Scalars['String'] | null;
+  readonly lat_not_starts_with?: Scalars['String'] | null;
+  readonly lat_ends_with?: Scalars['String'] | null;
+  readonly lat_not_ends_with?: Scalars['String'] | null;
+  readonly lat_i?: Scalars['String'] | null;
+  readonly lat_not_i?: Scalars['String'] | null;
+  readonly lat_contains_i?: Scalars['String'] | null;
+  readonly lat_not_contains_i?: Scalars['String'] | null;
+  readonly lat_starts_with_i?: Scalars['String'] | null;
+  readonly lat_not_starts_with_i?: Scalars['String'] | null;
+  readonly lat_ends_with_i?: Scalars['String'] | null;
+  readonly lat_not_ends_with_i?: Scalars['String'] | null;
+  readonly lat_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly lat_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly lng?: Scalars['String'] | null;
+  readonly lng_not?: Scalars['String'] | null;
+  readonly lng_contains?: Scalars['String'] | null;
+  readonly lng_not_contains?: Scalars['String'] | null;
+  readonly lng_starts_with?: Scalars['String'] | null;
+  readonly lng_not_starts_with?: Scalars['String'] | null;
+  readonly lng_ends_with?: Scalars['String'] | null;
+  readonly lng_not_ends_with?: Scalars['String'] | null;
+  readonly lng_i?: Scalars['String'] | null;
+  readonly lng_not_i?: Scalars['String'] | null;
+  readonly lng_contains_i?: Scalars['String'] | null;
+  readonly lng_not_contains_i?: Scalars['String'] | null;
+  readonly lng_starts_with_i?: Scalars['String'] | null;
+  readonly lng_not_starts_with_i?: Scalars['String'] | null;
+  readonly lng_ends_with_i?: Scalars['String'] | null;
+  readonly lng_not_ends_with_i?: Scalars['String'] | null;
+  readonly lng_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly lng_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly city?: Scalars['String'] | null;
   readonly city_not?: Scalars['String'] | null;
   readonly city_contains?: Scalars['String'] | null;
@@ -1153,14 +1213,24 @@ export type DealerWhereInput = {
   readonly postal_not_ends_with_i?: Scalars['String'] | null;
   readonly postal_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly postal_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly phone?: Scalars['Int'] | null;
-  readonly phone_not?: Scalars['Int'] | null;
-  readonly phone_lt?: Scalars['Int'] | null;
-  readonly phone_lte?: Scalars['Int'] | null;
-  readonly phone_gt?: Scalars['Int'] | null;
-  readonly phone_gte?: Scalars['Int'] | null;
-  readonly phone_in?: ReadonlyArray<Scalars['Int'] | null> | null;
-  readonly phone_not_in?: ReadonlyArray<Scalars['Int'] | null> | null;
+  readonly phone?: Scalars['String'] | null;
+  readonly phone_not?: Scalars['String'] | null;
+  readonly phone_contains?: Scalars['String'] | null;
+  readonly phone_not_contains?: Scalars['String'] | null;
+  readonly phone_starts_with?: Scalars['String'] | null;
+  readonly phone_not_starts_with?: Scalars['String'] | null;
+  readonly phone_ends_with?: Scalars['String'] | null;
+  readonly phone_not_ends_with?: Scalars['String'] | null;
+  readonly phone_i?: Scalars['String'] | null;
+  readonly phone_not_i?: Scalars['String'] | null;
+  readonly phone_contains_i?: Scalars['String'] | null;
+  readonly phone_not_contains_i?: Scalars['String'] | null;
+  readonly phone_starts_with_i?: Scalars['String'] | null;
+  readonly phone_not_starts_with_i?: Scalars['String'] | null;
+  readonly phone_ends_with_i?: Scalars['String'] | null;
+  readonly phone_not_ends_with_i?: Scalars['String'] | null;
+  readonly phone_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly phone_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly email?: Scalars['String'] | null;
   readonly email_not?: Scalars['String'] | null;
   readonly email_contains?: Scalars['String'] | null;
@@ -1226,6 +1296,14 @@ export type SortDealersBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'googlePlaceID_ASC'
+  | 'googlePlaceID_DESC'
+  | 'formattedAddress_ASC'
+  | 'formattedAddress_DESC'
+  | 'lat_ASC'
+  | 'lat_DESC'
+  | 'lng_ASC'
+  | 'lng_DESC'
   | 'city_ASC'
   | 'city_DESC'
   | 'postal_ASC'
@@ -1241,9 +1319,13 @@ export type SortDealersBy =
 
 export type DealerUpdateInput = {
   readonly name?: Scalars['String'] | null;
+  readonly googlePlaceID?: Scalars['String'] | null;
+  readonly formattedAddress?: Scalars['String'] | null;
+  readonly lat?: Scalars['String'] | null;
+  readonly lng?: Scalars['String'] | null;
   readonly city?: Scalars['String'] | null;
   readonly postal?: Scalars['String'] | null;
-  readonly phone?: Scalars['Int'] | null;
+  readonly phone?: Scalars['String'] | null;
   readonly email?: Scalars['String'] | null;
   readonly person?: Scalars['String'] | null;
   readonly province?: Scalars['String'] | null;
@@ -1256,9 +1338,13 @@ export type DealersUpdateInput = {
 
 export type DealerCreateInput = {
   readonly name?: Scalars['String'] | null;
+  readonly googlePlaceID?: Scalars['String'] | null;
+  readonly formattedAddress?: Scalars['String'] | null;
+  readonly lat?: Scalars['String'] | null;
+  readonly lng?: Scalars['String'] | null;
   readonly city?: Scalars['String'] | null;
   readonly postal?: Scalars['String'] | null;
-  readonly phone?: Scalars['Int'] | null;
+  readonly phone?: Scalars['String'] | null;
   readonly email?: Scalars['String'] | null;
   readonly person?: Scalars['String'] | null;
   readonly province?: Scalars['String'] | null;
@@ -1603,20 +1689,6 @@ export type ScreenWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
@@ -1654,8 +1726,6 @@ export type SortScreensBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -1665,7 +1735,7 @@ export type SortScreensBy =
 
 export type ScreenUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -1678,7 +1748,7 @@ export type ScreensUpdateInput = {
 
 export type ScreenCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -1715,22 +1785,26 @@ export type InteriorWhereInput = {
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image?: Scalars['String'] | null;
   readonly image_not?: Scalars['String'] | null;
-  readonly image_contains?: Scalars['String'] | null;
-  readonly image_not_contains?: Scalars['String'] | null;
-  readonly image_starts_with?: Scalars['String'] | null;
-  readonly image_not_starts_with?: Scalars['String'] | null;
-  readonly image_ends_with?: Scalars['String'] | null;
-  readonly image_not_ends_with?: Scalars['String'] | null;
-  readonly image_i?: Scalars['String'] | null;
-  readonly image_not_i?: Scalars['String'] | null;
-  readonly image_contains_i?: Scalars['String'] | null;
-  readonly image_not_contains_i?: Scalars['String'] | null;
-  readonly image_starts_with_i?: Scalars['String'] | null;
-  readonly image_not_starts_with_i?: Scalars['String'] | null;
-  readonly image_ends_with_i?: Scalars['String'] | null;
-  readonly image_not_ends_with_i?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly hex?: Scalars['String'] | null;
+  readonly hex_not?: Scalars['String'] | null;
+  readonly hex_contains?: Scalars['String'] | null;
+  readonly hex_not_contains?: Scalars['String'] | null;
+  readonly hex_starts_with?: Scalars['String'] | null;
+  readonly hex_not_starts_with?: Scalars['String'] | null;
+  readonly hex_ends_with?: Scalars['String'] | null;
+  readonly hex_not_ends_with?: Scalars['String'] | null;
+  readonly hex_i?: Scalars['String'] | null;
+  readonly hex_not_i?: Scalars['String'] | null;
+  readonly hex_contains_i?: Scalars['String'] | null;
+  readonly hex_not_contains_i?: Scalars['String'] | null;
+  readonly hex_starts_with_i?: Scalars['String'] | null;
+  readonly hex_not_starts_with_i?: Scalars['String'] | null;
+  readonly hex_ends_with_i?: Scalars['String'] | null;
+  readonly hex_not_ends_with_i?: Scalars['String'] | null;
+  readonly hex_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly hex_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
   readonly description_not?: Scalars['String'] | null;
   readonly description_contains?: Scalars['String'] | null;
@@ -1766,8 +1840,8 @@ export type SortInteriorsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'image_ASC'
-  | 'image_DESC'
+  | 'hex_ASC'
+  | 'hex_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -1777,7 +1851,8 @@ export type SortInteriorsBy =
 
 export type InteriorUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
+  readonly hex?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -1790,7 +1865,8 @@ export type InteriorsUpdateInput = {
 
 export type InteriorCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly image?: Scalars['String'] | null;
+  readonly image?: any | null;
+  readonly hex?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2124,6 +2200,24 @@ export type ExteriorWhereInput = {
   readonly image_not?: Scalars['String'] | null;
   readonly image_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly image_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly hex?: Scalars['String'] | null;
+  readonly hex_not?: Scalars['String'] | null;
+  readonly hex_contains?: Scalars['String'] | null;
+  readonly hex_not_contains?: Scalars['String'] | null;
+  readonly hex_starts_with?: Scalars['String'] | null;
+  readonly hex_not_starts_with?: Scalars['String'] | null;
+  readonly hex_ends_with?: Scalars['String'] | null;
+  readonly hex_not_ends_with?: Scalars['String'] | null;
+  readonly hex_i?: Scalars['String'] | null;
+  readonly hex_not_i?: Scalars['String'] | null;
+  readonly hex_contains_i?: Scalars['String'] | null;
+  readonly hex_not_contains_i?: Scalars['String'] | null;
+  readonly hex_starts_with_i?: Scalars['String'] | null;
+  readonly hex_not_starts_with_i?: Scalars['String'] | null;
+  readonly hex_ends_with_i?: Scalars['String'] | null;
+  readonly hex_not_ends_with_i?: Scalars['String'] | null;
+  readonly hex_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly hex_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description?: Scalars['String'] | null;
   readonly description_not?: Scalars['String'] | null;
   readonly description_contains?: Scalars['String'] | null;
@@ -2159,6 +2253,8 @@ export type SortExteriorsBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'hex_ASC'
+  | 'hex_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'products_ASC'
@@ -2169,6 +2265,7 @@ export type SortExteriorsBy =
 export type ExteriorUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly image?: any | null;
+  readonly hex?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2182,6 +2279,7 @@ export type ExteriorsUpdateInput = {
 export type ExteriorCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly image?: any | null;
+  readonly hex?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
   readonly products?: ProductRelateToManyInput | null;
   readonly productCategories?: ProductCategoryRelateToManyInput | null;
@@ -2778,10 +2876,10 @@ export type OperationListFn = (
 
 export type ImagineListTypeInfo = {
   key: 'Imagine';
-  fields: 'id' | 'src' | 'description' | 'product';
+  fields: 'id' | 'image' | 'description' | 'product';
   backing: {
     readonly id: string;
-    readonly src?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly product?: string | null;
   };
@@ -2815,6 +2913,10 @@ export type DealerListTypeInfo = {
   fields:
     | 'id'
     | 'name'
+    | 'googlePlaceID'
+    | 'formattedAddress'
+    | 'lat'
+    | 'lng'
     | 'city'
     | 'postal'
     | 'phone'
@@ -2824,9 +2926,13 @@ export type DealerListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
+    readonly googlePlaceID?: string | null;
+    readonly formattedAddress?: string | null;
+    readonly lat?: string | null;
+    readonly lng?: string | null;
     readonly city?: string | null;
     readonly postal?: string | null;
-    readonly phone?: number | null;
+    readonly phone?: string | null;
     readonly email?: string | null;
     readonly person?: string | null;
     readonly province?: string | null;
@@ -2926,7 +3032,7 @@ export type ScreenListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -2962,13 +3068,15 @@ export type InteriorListTypeInfo = {
     | 'id'
     | 'name'
     | 'image'
+    | 'hex'
     | 'description'
     | 'products'
     | 'productCategories';
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly image?: string | null;
+    readonly image?: any;
+    readonly hex?: string | null;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;
@@ -3125,6 +3233,7 @@ export type ExteriorListTypeInfo = {
     | 'id'
     | 'name'
     | 'image'
+    | 'hex'
     | 'description'
     | 'products'
     | 'productCategories';
@@ -3132,6 +3241,7 @@ export type ExteriorListTypeInfo = {
     readonly id: string;
     readonly name?: string | null;
     readonly image?: any;
+    readonly hex?: string | null;
     readonly description?: string | null;
     readonly products?: string | null;
     readonly productCategories?: string | null;

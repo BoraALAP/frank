@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
-import { Loading } from "../../UI/Loading";
 
 interface MetaProps {
   children: any;
   space?: boolean;
   gap?: boolean;
+  pageGap?: boolean;
   padding?: boolean;
   title?: any;
   loading?: boolean;
@@ -16,6 +15,7 @@ export const Container = ({
   children,
   space = false,
   gap = false,
+  pageGap = false,
   padding = false,
   title,
   loading = false,
@@ -26,6 +26,7 @@ export const Container = ({
       <ContainerS
         space={space}
         gap={gap}
+        pageGap={pageGap}
         padding={padding}
         style={{ visibility: "visible" }}
         layoutId="page"
@@ -40,7 +41,7 @@ export const Container = ({
   );
 };
 
-const ContainerS = styled(motion.div)`
+const ContainerS = styled.div`
   display: grid;
   max-width: 1440px;
   width: 100%;
@@ -48,7 +49,8 @@ const ContainerS = styled(motion.div)`
   justify-self: center;
   margin: auto;
   visibility: "visible";
-  gap: ${(props) => (props.gap ? `calc( 2 * var(--gap))` : `0`)};
+  gap: ${(props) =>
+    props.gap ? `var(--gap)` : props.pageGap ? `calc(2*var(--gap))` : `0`};
   padding: ${(props) =>
     props.space && props.padding
       ? `7rem var(--padding)`
@@ -59,7 +61,13 @@ const ContainerS = styled(motion.div)`
       : `0`};
 
   @media screen and (min-width: 768px) {
-    gap: ${(props) => (props.gap ? `var(--gap)` : `0`)};
+    gap: ${(props) =>
+      props.gap
+        ? `calc(2*var(--gap))`
+        : props.pageGap
+        ? `calc(4*var(--gap))`
+        : `0`};
+
     padding: ${(props) =>
       props.space && props.padding
         ? `10rem var(--padding)`

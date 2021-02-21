@@ -1,29 +1,33 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import PropTypes from "prop-types";
 
 import { TertiaryButton } from "../../../UI/Links";
 import { Body } from "../../layout/Body";
+import { Slugify } from "../../../lib/Stringer";
 
-const Split = ({ title, subtitle, href, button, image, children, side }) => {
+export const ProductCard = ({ product, side }) => {
   return (
-    <Link href={href}>
+    <Link href={`/products/${Slugify(product.name)}`}>
       <Container side={side}>
         <ImageContainer>
           <Image
-            src={image}
+            src={product?.image?.publicUrl}
+            alt={product?.image?.originalFilename}
             layout="fill"
             objectFit="cover"
             objectPosition="50% 50%"
           />
         </ImageContainer>
         <Text side={side}>
-          <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
-          <Body>{children}</Body>
-          <TertiaryButton rev={side ? false : true} href={href}>
-            {button}
+          <Title>{product.name}</Title>
+          <Subtitle>{product.subtitle}</Subtitle>
+          <Body>{product.excerpt}</Body>
+          <TertiaryButton
+            rev={side ? false : true}
+            href={`/products/${Slugify(product.name)}`}
+          >
+            View {product.name}
           </TertiaryButton>
         </Text>
       </Container>
@@ -82,18 +86,3 @@ const Container = styled.div`
     min-height: ${(props) => (props.side ? "50rem" : "31rem")};
   }
 `;
-
-Split.defaultProps = {
-  button: "View Product",
-};
-
-Split.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  href: PropTypes.string,
-  button: PropTypes.string,
-  image: PropTypes.string,
-  side: PropTypes.bool,
-};
-
-export default Split;

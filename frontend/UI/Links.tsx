@@ -9,7 +9,7 @@ export const NavLinks = (props) => {
       </Container>
     </Link>
   ) : (
-    <Container href={props.href} {...props} disabled={props.disabled}>
+    <Container {...props} disabled={props.disabled}>
       {props.children}
     </Container>
   );

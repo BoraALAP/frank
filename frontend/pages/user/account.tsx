@@ -7,7 +7,7 @@ import { useAuth } from "../../lib/Authentication";
 import { Container } from "../../components/layout/Container";
 import { TertiaryButton } from "../../UI/Links";
 import { Loading } from "../../UI/Loading";
-import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
+import { PageTitle } from "../../components/layout/PageTitle";
 
 const account = () => {
   const { signout, isAuthenticated, isLoading, user } = useAuth();
@@ -15,7 +15,6 @@ const account = () => {
     event.preventDefault();
     signout();
   };
-  console.log(user);
 
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
@@ -29,7 +28,7 @@ const account = () => {
   }
 
   return (
-    <Container space padding gap title="My Profile">
+    <Container space padding pageGap title="My Profile">
       <PageTitle title="Account" />
       <h4>Hello {user?.name}</h4>
       <p>

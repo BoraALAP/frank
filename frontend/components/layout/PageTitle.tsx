@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-import { NavLinks } from "../../../UI/Links";
+import { NavLinks } from "../../UI/Links";
+import { Slugify } from "../../lib/Stringer";
 
 interface PageTitle {
   title: string;
@@ -10,13 +11,18 @@ interface PageTitle {
   padding?: boolean;
   children?: any;
   id?: string;
+  clickAction?: any;
 }
 
 interface Breadcrumbs {
   title: string;
+  subtitle?: string;
   links?: any;
   padding?: boolean;
   parent: string;
+  children?: any;
+  id?: string;
+  clickAction?: any;
 }
 
 export const PageTitle = ({
@@ -26,6 +32,7 @@ export const PageTitle = ({
   padding = false,
   children,
   id,
+  clickAction,
 }: PageTitle) => {
   return (
     <Context
@@ -38,24 +45,20 @@ export const PageTitle = ({
 
       {subtitle && <h3>{subtitle}</h3>}
       <Bottom twoColumn={children && true}>
-        {children && <div>{children}</div>}
+        {children && <Text>{children}</Text>}
         {links && (
           <Links>
-            {links?.map((item, index) => (
-              <NavLinks
-                key={index}
-                href={
-                  item.href === "/sub/designoptions"
-                    ? {
-                        pathname: `${item.href}`,
-                        query: { category: `${title}` },
-                      }
-                    : item.href
-                }
-              >
-                {item.name}
-              </NavLinks>
-            ))}
+            {links?.map((item, index) => {
+              return item.href ? (
+                <NavLinks key={index} href={Slugify(item.href)}>
+                  {item.name}
+                </NavLinks>
+              ) : (
+                <NavLinks key={index} onClick={() => clickAction(item.name)}>
+                  {item.name}
+                </NavLinks>
+              );
+            })}
           </Links>
         )}
       </Bottom>
@@ -64,34 +67,45 @@ export const PageTitle = ({
 };
 
 export const Breadcrumbs = ({
-  links,
   title,
+  subtitle,
   parent,
+  links,
   padding = false,
+  children,
+  id,
+  clickAction,
 }: Breadcrumbs) => {
   const router = useRouter();
 
   return (
-    <Context padding={padding}>
+    <Context
+      padding={padding}
+      subtitle={subtitle && true}
+      twoColumn={children && true}
+      id={id}
+    >
       <TitleBox>
         <Clickable onClick={() => router.back()}>{parent}</Clickable>
         <H2>/ {title}</H2>
       </TitleBox>
-
-      <Links>
-        {links?.map((item, index) => (
-          <NavLinks
-            href={
-              item.href === "/sub/designoptions"
-                ? { pathname: `${item.href}`, query: { product: `${title}` } }
-                : item.href
-            }
-            key={index}
-          >
-            {item.name}
-          </NavLinks>
-        ))}
-      </Links>
+      {subtitle && <h3>{subtitle}</h3>}
+      <Bottom twoColumn={children && true}>
+        {children && <Text>{children}</Text>}
+        <Links>
+          {links?.map((item, index) => {
+            return item.href ? (
+              <NavLinks key={index} href={Slugify(item.href)}>
+                {item.name}
+              </NavLinks>
+            ) : (
+              <NavLinks key={index} onClick={() => clickAction(item.name)}>
+                {item.name}
+              </NavLinks>
+            );
+          })}
+        </Links>
+      </Bottom>
     </Context>
   );
 };
@@ -148,4 +162,9 @@ const Bottom = styled.div`
       props.twoColumn ? "auto 25%" : "none"};
     align-items: baseline;
   }
+`;
+
+const Text = styled.div`
+  display: grid;
+  gap: var(--gap);
 `;

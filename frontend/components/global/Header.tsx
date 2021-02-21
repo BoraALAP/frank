@@ -10,26 +10,6 @@ import { Menu } from "./Menu";
 import { Container } from "../layout/Container";
 import { GlobalContext } from "../../context/context";
 
-const background = {
-  open: (height = 1000) => ({
-    clipPath: `inset(${height * 2 + 200}px at 40px 40px)`,
-    transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 2,
-    },
-  }),
-  closed: {
-    clipPath: "inset(30px at 40px 40px)",
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 400,
-      damping: 40,
-    },
-  },
-};
-
 export const Header = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
 
@@ -65,17 +45,6 @@ export const Header = (props) => {
       }
     };
   });
-
-  // END -- Getting PAGE Y Off
-
-  //  Menu State
-  // useEffect(() => {
-  //   if (menuState) {
-  //     disableScroll.on();
-  //   } else {
-  //     disableScroll.off();
-  //   }
-  // }, [menuState]);
 
   useEffect(() => {
     dispatch({ type: "HEADER_SHOW", payload: sticky });

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Container } from "../components/layout/Container";
 import ContactForm from "../components/pageSpecific/contact/ContactForm";
-import { PageTitle } from "../components/pageSpecific/products/PageTitle";
+import { PageTitle } from "../components/layout/PageTitle";
 
 const list = [
   {
@@ -25,7 +25,7 @@ const list = [
 
 const contactus = () => {
   return (
-    <Container space padding gap title="Contact Us">
+    <Container space padding pageGap title="Contact Us">
       <PageTitle title="Contact Us" />
       <Content>
         <Left>

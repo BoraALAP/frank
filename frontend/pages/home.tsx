@@ -11,14 +11,13 @@ import Category from "../components/pageSpecific/home/Category";
 import { useAuth } from "../lib/Authentication";
 
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
+import { Slugify } from "../lib/Stringer";
 
 const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
   const { isAuthenticated } = useAuth();
 
   const { data, error, loading } = useQuery(CATEGORIES);
-
-  console.log(data);
 
   return (
     <Container space title="Home" loading={loading}>
@@ -40,13 +39,14 @@ const Home = (props) => {
           {!loading &&
             data?.allProductCategories.map((category, index) => {
               return (
-                <Category1
+                <Category
                   title={category.name}
+                  key={category.id}
                   subtitle={category.subtitle}
-                  href={`/products/${category.name}`}
+                  href={`/categories/${Slugify(category.name)}`}
                   image={category.image.publicUrl}
                   description={category.description}
-                  rev={index! % 2}
+                  rev={index! % 2 ? true : false}
                 />
               );
             })}
@@ -76,21 +76,6 @@ const Welcome = styled.div`
 const Categories = styled.div`
   display: grid;
   gap: calc(2 * var(--gap));
-`;
-
-const Category1 = styled(Category)`
-  display: grid;
-  z-index: 1;
-`;
-
-const Category2 = styled(Category)`
-  display: grid;
-  z-index: 2;
-`;
-
-const Category3 = styled(Category)`
-  display: grid;
-  z-index: 3;
 `;
 
 const Left = styled.div``;

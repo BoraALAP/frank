@@ -11,7 +11,8 @@ interface Props {
   video?: Boolean;
   title: String;
   subTitle: String;
-  children?: any;
+  description?: any;
+  padding?: Boolean;
 }
 
 const variants = {
@@ -31,25 +32,26 @@ export const Operations = ({
   video = false,
   title = "Operations",
   subTitle,
-  children,
+  description,
+  padding = false,
 }: Props) => {
   const [videoSrc, setVideoSrc] = useState();
   const [imageSrc, setImageSrc] = useState();
   const [operationName, setOperationName] = useState();
-  const [description, setDescription] = useState();
+  const [descriptions, setDescription] = useState();
   const [id, setId] = useState();
   const [active, setActive] = useState();
   useEffect(() => {
-    setImageSrc(list && list[0]?.image);
+    setImageSrc(list && list[0]?.image?.publicUrl);
     setVideoSrc(list && list[0]?.video);
     setOperationName(list && list[0]?.name);
     setId(list && list[0]?.id);
   }, [list]);
 
   return (
-    <Container>
-      <Details title={title} subtitle={subTitle} transparent padding>
-        {children}
+    <Container gap padding={padding && true}>
+      <Details title={title} subtitle={subTitle} transparent>
+        {description}
       </Details>
       <Middle>
         <Left>
@@ -59,7 +61,7 @@ export const Operations = ({
               playing
               loop
               muted
-              // controls
+              controls
               width="100%"
               // height="100%"
             />
@@ -78,19 +80,19 @@ export const Operations = ({
             </AnimatePresence>
           )}
           <h6>{operationName}</h6>
-          <p>{description}</p>
+          <p>{descriptions}</p>
         </Left>
         <Right>
           {list?.map((item) => {
             return (
               <ImageContainer
                 key={item.id}
-                src={item.image}
-                alt={item.name}
+                src={item.image?.publicUrl}
+                alt={item.image?.originalFilename}
                 active={item.id === active}
                 onMouseEnter={() => {
                   item.video && setVideoSrc(item.video);
-                  item.image && setImageSrc(item.image);
+                  item.image && setImageSrc(item.image?.publicUrl);
                   setOperationName(item.name);
                   setDescription(item.description);
                   setActive(item.id);
@@ -98,7 +100,7 @@ export const Operations = ({
                 }}
                 onClick={() => {
                   setVideoSrc(item.video);
-                  item.image && setImageSrc(item.image);
+                  item.image && setImageSrc(item.image?.publicUrl);
                   setDescription(item.description);
                   setActive(item.id);
                   setOperationName(item.name);
@@ -115,14 +117,12 @@ export const Operations = ({
 
 const Middle = styled.div`
   display: grid;
-  padding: calc(var(--padding) / 2) var(--padding) var(--padding);
 
   gap: var(--gap);
   align-items: start;
   align-content: start;
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
-    padding: calc(var(--padding) / 4) var(--padding) var(--padding);
   }
 `;
 

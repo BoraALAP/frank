@@ -21,7 +21,10 @@ export const Screen = list({
     name: text({
       isRequired: true,
     }),
-    image: text({}),
+    image: cloudinaryImage({
+      cloudinary,
+      label: "Source",
+    }),
     description: text({}),
     products: relationship({
       ref: "Product.screenOptions",

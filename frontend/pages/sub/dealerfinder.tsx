@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   GoogleMap,
   useLoadScript,
@@ -30,12 +29,10 @@ const DEALER_QUERY = gql`
       name
       province
       id
-      venue {
-        formattedAddress
-        googlePlaceID
-        lat
-        lng
-      }
+      formattedAddress
+      googlePlaceID
+      lat
+      lng
     }
   }
 `;
@@ -72,11 +69,6 @@ const DealerFinder = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    //update state with new db after search
-    !loading && data?.allDealers.length > 0 && setLocations(data?.allDealers);
-  }, [searchWord]);
-
   //load google map and initilize
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API,
@@ -86,7 +78,11 @@ const DealerFinder = (props) => {
   if (error) return `Error! ${error}`;
 
   if (loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>;
+    return (
+      <Container space padding title="Dealer Finder">
+        <div>Map cannot be loaded right now, sorry.</div>;
+      </Container>
+    );
   }
 
   const handleChange = (e) => {
@@ -95,30 +91,33 @@ const DealerFinder = (props) => {
   };
 
   const handleClick = (position) => {
-    setLocation({ lat: position.lat, lng: position.lng });
+    setLocation({
+      lat: parseFloat(position.lat),
+      lng: parseFloat(position.lng),
+    });
   };
 
   return (
     <Container space padding title="Dealer Finder">
       <Content>
         <Left>
-          {locations.length !== 0 ? (
+          {!loading && locations.length !== 0 ? (
             locations.map((item) => {
               return (
                 <Dealer
                   key={item.id}
                   onClick={() => {
-                    handleClick(item.venue);
+                    handleClick(item);
                     setMarker(item.id);
                   }}
                   active={
-                    location.lat === item.venue.lat &&
-                    location.lng === item.venue.lng
+                    location.lat === parseFloat(item.lat) &&
+                    location.lng === parseFloat(item.lng)
                   }
                 >
                   <h4>{item.city}</h4>
                   <h6>{item.name}</h6>
-                  <p>{item.venue.formattedAddress}</p>
+                  <p>{item.formattedAddress}</p>
                 </Dealer>
               );
             })
@@ -158,8 +157,8 @@ const DealerFinder = (props) => {
                               onClick={() => setMarker(location.id)}
                               key={location.id}
                               position={{
-                                lat: location.venue.lat,
-                                lng: location.venue.lng,
+                                lat: parseFloat(location.lat),
+                                lng: parseFloat(location.lng),
                               }}
                               clusterer={clusterer}
                             >
@@ -167,13 +166,13 @@ const DealerFinder = (props) => {
                                 <InfoWindow
                                   key={location.id}
                                   position={{
-                                    lat: location.venue.lat,
-                                    lng: location.venue.lng,
+                                    lat: parseFloat(location.lat),
+                                    lng: parseFloat(location.lng),
                                   }}
                                 >
                                   <div>
                                     <h6>{location.name}</h6>
-                                    <p>{location.venue.formattedAddress}</p>
+                                    <p>{location.formattedAddress}</p>
                                   </div>
                                 </InfoWindow>
                               )}

@@ -20,32 +20,6 @@ const TextWelcome = (props) => {
             and loyal customers. Frank is like a family.
           </Span>
         </Inwrap>
-        {/* Frank is a real window and door guy, and a people person.
-        
-        <Span>Frank has established</Span>
-        <Inwrap rev>
-          <ImageS>
-            <Image
-              src="/homepage2.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </ImageS>
-          <Span>strong partnerships</Span>
-        </Inwrap>
-        <Span>a team of longstanding employees and loyal customers</Span>
-        <Inwrap>
-          <Span>Frank is like family.</Span>
-          <ImageS>
-            <Image
-              src="/homepage3.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </ImageS>
-        </Inwrap> */}
       </H1Big>
 
       <H1Small>

@@ -19,7 +19,11 @@ export const Interior = list({
   },
   fields: {
     name: text({ isRequired: true }),
-    image: text({}),
+    image: cloudinaryImage({
+      cloudinary,
+      label: "Source",
+    }),
+    hex: text({}),
     description: text({}),
     products: relationship({
       ref: "Product.interiorOptions",
