@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-// eslint-disable-next-line import/no-cycle
 import { permissionsList } from './schemas/fields';
 import { ListAccessArgs } from './types';
 // At it's simplest, the access control returns a yes or no value depending on the users session
