@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 // eslint-disable-next-line import/no-cycle
-import { permissionsList } from "./schemas/fields";
-import { ListAccessArgs } from "./types";
+import { permissionsList } from './schemas/fields';
+import { ListAccessArgs } from './types';
 // At it's simplest, the access control returns a yes or no value depending on the users session
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -23,7 +23,7 @@ const generatedPermissions = Object.fromEntries(
 export const permissions = {
   ...generatedPermissions,
   isAwesome({ session }: ListAccessArgs): boolean {
-    return session?.data.name.includes("frank");
+    return session?.data.name.includes('frank');
   },
 };
 
