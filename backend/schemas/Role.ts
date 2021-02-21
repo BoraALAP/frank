@@ -1,8 +1,8 @@
-import { checkbox, relationship, text } from "@keystone-next/fields";
-import { list } from "@keystone-next/keystone/schema";
-import { permissions, rules } from "../access";
+import { checkbox, relationship, text } from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone/schema';
+import { permissions, rules } from '../access';
 
-import { permissionFields } from "./fields";
+import { permissionFields } from './fields';
 
 export const Role = list({
   access: {
@@ -21,7 +21,7 @@ export const Role = list({
     ...permissionFields,
     hide: checkbox({ defaultValue: false }),
     assignedTo: relationship({
-      ref: "User.role", // TODO: Add this to the User
+      ref: 'User.role', // TODO: Add this to the User
       many: true,
     }),
   },

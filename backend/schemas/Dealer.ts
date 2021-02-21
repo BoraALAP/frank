@@ -1,8 +1,7 @@
-import { text, integer } from "@keystone-next/fields";
-import { LocationGoogle } from "@keystonejs/fields-location-google";
+import { text } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../access";
+import { list } from '@keystone-next/keystone/schema';
+import { permissions } from '../access';
 
 export const Dealer = list({
   access: {

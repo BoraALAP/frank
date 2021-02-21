@@ -1,9 +1,9 @@
-import { text, relationship } from "@keystone-next/fields";
+import { text, relationship } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../lib/cloudinaryConfig";
-import { permissions } from "../access";
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { cloudinary } from '../lib/cloudinaryConfig';
+import { permissions } from '../access';
 
 export const Operation = list({
   access: {
@@ -24,15 +24,15 @@ export const Operation = list({
     }),
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     video: text(),
     productCategories: relationship({
-      ref: "ProductCategory.operations",
+      ref: 'ProductCategory.operations',
       many: true,
     }),
     products: relationship({
-      ref: "Product.operations",
+      ref: 'Product.operations',
       many: true,
     }),
   },

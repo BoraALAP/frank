@@ -11,7 +11,7 @@
     "start": "keystone-next start"
   },
   "eslintConfig": {
-    "extends": "artticfox/typescript.js",
+    "extends": "wesbos/typescript.js",
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0
     }

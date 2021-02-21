@@ -1,8 +1,8 @@
-import { text, relationship } from "@keystone-next/fields";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../../lib/cloudinaryConfig";
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../../access";
+import { text, relationship } from '@keystone-next/fields';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinary } from '../../lib/cloudinaryConfig';
+import { permissions } from '../../access';
 
 export const BrickmouldAndTrim = list({
   access: {
@@ -22,15 +22,15 @@ export const BrickmouldAndTrim = list({
     }),
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     description: text({}),
     products: relationship({
-      ref: "Product.brickmouldAndTrimOptions",
+      ref: 'Product.brickmouldAndTrimOptions',
       many: true,
     }),
     productCategories: relationship({
-      ref: "ProductCategory.brickmouldAndTrimOptions",
+      ref: 'ProductCategory.brickmouldAndTrimOptions',
       many: true,
     }),
   },

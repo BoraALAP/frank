@@ -1,9 +1,10 @@
-import { text, relationship } from "@keystone-next/fields";
+import { text, relationship } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../../access";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../../lib/cloudinaryConfig";
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { permissions } from '../../access';
+import { cloudinary } from '../../lib/cloudinaryConfig';
+
 export const DividedLite = list({
   access: {
     create: permissions.canManageOptions,
@@ -22,15 +23,15 @@ export const DividedLite = list({
     }),
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     description: text({}),
     products: relationship({
-      ref: "Product.dividedLiteOptions",
+      ref: 'Product.dividedLiteOptions',
       many: true,
     }),
     productCategories: relationship({
-      ref: "ProductCategory.dividedLiteOptions",
+      ref: 'ProductCategory.dividedLiteOptions',
       many: true,
     }),
   },

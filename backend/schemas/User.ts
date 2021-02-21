@@ -1,14 +1,8 @@
-import {
-  text,
-  select,
-  password,
-  checkbox,
-  relationship,
-} from "@keystone-next/fields";
+import { text, password, relationship } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
+import { list } from '@keystone-next/keystone/schema';
 
-import { permissions, rules } from "../access";
+import { permissions, rules } from '../access';
 // import { sendEmail } from "../mail";
 
 export const User = list({
@@ -33,14 +27,14 @@ export const User = list({
     companyName: text({ isRequired: true }),
     dealerId: text({}),
     role: relationship({
-      ref: "Role.assignedTo",
+      ref: 'Role.assignedTo',
       access: {
         create: permissions.canManageRoles,
         update: permissions.canManageUsers,
       },
       ui: {
-        createView: { fieldMode: "hidden" },
-        itemView: { fieldMode: "edit" },
+        createView: { fieldMode: 'hidden' },
+        itemView: { fieldMode: 'edit' },
       },
     }),
   },

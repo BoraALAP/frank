@@ -1,9 +1,9 @@
-import { text, relationship } from "@keystone-next/fields";
+import { text, relationship } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../../lib/cloudinaryConfig";
-import { permissions } from "../../access";
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { cloudinary } from '../../lib/cloudinaryConfig';
+import { permissions } from '../../access';
 
 export const Interior = list({
   access: {
@@ -21,16 +21,16 @@ export const Interior = list({
     name: text({ isRequired: true }),
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     hex: text({}),
     description: text({}),
     products: relationship({
-      ref: "Product.interiorOptions",
+      ref: 'Product.interiorOptions',
       many: true,
     }),
     productCategories: relationship({
-      ref: "ProductCategory.interiorOptions",
+      ref: 'ProductCategory.interiorOptions',
       many: true,
     }),
   },

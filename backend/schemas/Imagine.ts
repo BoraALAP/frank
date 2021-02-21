@@ -1,8 +1,8 @@
-import { text, select, relationship } from "@keystone-next/fields";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../lib/cloudinaryConfig";
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../access";
+import { text, relationship } from '@keystone-next/fields';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinary } from '../lib/cloudinaryConfig';
+import { permissions } from '../access';
 
 export const Imagine = list({
   access: {
@@ -20,11 +20,11 @@ export const Imagine = list({
   fields: {
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     description: text({}),
     product: relationship({
-      ref: "Product",
+      ref: 'Product',
       many: true,
     }),
   },

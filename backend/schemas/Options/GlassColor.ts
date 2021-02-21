@@ -1,9 +1,10 @@
-import { text, relationship } from "@keystone-next/fields";
+import { text, relationship } from '@keystone-next/fields';
 
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../../access";
-import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../../lib/cloudinaryConfig";
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { permissions } from '../../access';
+import { cloudinary } from '../../lib/cloudinaryConfig';
+
 export const GlassColor = list({
   access: {
     create: permissions.canManageOptions,
@@ -22,11 +23,11 @@ export const GlassColor = list({
     }),
     image: cloudinaryImage({
       cloudinary,
-      label: "Source",
+      label: 'Source',
     }),
     description: text({}),
     parent: relationship({
-      ref: "Glass.colors",
+      ref: 'Glass.colors',
       many: true,
     }),
   },
