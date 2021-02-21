@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "keystone-next",
-    "devmon": "nodemon --exec keystone-next -e ts"
+    "devmon": "nodemon --exec keystone-next -e ts",
+    "start": "keystone-next"
   },
   "eslintConfig": {
     "extends": "artticfox/typescript.js",
