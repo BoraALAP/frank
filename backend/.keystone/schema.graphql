@@ -1566,7 +1566,7 @@ type ContactUsForm {
   firstName: String
   lastName: String
   email: String
-  phone: Int
+  phone: String
   company: String
   address: String
   city: String
@@ -1639,14 +1639,24 @@ input ContactUsFormWhereInput {
   email_not_ends_with_i: String
   email_in: [String]
   email_not_in: [String]
-  phone: Int
-  phone_not: Int
-  phone_lt: Int
-  phone_lte: Int
-  phone_gt: Int
-  phone_gte: Int
-  phone_in: [Int]
-  phone_not_in: [Int]
+  phone: String
+  phone_not: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  phone_i: String
+  phone_not_i: String
+  phone_contains_i: String
+  phone_not_contains_i: String
+  phone_starts_with_i: String
+  phone_not_starts_with_i: String
+  phone_ends_with_i: String
+  phone_not_ends_with_i: String
+  phone_in: [String]
+  phone_not_in: [String]
   company: String
   company_not: String
   company_contains: String
@@ -1850,7 +1860,7 @@ input ContactUsFormUpdateInput {
   firstName: String
   lastName: String
   email: String
-  phone: Int
+  phone: String
   company: String
   address: String
   city: String
@@ -1871,7 +1881,7 @@ input ContactUsFormCreateInput {
   firstName: String
   lastName: String
   email: String
-  phone: Int
+  phone: String
   company: String
   address: String
   city: String

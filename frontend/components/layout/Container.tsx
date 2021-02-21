@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
 
 interface MetaProps {
@@ -41,14 +42,13 @@ export const Container = ({
   );
 };
 
-const ContainerS = styled.div`
+const ContainerS = styled(motion.div)`
   display: grid;
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;
   justify-self: center;
   margin: auto;
-  visibility: "visible";
   gap: ${(props) =>
     props.gap ? `var(--gap)` : props.pageGap ? `calc(2*var(--gap))` : `0`};
   padding: ${(props) =>

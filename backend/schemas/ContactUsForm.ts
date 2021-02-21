@@ -26,7 +26,7 @@ export const ContactUsForm = list({
     email: text({
       isRequired: true,
     }),
-    phone: integer({
+    phone: text({
       isRequired: true,
     }),
     company: text({}),
@@ -45,6 +45,9 @@ export const ContactUsForm = list({
     }),
     comments: text({
       isRequired: true,
+      ui: {
+        displayMode: "textarea",
+      },
     }),
     iam: text({
       isRequired: true,

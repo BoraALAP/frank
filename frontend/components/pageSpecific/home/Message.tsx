@@ -58,7 +58,7 @@ const Left = styled.div`
   gap: var(--gap);
 `;
 
-const Right = styled.p`
+const Right = styled.div`
   display: grid;
   color: var(--color-primary);
   margin: 0px;
