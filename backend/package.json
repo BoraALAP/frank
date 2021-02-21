@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "keystone-next",
     "devmon": "nodemon --exec keystone-next -e ts",
-    "start": "keystone-next"
+    "start": "NODE_OPTIONS=--max_old_space_size=5120 keystone-next"
   },
   "eslintConfig": {
     "extends": "artticfox/typescript.js",
