@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "keystone-next",
     "devmon": "nodemon --exec keystone-next -e ts",
-    "start": "keystone-next start",
-    "build": "keystone-next build"
+    "start": "keystone-next start"
   },
   "eslintConfig": {
     "extends": "artticfox/typescript.js",
