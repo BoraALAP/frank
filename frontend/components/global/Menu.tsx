@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLinks } from "../../UI/Links";
 import { useAuth } from "../../lib/Authentication";
-import Image from "next/image";
 
 export const Menu = (props) => {
   const { isAuthenticated } = useAuth();
@@ -17,21 +16,21 @@ export const Menu = (props) => {
   const links = [
     [
       {
-        href: "/products/windows",
+        href: "/categories/windows",
         name: "Windows",
         image1: "/menuImages/menu1.jpg",
         image2: "/menuImages/menu2.jpg",
         bottom: false,
       },
       {
-        href: "/products/entrydoors",
+        href: "/categories/entry_doors",
         name: "Entry Doors",
         image1: "/menuImages/menu3.jpg",
         image2: "/menuImages/menu4.jpg",
         bottom: false,
       },
       {
-        href: "/products/slidingdoors",
+        href: "/categories/sliding_doors",
         name: "Sliding Doors",
         image1: "/menuImages/menu5.jpg",
         image2: "/menuImages/menu6.jpg",
@@ -55,7 +54,7 @@ export const Menu = (props) => {
         bottom: false,
       },
       {
-        href: "/sub/designoptions",
+        href: "/designoptions",
         name: "Design Options",
         image1: "/menuImages/menu13.jpg",
         image2: "/menuImages/menu14.jpg",

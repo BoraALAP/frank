@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 import { Container } from "../../components/layout/Container";
 import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
-import { Operations } from "../../components/pageSpecific/products/Operations";
-import { PageTitle } from "../../components/pageSpecific/products/PageTitle";
+import { PageTitle } from "../../components/layout/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
 
 const learn = () => {
@@ -12,11 +11,11 @@ const learn = () => {
     { name: "Solar Heat Gain", href: "/sub/learn/#solarheatgain" },
     {
       name: "Visible Transmittance",
-      href: "/sub/learn//#visibletransmittance",
+      href: "/sub/learn/#visibletransmittance",
     },
-    { name: "Energy Star", href: "/sub/learn//#energystar" },
-    { name: "Design Options", href: "/sub/learn//#designoptions" },
-    { name: "Operations Overview", href: "/sub/learn//#operationsoverview" },
+    { name: "Energy Star", href: "/sub/learn/#energystar" },
+    { name: "Design Options", href: "/sub/learn/#designoptions" },
+    { name: "Operations Overview", href: "/sub/learn/#operationsoverview" },
   ];
   return (
     <Container space title="Learn">

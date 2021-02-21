@@ -1,0 +1,3876 @@
+input RoleRelateToOneInput {
+  create: RoleCreateInput
+  connect: RoleWhereUniqueInput
+  disconnect: RoleWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type User {
+  id: ID!
+  name: String
+  email: String
+  password_is_set: Boolean
+  companyName: String
+  dealerId: String
+  role: Role
+  passwordResetToken_is_set: Boolean
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken_is_set: Boolean
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput]
+  OR: [UserWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  password_is_set: Boolean
+  companyName: String
+  companyName_not: String
+  companyName_contains: String
+  companyName_not_contains: String
+  companyName_starts_with: String
+  companyName_not_starts_with: String
+  companyName_ends_with: String
+  companyName_not_ends_with: String
+  companyName_i: String
+  companyName_not_i: String
+  companyName_contains_i: String
+  companyName_not_contains_i: String
+  companyName_starts_with_i: String
+  companyName_not_starts_with_i: String
+  companyName_ends_with_i: String
+  companyName_not_ends_with_i: String
+  companyName_in: [String]
+  companyName_not_in: [String]
+  dealerId: String
+  dealerId_not: String
+  dealerId_contains: String
+  dealerId_not_contains: String
+  dealerId_starts_with: String
+  dealerId_not_starts_with: String
+  dealerId_ends_with: String
+  dealerId_not_ends_with: String
+  dealerId_i: String
+  dealerId_not_i: String
+  dealerId_contains_i: String
+  dealerId_not_contains_i: String
+  dealerId_starts_with_i: String
+  dealerId_not_starts_with_i: String
+  dealerId_ends_with_i: String
+  dealerId_not_ends_with_i: String
+  dealerId_in: [String]
+  dealerId_not_in: [String]
+  role: RoleWhereInput
+  role_is_null: Boolean
+  passwordResetToken_is_set: Boolean
+  passwordResetIssuedAt: String
+  passwordResetIssuedAt_not: String
+  passwordResetIssuedAt_lt: String
+  passwordResetIssuedAt_lte: String
+  passwordResetIssuedAt_gt: String
+  passwordResetIssuedAt_gte: String
+  passwordResetIssuedAt_in: [String]
+  passwordResetIssuedAt_not_in: [String]
+  passwordResetRedeemedAt: String
+  passwordResetRedeemedAt_not: String
+  passwordResetRedeemedAt_lt: String
+  passwordResetRedeemedAt_lte: String
+  passwordResetRedeemedAt_gt: String
+  passwordResetRedeemedAt_gte: String
+  passwordResetRedeemedAt_in: [String]
+  passwordResetRedeemedAt_not_in: [String]
+  magicAuthToken_is_set: Boolean
+  magicAuthIssuedAt: String
+  magicAuthIssuedAt_not: String
+  magicAuthIssuedAt_lt: String
+  magicAuthIssuedAt_lte: String
+  magicAuthIssuedAt_gt: String
+  magicAuthIssuedAt_gte: String
+  magicAuthIssuedAt_in: [String]
+  magicAuthIssuedAt_not_in: [String]
+  magicAuthRedeemedAt: String
+  magicAuthRedeemedAt_not: String
+  magicAuthRedeemedAt_lt: String
+  magicAuthRedeemedAt_lte: String
+  magicAuthRedeemedAt_gt: String
+  magicAuthRedeemedAt_gte: String
+  magicAuthRedeemedAt_in: [String]
+  magicAuthRedeemedAt_not_in: [String]
+}
+
+input UserWhereUniqueInput {
+  id: ID!
+}
+
+enum SortUsersBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  companyName_ASC
+  companyName_DESC
+  dealerId_ASC
+  dealerId_DESC
+  role_ASC
+  role_DESC
+  passwordResetIssuedAt_ASC
+  passwordResetIssuedAt_DESC
+  passwordResetRedeemedAt_ASC
+  passwordResetRedeemedAt_DESC
+  magicAuthIssuedAt_ASC
+  magicAuthIssuedAt_DESC
+  magicAuthRedeemedAt_ASC
+  magicAuthRedeemedAt_DESC
+}
+
+input UserUpdateInput {
+  name: String
+  email: String
+  password: String
+  companyName: String
+  dealerId: String
+  role: RoleRelateToOneInput
+  passwordResetToken: String
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken: String
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input UsersUpdateInput {
+  id: ID!
+  data: UserUpdateInput
+}
+
+input UserCreateInput {
+  name: String
+  email: String
+  password: String
+  companyName: String
+  dealerId: String
+  role: RoleRelateToOneInput
+  passwordResetToken: String
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken: String
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input UsersCreateInput {
+  data: UserCreateInput
+}
+
+type CloudinaryImage_File {
+  id: ID
+  path: String
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
+}
+
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """ Rewrites the filename to be this pretty string. Do not include `/` or `.` 
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
+}
+
+input ProductRelateToManyInput {
+  create: [ProductCreateInput]
+  connect: [ProductWhereUniqueInput]
+  disconnect: [ProductWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input ExteriorRelateToManyInput {
+  create: [ExteriorCreateInput]
+  connect: [ExteriorWhereUniqueInput]
+  disconnect: [ExteriorWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input InteriorRelateToManyInput {
+  create: [InteriorCreateInput]
+  connect: [InteriorWhereUniqueInput]
+  disconnect: [InteriorWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input HardwareKitRelateToManyInput {
+  create: [HardwareKitCreateInput]
+  connect: [HardwareKitWhereUniqueInput]
+  disconnect: [HardwareKitWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input GlassRelateToManyInput {
+  create: [GlassCreateInput]
+  connect: [GlassWhereUniqueInput]
+  disconnect: [GlassWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input ScreenRelateToManyInput {
+  create: [ScreenCreateInput]
+  connect: [ScreenWhereUniqueInput]
+  disconnect: [ScreenWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input DividedLiteRelateToManyInput {
+  create: [DividedLiteCreateInput]
+  connect: [DividedLiteWhereUniqueInput]
+  disconnect: [DividedLiteWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input BrickmouldAndTrimRelateToManyInput {
+  create: [BrickmouldAndTrimCreateInput]
+  connect: [BrickmouldAndTrimWhereUniqueInput]
+  disconnect: [BrickmouldAndTrimWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input OperationRelateToManyInput {
+  create: [OperationCreateInput]
+  connect: [OperationWhereUniqueInput]
+  disconnect: [OperationWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type ProductCategory {
+  id: ID!
+  name: String
+  subtitle: String
+  description: String
+  image: CloudinaryImage_File
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  exteriorOptions(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): [Exterior!]!
+  _exteriorOptionsMeta(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  interiorOptions(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): [Interior!]!
+  _interiorOptionsMeta(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  hardwareKitOptions(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): [HardwareKit!]!
+  _hardwareKitOptionsMeta(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  glassOptions(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): [Glass!]!
+  _glassOptionsMeta(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  screenOptions(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): [Screen!]!
+  _screenOptionsMeta(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  dividedLiteOptions(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): [DividedLite!]!
+  _dividedLiteOptionsMeta(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  brickmouldAndTrimOptions(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim!]!
+  _brickmouldAndTrimOptionsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  operations(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): [Operation!]!
+  _operationsMeta(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input ProductCategoryWhereInput {
+  AND: [ProductCategoryWhereInput]
+  OR: [ProductCategoryWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  subtitle: String
+  subtitle_not: String
+  subtitle_contains: String
+  subtitle_not_contains: String
+  subtitle_starts_with: String
+  subtitle_not_starts_with: String
+  subtitle_ends_with: String
+  subtitle_not_ends_with: String
+  subtitle_i: String
+  subtitle_not_i: String
+  subtitle_contains_i: String
+  subtitle_not_contains_i: String
+  subtitle_starts_with_i: String
+  subtitle_not_starts_with_i: String
+  subtitle_ends_with_i: String
+  subtitle_not_ends_with_i: String
+  subtitle_in: [String]
+  subtitle_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  exteriorOptions_every: ExteriorWhereInput
+
+  """ condition must be true for at least 1 node """
+  exteriorOptions_some: ExteriorWhereInput
+
+  """ condition must be false for all nodes """
+  exteriorOptions_none: ExteriorWhereInput
+
+  """ condition must be true for all nodes """
+  interiorOptions_every: InteriorWhereInput
+
+  """ condition must be true for at least 1 node """
+  interiorOptions_some: InteriorWhereInput
+
+  """ condition must be false for all nodes """
+  interiorOptions_none: InteriorWhereInput
+
+  """ condition must be true for all nodes """
+  hardwareKitOptions_every: HardwareKitWhereInput
+
+  """ condition must be true for at least 1 node """
+  hardwareKitOptions_some: HardwareKitWhereInput
+
+  """ condition must be false for all nodes """
+  hardwareKitOptions_none: HardwareKitWhereInput
+
+  """ condition must be true for all nodes """
+  glassOptions_every: GlassWhereInput
+
+  """ condition must be true for at least 1 node """
+  glassOptions_some: GlassWhereInput
+
+  """ condition must be false for all nodes """
+  glassOptions_none: GlassWhereInput
+
+  """ condition must be true for all nodes """
+  screenOptions_every: ScreenWhereInput
+
+  """ condition must be true for at least 1 node """
+  screenOptions_some: ScreenWhereInput
+
+  """ condition must be false for all nodes """
+  screenOptions_none: ScreenWhereInput
+
+  """ condition must be true for all nodes """
+  dividedLiteOptions_every: DividedLiteWhereInput
+
+  """ condition must be true for at least 1 node """
+  dividedLiteOptions_some: DividedLiteWhereInput
+
+  """ condition must be false for all nodes """
+  dividedLiteOptions_none: DividedLiteWhereInput
+
+  """ condition must be true for all nodes """
+  brickmouldAndTrimOptions_every: BrickmouldAndTrimWhereInput
+
+  """ condition must be true for at least 1 node """
+  brickmouldAndTrimOptions_some: BrickmouldAndTrimWhereInput
+
+  """ condition must be false for all nodes """
+  brickmouldAndTrimOptions_none: BrickmouldAndTrimWhereInput
+
+  """ condition must be true for all nodes """
+  operations_every: OperationWhereInput
+
+  """ condition must be true for at least 1 node """
+  operations_some: OperationWhereInput
+
+  """ condition must be false for all nodes """
+  operations_none: OperationWhereInput
+}
+
+input ProductCategoryWhereUniqueInput {
+  id: ID!
+}
+
+enum SortProductCategoriesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  subtitle_ASC
+  subtitle_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  exteriorOptions_ASC
+  exteriorOptions_DESC
+  interiorOptions_ASC
+  interiorOptions_DESC
+  hardwareKitOptions_ASC
+  hardwareKitOptions_DESC
+  glassOptions_ASC
+  glassOptions_DESC
+  screenOptions_ASC
+  screenOptions_DESC
+  dividedLiteOptions_ASC
+  dividedLiteOptions_DESC
+  brickmouldAndTrimOptions_ASC
+  brickmouldAndTrimOptions_DESC
+  operations_ASC
+  operations_DESC
+}
+
+input ProductCategoryUpdateInput {
+  name: String
+  subtitle: String
+  description: String
+  image: Upload
+  products: ProductRelateToManyInput
+  exteriorOptions: ExteriorRelateToManyInput
+  interiorOptions: InteriorRelateToManyInput
+  hardwareKitOptions: HardwareKitRelateToManyInput
+  glassOptions: GlassRelateToManyInput
+  screenOptions: ScreenRelateToManyInput
+  dividedLiteOptions: DividedLiteRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
+  operations: OperationRelateToManyInput
+}
+
+input ProductCategoriesUpdateInput {
+  id: ID!
+  data: ProductCategoryUpdateInput
+}
+
+input ProductCategoryCreateInput {
+  name: String
+  subtitle: String
+  description: String
+  image: Upload
+  products: ProductRelateToManyInput
+  exteriorOptions: ExteriorRelateToManyInput
+  interiorOptions: InteriorRelateToManyInput
+  hardwareKitOptions: HardwareKitRelateToManyInput
+  glassOptions: GlassRelateToManyInput
+  screenOptions: ScreenRelateToManyInput
+  dividedLiteOptions: DividedLiteRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
+  operations: OperationRelateToManyInput
+}
+
+input ProductCategoriesCreateInput {
+  data: ProductCategoryCreateInput
+}
+
+input ProductCategoryRelateToManyInput {
+  create: [ProductCategoryCreateInput]
+  connect: [ProductCategoryWhereUniqueInput]
+  disconnect: [ProductCategoryWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Product {
+  id: ID!
+  name: String
+  subtitle: String
+  excerpt: String
+  image: CloudinaryImage_File
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  pageSubtitle: String
+  productImage: CloudinaryImage_File
+  imageTitle: String
+  imageDescription: String
+  specs: String
+  productImage1: CloudinaryImage_File
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: CloudinaryImage_File
+  productImage3: CloudinaryImage_File
+  productImage4: CloudinaryImage_File
+  operationsTitle: String
+  operationsSubTitle: String
+  operationsDescription: String
+  operations(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): [Operation!]!
+  _operationsMeta(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  exteriorOptions(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): [Exterior!]!
+  _exteriorOptionsMeta(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  interiorOptions(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): [Interior!]!
+  _interiorOptionsMeta(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  hardwareKitOptions(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): [HardwareKit!]!
+  _hardwareKitOptionsMeta(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  glassOptions(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): [Glass!]!
+  _glassOptionsMeta(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  screenOptions(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): [Screen!]!
+  _screenOptionsMeta(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  dividedLiteOptions(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): [DividedLite!]!
+  _dividedLiteOptionsMeta(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  brickmouldAndTrimOptions(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim!]!
+  _brickmouldAndTrimOptionsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input ProductWhereInput {
+  AND: [ProductWhereInput]
+  OR: [ProductWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  subtitle: String
+  subtitle_not: String
+  subtitle_contains: String
+  subtitle_not_contains: String
+  subtitle_starts_with: String
+  subtitle_not_starts_with: String
+  subtitle_ends_with: String
+  subtitle_not_ends_with: String
+  subtitle_i: String
+  subtitle_not_i: String
+  subtitle_contains_i: String
+  subtitle_not_contains_i: String
+  subtitle_starts_with_i: String
+  subtitle_not_starts_with_i: String
+  subtitle_ends_with_i: String
+  subtitle_not_ends_with_i: String
+  subtitle_in: [String]
+  subtitle_not_in: [String]
+  excerpt: String
+  excerpt_not: String
+  excerpt_contains: String
+  excerpt_not_contains: String
+  excerpt_starts_with: String
+  excerpt_not_starts_with: String
+  excerpt_ends_with: String
+  excerpt_not_ends_with: String
+  excerpt_i: String
+  excerpt_not_i: String
+  excerpt_contains_i: String
+  excerpt_not_contains_i: String
+  excerpt_starts_with_i: String
+  excerpt_not_starts_with_i: String
+  excerpt_ends_with_i: String
+  excerpt_not_ends_with_i: String
+  excerpt_in: [String]
+  excerpt_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+  pageSubtitle: String
+  pageSubtitle_not: String
+  pageSubtitle_contains: String
+  pageSubtitle_not_contains: String
+  pageSubtitle_starts_with: String
+  pageSubtitle_not_starts_with: String
+  pageSubtitle_ends_with: String
+  pageSubtitle_not_ends_with: String
+  pageSubtitle_i: String
+  pageSubtitle_not_i: String
+  pageSubtitle_contains_i: String
+  pageSubtitle_not_contains_i: String
+  pageSubtitle_starts_with_i: String
+  pageSubtitle_not_starts_with_i: String
+  pageSubtitle_ends_with_i: String
+  pageSubtitle_not_ends_with_i: String
+  pageSubtitle_in: [String]
+  pageSubtitle_not_in: [String]
+  productImage: String
+  productImage_not: String
+  productImage_in: [String]
+  productImage_not_in: [String]
+  imageTitle: String
+  imageTitle_not: String
+  imageTitle_contains: String
+  imageTitle_not_contains: String
+  imageTitle_starts_with: String
+  imageTitle_not_starts_with: String
+  imageTitle_ends_with: String
+  imageTitle_not_ends_with: String
+  imageTitle_i: String
+  imageTitle_not_i: String
+  imageTitle_contains_i: String
+  imageTitle_not_contains_i: String
+  imageTitle_starts_with_i: String
+  imageTitle_not_starts_with_i: String
+  imageTitle_ends_with_i: String
+  imageTitle_not_ends_with_i: String
+  imageTitle_in: [String]
+  imageTitle_not_in: [String]
+  imageDescription: String
+  imageDescription_not: String
+  imageDescription_contains: String
+  imageDescription_not_contains: String
+  imageDescription_starts_with: String
+  imageDescription_not_starts_with: String
+  imageDescription_ends_with: String
+  imageDescription_not_ends_with: String
+  imageDescription_i: String
+  imageDescription_not_i: String
+  imageDescription_contains_i: String
+  imageDescription_not_contains_i: String
+  imageDescription_starts_with_i: String
+  imageDescription_not_starts_with_i: String
+  imageDescription_ends_with_i: String
+  imageDescription_not_ends_with_i: String
+  imageDescription_in: [String]
+  imageDescription_not_in: [String]
+  specs: String
+  specs_not: String
+  specs_contains: String
+  specs_not_contains: String
+  specs_starts_with: String
+  specs_not_starts_with: String
+  specs_ends_with: String
+  specs_not_ends_with: String
+  specs_i: String
+  specs_not_i: String
+  specs_contains_i: String
+  specs_not_contains_i: String
+  specs_starts_with_i: String
+  specs_not_starts_with_i: String
+  specs_ends_with_i: String
+  specs_not_ends_with_i: String
+  specs_in: [String]
+  specs_not_in: [String]
+  productImage1: String
+  productImage1_not: String
+  productImage1_in: [String]
+  productImage1_not_in: [String]
+  secondaryDetailsTitle: String
+  secondaryDetailsTitle_not: String
+  secondaryDetailsTitle_contains: String
+  secondaryDetailsTitle_not_contains: String
+  secondaryDetailsTitle_starts_with: String
+  secondaryDetailsTitle_not_starts_with: String
+  secondaryDetailsTitle_ends_with: String
+  secondaryDetailsTitle_not_ends_with: String
+  secondaryDetailsTitle_i: String
+  secondaryDetailsTitle_not_i: String
+  secondaryDetailsTitle_contains_i: String
+  secondaryDetailsTitle_not_contains_i: String
+  secondaryDetailsTitle_starts_with_i: String
+  secondaryDetailsTitle_not_starts_with_i: String
+  secondaryDetailsTitle_ends_with_i: String
+  secondaryDetailsTitle_not_ends_with_i: String
+  secondaryDetailsTitle_in: [String]
+  secondaryDetailsTitle_not_in: [String]
+  secondaryDetailsDescription: String
+  secondaryDetailsDescription_not: String
+  secondaryDetailsDescription_contains: String
+  secondaryDetailsDescription_not_contains: String
+  secondaryDetailsDescription_starts_with: String
+  secondaryDetailsDescription_not_starts_with: String
+  secondaryDetailsDescription_ends_with: String
+  secondaryDetailsDescription_not_ends_with: String
+  secondaryDetailsDescription_i: String
+  secondaryDetailsDescription_not_i: String
+  secondaryDetailsDescription_contains_i: String
+  secondaryDetailsDescription_not_contains_i: String
+  secondaryDetailsDescription_starts_with_i: String
+  secondaryDetailsDescription_not_starts_with_i: String
+  secondaryDetailsDescription_ends_with_i: String
+  secondaryDetailsDescription_not_ends_with_i: String
+  secondaryDetailsDescription_in: [String]
+  secondaryDetailsDescription_not_in: [String]
+  productImage2: String
+  productImage2_not: String
+  productImage2_in: [String]
+  productImage2_not_in: [String]
+  productImage3: String
+  productImage3_not: String
+  productImage3_in: [String]
+  productImage3_not_in: [String]
+  productImage4: String
+  productImage4_not: String
+  productImage4_in: [String]
+  productImage4_not_in: [String]
+  operationsTitle: String
+  operationsTitle_not: String
+  operationsTitle_contains: String
+  operationsTitle_not_contains: String
+  operationsTitle_starts_with: String
+  operationsTitle_not_starts_with: String
+  operationsTitle_ends_with: String
+  operationsTitle_not_ends_with: String
+  operationsTitle_i: String
+  operationsTitle_not_i: String
+  operationsTitle_contains_i: String
+  operationsTitle_not_contains_i: String
+  operationsTitle_starts_with_i: String
+  operationsTitle_not_starts_with_i: String
+  operationsTitle_ends_with_i: String
+  operationsTitle_not_ends_with_i: String
+  operationsTitle_in: [String]
+  operationsTitle_not_in: [String]
+  operationsSubTitle: String
+  operationsSubTitle_not: String
+  operationsSubTitle_contains: String
+  operationsSubTitle_not_contains: String
+  operationsSubTitle_starts_with: String
+  operationsSubTitle_not_starts_with: String
+  operationsSubTitle_ends_with: String
+  operationsSubTitle_not_ends_with: String
+  operationsSubTitle_i: String
+  operationsSubTitle_not_i: String
+  operationsSubTitle_contains_i: String
+  operationsSubTitle_not_contains_i: String
+  operationsSubTitle_starts_with_i: String
+  operationsSubTitle_not_starts_with_i: String
+  operationsSubTitle_ends_with_i: String
+  operationsSubTitle_not_ends_with_i: String
+  operationsSubTitle_in: [String]
+  operationsSubTitle_not_in: [String]
+  operationsDescription: String
+  operationsDescription_not: String
+  operationsDescription_contains: String
+  operationsDescription_not_contains: String
+  operationsDescription_starts_with: String
+  operationsDescription_not_starts_with: String
+  operationsDescription_ends_with: String
+  operationsDescription_not_ends_with: String
+  operationsDescription_i: String
+  operationsDescription_not_i: String
+  operationsDescription_contains_i: String
+  operationsDescription_not_contains_i: String
+  operationsDescription_starts_with_i: String
+  operationsDescription_not_starts_with_i: String
+  operationsDescription_ends_with_i: String
+  operationsDescription_not_ends_with_i: String
+  operationsDescription_in: [String]
+  operationsDescription_not_in: [String]
+
+  """ condition must be true for all nodes """
+  operations_every: OperationWhereInput
+
+  """ condition must be true for at least 1 node """
+  operations_some: OperationWhereInput
+
+  """ condition must be false for all nodes """
+  operations_none: OperationWhereInput
+
+  """ condition must be true for all nodes """
+  exteriorOptions_every: ExteriorWhereInput
+
+  """ condition must be true for at least 1 node """
+  exteriorOptions_some: ExteriorWhereInput
+
+  """ condition must be false for all nodes """
+  exteriorOptions_none: ExteriorWhereInput
+
+  """ condition must be true for all nodes """
+  interiorOptions_every: InteriorWhereInput
+
+  """ condition must be true for at least 1 node """
+  interiorOptions_some: InteriorWhereInput
+
+  """ condition must be false for all nodes """
+  interiorOptions_none: InteriorWhereInput
+
+  """ condition must be true for all nodes """
+  hardwareKitOptions_every: HardwareKitWhereInput
+
+  """ condition must be true for at least 1 node """
+  hardwareKitOptions_some: HardwareKitWhereInput
+
+  """ condition must be false for all nodes """
+  hardwareKitOptions_none: HardwareKitWhereInput
+
+  """ condition must be true for all nodes """
+  glassOptions_every: GlassWhereInput
+
+  """ condition must be true for at least 1 node """
+  glassOptions_some: GlassWhereInput
+
+  """ condition must be false for all nodes """
+  glassOptions_none: GlassWhereInput
+
+  """ condition must be true for all nodes """
+  screenOptions_every: ScreenWhereInput
+
+  """ condition must be true for at least 1 node """
+  screenOptions_some: ScreenWhereInput
+
+  """ condition must be false for all nodes """
+  screenOptions_none: ScreenWhereInput
+
+  """ condition must be true for all nodes """
+  dividedLiteOptions_every: DividedLiteWhereInput
+
+  """ condition must be true for at least 1 node """
+  dividedLiteOptions_some: DividedLiteWhereInput
+
+  """ condition must be false for all nodes """
+  dividedLiteOptions_none: DividedLiteWhereInput
+
+  """ condition must be true for all nodes """
+  brickmouldAndTrimOptions_every: BrickmouldAndTrimWhereInput
+
+  """ condition must be true for at least 1 node """
+  brickmouldAndTrimOptions_some: BrickmouldAndTrimWhereInput
+
+  """ condition must be false for all nodes """
+  brickmouldAndTrimOptions_none: BrickmouldAndTrimWhereInput
+}
+
+input ProductWhereUniqueInput {
+  id: ID!
+}
+
+enum SortProductsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  subtitle_ASC
+  subtitle_DESC
+  excerpt_ASC
+  excerpt_DESC
+  productCategories_ASC
+  productCategories_DESC
+  pageSubtitle_ASC
+  pageSubtitle_DESC
+  imageTitle_ASC
+  imageTitle_DESC
+  imageDescription_ASC
+  imageDescription_DESC
+  specs_ASC
+  specs_DESC
+  secondaryDetailsTitle_ASC
+  secondaryDetailsTitle_DESC
+  secondaryDetailsDescription_ASC
+  secondaryDetailsDescription_DESC
+  operationsTitle_ASC
+  operationsTitle_DESC
+  operationsSubTitle_ASC
+  operationsSubTitle_DESC
+  operationsDescription_ASC
+  operationsDescription_DESC
+  operations_ASC
+  operations_DESC
+  exteriorOptions_ASC
+  exteriorOptions_DESC
+  interiorOptions_ASC
+  interiorOptions_DESC
+  hardwareKitOptions_ASC
+  hardwareKitOptions_DESC
+  glassOptions_ASC
+  glassOptions_DESC
+  screenOptions_ASC
+  screenOptions_DESC
+  dividedLiteOptions_ASC
+  dividedLiteOptions_DESC
+  brickmouldAndTrimOptions_ASC
+  brickmouldAndTrimOptions_DESC
+}
+
+input ProductUpdateInput {
+  name: String
+  subtitle: String
+  excerpt: String
+  image: Upload
+  productCategories: ProductCategoryRelateToManyInput
+  pageSubtitle: String
+  productImage: Upload
+  imageTitle: String
+  imageDescription: String
+  specs: String
+  productImage1: Upload
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: Upload
+  productImage3: Upload
+  productImage4: Upload
+  operationsTitle: String
+  operationsSubTitle: String
+  operationsDescription: String
+  operations: OperationRelateToManyInput
+  exteriorOptions: ExteriorRelateToManyInput
+  interiorOptions: InteriorRelateToManyInput
+  hardwareKitOptions: HardwareKitRelateToManyInput
+  glassOptions: GlassRelateToManyInput
+  screenOptions: ScreenRelateToManyInput
+  dividedLiteOptions: DividedLiteRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
+}
+
+input ProductsUpdateInput {
+  id: ID!
+  data: ProductUpdateInput
+}
+
+input ProductCreateInput {
+  name: String
+  subtitle: String
+  excerpt: String
+  image: Upload
+  productCategories: ProductCategoryRelateToManyInput
+  pageSubtitle: String
+  productImage: Upload
+  imageTitle: String
+  imageDescription: String
+  specs: String
+  productImage1: Upload
+  secondaryDetailsTitle: String
+  secondaryDetailsDescription: String
+  productImage2: Upload
+  productImage3: Upload
+  productImage4: Upload
+  operationsTitle: String
+  operationsSubTitle: String
+  operationsDescription: String
+  operations: OperationRelateToManyInput
+  exteriorOptions: ExteriorRelateToManyInput
+  interiorOptions: InteriorRelateToManyInput
+  hardwareKitOptions: HardwareKitRelateToManyInput
+  glassOptions: GlassRelateToManyInput
+  screenOptions: ScreenRelateToManyInput
+  dividedLiteOptions: DividedLiteRelateToManyInput
+  brickmouldAndTrimOptions: BrickmouldAndTrimRelateToManyInput
+}
+
+input ProductsCreateInput {
+  data: ProductCreateInput
+}
+
+""" A keystone list """
+type Operation {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  video: String
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input OperationWhereInput {
+  AND: [OperationWhereInput]
+  OR: [OperationWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  video: String
+  video_not: String
+  video_contains: String
+  video_not_contains: String
+  video_starts_with: String
+  video_not_starts_with: String
+  video_ends_with: String
+  video_not_ends_with: String
+  video_i: String
+  video_not_i: String
+  video_contains_i: String
+  video_not_contains_i: String
+  video_starts_with_i: String
+  video_not_starts_with_i: String
+  video_ends_with_i: String
+  video_not_ends_with_i: String
+  video_in: [String]
+  video_not_in: [String]
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+}
+
+input OperationWhereUniqueInput {
+  id: ID!
+}
+
+enum SortOperationsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  video_ASC
+  video_DESC
+  productCategories_ASC
+  productCategories_DESC
+  products_ASC
+  products_DESC
+}
+
+input OperationUpdateInput {
+  name: String
+  image: Upload
+  video: String
+  productCategories: ProductCategoryRelateToManyInput
+  products: ProductRelateToManyInput
+}
+
+input OperationsUpdateInput {
+  id: ID!
+  data: OperationUpdateInput
+}
+
+input OperationCreateInput {
+  name: String
+  image: Upload
+  video: String
+  productCategories: ProductCategoryRelateToManyInput
+  products: ProductRelateToManyInput
+}
+
+input OperationsCreateInput {
+  data: OperationCreateInput
+}
+
+""" A keystone list """
+type Imagine {
+  id: ID!
+  image: CloudinaryImage_File
+  description: String
+  product(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input ImagineWhereInput {
+  AND: [ImagineWhereInput]
+  OR: [ImagineWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  product_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  product_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  product_none: ProductWhereInput
+}
+
+input ImagineWhereUniqueInput {
+  id: ID!
+}
+
+enum SortImaginesBy {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  product_ASC
+  product_DESC
+}
+
+input ImagineUpdateInput {
+  image: Upload
+  description: String
+  product: ProductRelateToManyInput
+}
+
+input ImaginesUpdateInput {
+  id: ID!
+  data: ImagineUpdateInput
+}
+
+input ImagineCreateInput {
+  image: Upload
+  description: String
+  product: ProductRelateToManyInput
+}
+
+input ImaginesCreateInput {
+  data: ImagineCreateInput
+}
+
+""" A keystone list """
+type Dealer {
+  id: ID!
+  name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
+  city: String
+  postal: String
+  phone: String
+  email: String
+  person: String
+  province: String
+}
+
+input DealerWhereInput {
+  AND: [DealerWhereInput]
+  OR: [DealerWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  googlePlaceID: String
+  googlePlaceID_not: String
+  googlePlaceID_contains: String
+  googlePlaceID_not_contains: String
+  googlePlaceID_starts_with: String
+  googlePlaceID_not_starts_with: String
+  googlePlaceID_ends_with: String
+  googlePlaceID_not_ends_with: String
+  googlePlaceID_i: String
+  googlePlaceID_not_i: String
+  googlePlaceID_contains_i: String
+  googlePlaceID_not_contains_i: String
+  googlePlaceID_starts_with_i: String
+  googlePlaceID_not_starts_with_i: String
+  googlePlaceID_ends_with_i: String
+  googlePlaceID_not_ends_with_i: String
+  googlePlaceID_in: [String]
+  googlePlaceID_not_in: [String]
+  formattedAddress: String
+  formattedAddress_not: String
+  formattedAddress_contains: String
+  formattedAddress_not_contains: String
+  formattedAddress_starts_with: String
+  formattedAddress_not_starts_with: String
+  formattedAddress_ends_with: String
+  formattedAddress_not_ends_with: String
+  formattedAddress_i: String
+  formattedAddress_not_i: String
+  formattedAddress_contains_i: String
+  formattedAddress_not_contains_i: String
+  formattedAddress_starts_with_i: String
+  formattedAddress_not_starts_with_i: String
+  formattedAddress_ends_with_i: String
+  formattedAddress_not_ends_with_i: String
+  formattedAddress_in: [String]
+  formattedAddress_not_in: [String]
+  lat: String
+  lat_not: String
+  lat_contains: String
+  lat_not_contains: String
+  lat_starts_with: String
+  lat_not_starts_with: String
+  lat_ends_with: String
+  lat_not_ends_with: String
+  lat_i: String
+  lat_not_i: String
+  lat_contains_i: String
+  lat_not_contains_i: String
+  lat_starts_with_i: String
+  lat_not_starts_with_i: String
+  lat_ends_with_i: String
+  lat_not_ends_with_i: String
+  lat_in: [String]
+  lat_not_in: [String]
+  lng: String
+  lng_not: String
+  lng_contains: String
+  lng_not_contains: String
+  lng_starts_with: String
+  lng_not_starts_with: String
+  lng_ends_with: String
+  lng_not_ends_with: String
+  lng_i: String
+  lng_not_i: String
+  lng_contains_i: String
+  lng_not_contains_i: String
+  lng_starts_with_i: String
+  lng_not_starts_with_i: String
+  lng_ends_with_i: String
+  lng_not_ends_with_i: String
+  lng_in: [String]
+  lng_not_in: [String]
+  city: String
+  city_not: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  city_i: String
+  city_not_i: String
+  city_contains_i: String
+  city_not_contains_i: String
+  city_starts_with_i: String
+  city_not_starts_with_i: String
+  city_ends_with_i: String
+  city_not_ends_with_i: String
+  city_in: [String]
+  city_not_in: [String]
+  postal: String
+  postal_not: String
+  postal_contains: String
+  postal_not_contains: String
+  postal_starts_with: String
+  postal_not_starts_with: String
+  postal_ends_with: String
+  postal_not_ends_with: String
+  postal_i: String
+  postal_not_i: String
+  postal_contains_i: String
+  postal_not_contains_i: String
+  postal_starts_with_i: String
+  postal_not_starts_with_i: String
+  postal_ends_with_i: String
+  postal_not_ends_with_i: String
+  postal_in: [String]
+  postal_not_in: [String]
+  phone: String
+  phone_not: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  phone_i: String
+  phone_not_i: String
+  phone_contains_i: String
+  phone_not_contains_i: String
+  phone_starts_with_i: String
+  phone_not_starts_with_i: String
+  phone_ends_with_i: String
+  phone_not_ends_with_i: String
+  phone_in: [String]
+  phone_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  person: String
+  person_not: String
+  person_contains: String
+  person_not_contains: String
+  person_starts_with: String
+  person_not_starts_with: String
+  person_ends_with: String
+  person_not_ends_with: String
+  person_i: String
+  person_not_i: String
+  person_contains_i: String
+  person_not_contains_i: String
+  person_starts_with_i: String
+  person_not_starts_with_i: String
+  person_ends_with_i: String
+  person_not_ends_with_i: String
+  person_in: [String]
+  person_not_in: [String]
+  province: String
+  province_not: String
+  province_contains: String
+  province_not_contains: String
+  province_starts_with: String
+  province_not_starts_with: String
+  province_ends_with: String
+  province_not_ends_with: String
+  province_i: String
+  province_not_i: String
+  province_contains_i: String
+  province_not_contains_i: String
+  province_starts_with_i: String
+  province_not_starts_with_i: String
+  province_ends_with_i: String
+  province_not_ends_with_i: String
+  province_in: [String]
+  province_not_in: [String]
+}
+
+input DealerWhereUniqueInput {
+  id: ID!
+}
+
+enum SortDealersBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  googlePlaceID_ASC
+  googlePlaceID_DESC
+  formattedAddress_ASC
+  formattedAddress_DESC
+  lat_ASC
+  lat_DESC
+  lng_ASC
+  lng_DESC
+  city_ASC
+  city_DESC
+  postal_ASC
+  postal_DESC
+  phone_ASC
+  phone_DESC
+  email_ASC
+  email_DESC
+  person_ASC
+  person_DESC
+  province_ASC
+  province_DESC
+}
+
+input DealerUpdateInput {
+  name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
+  city: String
+  postal: String
+  phone: String
+  email: String
+  person: String
+  province: String
+}
+
+input DealersUpdateInput {
+  id: ID!
+  data: DealerUpdateInput
+}
+
+input DealerCreateInput {
+  name: String
+  googlePlaceID: String
+  formattedAddress: String
+  lat: String
+  lng: String
+  city: String
+  postal: String
+  phone: String
+  email: String
+  person: String
+  province: String
+}
+
+input DealersCreateInput {
+  data: DealerCreateInput
+}
+
+""" A keystone list """
+type ContactUsForm {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String
+  phone: Int
+  company: String
+  address: String
+  city: String
+  province: String
+  postal: String
+  country: String
+  comments: String
+  iam: String
+  ineed: String
+}
+
+input ContactUsFormWhereInput {
+  AND: [ContactUsFormWhereInput]
+  OR: [ContactUsFormWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  firstName: String
+  firstName_not: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  firstName_i: String
+  firstName_not_i: String
+  firstName_contains_i: String
+  firstName_not_contains_i: String
+  firstName_starts_with_i: String
+  firstName_not_starts_with_i: String
+  firstName_ends_with_i: String
+  firstName_not_ends_with_i: String
+  firstName_in: [String]
+  firstName_not_in: [String]
+  lastName: String
+  lastName_not: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  lastName_i: String
+  lastName_not_i: String
+  lastName_contains_i: String
+  lastName_not_contains_i: String
+  lastName_starts_with_i: String
+  lastName_not_starts_with_i: String
+  lastName_ends_with_i: String
+  lastName_not_ends_with_i: String
+  lastName_in: [String]
+  lastName_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  phone: Int
+  phone_not: Int
+  phone_lt: Int
+  phone_lte: Int
+  phone_gt: Int
+  phone_gte: Int
+  phone_in: [Int]
+  phone_not_in: [Int]
+  company: String
+  company_not: String
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  company_i: String
+  company_not_i: String
+  company_contains_i: String
+  company_not_contains_i: String
+  company_starts_with_i: String
+  company_not_starts_with_i: String
+  company_ends_with_i: String
+  company_not_ends_with_i: String
+  company_in: [String]
+  company_not_in: [String]
+  address: String
+  address_not: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  address_i: String
+  address_not_i: String
+  address_contains_i: String
+  address_not_contains_i: String
+  address_starts_with_i: String
+  address_not_starts_with_i: String
+  address_ends_with_i: String
+  address_not_ends_with_i: String
+  address_in: [String]
+  address_not_in: [String]
+  city: String
+  city_not: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  city_i: String
+  city_not_i: String
+  city_contains_i: String
+  city_not_contains_i: String
+  city_starts_with_i: String
+  city_not_starts_with_i: String
+  city_ends_with_i: String
+  city_not_ends_with_i: String
+  city_in: [String]
+  city_not_in: [String]
+  province: String
+  province_not: String
+  province_contains: String
+  province_not_contains: String
+  province_starts_with: String
+  province_not_starts_with: String
+  province_ends_with: String
+  province_not_ends_with: String
+  province_i: String
+  province_not_i: String
+  province_contains_i: String
+  province_not_contains_i: String
+  province_starts_with_i: String
+  province_not_starts_with_i: String
+  province_ends_with_i: String
+  province_not_ends_with_i: String
+  province_in: [String]
+  province_not_in: [String]
+  postal: String
+  postal_not: String
+  postal_contains: String
+  postal_not_contains: String
+  postal_starts_with: String
+  postal_not_starts_with: String
+  postal_ends_with: String
+  postal_not_ends_with: String
+  postal_i: String
+  postal_not_i: String
+  postal_contains_i: String
+  postal_not_contains_i: String
+  postal_starts_with_i: String
+  postal_not_starts_with_i: String
+  postal_ends_with_i: String
+  postal_not_ends_with_i: String
+  postal_in: [String]
+  postal_not_in: [String]
+  country: String
+  country_not: String
+  country_contains: String
+  country_not_contains: String
+  country_starts_with: String
+  country_not_starts_with: String
+  country_ends_with: String
+  country_not_ends_with: String
+  country_i: String
+  country_not_i: String
+  country_contains_i: String
+  country_not_contains_i: String
+  country_starts_with_i: String
+  country_not_starts_with_i: String
+  country_ends_with_i: String
+  country_not_ends_with_i: String
+  country_in: [String]
+  country_not_in: [String]
+  comments: String
+  comments_not: String
+  comments_contains: String
+  comments_not_contains: String
+  comments_starts_with: String
+  comments_not_starts_with: String
+  comments_ends_with: String
+  comments_not_ends_with: String
+  comments_i: String
+  comments_not_i: String
+  comments_contains_i: String
+  comments_not_contains_i: String
+  comments_starts_with_i: String
+  comments_not_starts_with_i: String
+  comments_ends_with_i: String
+  comments_not_ends_with_i: String
+  comments_in: [String]
+  comments_not_in: [String]
+  iam: String
+  iam_not: String
+  iam_contains: String
+  iam_not_contains: String
+  iam_starts_with: String
+  iam_not_starts_with: String
+  iam_ends_with: String
+  iam_not_ends_with: String
+  iam_i: String
+  iam_not_i: String
+  iam_contains_i: String
+  iam_not_contains_i: String
+  iam_starts_with_i: String
+  iam_not_starts_with_i: String
+  iam_ends_with_i: String
+  iam_not_ends_with_i: String
+  iam_in: [String]
+  iam_not_in: [String]
+  ineed: String
+  ineed_not: String
+  ineed_contains: String
+  ineed_not_contains: String
+  ineed_starts_with: String
+  ineed_not_starts_with: String
+  ineed_ends_with: String
+  ineed_not_ends_with: String
+  ineed_i: String
+  ineed_not_i: String
+  ineed_contains_i: String
+  ineed_not_contains_i: String
+  ineed_starts_with_i: String
+  ineed_not_starts_with_i: String
+  ineed_ends_with_i: String
+  ineed_not_ends_with_i: String
+  ineed_in: [String]
+  ineed_not_in: [String]
+}
+
+input ContactUsFormWhereUniqueInput {
+  id: ID!
+}
+
+enum SortContactUsFormsBy {
+  id_ASC
+  id_DESC
+  firstName_ASC
+  firstName_DESC
+  lastName_ASC
+  lastName_DESC
+  email_ASC
+  email_DESC
+  phone_ASC
+  phone_DESC
+  company_ASC
+  company_DESC
+  address_ASC
+  address_DESC
+  city_ASC
+  city_DESC
+  province_ASC
+  province_DESC
+  postal_ASC
+  postal_DESC
+  country_ASC
+  country_DESC
+  comments_ASC
+  comments_DESC
+  iam_ASC
+  iam_DESC
+  ineed_ASC
+  ineed_DESC
+}
+
+input ContactUsFormUpdateInput {
+  firstName: String
+  lastName: String
+  email: String
+  phone: Int
+  company: String
+  address: String
+  city: String
+  province: String
+  postal: String
+  country: String
+  comments: String
+  iam: String
+  ineed: String
+}
+
+input ContactUsFormsUpdateInput {
+  id: ID!
+  data: ContactUsFormUpdateInput
+}
+
+input ContactUsFormCreateInput {
+  firstName: String
+  lastName: String
+  email: String
+  phone: Int
+  company: String
+  address: String
+  city: String
+  province: String
+  postal: String
+  country: String
+  comments: String
+  iam: String
+  ineed: String
+}
+
+input ContactUsFormsCreateInput {
+  data: ContactUsFormCreateInput
+}
+
+""" A keystone list """
+type Screen {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input ScreenWhereInput {
+  AND: [ScreenWhereInput]
+  OR: [ScreenWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input ScreenWhereUniqueInput {
+  id: ID!
+}
+
+enum SortScreensBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input ScreenUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input ScreensUpdateInput {
+  id: ID!
+  data: ScreenUpdateInput
+}
+
+input ScreenCreateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input ScreensCreateInput {
+  data: ScreenCreateInput
+}
+
+""" A keystone list """
+type Interior {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  hex: String
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input InteriorWhereInput {
+  AND: [InteriorWhereInput]
+  OR: [InteriorWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  hex: String
+  hex_not: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
+  hex_i: String
+  hex_not_i: String
+  hex_contains_i: String
+  hex_not_contains_i: String
+  hex_starts_with_i: String
+  hex_not_starts_with_i: String
+  hex_ends_with_i: String
+  hex_not_ends_with_i: String
+  hex_in: [String]
+  hex_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input InteriorWhereUniqueInput {
+  id: ID!
+}
+
+enum SortInteriorsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  hex_ASC
+  hex_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input InteriorUpdateInput {
+  name: String
+  image: Upload
+  hex: String
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input InteriorsUpdateInput {
+  id: ID!
+  data: InteriorUpdateInput
+}
+
+input InteriorCreateInput {
+  name: String
+  image: Upload
+  hex: String
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input InteriorsCreateInput {
+  data: InteriorCreateInput
+}
+
+""" A keystone list """
+type HardwareKit {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input HardwareKitWhereInput {
+  AND: [HardwareKitWhereInput]
+  OR: [HardwareKitWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input HardwareKitWhereUniqueInput {
+  id: ID!
+}
+
+enum SortHardwareKitsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input HardwareKitUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input HardwareKitsUpdateInput {
+  id: ID!
+  data: HardwareKitUpdateInput
+}
+
+input HardwareKitCreateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input HardwareKitsCreateInput {
+  data: HardwareKitCreateInput
+}
+
+""" A keystone list """
+type GlassColor {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  parent(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): [Glass!]!
+  _parentMeta(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input GlassColorWhereInput {
+  AND: [GlassColorWhereInput]
+  OR: [GlassColorWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  parent_every: GlassWhereInput
+
+  """ condition must be true for at least 1 node """
+  parent_some: GlassWhereInput
+
+  """ condition must be false for all nodes """
+  parent_none: GlassWhereInput
+}
+
+input GlassColorWhereUniqueInput {
+  id: ID!
+}
+
+enum SortGlassColorsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  parent_ASC
+  parent_DESC
+}
+
+input GlassColorUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  parent: GlassRelateToManyInput
+}
+
+input GlassColorsUpdateInput {
+  id: ID!
+  data: GlassColorUpdateInput
+}
+
+input GlassColorCreateInput {
+  name: String
+  image: Upload
+  description: String
+  parent: GlassRelateToManyInput
+}
+
+input GlassColorsCreateInput {
+  data: GlassColorCreateInput
+}
+
+input GlassColorRelateToManyInput {
+  create: [GlassColorCreateInput]
+  connect: [GlassColorWhereUniqueInput]
+  disconnect: [GlassColorWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Glass {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  colors(where: GlassColorWhereInput, search: String, sortBy: [SortGlassColorsBy!], orderBy: String, first: Int, skip: Int): [GlassColor!]!
+  _colorsMeta(where: GlassColorWhereInput, search: String, sortBy: [SortGlassColorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input GlassWhereInput {
+  AND: [GlassWhereInput]
+  OR: [GlassWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+
+  """ condition must be true for all nodes """
+  colors_every: GlassColorWhereInput
+
+  """ condition must be true for at least 1 node """
+  colors_some: GlassColorWhereInput
+
+  """ condition must be false for all nodes """
+  colors_none: GlassColorWhereInput
+}
+
+input GlassWhereUniqueInput {
+  id: ID!
+}
+
+enum SortGlassesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+  colors_ASC
+  colors_DESC
+}
+
+input GlassUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+  colors: GlassColorRelateToManyInput
+}
+
+input GlassesUpdateInput {
+  id: ID!
+  data: GlassUpdateInput
+}
+
+input GlassCreateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+  colors: GlassColorRelateToManyInput
+}
+
+input GlassesCreateInput {
+  data: GlassCreateInput
+}
+
+""" A keystone list """
+type Exterior {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  hex: String
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input ExteriorWhereInput {
+  AND: [ExteriorWhereInput]
+  OR: [ExteriorWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  hex: String
+  hex_not: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
+  hex_i: String
+  hex_not_i: String
+  hex_contains_i: String
+  hex_not_contains_i: String
+  hex_starts_with_i: String
+  hex_not_starts_with_i: String
+  hex_ends_with_i: String
+  hex_not_ends_with_i: String
+  hex_in: [String]
+  hex_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input ExteriorWhereUniqueInput {
+  id: ID!
+}
+
+enum SortExteriorsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  hex_ASC
+  hex_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input ExteriorUpdateInput {
+  name: String
+  image: Upload
+  hex: String
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input ExteriorsUpdateInput {
+  id: ID!
+  data: ExteriorUpdateInput
+}
+
+input ExteriorCreateInput {
+  name: String
+  image: Upload
+  hex: String
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input ExteriorsCreateInput {
+  data: ExteriorCreateInput
+}
+
+""" A keystone list """
+type DividedLite {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input DividedLiteWhereInput {
+  AND: [DividedLiteWhereInput]
+  OR: [DividedLiteWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input DividedLiteWhereUniqueInput {
+  id: ID!
+}
+
+enum SortDividedLitesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input DividedLiteUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input DividedLitesUpdateInput {
+  id: ID!
+  data: DividedLiteUpdateInput
+}
+
+input DividedLiteCreateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input DividedLitesCreateInput {
+  data: DividedLiteCreateInput
+}
+
+""" A keystone list """
+type BrickmouldAndTrim {
+  id: ID!
+  name: String
+  image: CloudinaryImage_File
+  description: String
+  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
+  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  productCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory!]!
+  _productCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input BrickmouldAndTrimWhereInput {
+  AND: [BrickmouldAndTrimWhereInput]
+  OR: [BrickmouldAndTrimWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+
+  """ condition must be true for all nodes """
+  products_every: ProductWhereInput
+
+  """ condition must be true for at least 1 node """
+  products_some: ProductWhereInput
+
+  """ condition must be false for all nodes """
+  products_none: ProductWhereInput
+
+  """ condition must be true for all nodes """
+  productCategories_every: ProductCategoryWhereInput
+
+  """ condition must be true for at least 1 node """
+  productCategories_some: ProductCategoryWhereInput
+
+  """ condition must be false for all nodes """
+  productCategories_none: ProductCategoryWhereInput
+}
+
+input BrickmouldAndTrimWhereUniqueInput {
+  id: ID!
+}
+
+enum SortBrickmouldAndTrimsBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  products_ASC
+  products_DESC
+  productCategories_ASC
+  productCategories_DESC
+}
+
+input BrickmouldAndTrimUpdateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input BrickmouldAndTrimsUpdateInput {
+  id: ID!
+  data: BrickmouldAndTrimUpdateInput
+}
+
+input BrickmouldAndTrimCreateInput {
+  name: String
+  image: Upload
+  description: String
+  products: ProductRelateToManyInput
+  productCategories: ProductCategoryRelateToManyInput
+}
+
+input BrickmouldAndTrimsCreateInput {
+  data: BrickmouldAndTrimCreateInput
+}
+
+input UserRelateToManyInput {
+  create: [UserCreateInput]
+  connect: [UserWhereUniqueInput]
+  disconnect: [UserWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Role {
+  id: ID!
+  name: String
+  canManageRoles: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
+  assignedTo(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): [User!]!
+  _assignedToMeta(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input RoleWhereInput {
+  AND: [RoleWhereInput]
+  OR: [RoleWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  name: String
+  name_not: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  name_i: String
+  name_not_i: String
+  name_contains_i: String
+  name_not_contains_i: String
+  name_starts_with_i: String
+  name_not_starts_with_i: String
+  name_ends_with_i: String
+  name_not_ends_with_i: String
+  name_in: [String]
+  name_not_in: [String]
+  canManageRoles: Boolean
+  canManageRoles_not: Boolean
+  canManageUsers: Boolean
+  canManageUsers_not: Boolean
+  canManageProducts: Boolean
+  canManageProducts_not: Boolean
+  canManageOptions: Boolean
+  canManageOptions_not: Boolean
+  canManageContactForm: Boolean
+  canManageContactForm_not: Boolean
+  canManageLists: Boolean
+  canManageLists_not: Boolean
+  hide: Boolean
+  hide_not: Boolean
+
+  """ condition must be true for all nodes """
+  assignedTo_every: UserWhereInput
+
+  """ condition must be true for at least 1 node """
+  assignedTo_some: UserWhereInput
+
+  """ condition must be false for all nodes """
+  assignedTo_none: UserWhereInput
+}
+
+input RoleWhereUniqueInput {
+  id: ID!
+}
+
+enum SortRolesBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  canManageRoles_ASC
+  canManageRoles_DESC
+  canManageUsers_ASC
+  canManageUsers_DESC
+  canManageProducts_ASC
+  canManageProducts_DESC
+  canManageOptions_ASC
+  canManageOptions_DESC
+  canManageContactForm_ASC
+  canManageContactForm_DESC
+  canManageLists_ASC
+  canManageLists_DESC
+  hide_ASC
+  hide_DESC
+  assignedTo_ASC
+  assignedTo_DESC
+}
+
+input RoleUpdateInput {
+  name: String
+  canManageRoles: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
+  assignedTo: UserRelateToManyInput
+}
+
+input RolesUpdateInput {
+  id: ID!
+  data: RoleUpdateInput
+}
+
+input RoleCreateInput {
+  name: String
+  canManageRoles: Boolean
+  canManageUsers: Boolean
+  canManageProducts: Boolean
+  canManageOptions: Boolean
+  canManageContactForm: Boolean
+  canManageLists: Boolean
+  hide: Boolean
+  assignedTo: UserRelateToManyInput
+}
+
+input RolesCreateInput {
+  data: RoleCreateInput
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type _ListAccess {
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'create' operations.
+  NOTE: 'create' can only return a Boolean.
+  It is not possible to specify a declarative Where clause for this
+  operation
+  """
+  create: Boolean
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'read' operations.
+  """
+  read: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'update' operations.
+  """
+  update: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'delete' operations.
+  """
+  delete: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'auth' operations.
+  """
+  auth: JSON
+}
+
+type _ListQueries {
+  """Single-item query name"""
+  item: String
+
+  """All-items query name"""
+  list: String
+
+  """List metadata query name"""
+  meta: String
+}
+
+type _ListMutations {
+  """Create mutation name"""
+  create: String
+
+  """Create many mutation name"""
+  createMany: String
+
+  """Update mutation name"""
+  update: String
+
+  """Update many mutation name"""
+  updateMany: String
+
+  """Delete mutation name"""
+  delete: String
+
+  """Delete many mutation name"""
+  deleteMany: String
+}
+
+type _ListInputTypes {
+  """Input type for matching multiple items"""
+  whereInput: String
+
+  """Input type for matching a unique item"""
+  whereUniqueInput: String
+
+  """Create mutation input type name"""
+  createInput: String
+
+  """Create many mutation input type name"""
+  createManyInput: String
+
+  """Update mutation name input"""
+  updateInput: String
+
+  """Update many mutation name input"""
+  updateManyInput: String
+}
+
+type _ListSchemaFields {
+  """The path of the field in its list"""
+  path: String
+
+  """The name of the field in its list"""
+  name: String @deprecated(reason: "Use `path` instead")
+
+  """The field type (ie, Checkbox, Text, etc)"""
+  type: String
+}
+
+type _ListSchemaRelatedFields {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """A list of GraphQL field names"""
+  fields: [String]
+}
+
+type _ListSchema {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """
+  Top level GraphQL query names which either return this type, or
+  provide aggregate information about this type
+  """
+  queries: _ListQueries
+
+  """Top-level GraphQL mutation names"""
+  mutations: _ListMutations
+
+  """Top-level GraphQL input types"""
+  inputTypes: _ListInputTypes
+
+  """Information about fields defined on this list"""
+  fields(where: _ListSchemaFieldsInput): [_ListSchemaFields]
+
+  """
+  Information about fields on other types which return this type, or
+  provide aggregate information about this type
+  """
+  relatedFields: [_ListSchemaRelatedFields]
+}
+
+type _ListMeta {
+  """The Keystone list key"""
+  key: String
+
+  """The Keystone List name"""
+  name: String @deprecated(reason: "Use `key` instead")
+
+  """The list's user-facing description"""
+  description: String
+
+  """The list's display name in the Admin UI"""
+  label: String
+
+  """The list's singular display name"""
+  singular: String
+
+  """The list's plural display name"""
+  plural: String
+
+  """The list's data path"""
+  path: String
+
+  """Access control configuration for the currently authenticated request"""
+  access: _ListAccess
+
+  """Information on the generated GraphQL schema"""
+  schema: _ListSchema
+}
+
+type _QueryMeta {
+  count: Int
+}
+
+input _ksListsMetaInput {
+  key: String
+
+  """Whether this is an auxiliary helper list"""
+  auxiliary: Boolean
+}
+
+input _ListSchemaFieldsInput {
+  type: String
+}
+
+type Query {
+  """ Search for all User items which match the where clause. """
+  allUsers(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): [User]
+
+  """ Search for the User item with the matching ID. """
+  User(where: UserWhereUniqueInput!): User
+
+  """ Perform a meta-query on all User items which match the where clause. """
+  _allUsersMeta(where: UserWhereInput, search: String, sortBy: [SortUsersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the User list. """
+  _UsersMeta: _ListMeta
+
+  """ Search for all ProductCategory items which match the where clause. """
+  allProductCategories(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): [ProductCategory]
+
+  """ Search for the ProductCategory item with the matching ID. """
+  ProductCategory(where: ProductCategoryWhereUniqueInput!): ProductCategory
+
+  """ Perform a meta-query on all ProductCategory items which match the where clause. 
+  """
+  _allProductCategoriesMeta(where: ProductCategoryWhereInput, search: String, sortBy: [SortProductCategoriesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the ProductCategory list. """
+  _ProductCategoriesMeta: _ListMeta
+
+  """ Search for all Product items which match the where clause. """
+  allProducts(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product]
+
+  """ Search for the Product item with the matching ID. """
+  Product(where: ProductWhereUniqueInput!): Product
+
+  """ Perform a meta-query on all Product items which match the where clause. 
+  """
+  _allProductsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Product list. """
+  _ProductsMeta: _ListMeta
+
+  """ Search for all Operation items which match the where clause. """
+  allOperations(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): [Operation]
+
+  """ Search for the Operation item with the matching ID. """
+  Operation(where: OperationWhereUniqueInput!): Operation
+
+  """ Perform a meta-query on all Operation items which match the where clause. 
+  """
+  _allOperationsMeta(where: OperationWhereInput, search: String, sortBy: [SortOperationsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Operation list. """
+  _OperationsMeta: _ListMeta
+
+  """ Search for all Imagine items which match the where clause. """
+  allImagines(where: ImagineWhereInput, search: String, sortBy: [SortImaginesBy!], orderBy: String, first: Int, skip: Int): [Imagine]
+
+  """ Search for the Imagine item with the matching ID. """
+  Imagine(where: ImagineWhereUniqueInput!): Imagine
+
+  """ Perform a meta-query on all Imagine items which match the where clause. 
+  """
+  _allImaginesMeta(where: ImagineWhereInput, search: String, sortBy: [SortImaginesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Imagine list. """
+  _ImaginesMeta: _ListMeta
+
+  """ Search for all Dealer items which match the where clause. """
+  allDealers(where: DealerWhereInput, search: String, sortBy: [SortDealersBy!], orderBy: String, first: Int, skip: Int): [Dealer]
+
+  """ Search for the Dealer item with the matching ID. """
+  Dealer(where: DealerWhereUniqueInput!): Dealer
+
+  """ Perform a meta-query on all Dealer items which match the where clause. 
+  """
+  _allDealersMeta(where: DealerWhereInput, search: String, sortBy: [SortDealersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Dealer list. """
+  _DealersMeta: _ListMeta
+
+  """ Search for all ContactUsForm items which match the where clause. """
+  allContactUsForms(where: ContactUsFormWhereInput, search: String, sortBy: [SortContactUsFormsBy!], orderBy: String, first: Int, skip: Int): [ContactUsForm]
+
+  """ Search for the ContactUsForm item with the matching ID. """
+  ContactUsForm(where: ContactUsFormWhereUniqueInput!): ContactUsForm
+
+  """ Perform a meta-query on all ContactUsForm items which match the where clause. 
+  """
+  _allContactUsFormsMeta(where: ContactUsFormWhereInput, search: String, sortBy: [SortContactUsFormsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the ContactUsForm list. """
+  _ContactUsFormsMeta: _ListMeta
+
+  """ Search for all Screen items which match the where clause. """
+  allScreens(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): [Screen]
+
+  """ Search for the Screen item with the matching ID. """
+  Screen(where: ScreenWhereUniqueInput!): Screen
+
+  """ Perform a meta-query on all Screen items which match the where clause. 
+  """
+  _allScreensMeta(where: ScreenWhereInput, search: String, sortBy: [SortScreensBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Screen list. """
+  _ScreensMeta: _ListMeta
+
+  """ Search for all Interior items which match the where clause. """
+  allInteriors(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): [Interior]
+
+  """ Search for the Interior item with the matching ID. """
+  Interior(where: InteriorWhereUniqueInput!): Interior
+
+  """ Perform a meta-query on all Interior items which match the where clause. 
+  """
+  _allInteriorsMeta(where: InteriorWhereInput, search: String, sortBy: [SortInteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Interior list. """
+  _InteriorsMeta: _ListMeta
+
+  """ Search for all HardwareKit items which match the where clause. """
+  allHardwareKits(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): [HardwareKit]
+
+  """ Search for the HardwareKit item with the matching ID. """
+  HardwareKit(where: HardwareKitWhereUniqueInput!): HardwareKit
+
+  """ Perform a meta-query on all HardwareKit items which match the where clause. 
+  """
+  _allHardwareKitsMeta(where: HardwareKitWhereInput, search: String, sortBy: [SortHardwareKitsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the HardwareKit list. """
+  _HardwareKitsMeta: _ListMeta
+
+  """ Search for all GlassColor items which match the where clause. """
+  allGlassColors(where: GlassColorWhereInput, search: String, sortBy: [SortGlassColorsBy!], orderBy: String, first: Int, skip: Int): [GlassColor]
+
+  """ Search for the GlassColor item with the matching ID. """
+  GlassColor(where: GlassColorWhereUniqueInput!): GlassColor
+
+  """ Perform a meta-query on all GlassColor items which match the where clause. 
+  """
+  _allGlassColorsMeta(where: GlassColorWhereInput, search: String, sortBy: [SortGlassColorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the GlassColor list. """
+  _GlassColorsMeta: _ListMeta
+
+  """ Search for all Glass items which match the where clause. """
+  allGlasses(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): [Glass]
+
+  """ Search for the Glass item with the matching ID. """
+  Glass(where: GlassWhereUniqueInput!): Glass
+
+  """ Perform a meta-query on all Glass items which match the where clause. 
+  """
+  _allGlassesMeta(where: GlassWhereInput, search: String, sortBy: [SortGlassesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Glass list. """
+  _GlassesMeta: _ListMeta
+
+  """ Search for all Exterior items which match the where clause. """
+  allExteriors(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): [Exterior]
+
+  """ Search for the Exterior item with the matching ID. """
+  Exterior(where: ExteriorWhereUniqueInput!): Exterior
+
+  """ Perform a meta-query on all Exterior items which match the where clause. 
+  """
+  _allExteriorsMeta(where: ExteriorWhereInput, search: String, sortBy: [SortExteriorsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Exterior list. """
+  _ExteriorsMeta: _ListMeta
+
+  """ Search for all DividedLite items which match the where clause. """
+  allDividedLites(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): [DividedLite]
+
+  """ Search for the DividedLite item with the matching ID. """
+  DividedLite(where: DividedLiteWhereUniqueInput!): DividedLite
+
+  """ Perform a meta-query on all DividedLite items which match the where clause. 
+  """
+  _allDividedLitesMeta(where: DividedLiteWhereInput, search: String, sortBy: [SortDividedLitesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the DividedLite list. """
+  _DividedLitesMeta: _ListMeta
+
+  """ Search for all BrickmouldAndTrim items which match the where clause. """
+  allBrickmouldAndTrims(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): [BrickmouldAndTrim]
+
+  """ Search for the BrickmouldAndTrim item with the matching ID. """
+  BrickmouldAndTrim(where: BrickmouldAndTrimWhereUniqueInput!): BrickmouldAndTrim
+
+  """ Perform a meta-query on all BrickmouldAndTrim items which match the where clause. 
+  """
+  _allBrickmouldAndTrimsMeta(where: BrickmouldAndTrimWhereInput, search: String, sortBy: [SortBrickmouldAndTrimsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the BrickmouldAndTrim list. """
+  _BrickmouldAndTrimsMeta: _ListMeta
+
+  """ Search for all Role items which match the where clause. """
+  allRoles(where: RoleWhereInput, search: String, sortBy: [SortRolesBy!], orderBy: String, first: Int, skip: Int): [Role]
+
+  """ Search for the Role item with the matching ID. """
+  Role(where: RoleWhereUniqueInput!): Role
+
+  """ Perform a meta-query on all Role items which match the where clause. """
+  _allRolesMeta(where: RoleWhereInput, search: String, sortBy: [SortRolesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Role list. """
+  _RolesMeta: _ListMeta
+
+  """ Retrieve the meta-data for all lists. """
+  _ksListsMeta(where: _ksListsMetaInput): [_ListMeta]
+
+  """The version of the Keystone application serving this API."""
+  appVersion: String
+  authenticatedItem: AuthenticatedItem
+  validateUserPasswordResetToken(email: String!, token: String!): ValidateUserPasswordResetTokenResult
+  keystone: KeystoneMeta!
+}
+
+type Mutation {
+  """ Create a single User item. """
+  createUser(data: UserCreateInput): User
+
+  """ Create multiple User items. """
+  createUsers(data: [UsersCreateInput]): [User]
+
+  """ Update a single User item by ID. """
+  updateUser(id: ID!, data: UserUpdateInput): User
+
+  """ Update multiple User items by ID. """
+  updateUsers(data: [UsersUpdateInput]): [User]
+
+  """ Delete a single User item by ID. """
+  deleteUser(id: ID!): User
+
+  """ Delete multiple User items by ID. """
+  deleteUsers(ids: [ID!]): [User]
+
+  """ Create a single ProductCategory item. """
+  createProductCategory(data: ProductCategoryCreateInput): ProductCategory
+
+  """ Create multiple ProductCategory items. """
+  createProductCategories(data: [ProductCategoriesCreateInput]): [ProductCategory]
+
+  """ Update a single ProductCategory item by ID. """
+  updateProductCategory(id: ID!, data: ProductCategoryUpdateInput): ProductCategory
+
+  """ Update multiple ProductCategory items by ID. """
+  updateProductCategories(data: [ProductCategoriesUpdateInput]): [ProductCategory]
+
+  """ Delete a single ProductCategory item by ID. """
+  deleteProductCategory(id: ID!): ProductCategory
+
+  """ Delete multiple ProductCategory items by ID. """
+  deleteProductCategories(ids: [ID!]): [ProductCategory]
+
+  """ Create a single Product item. """
+  createProduct(data: ProductCreateInput): Product
+
+  """ Create multiple Product items. """
+  createProducts(data: [ProductsCreateInput]): [Product]
+
+  """ Update a single Product item by ID. """
+  updateProduct(id: ID!, data: ProductUpdateInput): Product
+
+  """ Update multiple Product items by ID. """
+  updateProducts(data: [ProductsUpdateInput]): [Product]
+
+  """ Delete a single Product item by ID. """
+  deleteProduct(id: ID!): Product
+
+  """ Delete multiple Product items by ID. """
+  deleteProducts(ids: [ID!]): [Product]
+
+  """ Create a single Operation item. """
+  createOperation(data: OperationCreateInput): Operation
+
+  """ Create multiple Operation items. """
+  createOperations(data: [OperationsCreateInput]): [Operation]
+
+  """ Update a single Operation item by ID. """
+  updateOperation(id: ID!, data: OperationUpdateInput): Operation
+
+  """ Update multiple Operation items by ID. """
+  updateOperations(data: [OperationsUpdateInput]): [Operation]
+
+  """ Delete a single Operation item by ID. """
+  deleteOperation(id: ID!): Operation
+
+  """ Delete multiple Operation items by ID. """
+  deleteOperations(ids: [ID!]): [Operation]
+
+  """ Create a single Imagine item. """
+  createImagine(data: ImagineCreateInput): Imagine
+
+  """ Create multiple Imagine items. """
+  createImagines(data: [ImaginesCreateInput]): [Imagine]
+
+  """ Update a single Imagine item by ID. """
+  updateImagine(id: ID!, data: ImagineUpdateInput): Imagine
+
+  """ Update multiple Imagine items by ID. """
+  updateImagines(data: [ImaginesUpdateInput]): [Imagine]
+
+  """ Delete a single Imagine item by ID. """
+  deleteImagine(id: ID!): Imagine
+
+  """ Delete multiple Imagine items by ID. """
+  deleteImagines(ids: [ID!]): [Imagine]
+
+  """ Create a single Dealer item. """
+  createDealer(data: DealerCreateInput): Dealer
+
+  """ Create multiple Dealer items. """
+  createDealers(data: [DealersCreateInput]): [Dealer]
+
+  """ Update a single Dealer item by ID. """
+  updateDealer(id: ID!, data: DealerUpdateInput): Dealer
+
+  """ Update multiple Dealer items by ID. """
+  updateDealers(data: [DealersUpdateInput]): [Dealer]
+
+  """ Delete a single Dealer item by ID. """
+  deleteDealer(id: ID!): Dealer
+
+  """ Delete multiple Dealer items by ID. """
+  deleteDealers(ids: [ID!]): [Dealer]
+
+  """ Create a single ContactUsForm item. """
+  createContactUsForm(data: ContactUsFormCreateInput): ContactUsForm
+
+  """ Create multiple ContactUsForm items. """
+  createContactUsForms(data: [ContactUsFormsCreateInput]): [ContactUsForm]
+
+  """ Update a single ContactUsForm item by ID. """
+  updateContactUsForm(id: ID!, data: ContactUsFormUpdateInput): ContactUsForm
+
+  """ Update multiple ContactUsForm items by ID. """
+  updateContactUsForms(data: [ContactUsFormsUpdateInput]): [ContactUsForm]
+
+  """ Delete a single ContactUsForm item by ID. """
+  deleteContactUsForm(id: ID!): ContactUsForm
+
+  """ Delete multiple ContactUsForm items by ID. """
+  deleteContactUsForms(ids: [ID!]): [ContactUsForm]
+
+  """ Create a single Screen item. """
+  createScreen(data: ScreenCreateInput): Screen
+
+  """ Create multiple Screen items. """
+  createScreens(data: [ScreensCreateInput]): [Screen]
+
+  """ Update a single Screen item by ID. """
+  updateScreen(id: ID!, data: ScreenUpdateInput): Screen
+
+  """ Update multiple Screen items by ID. """
+  updateScreens(data: [ScreensUpdateInput]): [Screen]
+
+  """ Delete a single Screen item by ID. """
+  deleteScreen(id: ID!): Screen
+
+  """ Delete multiple Screen items by ID. """
+  deleteScreens(ids: [ID!]): [Screen]
+
+  """ Create a single Interior item. """
+  createInterior(data: InteriorCreateInput): Interior
+
+  """ Create multiple Interior items. """
+  createInteriors(data: [InteriorsCreateInput]): [Interior]
+
+  """ Update a single Interior item by ID. """
+  updateInterior(id: ID!, data: InteriorUpdateInput): Interior
+
+  """ Update multiple Interior items by ID. """
+  updateInteriors(data: [InteriorsUpdateInput]): [Interior]
+
+  """ Delete a single Interior item by ID. """
+  deleteInterior(id: ID!): Interior
+
+  """ Delete multiple Interior items by ID. """
+  deleteInteriors(ids: [ID!]): [Interior]
+
+  """ Create a single HardwareKit item. """
+  createHardwareKit(data: HardwareKitCreateInput): HardwareKit
+
+  """ Create multiple HardwareKit items. """
+  createHardwareKits(data: [HardwareKitsCreateInput]): [HardwareKit]
+
+  """ Update a single HardwareKit item by ID. """
+  updateHardwareKit(id: ID!, data: HardwareKitUpdateInput): HardwareKit
+
+  """ Update multiple HardwareKit items by ID. """
+  updateHardwareKits(data: [HardwareKitsUpdateInput]): [HardwareKit]
+
+  """ Delete a single HardwareKit item by ID. """
+  deleteHardwareKit(id: ID!): HardwareKit
+
+  """ Delete multiple HardwareKit items by ID. """
+  deleteHardwareKits(ids: [ID!]): [HardwareKit]
+
+  """ Create a single GlassColor item. """
+  createGlassColor(data: GlassColorCreateInput): GlassColor
+
+  """ Create multiple GlassColor items. """
+  createGlassColors(data: [GlassColorsCreateInput]): [GlassColor]
+
+  """ Update a single GlassColor item by ID. """
+  updateGlassColor(id: ID!, data: GlassColorUpdateInput): GlassColor
+
+  """ Update multiple GlassColor items by ID. """
+  updateGlassColors(data: [GlassColorsUpdateInput]): [GlassColor]
+
+  """ Delete a single GlassColor item by ID. """
+  deleteGlassColor(id: ID!): GlassColor
+
+  """ Delete multiple GlassColor items by ID. """
+  deleteGlassColors(ids: [ID!]): [GlassColor]
+
+  """ Create a single Glass item. """
+  createGlass(data: GlassCreateInput): Glass
+
+  """ Create multiple Glass items. """
+  createGlasses(data: [GlassesCreateInput]): [Glass]
+
+  """ Update a single Glass item by ID. """
+  updateGlass(id: ID!, data: GlassUpdateInput): Glass
+
+  """ Update multiple Glass items by ID. """
+  updateGlasses(data: [GlassesUpdateInput]): [Glass]
+
+  """ Delete a single Glass item by ID. """
+  deleteGlass(id: ID!): Glass
+
+  """ Delete multiple Glass items by ID. """
+  deleteGlasses(ids: [ID!]): [Glass]
+
+  """ Create a single Exterior item. """
+  createExterior(data: ExteriorCreateInput): Exterior
+
+  """ Create multiple Exterior items. """
+  createExteriors(data: [ExteriorsCreateInput]): [Exterior]
+
+  """ Update a single Exterior item by ID. """
+  updateExterior(id: ID!, data: ExteriorUpdateInput): Exterior
+
+  """ Update multiple Exterior items by ID. """
+  updateExteriors(data: [ExteriorsUpdateInput]): [Exterior]
+
+  """ Delete a single Exterior item by ID. """
+  deleteExterior(id: ID!): Exterior
+
+  """ Delete multiple Exterior items by ID. """
+  deleteExteriors(ids: [ID!]): [Exterior]
+
+  """ Create a single DividedLite item. """
+  createDividedLite(data: DividedLiteCreateInput): DividedLite
+
+  """ Create multiple DividedLite items. """
+  createDividedLites(data: [DividedLitesCreateInput]): [DividedLite]
+
+  """ Update a single DividedLite item by ID. """
+  updateDividedLite(id: ID!, data: DividedLiteUpdateInput): DividedLite
+
+  """ Update multiple DividedLite items by ID. """
+  updateDividedLites(data: [DividedLitesUpdateInput]): [DividedLite]
+
+  """ Delete a single DividedLite item by ID. """
+  deleteDividedLite(id: ID!): DividedLite
+
+  """ Delete multiple DividedLite items by ID. """
+  deleteDividedLites(ids: [ID!]): [DividedLite]
+
+  """ Create a single BrickmouldAndTrim item. """
+  createBrickmouldAndTrim(data: BrickmouldAndTrimCreateInput): BrickmouldAndTrim
+
+  """ Create multiple BrickmouldAndTrim items. """
+  createBrickmouldAndTrims(data: [BrickmouldAndTrimsCreateInput]): [BrickmouldAndTrim]
+
+  """ Update a single BrickmouldAndTrim item by ID. """
+  updateBrickmouldAndTrim(id: ID!, data: BrickmouldAndTrimUpdateInput): BrickmouldAndTrim
+
+  """ Update multiple BrickmouldAndTrim items by ID. """
+  updateBrickmouldAndTrims(data: [BrickmouldAndTrimsUpdateInput]): [BrickmouldAndTrim]
+
+  """ Delete a single BrickmouldAndTrim item by ID. """
+  deleteBrickmouldAndTrim(id: ID!): BrickmouldAndTrim
+
+  """ Delete multiple BrickmouldAndTrim items by ID. """
+  deleteBrickmouldAndTrims(ids: [ID!]): [BrickmouldAndTrim]
+
+  """ Create a single Role item. """
+  createRole(data: RoleCreateInput): Role
+
+  """ Create multiple Role items. """
+  createRoles(data: [RolesCreateInput]): [Role]
+
+  """ Update a single Role item by ID. """
+  updateRole(id: ID!, data: RoleUpdateInput): Role
+
+  """ Update multiple Role items by ID. """
+  updateRoles(data: [RolesUpdateInput]): [Role]
+
+  """ Delete a single Role item by ID. """
+  deleteRole(id: ID!): Role
+
+  """ Delete multiple Role items by ID. """
+  deleteRoles(ids: [ID!]): [Role]
+  authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult!
+  createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
+  sendUserPasswordResetLink(email: String!): SendUserPasswordResetLinkResult
+  redeemUserPasswordResetToken(email: String!, token: String!, password: String!): RedeemUserPasswordResetTokenResult
+  userCreate(userID: ID): User
+  endSession: Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+union AuthenticatedItem = User
+
+union UserAuthenticationWithPasswordResult = UserAuthenticationWithPasswordSuccess | UserAuthenticationWithPasswordFailure
+
+type UserAuthenticationWithPasswordSuccess {
+  sessionToken: String!
+  item: User!
+}
+
+type UserAuthenticationWithPasswordFailure {
+  code: PasswordAuthErrorCode!
+  message: String!
+}
+
+enum PasswordAuthErrorCode {
+  FAILURE
+  IDENTITY_NOT_FOUND
+  SECRET_NOT_SET
+  MULTIPLE_IDENTITY_MATCHES
+  SECRET_MISMATCH
+}
+
+input CreateInitialUserInput {
+  name: String
+  email: String
+  password: String
+  companyName: String
+}
+
+type SendUserPasswordResetLinkResult {
+  code: PasswordResetRequestErrorCode!
+  message: String!
+}
+
+enum PasswordResetRequestErrorCode {
+  IDENTITY_NOT_FOUND
+  MULTIPLE_IDENTITY_MATCHES
+}
+
+type ValidateUserPasswordResetTokenResult {
+  code: PasswordResetRedemptionErrorCode!
+  message: String!
+}
+
+type RedeemUserPasswordResetTokenResult {
+  code: PasswordResetRedemptionErrorCode!
+  message: String!
+}
+
+enum PasswordResetRedemptionErrorCode {
+  FAILURE
+  IDENTITY_NOT_FOUND
+  MULTIPLE_IDENTITY_MATCHES
+  TOKEN_NOT_SET
+  TOKEN_MISMATCH
+  TOKEN_EXPIRED
+  TOKEN_REDEEMED
+}
+
+type KeystoneMeta {
+  adminMeta: KeystoneAdminMeta!
+}
+
+type KeystoneAdminMeta {
+  enableSignout: Boolean!
+  enableSessionItem: Boolean!
+  lists: [KeystoneAdminUIListMeta!]!
+  list(key: String!): KeystoneAdminUIListMeta
+}
+
+type KeystoneAdminUIListMeta {
+  key: String!
+  itemQueryName: String!
+  listQueryName: String!
+  hideCreate: Boolean!
+  hideDelete: Boolean!
+  path: String!
+  label: String!
+  singular: String!
+  plural: String!
+  description: String
+  initialColumns: [String!]!
+  pageSize: Int!
+  labelField: String!
+  fields: [KeystoneAdminUIFieldMeta!]!
+  initialSort: KeystoneAdminUISort
+  isHidden: Boolean!
+}
+
+type KeystoneAdminUISort {
+  field: String!
+  direction: KeystoneAdminUISortDirection!
+}
+
+type KeystoneAdminUIFieldMeta {
+  path: String!
+  label: String!
+  isOrderable: Boolean!
+  fieldMeta: JSON
+  viewsHash: String!
+  customViewsHash: String
+  createView: KeystoneAdminUIFieldMetaCreateView!
+  listView: KeystoneAdminUIFieldMetaListView!
+  itemView(id: ID!): KeystoneAdminUIFieldMetaItemView
+}
+
+type KeystoneAdminUIFieldMetaCreateView {
+  fieldMode: KeystoneAdminUIFieldMetaCreateViewFieldMode!
+}
+
+type KeystoneAdminUIFieldMetaListView {
+  fieldMode: KeystoneAdminUIFieldMetaListViewFieldMode!
+}
+
+type KeystoneAdminUIFieldMetaItemView {
+  fieldMode: KeystoneAdminUIFieldMetaItemViewFieldMode!
+}
+
+enum KeystoneAdminUIFieldMetaCreateViewFieldMode {
+  edit
+  hidden
+}
+
+enum KeystoneAdminUIFieldMetaListViewFieldMode {
+  read
+  hidden
+}
+
+enum KeystoneAdminUIFieldMetaItemViewFieldMode {
+  edit
+  read
+  hidden
+}
+
+enum KeystoneAdminUISortDirection {
+  ASC
+  DESC
+}

@@ -1,36 +1,48 @@
 export default {
   pages: () => [
+    // Custom pages
+    // {
+    //   label: 'A new dashboard',
+    //   path: '',
+    //   component: Dashboard,
+    // },
+    // {
+    //   label: 'About this project',
+    //   path: 'about',
+    //   component: About,
+    // },
+    // Ordering existing list pages
     {
-      label: 'Admin',
+      label: 'Main',
       children: [
-        { label: 'Back End Users', listKey: 'BackEndUser' },
-        { label: 'Users', listKey: 'User' },
-        { label: 'Password Tokens', listKey: 'ForgottenPasswordToken' },
+        { listKey: 'User' },
       ],
     },
     {
-      label: 'Content',
+      label: 'Product',
+      children: [{ listKey: 'Products' }, { listKey: 'PostCategory', label: 'Categories' },],
+    },
+    {
+      label: 'Pages',
       children: [
-        { label: 'Imagine Page', listKey: 'Imagine' },
-        { label: 'Dealers', listKey: 'Dealer' },
-        { label: 'Operations', listKey: 'Operation' },
-        { label: 'Products', listKey: 'Product' },
-        { label: 'Product Categories', listKey: 'ProductCategory' },
+        { listKey: 'Imagine' },
+        { listKey: 'ContactUsForms' },
+        { listKey: 'Dealers' },
       ],
     },
     {
-      label: 'Design Options',
+      label: 'Options',
       children: [
-        { label: 'Exterior Options', listKey: 'ExteriorOption' },
-        { label: 'Interior Options', listKey: 'InteriorOption' },
-        { label: 'Screen Options', listKey: 'ScreenOption' },
-        { label: 'Hardware Options', listKey: 'HardwareOption' },
-        { label: 'Glass Options', listKey: 'GlassOption' },
-        { label: 'Divided Lite Options', listKey: 'DividedLiteOption' },
-        { label: 'Brickmold and Trim Options', listKey: 'BrickmoldAndTrimOption' },
+        { listKey: 'BrickmouldAndTrim' },
+        { listKey: 'DividedLite'},
+        { listKey: 'Exterior' },
+        { listKey: 'Interior' },
+        { listKey: 'Glass' },
+        { listKey: 'GlassColor' },
+        { listKey: 'HardwareKit' },
+                { listKey: 'Screen' }
         
 
-        
       ],
     },
   ],

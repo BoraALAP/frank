@@ -6,7 +6,7 @@ interface Props {
   subtitle?: String;
   transparent?: Boolean;
   padding?: Boolean;
-  children: any;
+  children?: any;
 }
 
 const Details = ({
@@ -43,8 +43,9 @@ const Subtitle = styled.h5`
   display: grid;
 `;
 
-const Descriptions = styled.ul`
+const Descriptions = styled.p`
   display: grid;
+  max-width: 600px;
 `;
 
 export default Details;

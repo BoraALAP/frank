@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
 
     @media screen and (min-width: 768px){
       --padding: 3.5rem;
+      --gap: 2rem;
     }
   }
 

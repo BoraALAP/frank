@@ -80,8 +80,6 @@ const ContactForm = () => {
           .min(1, "At least one checkbox is required"),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        console.log("submited");
-
         try {
           createContactUsForm({
             variables: {
@@ -102,7 +100,6 @@ const ContactForm = () => {
           });
         } catch (error) {
           setErrors(error.message);
-          console.log("error", error.message);
         }
       }}
     >

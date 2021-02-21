@@ -1,8 +1,9 @@
-import { permissionsList } from './schemas/fields';
-import { ListAccessArgs } from './types';
+import { permissionsList } from "./schemas/fields";
+import { ListAccessArgs } from "./types";
 // At it's simplest, the access control returns a yes or no value depending on the users session
 
 export function isSignedIn({ session }: ListAccessArgs) {
+  console.log(session);
   return !!session;
 }
 
@@ -19,13 +20,35 @@ const generatedPermissions = Object.fromEntries(
 export const permissions = {
   ...generatedPermissions,
   isAwesome({ session }: ListAccessArgs): boolean {
-    return session?.data.name.includes('wes');
+    return session?.data.name.includes("frank");
   },
 };
 
 // Rule based function
 // Rules can return a boolean - yes or no - or a filter which limits which products they can CRUD.
 export const rules = {
+  canManageRoles({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    // 1. Do they have the permission of canManageProducts
+    if (permissions.canManageRoles({ session })) {
+      return true;
+    }
+    // 2. If not display others?
+    return { hide: false };
+  },
+  canManageUsers({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // Otherwise they may only update themselves!
+    return { id: session.itemId };
+  },
   canManageProducts({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
       return false;
@@ -37,46 +60,15 @@ export const rules = {
     // 2. If not, do they own this item?
     return { user: { id: session.itemId } };
   },
-  canOrder({ session }: ListAccessArgs) {
+  canManageOptions({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {
       return false;
     }
     // 1. Do they have the permission of canManageProducts
-    if (permissions.canManageCart({ session })) {
+    if (permissions.canManageProducts({ session })) {
       return true;
     }
     // 2. If not, do they own this item?
     return { user: { id: session.itemId } };
-  },
-  canManageOrderItems({ session }: ListAccessArgs) {
-    if (!isSignedIn({ session })) {
-      return false;
-    }
-    // 1. Do they have the permission of canManageProducts
-    if (permissions.canManageCart({ session })) {
-      return true;
-    }
-    // 2. If not, do they own this item?
-    return { order: { user: { id: session.itemId } } };
-  },
-  canReadProducts({ session }: ListAccessArgs) {
-    if (!isSignedIn({ session })) {
-      return false;
-    }
-    if (permissions.canManageProducts({ session })) {
-      return true; // They can read everything!
-    }
-    // They should only see available products (based on the status field)
-    return { status: 'AVAILABLE' };
-  },
-  canManageUsers({ session }: ListAccessArgs) {
-    if (!isSignedIn({ session })) {
-      return false;
-    }
-    if (permissions.canManageUsers({ session })) {
-      return true;
-    }
-    // Otherwise they may only update themselves!
-    return { id: session.itemId };
   },
 };

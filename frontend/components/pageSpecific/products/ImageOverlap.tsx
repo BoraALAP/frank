@@ -1,26 +1,25 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { Body } from "../../layout/Body";
 import Details from "./Details";
 
 export const ImageOverlap = ({
   title,
-  detailsChildren,
-  imageSrc,
+  subtitle,
+  image,
   imageTitle,
-  imageChildren,
+  imageDescription,
+  spec,
 }) => {
   return (
     <Container>
-      <Details title={title} padding>
-        {detailsChildren?.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </Details>
+      <Details title={title} subtitle={subtitle} padding />
       <Bottom>
         <Left>
-          {imageSrc && (
+          {image && (
             <Image
-              src={imageSrc}
+              src={image.publicUrl}
+              alt={image.originalFilename}
               layout="fill"
               objectFit="contain"
               objectPosition="center bottom"
@@ -29,8 +28,9 @@ export const ImageOverlap = ({
         </Left>
         <Right>
           <Title>{imageTitle}</Title>
+          <Body>{imageDescription.split("\n")}</Body>
           <List>
-            {imageChildren?.map((item, index) => (
+            {spec?.split("\n").map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </List>

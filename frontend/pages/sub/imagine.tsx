@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { gql, useQuery } from "@apollo/client";
 
@@ -50,7 +49,7 @@ const imagine = () => {
   const { store, dispatch } = useContext(GlobalContext);
   return (
     <BigContainer>
-      <Container space gap padding title="Imagine Page">
+      <Container space pageGap padding title="Imagine Page">
         <Context>
           <Header>
             <h1>Imagine with Frank.</h1>

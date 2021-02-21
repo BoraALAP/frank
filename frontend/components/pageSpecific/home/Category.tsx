@@ -2,7 +2,24 @@ import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "../../../UI/Links";
 
-const Category = ({ image, title, subtitle, children, href, rev = false }) => {
+interface Props {
+  image: any;
+  title: String;
+  subtitle: String;
+  description?: String;
+  href: String;
+  rev: Boolean;
+}
+
+const Category = ({
+  image,
+  title,
+  subtitle,
+  description,
+  href,
+  rev = false,
+}: Props) => {
+  const hrefFixed = href.replace(/\s+/g, "").toLowerCase();
   return (
     <Container rev={rev}>
       <Left rev={rev}>
@@ -11,8 +28,8 @@ const Category = ({ image, title, subtitle, children, href, rev = false }) => {
       <Right>
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
-        <Body>{children}</Body>
-        <TertiaryButton href={href}>View {title}</TertiaryButton>
+        <Body>{description}</Body>
+        <TertiaryButton href={hrefFixed}>View {title}</TertiaryButton>
       </Right>
     </Container>
   );

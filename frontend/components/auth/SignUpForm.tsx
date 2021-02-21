@@ -30,8 +30,6 @@ const SignUpForm = ({ onSuccess }: any) => {
 
   const [createAUser, { error: mutationError }] = useMutation(CREATE_USER, {
     onCompleted: () => {
-      console.log(info.email, info.password);
-
       signin({ variables: { email: info.email, password: info.password } });
     },
   });

@@ -11,13 +11,16 @@ import Category from "../components/pageSpecific/home/Category";
 import { useAuth } from "../lib/Authentication";
 
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
+import { Slugify } from "../lib/Stringer";
 
 const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
   const { isAuthenticated } = useAuth();
 
+  const { data, error, loading } = useQuery(CATEGORIES);
+
   return (
-    <Container space title="Home">
+    <Container space title="Home" loading={loading}>
       <Context>
         <Welcome>
           <Left>
@@ -33,50 +36,20 @@ const Home = (props) => {
         </Welcome>
         <Categories>
           <Message />
-          <Category1
-            title="Windows"
-            subtitle="Maximize your living space."
-            href="/products/windows"
-            image="/homepage4.jpg"
-            rev
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category1>
-          <Category2
-            title="Entry Door"
-            subtitle="Maximize your living space."
-            href="/products/entrydoors"
-            image="/homepage5.jpg"
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category2>
-          <Category3
-            title="Sliding Doors"
-            subtitle="Maximize your living space."
-            href="/products/slidingdoors"
-            image="/homepage6.jpg"
-            rev
-          >
-            <p>Rated Most efficient by Energy Star</p>
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
-          </Category3>
+          {!loading &&
+            data?.allProductCategories.map((category, index) => {
+              return (
+                <Category
+                  title={category.name}
+                  key={category.id}
+                  subtitle={category.subtitle}
+                  href={`/categories/${Slugify(category.name)}`}
+                  image={category.image.publicUrl}
+                  description={category.description}
+                  rev={index! % 2 ? true : false}
+                />
+              );
+            })}
         </Categories>
         <EnergyEfficiency />
       </Context>
@@ -105,21 +78,6 @@ const Categories = styled.div`
   gap: calc(2 * var(--gap));
 `;
 
-const Category1 = styled(Category)`
-  display: grid;
-  z-index: 1;
-`;
-
-const Category2 = styled(Category)`
-  display: grid;
-  z-index: 2;
-`;
-
-const Category3 = styled(Category)`
-  display: grid;
-  z-index: 3;
-`;
-
 const Left = styled.div``;
 
 const Right = styled.div`
@@ -137,11 +95,18 @@ const Right = styled.div`
   }
 `;
 
-const ME = gql`
-  query Operation {
-    allOperations {
+const CATEGORIES = gql`
+  query CATEGORIES {
+    allProductCategories {
       id
       name
+      subtitle
+      description
+      image {
+        id
+        filename
+        publicUrl
+      }
     }
   }
 `;
