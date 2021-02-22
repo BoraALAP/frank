@@ -1,6 +1,4 @@
 import { graphQLSchemaExtension } from '@keystone-next/keystone/schema';
-import addToCart from './addToCart';
-import checkout from './checkout';
 import userCreate from './userCreate';
 
 // make a fake graphql tagged template literal
@@ -13,7 +11,7 @@ export const extendGraphqlSchema = graphQLSchemaExtension({
   `,
   resolvers: {
     Mutation: {
-      userCreate
+      userCreate,
     },
   },
 });
