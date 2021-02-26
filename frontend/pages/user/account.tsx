@@ -1,44 +1,29 @@
 import { useEffect } from "react";
-import moment from "moment";
-import styled from "styled-components";
-import { gql, useMutation } from "@apollo/client";
 import Router from "next/router";
-import { useAuth } from "../../lib/Authentication";
+
 import { Container } from "../../components/layout/Container";
 import { TertiaryButton } from "../../UI/Links";
-import { Loading } from "../../UI/Loading";
 import { PageTitle } from "../../components/layout/PageTitle";
+import { useUser } from "../../components/auth/user";
 
 const account = () => {
-  const { signout, isAuthenticated, isLoading, user } = useAuth();
-  const onSignout = (event) => {
-    event.preventDefault();
-    signout();
-  };
+  const user = useUser();
 
   useEffect(() => {
-    if (!isAuthenticated && !isLoading) {
+    if (!user) {
       Router.push("/user/signin");
       return;
     }
-  }, [isAuthenticated]);
+  }, [user]);
 
-  if (!user && isLoading) {
-    return <Loading />;
-  }
+  console.log(user);
 
   return (
-    <Container space padding pageGap title="My Profile">
+    <Container space padding gap title="My Profile">
       <PageTitle title="Account" />
-      <h4>Hello {user?.name}</h4>
-      <p>
-        Last Login{" "}
-        {moment(user?.lastLogin).format("dddd, MMMM Do YYYY, h:mm:ss a")}
-      </p>
-
-      <TertiaryButton onClick={onSignout} href="/user/signout">
-        Sign Out
-      </TertiaryButton>
+      <h4>Hello {user?.firstName}</h4>
+      {user?.role?.name === "Dealer" && <p>Dealer Approved</p>}
+      <TertiaryButton href="/user/signout">Sign Out</TertiaryButton>
     </Container>
   );
 };

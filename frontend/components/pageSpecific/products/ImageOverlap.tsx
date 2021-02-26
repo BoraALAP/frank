@@ -11,6 +11,8 @@ export const ImageOverlap = ({
   imageDescription,
   spec,
 }) => {
+  console.log(image);
+
   return (
     <Container>
       <Details title={title} subtitle={subtitle} padding />

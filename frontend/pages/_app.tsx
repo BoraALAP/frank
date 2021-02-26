@@ -6,7 +6,6 @@ import NProgress from "nprogress";
 
 import { AnimatePresence, motion } from "framer-motion";
 import GlobalStyle from "../styles/global";
-import { AuthProvider } from "../lib/Authentication";
 import withApollo from "../lib/withApollo";
 
 import { GlobalContext } from "../context/context";
@@ -26,18 +25,16 @@ const MyApp = ({ Component, pageProps, apollo }) => {
   return (
     <ApolloProvider client={apollo}>
       <GlobalContext.Provider value={{ store, dispatch }}>
-        <AuthProvider>
-          <GlobalStyle />
-          {router.route !== "/" && <Header />}
+        <GlobalStyle />
+        {router.route !== "/" && <Header />}
 
-          <ComponentS>
-            <AnimatePresence exitBeforeEnter initial={false}>
-              <Component {...pageProps} key={router.pathname} />
-            </AnimatePresence>
-          </ComponentS>
+        <ComponentS>
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <Component {...pageProps} key={router.pathname} />
+          </AnimatePresence>
+        </ComponentS>
 
-          {router.route !== "/" && <Footer />}
-        </AuthProvider>
+        {router.route !== "/" && <Footer />}
       </GlobalContext.Provider>
     </ApolloProvider>
   );

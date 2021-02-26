@@ -13,9 +13,13 @@ import {
 import { Container } from "../components/layout/Container";
 
 const ProductTemplate = ({ product }) => {
+  console.log(product);
+
   const { loading, error, data } = useQuery(PRODUCT_QUERY, {
     variables: { product: product },
   });
+
+  console.log(data);
 
   if (loading) {
     return <Loading />;
@@ -40,7 +44,7 @@ const ProductTemplate = ({ product }) => {
     operationsSubTitle,
     operationsDescription,
     operations,
-  } = data.allProducts[0];
+  } = data?.allProducts[0];
 
   const links = [
     {
@@ -100,39 +104,11 @@ const ProductTemplate = ({ product }) => {
   );
 };
 
-// const PRODUCT_QUERY = gql`
-//   query PRODUCT_QUERY($ProductName: String) {
-//     allProducts(where: { name_i: $ProductName }) {
-//       id
-//       name
-//       subtitle
-//       image
-//       productCategories {
-//         name
-//       }
-//       imageTitle
-//       imageDescription
-//       specs
-//       threeImageTitle
-//       threeImageDescription
-//       operationsTitle
-//       operationsSubTitle
-//       operationsDescription
-//       operations {
-//         id
-//         name
-//         image
-//         video
-//       }
-//     }
-//   }
-// `;
-
 export default ProductTemplate;
 
 const PRODUCT_QUERY = gql`
   query PRODUCT_QUERY($product: String) {
-    allProducts(where: { name_contains: $product }) {
+    allProducts(where: { name_i: $product }) {
       id
       name
       pageSubtitle

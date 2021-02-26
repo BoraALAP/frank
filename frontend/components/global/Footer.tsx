@@ -10,7 +10,7 @@ const Footer = () => {
     { name: "Find a dealer", href: "/sub/dealerfinder" },
 
     { name: "Privacy Policy", href: "/sub/privacypolicy" },
-    { name: "Waranty", href: "/sub/waranty" },
+    { name: "Warranty", href: "/sub/warranty" },
   ];
 
   const socials = [

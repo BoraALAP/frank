@@ -1,8 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Formik } from "formik";
 
-import { useAuth } from "../../lib/Authentication";
 import { Button, TertiaryButton } from "../../UI/Links";
 import {
   ErrorMessages,
@@ -11,11 +11,36 @@ import {
   InputContainer,
   Label,
 } from "../../UI/FormElements";
-import { useState } from "react";
+import { useUser } from "./user";
+import { gql, useMutation } from "@apollo/client";
+import { CURRENT_USER_QUERY } from "./user";
+
+const SIGNIN_MUTATION = gql`
+  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
+    authenticateUserWithPassword(email: $email, password: $password) {
+      ... on UserAuthenticationWithPasswordSuccess {
+        item {
+          id
+          firstName
+          email
+        }
+      }
+      ... on UserAuthenticationWithPasswordFailure {
+        code
+        message
+      }
+    }
+  }
+`;
 
 const SignInForm = ({ onSuccess }: any) => {
-  const { isAuthenticated, signin, isLoading } = useAuth();
-  const [error, setError] = useState("");
+  const [errors, setError] = useState("");
+  const user = useUser();
+  const [signin, { error, loading }] = useMutation(SIGNIN_MUTATION, {
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
+  });
+
+  console.log(user);
 
   return (
     <Container>
@@ -33,9 +58,11 @@ const SignInForm = ({ onSuccess }: any) => {
             .required("Required"),
         })}
         onSubmit={async ({ email, password }) => {
+          email = email.toLowerCase();
+
           try {
             await signin({
-              variables: { email: email.toLowerCase(), password },
+              variables: { email: email, password: password },
             });
 
             if (onSuccess && typeof onSuccess === "function") {
@@ -51,7 +78,7 @@ const SignInForm = ({ onSuccess }: any) => {
           <FieldContainer>
             <Label htmlFor="email">Email</Label>
             <InputContainer
-              disabled={isLoading || isAuthenticated}
+              disabled={loading || user}
               placeholder="you@awesome.com"
               required
               type="text"
@@ -63,7 +90,7 @@ const SignInForm = ({ onSuccess }: any) => {
           <FieldContainer>
             <Label htmlFor="password">Password</Label>
             <InputContainer
-              disabled={isLoading || isAuthenticated}
+              disabled={loading || user}
               id="password"
               minLength="2"
               placeholder="supersecret"
@@ -74,7 +101,7 @@ const SignInForm = ({ onSuccess }: any) => {
             <ErrorMessages name="password" />
           </FieldContainer>
           <ErrorMessages>{error}</ErrorMessages>
-          {isLoading ? (
+          {loading ? (
             <Button disabled>Signing in...</Button>
           ) : (
             <Button type="submit">Sign in</Button>

@@ -1,19 +1,30 @@
 import { useEffect } from "react";
 import Router from "next/router";
+import { useMutation } from "@apollo/client";
 
-import { useAuth } from "../../lib/Authentication";
 import { Container } from "../../components/layout/Container";
+import {
+  CURRENT_USER_QUERY,
+  SIGNOUT,
+  useUser,
+} from "../../components/auth/user";
 
 const signout = () => {
-  const { isAuthenticated, signout } = useAuth();
+  const user = useUser();
+  const [signOut, { data, error }] = useMutation(SIGNOUT, {
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
+  });
+  useEffect(() => {
+    signOut();
+  }, []);
+  console.log(data);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!user || data?.endSession) {
       Router.push("/home");
       return;
     }
-    signout();
-  }, [isAuthenticated]);
+  }, [user, data]);
 
   return (
     <>

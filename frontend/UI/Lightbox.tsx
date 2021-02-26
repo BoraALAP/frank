@@ -30,53 +30,55 @@ const Lightbox = ({
   let url = "";
   let name = "";
 
+  console.log(src, description, productName);
+
   switch (productName) {
-    case "CORE":
-      url = "/products/windows/core";
+    case "Core":
+      url = "/products/core";
       name = "Core";
       break;
-    case "COREPLUS":
-      url = "/products/windows/coreplus";
+    case "Core+":
+      url = "/products/coreplus";
       name = "Core+";
       break;
-    case "ENERSENSE":
-      url = "/products/windows/enersense";
+    case "Enersense":
+      url = "/products/enersense";
       name = "Enersense";
       break;
-    case "PRISM":
-      url = "/products/windows/prism";
+    case "Prism":
+      url = "/products/prism";
       name = "Prism";
       break;
-    case "DESIGNER":
-      url = "/products/entrydoors/designer";
+    case "Designer":
+      url = "/products/designer";
       name = "Designer";
       break;
-    case "CLASSIC":
-      url = "/products/entrydoors/classic";
+    case "Classic":
+      url = "/products/classic";
       name = "Classic";
       break;
-    case "ARTISAN":
-      url = "/products/entrydoors/artisan";
+    case "Artisan":
+      url = "/products/artisan";
       name = "Artisan";
       break;
-    case "MOOSE":
-      url = "/products/slidingdoors/moose";
+    case "Moose":
+      url = "/products/moose";
       name = "Moose";
       break;
-    case "MOOSEPLUS":
-      url = "/products/slidingdoors/mooseplus";
+    case "Moose+":
+      url = "/products/mooseplus";
       name = "Moose+";
       break;
-    case "ORCHESTRADOOR":
-      url = "/products/slidingdoors/orchestradoor";
+    case "Orchestra Door":
+      url = "/products/orchestradoor";
       name = "Orchestra Door";
       break;
-    case "FOLDINGDOOR":
-      url = "/products/slidingdoors/foldingdoor";
-      name = "Foldingd Door";
+    case "Folding Door":
+      url = "/products/foldingdoor";
+      name = "Folding Door";
       break;
-    case "LIFTANDSLIDE":
-      url = "/products/slidingdoors/liftandslide";
+    case "Lift and Slide":
+      url = "/products/liftandslide";
       name = "Lift and Slide";
       break;
 
@@ -105,7 +107,11 @@ const Lightbox = ({
           </ImageContainer>
           <Details>
             <p>{description}</p>
-            <TertiaryButton href={url}>View {name}</TertiaryButton>
+            {productName && (
+              <TertiaryButton rev href={url}>
+                View {name}
+              </TertiaryButton>
+            )}
           </Details>
         </Middle>
         <Icon onClick={incNumber}>
@@ -139,9 +145,9 @@ const Middle = styled.div`
 
 const Details = styled.div`
   display: grid;
-  justify-content: start;
-  justify-items: start;
-  justify-self: start;
+  justify-content: center;
+
+  justify-self: center;
   color: var(--color-white);
   z-index: 10;
   width: 70vw;

@@ -19,9 +19,11 @@ export const User = list({
     hideCreate: (args) => !permissions.canManageUsers(args),
     hideDelete: (args) => !permissions.canManageUsers(args),
     isHidden: (args) => !permissions.canManageUsers(args),
+    labelField: 'firstName',
   },
   fields: {
-    name: text({ isRequired: true }),
+    firstName: text({ isRequired: true, isIndexed: true }),
+    lastName: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
     password: password(),
     companyName: text({ isRequired: true }),

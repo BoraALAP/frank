@@ -62,6 +62,27 @@ export const Button = ({
     </ButtonContainer>
   );
 };
+
+export const ButtonS = ({
+  href,
+  children,
+  rev = false,
+  type = "",
+  disabled = false,
+  onClick,
+}: ButtonProps) => {
+  return href ? (
+    <Link href={href}>
+      <ButtonSmall href={href} rev={rev} disabled={disabled} onClick={onClick}>
+        {children}
+      </ButtonSmall>
+    </Link>
+  ) : (
+    <ButtonSmall type={type} rev={rev} disabled={disabled} onClick={onClick}>
+      {children}
+    </ButtonSmall>
+  );
+};
 const ButtonContainer = styled.button`
   display: grid;
   color: ${(props) => {
@@ -87,6 +108,12 @@ const ButtonContainer = styled.button`
     }
   }};
   padding: 0.75rem 1.5rem;
+`;
+
+const ButtonSmall = styled(ButtonContainer)`
+  display: grid;
+  padding: 0 1.5rem;
+  align-content: center;
 `;
 
 interface TertiaryProps {

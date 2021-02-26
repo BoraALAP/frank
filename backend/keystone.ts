@@ -26,7 +26,7 @@ import { ContactUsForm } from './schemas/ContactUsForm';
 
 import 'dotenv/config';
 
-import { sendPasswordResetEmail } from './lib/mail';
+import { forgotPasswordEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 
 function check(name: string) {}
@@ -43,13 +43,15 @@ const { withAuth } = createAuth({
   identityField: 'email',
   secretField: 'password',
   initFirstItem: {
-    fields: ['name', 'email', 'password', 'companyName'],
+    fields: ['firstName', 'lastName', 'email', 'password', 'companyName'],
     // TODO: Add in inital roles here
   },
   passwordResetLink: {
     async sendToken(args) {
+      console.log(args);
+
       // send the email
-      await sendPasswordResetEmail(args.token, args.identity);
+      await forgotPasswordEmail(args.token, args.identity);
     },
   },
 });

@@ -8,14 +8,14 @@ import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
 import Category from "../components/pageSpecific/home/Category";
-import { useAuth } from "../lib/Authentication";
 
 import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Slugify } from "../lib/Stringer";
+import { useUser } from "../components/auth/user";
 
 const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
-  const { isAuthenticated } = useAuth();
+  const user = useUser();
 
   const { data, error, loading } = useQuery(CATEGORIES);
 
@@ -29,8 +29,8 @@ const Home = (props) => {
 
           <Right>
             <Link href="/contactus">Contact Us</Link>
-            <Link href={isAuthenticated ? "/user/account" : "/user/signin"}>
-              {isAuthenticated ? "Account" : "Dealer Login"}
+            <Link href={user ? "/user/account" : "/user/signin"}>
+              {user ? "Account" : "Dealer Login"}
             </Link>
           </Right>
         </Welcome>

@@ -4,48 +4,59 @@ import { gql, useMutation } from "@apollo/client";
 import Router from "next/router";
 import * as Yup from "yup";
 import { Formik } from "formik";
-
-import { useAuth } from "../../lib/Authentication";
-import { Button, TertiaryButton } from "../../UI/Links";
+import { Button, ButtonS, TertiaryButton } from "../../UI/Links";
 import {
   ErrorMessages,
   FieldContainer,
   FormContainer,
   InputContainer,
+  InRow,
   Label,
 } from "../../UI/FormElements";
+import { useUser } from "./user";
+import { CURRENT_USER_QUERY } from "../auth/user";
+import { Capitilize } from "../../lib/Stringer";
 
 const SignUpForm = ({ onSuccess }: any) => {
-  const { isAuthenticated, signin, isLoading } = useAuth();
-  const [info, setInfo] = useState({ email: "", password: "" });
+  const user = useUser();
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
 
+  const [createUser, { data, error: dataError }] = useMutation(CREATE_USER);
   // if the user is logged in, redirect to the homepage
   useEffect(() => {
-    if (isAuthenticated) {
-      Router.push("/user/account");
+    if (data?.createUser) {
+      setTimeout(() => {
+        Router.push("/user/account");
+      }, 5000);
     }
-  }, [isAuthenticated]);
+  }, [data]);
 
-  const [createAUser, { error: mutationError }] = useMutation(CREATE_USER, {
-    onCompleted: () => {
-      signin({ variables: { email: info.email, password: info.password } });
-    },
-  });
+  if (data?.createUser) {
+    return (
+      <h4>
+        You are successfully signup. You will be redirected to Signin page.
+      </h4>
+    );
+  }
 
   return (
     <Container>
       <Formik
         initialValues={{
-          name: "",
+          firstName: "",
+          lastName: "",
           email: "",
           password: "",
           confirmPassword: "",
           companyName: "",
         }}
         validationSchema={Yup.object({
-          name: Yup.string()
+          firstName: Yup.string()
+            .required("Required")
+            .min(2, "Must be 2 characters or more")
+            .max(14, "Must be 14 characters or less"),
+          lastName: Yup.string()
             .required("Required")
             .min(2, "Must be 2 characters or more")
             .max(14, "Must be 14 characters or less"),
@@ -64,15 +75,21 @@ const SignUpForm = ({ onSuccess }: any) => {
             .min(2, "Must be 2 characters or more")
             .max(14, "Must be 14 characters or less"),
         })}
-        onSubmit={async ({ email, password, name, companyName }) => {
-          setInfo({ email: email.toLowerCase(), password });
+        onSubmit={async ({
+          email,
+          password,
+          firstName,
+          lastName,
+          companyName,
+        }) => {
           try {
-            await createAUser({
+            await createUser({
               variables: {
                 email: email.toLowerCase(),
                 password,
-                name,
-                companyName,
+                firstName: Capitilize(`${firstName}`),
+                lastName: Capitilize(`${lastName}`),
+                companyName: Capitilize(`${companyName}`),
               },
             });
 
@@ -80,29 +97,54 @@ const SignUpForm = ({ onSuccess }: any) => {
               onSuccess();
             }
           } catch (error) {
-            setError(error?.message);
+            console.log(error);
+
+            if (error?.message.includes("E11000")) {
+              setError(
+                "This email already signed up. Please try Forgot Password"
+              );
+            } else {
+              setError(error?.message);
+            }
           }
         }}
       >
         <FormContainer>
-          <FieldContainer>
-            <Label htmlFor="name">Name</Label>
-            <InputContainer
-              autoComplete="name"
-              autoFocus
-              disabled={isLoading || isAuthenticated}
-              id="name"
-              placeholder="Full Name"
-              required
-              type="text"
-              name="name"
-            />
-            <ErrorMessages name="name" />
-          </FieldContainer>
+          <InRow>
+            <FieldContainer>
+              <Label htmlFor="firstName">First Name</Label>
+              <InputContainer
+                autoComplete="firstName"
+                autoFocus
+                disabled={user}
+                id="firstName"
+                placeholder="First Name"
+                required
+                type="text"
+                name="firstName"
+              />
+              <ErrorMessages name="firstName" />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="lastName">Last Name</Label>
+              <InputContainer
+                autoComplete="lastName"
+                autoFocus
+                disabled={user}
+                id="lastName"
+                placeholder="Last Name"
+                required
+                type="text"
+                name="lastName"
+              />
+              <ErrorMessages name="lastName" />
+            </FieldContainer>
+          </InRow>
           <FieldContainer>
             <Label htmlFor="email">Email</Label>
             <InputContainer
-              disabled={isLoading || isAuthenticated}
+              autoComplete="email"
+              disabled={user}
               placeholder="you@awesome.com"
               required
               type="text"
@@ -111,43 +153,49 @@ const SignUpForm = ({ onSuccess }: any) => {
             />
             <ErrorMessages name="email" />
           </FieldContainer>
-          <FieldContainer>
-            <Label htmlFor="password">Password</Label>
-            <InputContainer
-              disabled={isLoading || isAuthenticated}
-              required
-              type={show ? "text" : "password"}
-              id="password"
-              name="password"
-              minLength={8}
-              autoFocus
-              autoComplete="password"
-              placeholder="Password"
-            />
-            <Button type="button" onClick={() => setShow(!show)}>
-              {show ? "Hide" : "Show"}
-            </Button>
-            <ErrorMessages name="password" />
-          </FieldContainer>
-          <FieldContainer>
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <InputContainer
-              disabled={isLoading || isAuthenticated}
-              placeholder="Re-enter Password"
-              required
-              type={show ? "text" : "password"}
-              id="confirmPassword"
-              name="confirmPassword"
-            />
-            <ErrorMessages name="confirmPassword" />
-          </FieldContainer>
+          <InRow>
+            <FieldContainer>
+              <Label htmlFor="password">Password</Label>
+
+              <InputContainer
+                disabled={user}
+                required
+                type={show ? "text" : "password"}
+                id="password"
+                name="password"
+                minLength={8}
+                autoFocus
+                autoComplete="password"
+                placeholder="Password"
+              />
+
+              <ErrorMessages name="password" />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <InRow pass>
+                <InputContainer
+                  disabled={user}
+                  placeholder="Re-enter Password"
+                  required
+                  type={show ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                />
+                <ButtonS type="button" onClick={() => setShow(!show)}>
+                  {show ? "Hide" : "Show"}
+                </ButtonS>
+              </InRow>
+              <ErrorMessages name="confirmPassword" />
+            </FieldContainer>
+          </InRow>
           <FieldContainer>
             <Label htmlFor="companyName">Company Name</Label>
 
             <InputContainer
-              autoComplete="companyName"
+              autoComplete="company"
               autoFocus
-              disabled={isLoading || isAuthenticated}
+              disabled={user}
               id="companyName"
               placeholder="You Company Name"
               required
@@ -157,7 +205,7 @@ const SignUpForm = ({ onSuccess }: any) => {
             <ErrorMessages name="companyName" />
           </FieldContainer>
           <ErrorMessages>{error}</ErrorMessages>
-          {isLoading ? (
+          {user ? (
             <Button disabled>Creating account...</Button>
           ) : (
             <Button type="submit">Sign up</Button>
@@ -166,6 +214,11 @@ const SignUpForm = ({ onSuccess }: any) => {
       </Formik>
       <ButtonContainer>
         <TertiaryButton href="/user/signin">Sign In</TertiaryButton>
+        {dataError?.message.includes("E11000") && (
+          <TertiaryButton href="/user/forgot-password">
+            Forgot Password
+          </TertiaryButton>
+        )}
       </ButtonContainer>
     </Container>
   );
@@ -184,17 +237,21 @@ const ButtonContainer = styled.div`
 `;
 
 export const CREATE_USER = gql`
-  mutation CreateUser(
-    $name: String!
+  mutation createUser(
+    $firstName: String!
+    $lastName: String!
     $email: String!
     $password: String!
     $companyName: String!
   ) {
-    createAUser(
-      name: $name
-      email: $email
-      password: $password
-      companyName: $companyName
+    createUser(
+      data: {
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        password: $password
+        companyName: $companyName
+      }
     ) {
       id
     }

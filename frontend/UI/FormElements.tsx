@@ -10,9 +10,10 @@ export const FormContainer = ({ children }: FormContainerProps) => {
 
 interface FieldContainerProps {
   children: any;
+  busy?: Boolean;
 }
-export const FieldContainer = ({ children }: FieldContainerProps) => {
-  return <FieldSet>{children}</FieldSet>;
+export const FieldContainer = ({ children, busy }: FieldContainerProps) => {
+  return <FieldSet aria-busy={busy}>{children}</FieldSet>;
 };
 
 interface ErrorProps {
@@ -43,6 +44,10 @@ export const Label = ({ children, htmlFor, checkbox }: LabelProps) => {
       {children}
     </LabelS>
   );
+};
+
+export const InRow = (props) => {
+  return <InRowS pass={props.pass}>{props.children}</InRowS>;
 };
 
 const FormS = styled(Form)`
@@ -92,4 +97,13 @@ const LabelS = styled.label`
   justify-content: ${(props) => props.checkbox && `start`};
   align-items: ${(props) => props.checkbox && `center`};
   gap: ${(props) => props.checkbox && `1rem`};
+`;
+
+const InRowS = styled.div`
+  display: grid;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: ${(props) =>
+      props.pass ? `auto min-content` : `1fr 1fr`};
+    gap: ${(props) => (props.pass ? `calc( var(--gap) / 2)` : `var(--gap)`)};
+  }
 `;

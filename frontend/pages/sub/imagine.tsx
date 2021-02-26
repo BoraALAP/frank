@@ -18,13 +18,7 @@ const imagine = () => {
   };
 
   const { data, loading, error } = useQuery(images);
-
-  const [imagelist, setImagelist] = useState([]);
-  useEffect(() => {
-    if (data?.allImagines !== undefined) {
-      setImagelist(data?.allImagines);
-    }
-  }, [loading]);
+  console.log(data);
 
   const [modal, setModal] = useState(false);
   const [selected, setSelected] = useState(0);
@@ -39,11 +33,11 @@ const imagine = () => {
   };
 
   const incNumber = () => {
-    setSelected(selected + 1 !== imagelist.length ? selected + 1 : 0);
+    setSelected(selected + 1 !== data?.allImagines?.length ? selected + 1 : 0);
   };
 
   const decNumber = () => {
-    setSelected(selected !== 0 ? selected - 1 : imagelist.length - 1);
+    setSelected(selected !== 0 ? selected - 1 : data?.allImagines?.length - 1);
   };
 
   const { store, dispatch } = useContext(GlobalContext);
@@ -67,11 +61,11 @@ const imagine = () => {
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column"
             >
-              {!loading && imagelist.length > 0 ? (
-                imagelist.map((img, index) => {
+              {!loading && data?.allImagines?.length > 0 ? (
+                data?.allImagines?.map((img, index) => {
                   return (
                     <img
-                      src={img.src}
+                      src={img.image.publicUrl}
                       key={index}
                       alt={img.description}
                       onClick={() => {
@@ -90,15 +84,18 @@ const imagine = () => {
           </ImageContainer>
         </Context>
       </Container>
-      {modal && !loading && imagelist.length > 0 && (
+      {modal && !loading && data?.allImagines.length > 0 && (
         <Lightbox
-          src={imagelist[selected].src}
+          src={data?.allImagines[selected]?.image.publicUrl}
           incNumber={incNumber}
           decNumber={decNumber}
           open={modal}
           close={handleClose}
-          description={imagelist[selected].description}
-          productName={imagelist[selected].productName}
+          description={data?.allImagines[selected]?.description}
+          productName={
+            data?.allImagines[selected]?.product.length > 0 &&
+            data?.allImagines[selected]?.product[0].name
+          }
         />
       )}
     </BigContainer>
@@ -165,9 +162,16 @@ const images = gql`
   query {
     allImagines {
       id
-      src
+      image {
+        id
+        originalFilename
+        publicUrl
+      }
       description
-      productName
+      product {
+        id
+        name
+      }
     }
   }
 `;
