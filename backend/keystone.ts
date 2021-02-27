@@ -84,8 +84,7 @@ export default withAuth(
     // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      isAccessAllowed: ({ session }) => !!session?.data,
+      isAccessAllowed: ({ session }) => !!session,
     },
     server: {
       cors: {
