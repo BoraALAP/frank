@@ -42,7 +42,7 @@ const RequestResetForm = ({ onSuccess }: any) => {
       console.log("cleared");
 
       clearInterval(sec);
-    }, 299999);
+    }, 300000);
   };
   if (seconds === 0 && minutes === 0) {
     setEmailSent(false);
