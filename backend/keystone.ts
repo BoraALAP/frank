@@ -15,7 +15,6 @@ import { Exterior } from './schemas/Options/Exterior';
 import { DividedLite } from './schemas/Options/DividedLite';
 import { BrickmouldAndTrim } from './schemas/Options/BrickmouldAndTrim';
 
-//Main
 import { User } from './schemas/User';
 import { ProductCategory } from './schemas/ProductCategory';
 import { Product } from './schemas/Product';
@@ -27,9 +26,7 @@ import { ContactUsForm } from './schemas/ContactUsForm';
 import 'dotenv/config';
 
 import { forgotPasswordEmail } from './lib/mail';
-import { extendGraphqlSchema } from './mutations';
-
-function check(name: string) {}
+// import { extendGraphqlSchema } from './mutations';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -58,7 +55,6 @@ const { withAuth } = createAuth({
 
 export default withAuth(
   config({
-    // @ts-ignore
     server: {
       cors: {
         origin: [process.env.FRONTEND_URL],
@@ -68,9 +64,6 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
-      async onConnect(keystone) {
-        console.log('Connected to the database!');
-      },
     },
 
     lists: createSchema({
@@ -93,11 +86,12 @@ export default withAuth(
       BrickmouldAndTrim,
       Role,
     }),
-    extendGraphqlSchema,
+    // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
       isAccessAllowed: ({ session }) => {
         console.log(session);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         return !!session?.data;
       },
     },
