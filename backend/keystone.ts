@@ -28,6 +28,8 @@ import { User } from './schemas/User';
 import { forgotPasswordEmail } from './lib/mail';
 // import { extendGraphqlSchema } from './mutations';
 
+function check(name: string) {}
+
 const databaseURL = process.env.DATABASE_URL;
 
 const sessionConfig = {
@@ -44,8 +46,6 @@ const { withAuth } = createAuth({
   },
   passwordResetLink: {
     async sendToken(args) {
-      console.log(args);
-
       // send the email
       await forgotPasswordEmail(args.token, args.identity);
     },
@@ -54,16 +54,6 @@ const { withAuth } = createAuth({
 
 export default withAuth(
   config({
-    server: {
-      cors: {
-        origin: [process.env.FRONTEND_URL],
-        credentials: true,
-      },
-    },
-    db: {
-      adapter: 'mongoose',
-      url: databaseURL,
-    },
     lists: createSchema({
       // Schema items go in here
       ContactUsForm,
@@ -84,11 +74,24 @@ export default withAuth(
       BrickmouldAndTrim,
       DividedLite,
     }),
+    db: {
+      adapter: 'mongoose',
+      url: databaseURL,
+      onConnect: () => {
+        console.log('Connected to the database!');
+      },
+    },
     // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       isAccessAllowed: ({ session }) => !!session?.data,
+    },
+    server: {
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
+      },
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
