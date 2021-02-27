@@ -75,8 +75,6 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: process.env.DATABASE_URL,
-      introspection: true,
-      playground: true,
       onConnect: () => {
         console.log('Connected to the database!');
       },
