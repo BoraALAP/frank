@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import {
@@ -15,15 +16,14 @@ import { Exterior } from './schemas/Options/Exterior';
 import { DividedLite } from './schemas/Options/DividedLite';
 import { BrickmouldAndTrim } from './schemas/Options/BrickmouldAndTrim';
 
-import { User } from './schemas/User';
 import { ProductCategory } from './schemas/ProductCategory';
 import { Product } from './schemas/Product';
+
 import { Operation } from './schemas/Operation';
 import { Imagine } from './schemas/Imagine';
 import { Dealer } from './schemas/Dealer';
 import { ContactUsForm } from './schemas/ContactUsForm';
-
-import 'dotenv/config';
+import { User } from './schemas/User';
 
 import { forgotPasswordEmail } from './lib/mail';
 // import { extendGraphqlSchema } from './mutations';
@@ -41,7 +41,6 @@ const { withAuth } = createAuth({
   secretField: 'password',
   initFirstItem: {
     fields: ['firstName', 'lastName', 'email', 'password', 'companyName'],
-    // TODO: Add in inital roles here
   },
   passwordResetLink: {
     async sendToken(args) {
@@ -65,9 +64,9 @@ export default withAuth(
       adapter: 'mongoose',
       url: databaseURL,
     },
-
     lists: createSchema({
       // Schema items go in here
+      Role,
       User,
       ProductCategory,
       Product,
@@ -84,16 +83,12 @@ export default withAuth(
       Exterior,
       DividedLite,
       BrickmouldAndTrim,
-      Role,
     }),
     // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
-      isAccessAllowed: ({ session }) => {
-        console.log(session);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        return !!session?.data;
-      },
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
