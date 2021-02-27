@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -- -p 7777",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start"
   },
   "dependencies": {
     "@apollo/link-error": "^2.0.0-beta.3",
