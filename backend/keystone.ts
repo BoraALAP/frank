@@ -69,12 +69,12 @@ export default withAuth(
     lists: createSchema({
       // Schema items go in here
       User,
-      ProductCategory,
-      Product,
-      Operation,
-      Imagine,
-      Dealer,
-      ContactUsForm,
+      // ProductCategory,
+      // Product,
+      // Operation,
+      // Imagine,
+      // Dealer,
+      // ContactUsForm,
       // Options
       // Screen,
       // Interior,
