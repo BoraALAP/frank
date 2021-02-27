@@ -12,11 +12,11 @@ export const Glass = list({
     update: permissions.canManageOptions,
     delete: permissions.canManageOptions,
   },
-  // ui: {
-  //   hideCreate: (args) => !permissions.canManageOptions(args),
-  //   hideDelete: (args) => !permissions.canManageOptions(args),
-  //   isHidden: (args) => !permissions.canManageOptions(args),
-  // },
+  ui: {
+    hideCreate: (args) => !permissions.canManageOptions(args),
+    hideDelete: (args) => !permissions.canManageOptions(args),
+    isHidden: (args) => !permissions.canManageOptions(args),
+  },
   fields: {
     name: text({
       isRequired: true,

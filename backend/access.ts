@@ -20,9 +20,11 @@ const generatedPermissions = Object.fromEntries(
 // Permissions check if someone meets a criteria - yes or no.
 export const permissions = {
   ...generatedPermissions,
-  // isAwesome({ session }: ListAccessArgs): boolean {
-  //   return session?.data.name.includes('frank');
-  // },
+  isAwesome({ session }: ListAccessArgs): boolean {
+    console.log(session);
+    return true;
+    //   return session?.data.name.includes('frank');
+  },
 };
 
 // Rule based function
