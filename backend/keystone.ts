@@ -93,5 +93,9 @@ export default withAuth(
         credentials: true,
       },
     },
+    session: withItemData(statelessSessions(sessionConfig), {
+      // GraphQL Query
+      User: `id name email role { ${permissionsList.join(' ')} }`,
+    }),
   })
 );
