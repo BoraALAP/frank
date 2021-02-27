@@ -66,6 +66,7 @@ export default withAuth(
     },
     lists: createSchema({
       // Schema items go in here
+      ContactUsForm,
       Role,
       User,
       ProductCategory,
@@ -73,7 +74,6 @@ export default withAuth(
       Operation,
       Imagine,
       Dealer,
-      ContactUsForm,
       // Options
       Screen,
       Interior,
@@ -81,8 +81,8 @@ export default withAuth(
       GlassColor,
       Glass,
       Exterior,
-      DividedLite,
       BrickmouldAndTrim,
+      DividedLite,
     }),
     // extendGraphqlSchema,
     ui: {
