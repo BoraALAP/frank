@@ -53,7 +53,6 @@ const { withAuth } = createAuth({
 export default withAuth(
   config({
     lists: createSchema({
-      // Schema items go in here
       ContactUsForm,
       Role,
       User,
@@ -62,7 +61,6 @@ export default withAuth(
       Operation,
       Imagine,
       Dealer,
-      // Options
       Screen,
       Interior,
       HardwareKit,
@@ -75,9 +73,6 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: process.env.DATABASE_URL,
-      onConnect: () => {
-        console.log('Connected to the database!');
-      },
     },
     // extendGraphqlSchema,
     ui: {
@@ -90,9 +85,6 @@ export default withAuth(
         credentials: true,
       },
     },
-    session: withItemData(statelessSessions(sessionConfig), {
-      // GraphQL Query
-      User: `id name email role { ${permissionsList.join(' ')} }`,
-    }),
+    session: withItemData(statelessSessions(sessionConfig)),
   })
 );
