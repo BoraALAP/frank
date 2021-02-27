@@ -85,11 +85,11 @@ export default withAuth(
       BrickmouldAndTrim,
     }),
     // extendGraphqlSchema,
-    ui: {
-      // Show the UI only for poeple who pass this test
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      isAccessAllowed: ({ session }) => !!session?.data,
-    },
+    // ui: {
+    //   // Show the UI only for poeple who pass this test
+    //   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    //   isAccessAllowed: ({ session }) => !!session?.data,
+    // },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
       User: `id name email role { ${permissionsList.join(' ')} }`,
