@@ -30,8 +30,6 @@ import { forgotPasswordEmail } from './lib/mail';
 
 function check(name: string) {}
 
-const databaseURL = process.env.DATABASE_URL;
-
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
@@ -76,7 +74,9 @@ export default withAuth(
     }),
     db: {
       adapter: 'mongoose',
-      url: databaseURL,
+      url: process.env.DATABASE_URL,
+      introspection: true,
+      playground: true,
       onConnect: () => {
         console.log('Connected to the database!');
       },
