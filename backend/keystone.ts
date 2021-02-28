@@ -53,22 +53,22 @@ const { withAuth } = createAuth({
 export default withAuth(
   config({
     lists: createSchema({
-      ContactUsForm,
-      Role,
       User,
-      ProductCategory,
+      Role,
       Product,
+      ProductCategory,
       Operation,
       Imagine,
       Dealer,
-      Screen,
-      Interior,
-      HardwareKit,
-      GlassColor,
-      Glass,
+      ContactUsForm,
       Exterior,
-      BrickmouldAndTrim,
+      Interior,
+      Glass,
+      GlassColor,
+      HardwareKit,
+      Screen,
       DividedLite,
+      BrickmouldAndTrim,
     }),
     db: {
       adapter: 'mongoose',
@@ -77,7 +77,7 @@ export default withAuth(
     // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
-      isAccessAllowed: ({ session }) => !!session,
+      isAccessAllowed: ({ session }) => true,
     },
     server: {
       cors: {
