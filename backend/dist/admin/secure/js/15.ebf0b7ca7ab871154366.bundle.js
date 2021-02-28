@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{514:function(n,t,e){"use strict";e.r(t);var s=e(9),a=e(315);class o extends a.a{constructor(...n){super(...n),Object(s.a)(this,"getQueryFragment",()=>`\n    ${this.path} {\n       id\n       googlePlaceID\n       formattedAddress\n       lat\n       lng\n    }\n  `)}}t.default=o}}]);

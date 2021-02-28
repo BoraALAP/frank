@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "herokufrontend": "git subtree push --prefix frontend herokufrontend main",
-    "herokubackend": "git subtree push --prefix backend herokubackend main",
+    "herokubackend": "git subtree push --prefix backend herokubackend keystoneJs:main",
     "deploy": "concurrently \"npm run herokubackend\" \"npm run herokufrontend\""
   },
   "repository": {
