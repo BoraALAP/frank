@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{513:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a),l=t(76);n.default=({onChange:e,filter:n,field:t,innerRef:a,value:o})=>{if(!n)return null;const u=t.getFilterLabel(n);return r.a.createElement(l.c,{onChange:n=>{const t=n.target.value;/^-?\d*\.?\d*$/.test(t)&&e(t)},ref:a,placeholder:u,value:o})}}}]);
