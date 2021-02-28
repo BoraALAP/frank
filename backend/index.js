@@ -38,25 +38,20 @@ const PROJECT_NAME = 'Frank';
 
 // Mongo url goes in this config
 const adapterConfig = {
-  mongoUri: process.env.DATABASE_PRODUCTION,
+  mongoUri: process.env.DATABASE_URL,
 };
 
 const sessionConfig = {
-  secure: process.env.NODE_ENV === 'production',
+  secure: process.env.COOKIE_SECRET,
   maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
 };
 
 // Keystone Configration
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
-  sessionStore: new MongoStore({ url: process.env.DATABASE_PRODUCTION }),
-  cookieSecret: process.env.COOKIESECRET,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
-    sameSite: true,
-    // domain: process.env.FRONTEND_URL,
-  },
+  sessionStore: new MongoStore({ url: process.env.DATABASE_URL }),
+  cookieSecret: process.env.COOKIE_SECRET,
+  cookie: sessionConfig,
 });
 
 keystone.createList('BackEndUser', BackEndUserSchema);
