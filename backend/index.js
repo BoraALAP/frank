@@ -50,7 +50,6 @@ const sessionConfig = {
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
   sessionStore: new MongoStore({ url: process.env.DATABASE_URL }),
-  cookieSecret: process.env.COOKIE_SECRET,
   cookie: sessionConfig,
 });
 
