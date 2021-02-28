@@ -14,10 +14,4 @@ export default config({
   ui: {
     isAccessAllowed: (context) => true,
   },
-  server: {
-    cors: {
-      origin: [process.env.FRONTEND_URL],
-      credentials: true,
-    },
-  },
 });
