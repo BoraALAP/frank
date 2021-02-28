@@ -77,7 +77,7 @@ export default withAuth(
     // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
-      isAccessAllowed: ({ session }) => true,
+      isAccessAllowed: ({ session }) => !!session.data,
     },
     server: {
       cors: {
