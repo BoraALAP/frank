@@ -25,10 +25,6 @@ function createClient({ headers, initialState }) {
       // this uses apollo-link-http under the hood, so all the options here come from that package
       createUploadLink({
         uri: process.env.NEXT_PUBLIC_API_URL,
-        fetchOptions: {
-          credentials: "include",
-        },
-        credentials: "include",
         // pass the headers along from this request. This enables SSR with logged in state
         headers,
       }),
