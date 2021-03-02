@@ -6,18 +6,20 @@ const TextWelcome = (props) => {
     <Container>
       <H1Big>
         <Inwrap rev>
-          <ImageS>
+          {/* <ImageS>
             <Image
               src="/homepage1.jpg"
               layout="fill"
               objectFit="cover"
               objectPosition="50% 50%"
             />
-          </ImageS>
+          </ImageS> */}
           <Span>
-            Frank is a real window and door guy and a people person. Over four
-            decades, Frank has established strong partnerships, a trusted team,
-            and loyal customers. Frank is like a family.
+            Frank has been working on windows and doors for over 40 years. But
+            even more than windows and doors, he loves people. Over four
+            decades, Frank has built the business bearing his name into a
+            trusted team with loyal customers and strong partnerships. FRANK is
+            like a family.
           </Span>
         </Inwrap>
       </H1Big>
@@ -39,34 +41,30 @@ const Inwrap = styled.div`
     grid-auto-flow: column;
     align-items: center;
     gap: calc(var(--gap));
-    grid-template-columns: ${(props) =>
-      props.rev ? ` 1fr 2fr ` : `max-content auto`};
+    /* grid-template-columns: ${(props) =>
+      props.rev ? ` 1fr 2fr ` : `max-content auto`}; */
   }
 `;
 
 const H1 = styled.h1`
   display: grid;
-  font-size: 8vw;
-  line-height: 15vw;
+  font-size: 2rem;
+  line-height: 3.5rem;
   margin: 0;
   /* white-space: nowrap; */
   @media screen and (min-width: 414px) {
-    font-size: 2rem;
-    line-height: 2.25rem;
+    font-size: 2.25rem;
+    line-height: 4.25rem;
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
+    font-size: 2.5rem;
+    line-height: 4.25rem;
   }
 
-  @media screen and (min-width: var(--mq-desktop)) {
-    line-height: 7vw;
-  }
-
-  @media screen and (min-width: var(--mq-xl)) {
-    font-size: 3.9rem;
-    line-height: 7rem;
+  @media screen and (min-width: 1024px) {
+    font-size: 3.25rem;
+    line-height: 4.75rem;
   }
 `;
 

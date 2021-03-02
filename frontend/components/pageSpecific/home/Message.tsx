@@ -7,10 +7,10 @@ const Message = () => {
       <Top>
         <Left>
           <h3>
-            Frank is proudly Made in Ontario and services an exclusive network
+            FRANK is proudly made in Ontario and services an exclusive network
             of dealers across Canada. What differentiates us from our
             competitors is our ability to customize each order, deliver a
-            quality product everytime, and innovate ahead of the curve.
+            quality product every time, and innovate ahead of the curve.
           </h3>
           <p>
             Learn more about us{" "}

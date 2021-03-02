@@ -22,7 +22,10 @@ export const HardwareKit = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/hardware',
+      },
       label: 'Source',
     }),
     description: text({}),

@@ -39,7 +39,10 @@ export const Product = list({
       },
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image on Category Listing',
       ui: {
         description: 'Category Listing Image',
@@ -56,7 +59,10 @@ export const Product = list({
       },
     }),
     productImage: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image',
     }),
     imageTitle: text({
@@ -70,7 +76,10 @@ export const Product = list({
       ui: { displayMode: 'textarea' },
     }),
     productImage1: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image 1',
     }),
     secondaryDetailsTitle: text({}),
@@ -78,15 +87,24 @@ export const Product = list({
       ui: { displayMode: 'textarea' },
     }),
     productImage2: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image 2',
     }),
     productImage3: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image 3',
     }),
     productImage4: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Product Image 4',
     }),
 
@@ -123,8 +141,8 @@ export const Product = list({
       ref: 'DividedLite.products',
       many: true,
     }),
-    brickmouldAndTrimOptions: relationship({
-      ref: 'BrickmouldAndTrim.products',
+    brickmoldAndSubsillOptions: relationship({
+      ref: 'BrickmoldAndSubsill.products',
       many: true,
     }),
   },

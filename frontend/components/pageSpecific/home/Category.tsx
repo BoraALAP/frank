@@ -28,9 +28,7 @@ const Category = ({
       <Right>
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
-        <Body>
-          <p>{description}</p>
-        </Body>
+        <Body>{description}</Body>
         <TertiaryButton href={hrefFixed}>View {title}</TertiaryButton>
       </Right>
     </Container>

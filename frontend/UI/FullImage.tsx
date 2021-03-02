@@ -23,7 +23,5 @@ const ImageContainer = styled.div`
   display: grid;
   position: relative;
   height: ${(props) => props.height};
-  margin: calc(var(--padding) / 2);
-
   min-height: 300px;
 `;

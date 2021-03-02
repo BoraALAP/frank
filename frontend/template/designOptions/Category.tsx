@@ -42,8 +42,8 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
       show: data?.allProductCategories[0].dividedLiteOptions.length > 0,
     },
     {
-      name: "Brickmould and Trim",
-      show: data?.allProductCategories[0].brickmouldAndTrimOptions.length > 0,
+      name: "Brickmould and Subsill",
+      show: data?.allProductCategories[0].brickmoldAndSubsillOptions.length > 0,
     },
   ];
 
@@ -60,12 +60,11 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
     <Container space pageGap padding title="Design Options">
       <Breadcrumbs
         title="Design Options"
-        subtitle="Overview (all window and door design options)"
+        subtitle="Category Design Options Overview"
         parent={`${Capitilize(categoryName)}`}
         links={list()}
         clickAction={handleList}
       >
-        <p>Product Design Options (Overview)</p>
         <p>
           Deciding on the product that’s right for your project is just the
           beginning. With an extensive array of design options to choose from,
@@ -93,10 +92,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].interiorOptions}
           description="
-            White is the everyday standard of interior for products, though the
-            choice is yours. Stand out and colour coat the interior, or clad it
-            with either the clean look of Cellex, or select from our wood
-            options to make a statement.
+          Choose classic white frames, or stand out with a colour coated interior. We can create a clean, smooth finish, or select from our wood grain options to make a statement.
           "
         />
       )}
@@ -119,9 +115,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].glassOptions}
           description="
-            Glass is a critical aspect of the function and aesthetic of your
-            product. What do you want to achieve – added security and privacy, a
-            certain look, or reduce your home’s energy costs?
+          New glass refreshes your home’s look and improves your insulation. Choose from our different options for enhanced security, privacy, lighting, and energy efficiency. 
           "
         />
       )}
@@ -131,11 +125,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].screenOptions}
           description="
-            Screens come in a variety of mesh and screenbar options to complete
-            the customization of your products . New to our screen offerings is
-            the FlexScreen for windows, and for entranceways, factory installed
-            retractable screens.
-          
+          Screens come in a variety of mesh and screenbar options to complete the customization of your windows. Our newest product is FlexScreen for windows. And for entranceways, we offer factory-installed retractable screens.
          "
         />
       )}
@@ -145,22 +135,17 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].dividedLiteOptions}
           description="
-            Add refinement to any glass surface with divided lites. Presented in
-            a variety of patterns and in a range of materials and finishes, the
-            details make the difference.
+          Add refinement to any glass surface with divided lights. Presented in a variety of patterns and in a range of materials and finishes, the details make the difference. 
           "
         />
       )}
-      {display === "Brickmould and Trim" && (
+      {display === "Brickmould and Subsill" && (
         <Operations
-          title="Brickmould and Trim"
+          title="Brickmould and Subsill"
           subTitle="Product Design Options"
-          list={data?.allProductCategories[0].brickmouldAndTrimOptions}
+          list={data?.allProductCategories[0].brickmoldAndSubsillOptions}
           description="
-            Exterior brickmold is available in an assortment of styles suitable
-            for every application and aesthetic. Similarly, factory stained or
-            painted trim is made to order and finished to match your interior
-            for added convenience.
+          Exterior brickmold is available in an assortment of styles suitable for every application and aesthetic. Similarly, factory stained or painted trim is made to order and finished to match your interior for a cohesive look.
           "
         />
       )}
@@ -231,7 +216,7 @@ const CATEGORYOPTIONS = gql`
           originalFilename
         }
       }
-      brickmouldAndTrimOptions {
+      brickmoldAndSubsillOptions {
         id
         name
         description

@@ -22,7 +22,10 @@ export const GlassColor = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/glasscolor',
+      },
       label: 'Source',
     }),
     description: text({}),

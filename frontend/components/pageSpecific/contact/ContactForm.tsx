@@ -12,7 +12,7 @@ import {
 import { Button } from "../../../UI/Links";
 import { useState } from "react";
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const [createContactUsForm, { data, error, loading }] = useMutation(
     CONTACT_QUERY
   );
@@ -348,5 +348,3 @@ export const CONTACT_QUERY = gql`
     }
   }
 `;
-
-export default ContactForm;

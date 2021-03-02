@@ -14,7 +14,7 @@ import { GlassColor } from './schemas/Options/GlassColor';
 import { Glass } from './schemas/Options/Glass';
 import { Exterior } from './schemas/Options/Exterior';
 import { DividedLite } from './schemas/Options/DividedLite';
-import { BrickmouldAndTrim } from './schemas/Options/BrickmouldAndTrim';
+import { BrickmoldAndSubsill } from './schemas/Options/BrickmoldAndSubsill';
 
 import { ProductCategory } from './schemas/ProductCategory';
 import { Product } from './schemas/Product';
@@ -49,6 +49,7 @@ const { withAuth } = createAuth({
     },
   },
 });
+console.log(process.env.FRONTEND_URL);
 
 export default withAuth(
   config({
@@ -68,22 +69,22 @@ export default withAuth(
       HardwareKit,
       Screen,
       DividedLite,
-      BrickmouldAndTrim,
+      BrickmoldAndSubsill,
     }),
     db: {
       adapter: 'mongoose',
       url: process.env.DATABASE_URL,
-    },
-    // extendGraphqlSchema,
-    ui: {
-      // Show the UI only for poeple who pass this test
-      isAccessAllowed: ({ session }) => !!session.data,
     },
     server: {
       cors: {
         origin: [process.env.FRONTEND_URL],
         credentials: true,
       },
+    },
+    // extendGraphqlSchema,
+    ui: {
+      // Show the UI only for poeple who pass this test
+      isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query

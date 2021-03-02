@@ -1,48 +1,60 @@
 import styled from "styled-components";
+import { Link } from "react-scroll";
 
 import { Container } from "../../components/layout/Container";
 import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
 import { PageTitle } from "../../components/layout/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
+import { Body } from "../../components/layout/Body";
 
 const learn = () => {
   const links = [
-    { name: "U-Factor", href: "/sub/learn#ufactor" },
-    { name: "Solar Heat Gain", href: "/sub/learn/#solarheatgain" },
+    { name: "U-Factor", to: "ufactor" },
+    { name: "Solar Heat Gain", to: "solarheatgain" },
     {
       name: "Visible Transmittance",
-      href: "/sub/learn/#visibletransmittance",
+      to: "visibletransmittance",
     },
-    { name: "Energy Star", href: "/sub/learn/#energystar" },
-    { name: "Design Options", href: "/sub/learn/#designoptions" },
-    { name: "Operations Overview", href: "/sub/learn/#operationsoverview" },
+    { name: "Energy Star", to: "energystar" },
+    { name: "Design Options", href: "/designoptions" },
+    { name: "Operations Overview", to: "operationsoverview" },
   ];
+
   return (
     <Container space title="Learn">
       <Context>
         <PageTitle title="Learn" links={links} padding>
-          <>
-            <p>
+          {/* <>
+          {links?.map((item, index) => {
+            return (
+              <Link key={index} to={item.to} spy={true} smooth={true}>
+                {item.name}
+              </Link>
+            );
+          })}
+        </> */}
+          <Body>
+            <>
               There are many benefits to energy efficient windows and doors.
               Aside from having better control over your home’s interior climate
               and living more comfortably in the space, you are lessening
               utility costs, and ultimately reducing your carbon footprint.
-            </p>
+            </>
 
-            <p>
+            <>
               In simplest terms, the glass, the product’s construction, and the
               installation all play critical roles in limiting the amount of
               heat that enters and escapes your home.
-            </p>
+            </>
 
-            <p>
+            <>
               FRANK products are ENERGY STAR rated and provide ratings designed
               to indicate a window or door’s efficiency. There are several terms
               that will better educate you, and lead to a better understanding
               of a product’s effectiveness in insulating and blocking heat from
               the sun, among other things.
-            </p>
-          </>
+            </>
+          </Body>
         </PageTitle>
 
         <TwoColumn imageSrc="/frank2.jpg" rev id="ufactor">

@@ -25,7 +25,10 @@ export const ProductCategory = list({
     subtitle: text({}),
     description: text({ ui: { displayMode: 'textarea' } }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/productCategory',
+      },
       label: 'Source',
     }),
     products: relationship({
@@ -56,8 +59,8 @@ export const ProductCategory = list({
       ref: 'DividedLite.productCategories',
       many: true,
     }),
-    brickmouldAndTrimOptions: relationship({
-      ref: 'BrickmouldAndTrim.productCategories',
+    brickmoldAndSubsillOptions: relationship({
+      ref: 'BrickmoldAndSubsill.productCategories',
       many: true,
     }),
     operations: relationship({

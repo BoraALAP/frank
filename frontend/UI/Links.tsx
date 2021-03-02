@@ -1,23 +1,35 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { Link as Scroll } from "react-scroll";
 
 export const NavLinks = (props) => {
-  return props.href ? (
-    <Link href={props.href}>
-      <Container href={props.href} {...props} disabled={props.disabled}>
+  if (props.href) {
+    return (
+      <Link href={props.href}>
+        <Container {...props} disabled={props.disabled}>
+          {props.children}
+        </Container>
+      </Link>
+    );
+  } else if (props.to) {
+    return (
+      <Scroll to={props.to} spy={true} smooth={true} offset={-100}>
+        <Container>{props.children}</Container>
+      </Scroll>
+    );
+  } else {
+    return (
+      <Container {...props} disabled={props.disabled}>
         {props.children}
       </Container>
-    </Link>
-  ) : (
-    <Container {...props} disabled={props.disabled}>
-      {props.children}
-    </Container>
-  );
+    );
+  }
 };
 
-const Container = styled.a`
+const Container = styled.div`
   display: grid;
   padding: 0.5rem 0;
+  font-weight: 500;
   color: ${(props) =>
     props.Bottom ? `var(--color-primary)` : `var(--color-grey)`};
   font-size: ${(props) => (props.Bottom ? "0.875rem" : "1.125rem")};

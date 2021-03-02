@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
     @media screen and (min-width: 768px){
           
       font-size: 1.5rem;
-      line-height: 2rem;
+      line-height: 2.5rem;
       }
    
   }

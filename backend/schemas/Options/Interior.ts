@@ -20,7 +20,10 @@ export const Interior = list({
   fields: {
     name: text({ isRequired: true }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/interior',
+      },
       label: 'Source',
     }),
     hex: text({}),

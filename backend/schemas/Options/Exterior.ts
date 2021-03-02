@@ -22,7 +22,10 @@ export const Exterior = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/exterior',
+      },
       label: 'Source',
     }),
     hex: text({}),

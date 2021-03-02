@@ -19,21 +19,21 @@ export const Menu = (props) => {
         href: "/categories/windows",
         name: "Windows",
         image1: "/menuImages/menu1.jpg",
-        image2: "/menuImages/menu2.jpg",
+
         bottom: false,
       },
       {
         href: "/categories/entry_doors",
         name: "Entry Doors",
         image1: "/menuImages/menu3.jpg",
-        image2: "/menuImages/menu4.jpg",
+
         bottom: false,
       },
       {
         href: "/categories/sliding_doors",
         name: "Sliding Doors",
         image1: "/menuImages/menu5.jpg",
-        image2: "/menuImages/menu6.jpg",
+
         bottom: false,
       },
     ],
@@ -43,42 +43,42 @@ export const Menu = (props) => {
         href: "/sub/frank",
         name: "Who is Frank?",
         image1: "/menuImages/menu7.jpg",
-        image2: "/menuImages/menu8.jpg",
+
         bottom: false,
       },
       {
         href: "/sub/imagine",
         name: "Imagine",
         image1: "/menuImages/menu9.jpg",
-        image2: "/menuImages/menu10.jpg",
+
         bottom: false,
       },
       {
         href: "/designoptions",
         name: "Design Options",
         image1: "/menuImages/menu13.jpg",
-        image2: "/menuImages/menu14.jpg",
+
         bottom: false,
       },
       {
         href: "/sub/learn",
         name: "Learn",
         image1: "/menuImages/menu11.jpg",
-        image2: "/menuImages/menu12.jpg",
+
         bottom: false,
       },
       // {
       //   href: "/sub/make",
       //   name: "Make",
       //   image1: "/menuImages/menu11.jpg",
-      //   image2: "/menuImages/menu12.jpg",
+      //
       // bottom: false,
       // },
       {
         href: "/sub/dealerfinder",
         name: "Find a Dealer",
         image1: "/menuImages/menu19.jpg",
-        image2: "/menuImages/menu20.jpg",
+
         bottom: false,
       },
     ],
@@ -88,14 +88,14 @@ export const Menu = (props) => {
         href: "/contactus",
         name: "Contact Us",
         image1: "/menuImages/menu15.jpg",
-        image2: "/menuImages/menu16.jpg",
+
         bottom: true,
       },
       {
         href: user ? "/user/account" : "/user/signin",
         name: user ? "Account" : "Dealer Login",
         image1: "/menuImages/menu17.jpg",
-        image2: "/menuImages/menu18.jpg",
+
         bottom: true,
       },
     ],
@@ -156,7 +156,7 @@ export const Menu = (props) => {
             </AnimatePresence>
           </ImgCont>
 
-          <ImgCont>
+          {/* <ImgCont>
             <AnimatePresence exitBeforeEnter>
               <ImageS
                 alt={`${imageSrc.name} Image 2`}
@@ -172,7 +172,7 @@ export const Menu = (props) => {
                 transition={{ delay: 0.2 }}
               />
             </AnimatePresence>
-          </ImgCont>
+          </ImgCont> */}
         </ImgContainer>
 
         <Right>
@@ -248,8 +248,6 @@ const ImgContainer = styled(motion.div)`
   position: relative;
   height: 100%;
   display: none;
-  gap: var(--gap);
-  grid-template-columns: 1fr 1fr;
 
   @media screen and (min-width: 768px) {
     display: grid;

@@ -13,15 +13,12 @@ export const EnergyEfficiency = ({ imageSrc = "" }) => {
       <EnergyText simple>
         <Title>Energy Efficiency.</Title>
         <Body>
-          <>
-            <p>Rated Most efficient by Energy Star</p>
+          <>Rated Most efficient by Energy Star</>
 
-            <p>
-              Warm edge spacers recessed between the panes of glass both
-              minimize glass edge conductivity while optimally containing the
-              argon gas within the sealed units, obtaining a 90% argon gas fill
-              rate
-            </p>
+          <>
+            Our innovative window design includes a sealed argon gas layer and
+            warm edge spacers to add insulation, making your home more energy
+            efficient and saving you money on monthly utilities.
           </>
         </Body>
         <TertiaryButton href="/sub/learn">
@@ -42,15 +39,13 @@ export const DesignOptions = ({ imageSrc = "" }) => {
       <Text simple>
         <Title>Design Options</Title>
         <Body>
-          <>
-            <p>Rated Most efficient by Energy Star</p>
+          <>Rated Most efficient by Energy Star</>
 
-            <p>
-              Deciding on the product that’s right for your project is just the
-              beginning. With an extensive array of design options to choose
-              from, you can customize your windows and doors to reflect your
-              home’s architecture, character, and personality.
-            </p>
+          <>
+            Deciding on the product that’s right for your project is just the
+            beginning. With an extensive array of design options to choose from,
+            you can customize your windows and doors to reflect your home’s
+            architecture, character, and personality.
           </>
         </Body>
         <TertiaryButton href="/sub/designOptions">

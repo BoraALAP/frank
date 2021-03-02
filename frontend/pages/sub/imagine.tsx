@@ -48,11 +48,11 @@ const imagine = () => {
           <Header>
             <h1>Imagine with Frank.</h1>
             <p>
-              Look at the variety of products, and appreciate the diversity of
-              custom options Frank offers. This gallery allows you to explore
-              some of our most recent projects. Whether you are a building
-              professional with a keen eye for detail, or homeowner looking for
-              inspiration, imagine the possibilities with Frank.
+              FRANK is here to help you imagine what your home could be. We hope
+              browsing through our gallery will give you a sense of the wide
+              range of custom options we offer. Whether you are a building
+              professional with a keen eye for detail or a homeowner looking for
+              inspiration, imagine the possibilities with FRANK.
             </p>
           </Header>
           <ImageContainer>

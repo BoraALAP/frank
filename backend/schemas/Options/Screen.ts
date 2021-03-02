@@ -22,7 +22,10 @@ export const Screen = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/screen',
+      },
       label: 'Source',
     }),
     description: text({}),

@@ -22,7 +22,7 @@ export const ProductCard = ({ product, side }) => {
         <Text side={side}>
           <Title>{product.name}</Title>
           <Subtitle>{product.subtitle}</Subtitle>
-          <Body>{product.excerpt}</Body>
+          <Body>{product.excerpt.split("\n")}</Body>
           <TertiaryButton
             rev={side ? false : true}
             href={`/products/${Slugify(product.name)}`}

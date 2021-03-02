@@ -4,7 +4,7 @@ import { list } from '@keystone-next/keystone/schema';
 import { cloudinary } from '../../lib/cloudinaryConfig';
 import { permissions } from '../../access';
 
-export const BrickmouldAndTrim = list({
+export const BrickmoldAndSubsill = list({
   access: {
     create: permissions.canManageOptions,
     read: () => true,
@@ -21,16 +21,19 @@ export const BrickmouldAndTrim = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/brickmold',
+      },
       label: 'Source',
     }),
     description: text({}),
     products: relationship({
-      ref: 'Product.brickmouldAndTrimOptions',
+      ref: 'Product.brickmoldAndSubsillOptions',
       many: true,
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.brickmouldAndTrimOptions',
+      ref: 'ProductCategory.brickmoldAndSubsillOptions',
       many: true,
     }),
   },

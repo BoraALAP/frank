@@ -22,7 +22,10 @@ export const Glass = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/glass',
+      },
       label: 'Source',
     }),
     description: text({}),

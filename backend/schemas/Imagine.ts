@@ -19,7 +19,10 @@ export const Imagine = list({
   },
   fields: {
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/image',
+      },
       label: 'Source',
     }),
     description: text({}),

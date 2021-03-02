@@ -22,7 +22,10 @@ export const DividedLite = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/divided',
+      },
       label: 'Source',
     }),
     description: text({}),

@@ -27,10 +27,12 @@
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
+    "react-360-image": "^0.1.0",
     "react-apollo": "^3.1.5",
     "react-dom": "17.0.1",
     "react-masonry-css": "^1.0.14",
     "react-player": "^2.7.2",
+    "react-scroll": "^1.8.1",
     "react-toastify": "^6.2.0",
     "styled-components": "^5.2.1",
     "yup": "^0.32.8"

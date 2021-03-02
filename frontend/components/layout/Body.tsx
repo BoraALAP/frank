@@ -6,9 +6,11 @@ interface Props {
 export const Body = ({ children }: Props) => {
   return (
     <Container>
-      {Array.isArray(children)
-        ? children.map((parag, index) => <p key={index}>{parag}</p>)
-        : children}
+      {Array.isArray(children) ? (
+        children.map((parag, index) => <p key={index}> {parag}</p>)
+      ) : (
+        <p>{children}</p>
+      )}
     </Container>
   );
 };

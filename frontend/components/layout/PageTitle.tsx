@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { Link } from "react-scroll";
 
 import { NavLinks } from "../../UI/Links";
 import { Slugify } from "../../lib/Stringer";
@@ -42,22 +43,31 @@ export const PageTitle = ({
       id={id}
     >
       <h1>{title}</h1>
-
       {subtitle && <h3>{subtitle}</h3>}
       <Bottom twoColumn={children && true}>
         {children && <Text>{children}</Text>}
         {links && (
           <Links>
             {links?.map((item, index) => {
-              return item.href ? (
-                <NavLinks key={index} href={Slugify(item.href)}>
-                  {item.name}
-                </NavLinks>
-              ) : (
-                <NavLinks key={index} onClick={() => clickAction(item.name)}>
-                  {item.name}
-                </NavLinks>
-              );
+              if (item.href) {
+                return (
+                  <NavLinks key={index} href={Slugify(item.href)}>
+                    {item.name}
+                  </NavLinks>
+                );
+              } else if (item.to) {
+                return (
+                  <NavLinks key={index} to={item.to}>
+                    {item.name}
+                  </NavLinks>
+                );
+              } else {
+                return (
+                  <NavLinks key={index} onClick={() => clickAction(item.name)}>
+                    {item.name}
+                  </NavLinks>
+                );
+              }
             })}
           </Links>
         )}
@@ -89,7 +99,7 @@ export const Breadcrumbs = ({
         <Clickable onClick={() => router.back()}>{parent}</Clickable>
         <H2>/ {title}</H2>
       </TitleBox>
-      {subtitle && <h3>{subtitle}</h3>}
+      {subtitle && <h4>{subtitle}</h4>}
       <Bottom twoColumn={children && true}>
         {children && <Text>{children}</Text>}
         <Links>
@@ -125,13 +135,6 @@ const H2 = styled.h2`
 const Clickable = styled(H2)`
   display: grid;
   cursor: pointer;
-`;
-
-const Line = styled.div`
-  display: grid;
-  width: 3rem;
-  height: 1px;
-  background-color: var(--color-secondary);
 `;
 
 const Links = styled.div`

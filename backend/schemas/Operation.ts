@@ -23,7 +23,10 @@ export const Operation = list({
       isRequired: true,
     }),
     image: cloudinaryImage({
-      cloudinary,
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/operations',
+      },
       label: 'Source',
     }),
     video: text(),
