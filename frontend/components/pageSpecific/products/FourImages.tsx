@@ -10,8 +10,6 @@ export const FourImages = ({
   title,
   description,
 }) => {
-  console.log(imageSrc1, imageSrc2, imageSrc3, imageSrc4);
-
   return (
     <Container>
       {imageSrc1?.publicUrl && (

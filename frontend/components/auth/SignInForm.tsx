@@ -40,8 +40,6 @@ const SignInForm = ({ onSuccess }: any) => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  console.log(user);
-
   return (
     <Container>
       <Formik
@@ -69,7 +67,6 @@ const SignInForm = ({ onSuccess }: any) => {
               onSuccess();
             }
           } catch (error) {
-            // console.log(error?.message);
             setError("Please check your email and password");
           }
         }}

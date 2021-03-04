@@ -1,6 +1,7 @@
 import { createTransport, getTestMessageUrl } from 'nodemailer';
 import mailgunTransport from 'nodemailer-mailgun-transport';
 import { forgotPassword } from '../templates/forgot-password';
+import { contactUsForm } from '../templates/contactUsForm';
 
 // TODO - IMPLEMENT MAILGUN FOR EMAIL
 
@@ -32,11 +33,28 @@ export const forgotPasswordEmail = async (token, to) => {
   // }
   const options = {
     subject: 'test',
-    to: to,
+    to,
     from: process.env.MAILGUN_FROM,
     html: forgotPassword(
       // `${name.replace(/\b\w/g, (l) => l.toUpperCase())}`,
       token
+    ),
+  };
+
+  await transport.sendMail(options);
+};
+
+export const contactUsFormEmail = async (info) => {
+  // if (!templatePath) {
+  //   console.error('No template path provided');
+  // }
+  const options = {
+    subject: 'Contact Us Form',
+    to: process.env.RECIEVER,
+    from: process.env.MAILGUN_FROM,
+    html: contactUsForm(
+      // `${name.replace(/\b\w/g, (l) => l.toUpperCase())}`,
+      info
     ),
   };
 

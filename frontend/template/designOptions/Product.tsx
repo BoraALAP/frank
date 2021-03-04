@@ -12,6 +12,7 @@ export default function DesignOptionsProductTemplate({ productName }) {
   const { data, loading } = useQuery(PRODUCTOPTIONS, {
     variables: { product: Capitilize(productName) },
   });
+  console.log(Capitilize(productName));
 
   const [display, setDisplay] = useState("");
 
@@ -41,7 +42,7 @@ export default function DesignOptionsProductTemplate({ productName }) {
       show: data?.allProducts[0].dividedLiteOptions.length > 0,
     },
     {
-      name: "Brickmould and Subsill",
+      name: "Brickmold and Subsill",
       show: data?.allProducts[0].brickmoldAndSubsillOptions.length > 0,
     },
   ];
@@ -138,9 +139,9 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Brickmould and Subsill" && (
+      {display === "Brickmold and Subsill" && (
         <Operations
-          title="Brickmould and Subsill"
+          title="Brickmold and Subsill"
           subTitle="Product Design Options"
           list={data?.allProducts[0].brickmoldAndSubsillOptions}
           description="
@@ -154,7 +155,7 @@ export default function DesignOptionsProductTemplate({ productName }) {
 
 const PRODUCTOPTIONS = gql`
   query productOptions($product: String) {
-    allProducts(where: { name_contains: $product }) {
+    allProducts(where: { name_i: $product }) {
       exteriorOptions {
         id
         name

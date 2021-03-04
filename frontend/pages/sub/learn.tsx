@@ -6,6 +6,7 @@ import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
 import { PageTitle } from "../../components/layout/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
 import { Body } from "../../components/layout/Body";
+import Certify from "../../components/pageSpecific/learn/Certify";
 
 const learn = () => {
   const links = [
@@ -136,8 +137,8 @@ const learn = () => {
             </p>
           </>
         </TwoColumn>
+        <Certify />
         <DesignOptions />
-        {/* <Operations /> */}
       </Context>
     </Container>
   );

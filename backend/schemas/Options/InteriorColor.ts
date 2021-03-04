@@ -2,10 +2,10 @@ import { text, relationship } from '@keystone-next/fields';
 
 import { list } from '@keystone-next/keystone/schema';
 import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { cloudinary } from '../../lib/cloudinaryConfig';
 import { permissions } from '../../access';
+import { cloudinary } from '../../lib/cloudinaryConfig';
 
-export const Interior = list({
+export const InteriorColor = list({
   access: {
     create: permissions.canManageOptions,
     read: () => true,
@@ -18,26 +18,19 @@ export const Interior = list({
     isHidden: (args) => !permissions.canManageOptions(args),
   },
   fields: {
-    name: text({ isRequired: true }),
+    name: text({
+      isRequired: true,
+    }),
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/interior',
+        folder: 'frank/interiorcolor',
       },
       label: 'Source',
     }),
-    hex: text({}),
     description: text({}),
-    products: relationship({
-      ref: 'Product.interiorOptions',
-      many: true,
-    }),
-    productCategories: relationship({
-      ref: 'ProductCategory.interiorOptions',
-      many: true,
-    }),
-    colors: relationship({
-      ref: 'InteriorColor.parent',
+    parent: relationship({
+      ref: 'Interior.colors',
       many: true,
     }),
   },

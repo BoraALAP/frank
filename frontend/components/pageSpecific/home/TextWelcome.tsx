@@ -15,19 +15,19 @@ const TextWelcome = (props) => {
             />
           </ImageS> */}
           <Span>
-            Frank has been working on windows and doors for over 40 years. But
-            even more than windows and doors, he loves people. Over four
-            decades, Frank has built the business bearing his name into a
-            trusted team with loyal customers and strong partnerships. FRANK is
-            like a family.
+            FRANK has been in windows and doors for over four decades. He has
+            made strong partnerships, built a trusted team, and designed
+            products for everyone. Frank is like a family, we care about our
+            customers.
           </Span>
         </Inwrap>
       </H1Big>
 
       <H1Small>
-        Frank is a real window and door guy and a people person. Over four
-        decades, Frank has established strong partnerships, a trusted team, and
-        loyal customers. Frank is like a family.
+        Frank has been working on windows and doors for over 40 years. But even
+        more than windows and doors, he loves people. Over four decades, Frank
+        has built the business bearing his name into a trusted team with loyal
+        customers and strong partnerships. FRANK is like a family.
       </H1Small>
     </Container>
   );

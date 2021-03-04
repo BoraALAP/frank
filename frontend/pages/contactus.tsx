@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Container } from "../components/layout/Container";
 import { ContactForm } from "../components/pageSpecific/contact/ContactForm";
 import { PageTitle } from "../components/layout/PageTitle";
-import { ContactDetails } from "../components/pageSpecific/contactDetails";
+import { ContactDetails } from "../components/pageSpecific/contact/ContactDetails";
 
 const contactus = () => {
   return (

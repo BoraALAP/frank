@@ -38,5 +38,9 @@ export const Exterior = list({
       ref: 'ProductCategory.exteriorOptions',
       many: true,
     }),
+    colors: relationship({
+      ref: 'ExteriorColor.parent',
+      many: true,
+    }),
   },
 });

@@ -32,7 +32,6 @@ const ResetPasswordForm = ({ token }) => {
 
   const [resetPassword, { data, loading }] = useMutation(CHANGE_PASSWORD);
 
-  console.log(data);
   const error = data?.redeemUserPasswordResetToken?.code
     ? data?.redeemUserPasswordResetToken
     : undefined;

@@ -40,7 +40,7 @@ export default function designoptions() {
       show: data?.allDividedLites.length > 0,
     },
     {
-      name: "Brickmould and Subsill",
+      name: "Brickmold and Subsill",
       show: data?.allBrickmoldAndSubsills.length > 0,
     },
   ];
@@ -50,8 +50,6 @@ export default function designoptions() {
   };
 
   const list = () => {
-    console.log(links);
-
     const item = links.filter((it) => it.show);
     return item;
   };
@@ -139,9 +137,9 @@ export default function designoptions() {
           "
         />
       )}
-      {display === "Brickmould and Subsill" && (
+      {display === "Brickmold and Subsill" && (
         <Operations
-          title="Brickmould and Subsill"
+          title="Brickmold and Subsill"
           subTitle="Product Design Options"
           list={data?.allBrickmoldAndSubsills}
           description="

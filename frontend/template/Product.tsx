@@ -19,8 +19,6 @@ const ProductTemplate = ({ product }) => {
     variables: { product: product },
   });
 
-  console.log(data);
-
   if (loading) {
     return <Loading />;
   }

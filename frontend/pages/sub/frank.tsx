@@ -3,8 +3,7 @@ import { Container } from "../../components/layout/Container";
 import { FullImage } from "../../UI/FullImage";
 
 import { Body } from "../../components/layout/Body";
-import { TwoColumn } from "../../UI/TwoColumn";
-import { ContactDetails } from "../../components/pageSpecific/contactDetails";
+import { ContactDetails } from "../../components/pageSpecific/contact/ContactDetails";
 
 const frank = () => {
   return (

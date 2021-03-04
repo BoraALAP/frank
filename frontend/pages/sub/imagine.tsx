@@ -18,7 +18,6 @@ const imagine = () => {
   };
 
   const { data, loading, error } = useQuery(images);
-  console.log(data);
 
   const [modal, setModal] = useState(false);
   const [selected, setSelected] = useState(0);

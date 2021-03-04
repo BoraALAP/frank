@@ -9,7 +9,6 @@ export const Menu = (props) => {
   const user = useUser();
   const [imageSrc, setImageSrc] = useState({
     image1: "/menuImages/menuImage1.jpg",
-    image2: "/menuImages/menuImage2.jpg",
     name: "Windows",
   });
 
@@ -105,7 +104,7 @@ export const Menu = (props) => {
     href: string;
     name: string;
     image1: string;
-    image2: string;
+
     bottom?: boolean;
   }
 
@@ -189,7 +188,7 @@ export const Menu = (props) => {
                       onMouseEnter={() => {
                         setImageSrc({
                           image1: item.image1,
-                          image2: item.image2,
+
                           name: item.name,
                         });
                       }}

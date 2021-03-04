@@ -16,8 +16,6 @@ const account = () => {
     }
   }, [user]);
 
-  console.log(user);
-
   return (
     <Container space padding gap title="My Profile">
       <PageTitle title="Account" />

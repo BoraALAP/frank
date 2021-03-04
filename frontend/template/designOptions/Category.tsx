@@ -42,7 +42,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
       show: data?.allProductCategories[0].dividedLiteOptions.length > 0,
     },
     {
-      name: "Brickmould and Subsill",
+      name: "Brickmold and Subsill",
       show: data?.allProductCategories[0].brickmoldAndSubsillOptions.length > 0,
     },
   ];
@@ -139,9 +139,9 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {display === "Brickmould and Subsill" && (
+      {display === "Brickmold and Subsill" && (
         <Operations
-          title="Brickmould and Subsill"
+          title="Brickmold and Subsill"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].brickmoldAndSubsillOptions}
           description="

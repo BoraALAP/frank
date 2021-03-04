@@ -17,7 +17,6 @@ const signout = () => {
   useEffect(() => {
     signOut();
   }, []);
-  console.log(data);
 
   useEffect(() => {
     if (!user || data?.endSession) {

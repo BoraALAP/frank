@@ -8,11 +8,13 @@ import {
 import { permissionsList } from './schemas/fields';
 import { Role } from './schemas/Role';
 import { Screen } from './schemas/Options/Screen';
-import { Interior } from './schemas/Options/Interior';
 import { HardwareKit } from './schemas/Options/HardwareKit';
-import { GlassColor } from './schemas/Options/GlassColor';
 import { Glass } from './schemas/Options/Glass';
+import { GlassColor } from './schemas/Options/GlassColor';
 import { Exterior } from './schemas/Options/Exterior';
+import { ExteriorColor } from './schemas/Options/ExteriorColor';
+import { Interior } from './schemas/Options/Interior';
+import { InteriorColor } from './schemas/Options/InteriorColor';
 import { DividedLite } from './schemas/Options/DividedLite';
 import { BrickmoldAndSubsill } from './schemas/Options/BrickmoldAndSubsill';
 
@@ -63,7 +65,9 @@ export default withAuth(
       Dealer,
       ContactUsForm,
       Exterior,
+      ExteriorColor,
       Interior,
+      InteriorColor,
       Glass,
       GlassColor,
       HardwareKit,

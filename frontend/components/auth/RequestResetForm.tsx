@@ -36,11 +36,8 @@ const RequestResetForm = ({ onSuccess }: any) => {
   const timer = () => {
     const sec = setInterval(() => {
       setSeconds((seconds) => seconds - 1);
-      console.log("running");
     }, 1000);
     setTimeout(() => {
-      console.log("cleared");
-
       clearInterval(sec);
     }, 300000);
   };
@@ -60,7 +57,6 @@ const RequestResetForm = ({ onSuccess }: any) => {
         if (onSuccess && typeof onSuccess === "function") {
           onSuccess();
         }
-        // console.log(data);
       },
     }
   );

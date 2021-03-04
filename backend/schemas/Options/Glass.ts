@@ -1,4 +1,4 @@
-import { text, relationship } from '@keystone-next/fields';
+import { text, relationship, checkbox } from '@keystone-next/fields';
 
 import { list } from '@keystone-next/keystone/schema';
 import { cloudinaryImage } from '@keystone-next/cloudinary';
@@ -29,6 +29,9 @@ export const Glass = list({
       label: 'Source',
     }),
     description: text({}),
+    privacy: checkbox({
+      defaultValue: false,
+    }),
     products: relationship({
       ref: 'Product.glassOptions',
       many: true,

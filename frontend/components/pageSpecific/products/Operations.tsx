@@ -136,8 +136,8 @@ const Left = styled.div`
     height: 300px;
 
     @media screen and (min-width: 768px) {
-      max-height: 250px;
-      height: 250px;
+      max-height: 450px;
+      height: 50vw;
       min-height: 250px;
     }
   }
@@ -155,7 +155,7 @@ const ImageContainer = styled.div`
   display: grid;
   height: 4rem;
   width: 4rem;
-  background-color: #c3c3c3;
+  background-color: var(--color-white);
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
@@ -175,7 +175,8 @@ const ImageContainer = styled.div`
 
 const ImageS = styled(motion.div)`
   background-image: url(${(props) => props.src});
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 100%;

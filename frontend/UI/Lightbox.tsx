@@ -30,8 +30,6 @@ const Lightbox = ({
   let url = "";
   let name = "";
 
-  console.log(src, description, productName);
-
   switch (productName) {
     case "Core":
       url = "/products/core";
