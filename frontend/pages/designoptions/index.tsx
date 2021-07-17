@@ -6,6 +6,8 @@ import { gql, useQuery } from "@apollo/client";
 import { Container } from "../../components/layout/Container";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { PageTitle } from "../../components/layout/PageTitle";
+import Image from "next/image";
+// import cloudinary from "cloudinary-react";
 
 export default function designoptions() {
   const router = useRouter();
@@ -53,6 +55,75 @@ export default function designoptions() {
     const item = links.filter((it) => it.show);
     return item;
   };
+
+  const dividedList = [
+    {
+      title: "SDL Only",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/SDL_Only_c0wxnt.jpg",
+    },
+    {
+      title: "SDL Casement",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/SDL_Casement_4_m5uc0u.jpg",
+    },
+    {
+      title: "Spacer Only",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/Spacer_Only_emxinj.jpg",
+    },
+    {
+      title: "875 Contemporary",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/875_Contemporary_rcezvs.jpg",
+    },
+    {
+      title: "875 Contemporary No Spacer",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/875_Contemporary_No_Spacer_ozfvyi.jpg",
+    },
+    {
+      title: "875 SDL Mezdak",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172314/frank/sdl_grilles/875_SDL_mezdak.jpg",
+    },
+    {
+      title: "875 SDL No Spacer",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/875_SDL_No_Spacer_xzq34i.jpg",
+    },
+    {
+      title: "1.5 SDL",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/1.5_SDL_doyypx.jpg",
+    },
+    {
+      title: "1.5 SDL No Spacer",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/1.5_SDL_No_Spacer_cx7wpk.jpg",
+    },
+    {
+      title: "1.5 Contemporary",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172312/frank/sdl_grilles/1.5_Contemporary_xbkewp.jpg",
+    },
+    {
+      title: "1.5 Contemporary No Spacer",
+      description: "",
+      imgSrc:
+        "https://res.cloudinary.com/arttic-fox/image/upload/v1615172313/frank/sdl_grilles/1.5_Contemporary_No_Spacer_gzdwe3.jpg",
+    },
+  ];
 
   return (
     <Container space pageGap padding title="Design Options">
@@ -128,14 +199,34 @@ export default function designoptions() {
         />
       )}
       {display === "Divided Lites" && (
-        <Operations
-          title="Divided Lites"
-          subTitle="Product Design Options"
-          list={data?.allDividedLites}
-          description="
+        <>
+          <Operations
+            title="Divided Lites"
+            subTitle="Product Design Options"
+            list={data?.allDividedLites}
+            description="
           Add refinement to any glass surface with divided lights. Presented in a variety of patterns and in a range of materials and finishes, the details make the difference.
           "
-        />
+          />
+          <Extra>
+            <ImageCont>
+              {dividedList.map((it, index) => {
+                return (
+                  <Card key={index}>
+                    <Image
+                      src={it.imgSrc}
+                      layout="responsive"
+                      width={400}
+                      height={300}
+                    />
+                    <Title>{it.title}</Title>
+                    <Description>{it.description}</Description>
+                  </Card>
+                );
+              })}
+            </ImageCont>
+          </Extra>
+        </>
       )}
       {display === "Brickmold and Subsill" && (
         <Operations
@@ -150,6 +241,32 @@ export default function designoptions() {
     </Container>
   );
 }
+
+const Extra = styled.div`
+  display: grid;
+`;
+
+const ImageCont = styled.div`
+  display: grid;
+  gap: var(--gap);
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+const Card = styled.div`
+  display: grid;
+  gap: calc(var(--gap) / 2);
+  align-content: baseline;
+`;
+
+const Title = styled.h5`
+  display: grid;
+`;
+
+const Description = styled.p`
+  display: grid;
+`;
 
 const OPTIONS = gql`
   query allOptions {

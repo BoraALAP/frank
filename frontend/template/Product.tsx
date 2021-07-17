@@ -6,15 +6,10 @@ import { Operations } from "../components/pageSpecific/products/Operations";
 import { ImageOverlap } from "../components/pageSpecific/products/ImageOverlap";
 import { FourImages } from "../components/pageSpecific/products/FourImages";
 
-import {
-  DesignOptions,
-  EnergyEfficiency,
-} from "../components/pageSpecific/EnergyEfficiency";
+import { DesignEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Container } from "../components/layout/Container";
 
 const ProductTemplate = ({ product }) => {
-  console.log(product);
-
   const { loading, error, data } = useQuery(PRODUCT_QUERY, {
     variables: { product: product },
   });
@@ -71,6 +66,7 @@ const ProductTemplate = ({ product }) => {
         title={name}
         subtitle={pageSubtitle}
         image={productImage}
+        rotate={id}
         imageTitle={imageTitle}
         imageDescription={imageDescription}
         spec={specs}
@@ -96,8 +92,7 @@ const ProductTemplate = ({ product }) => {
         video
         padding
       />
-      <DesignOptions />
-      <EnergyEfficiency />
+      <DesignEfficiency />
     </Container>
   );
 };

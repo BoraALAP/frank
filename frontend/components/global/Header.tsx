@@ -1,7 +1,13 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { motion, useCycle } from "framer-motion";
+
+import {
+  motion,
+  AnimatePresence,
+  AnimateSharedLayout,
+  useCycle,
+} from "framer-motion";
 
 import Logo from "../../assets/branding/frank_logo";
 import MenuIcon from "../../assets/icons/menu";
@@ -88,7 +94,9 @@ export const Header = (props) => {
           </Right>
         </HeaderS>
       </Container>
-      <Menu onClick={handleMenu} isOpen={isOpen} />
+      <AnimatePresence initial={false}>
+        {isOpen && <Menu onClick={handleMenu} />}
+      </AnimatePresence>
     </Context>
   );
 };
@@ -123,6 +131,7 @@ const Left = styled.div`
   gap: var(--gap);
   align-items: center;
   z-index: 1000;
+  cursor: pointer;
 `;
 
 const Right = styled.div`
@@ -131,6 +140,7 @@ const Right = styled.div`
   justify-content: space-between;
   grid-auto-flow: column;
   z-index: 1000;
+  cursor: pointer;
 `;
 
 const H4 = styled.h4`

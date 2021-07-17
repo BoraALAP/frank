@@ -1,14 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { NavLinks } from "../../UI/Links";
 import { useUser } from "../auth/user";
 
 export const Menu = (props) => {
   const user = useUser();
   const [imageSrc, setImageSrc] = useState({
-    image1: "/menuImages/menuImage1.jpg",
+    image1:
+      "https://res.cloudinary.com/arttic-fox/image/upload/v1615427644/frank/menu/WINDOWS_hb4rhc.jpg",
     name: "Windows",
   });
 
@@ -17,21 +18,24 @@ export const Menu = (props) => {
       {
         href: "/categories/windows",
         name: "Windows",
-        image1: "/menuImages/menu1.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427644/frank/menu/WINDOWS_hb4rhc.jpg",
 
         bottom: false,
       },
       {
         href: "/categories/entry_doors",
         name: "Entry Doors",
-        image1: "/menuImages/menu3.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427642/frank/menu/ENTRY_DOORS_ajh5wf.jpg",
 
         bottom: false,
       },
       {
         href: "/categories/sliding_doors",
         name: "Sliding Doors",
-        image1: "/menuImages/menu5.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/SLIDING_DOOR_hvnd77.jpg",
 
         bottom: false,
       },
@@ -41,42 +45,47 @@ export const Menu = (props) => {
       {
         href: "/sub/frank",
         name: "Who is Frank?",
-        image1: "/menuImages/menu7.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615947963/frank/menu/MG_1_ea7vrz.jpg",
 
         bottom: false,
       },
       {
         href: "/sub/imagine",
         name: "Imagine",
-        image1: "/menuImages/menu9.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427642/frank/menu/IMAGINE_r2dzi3.jpg",
 
         bottom: false,
       },
       {
         href: "/designoptions",
         name: "Design Options",
-        image1: "/menuImages/menu13.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/DESIGN_agrkrp.jpg",
 
         bottom: false,
       },
       {
         href: "/sub/learn",
         name: "Learn",
-        image1: "/menuImages/menu11.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/LEARN_vcazcp.jpg",
 
         bottom: false,
       },
       // {
       //   href: "/sub/make",
       //   name: "Make",
-      //   image1: "/menuImages/menu11.jpg",
+      //   image1: "/menu/menu11.jpg",
       //
       // bottom: false,
       // },
       {
         href: "/sub/dealerfinder",
         name: "Find a Dealer",
-        image1: "/menuImages/menu19.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/FIND_A_DEALER_zuc87z.jpg",
 
         bottom: false,
       },
@@ -86,14 +95,16 @@ export const Menu = (props) => {
       {
         href: "/contactus",
         name: "Contact Us",
-        image1: "/menuImages/menu15.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427642/frank/menu/CONTACT_US_i7icor.jpg",
 
         bottom: true,
       },
       {
         href: user ? "/user/account" : "/user/signin",
         name: user ? "Account" : "Dealer Login",
-        image1: "/menuImages/menu17.jpg",
+        image1:
+          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427642/frank/menu/DEALER-LOGIN_ljmgzo.jpg",
 
         bottom: true,
       },
@@ -104,80 +115,78 @@ export const Menu = (props) => {
     href: string;
     name: string;
     image1: string;
-
     bottom?: boolean;
   }
-
-  const opacity = {
-    initial: { x: -10, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: 10, opacity: 0 },
-  };
 
   const variants = {
     enter: {
       opacity: 0,
     },
     center: {
+      zIndex: 1,
+
       opacity: 1,
     },
     exit: {
+      zIndex: 0,
+
       opacity: 0,
     },
   };
 
-  const ContextVariants = {
-    open: { y: "0vh" },
-    closed: { y: "-100vh" },
-  };
-
   return (
     <Context
-      variants={ContextVariants}
-      animate={props.isOpen ? "open" : "closed"}
+      key="modal"
+      initial={{ y: "-100vh" }}
+      animate={{ y: "0vh" }}
+      exit={{ y: "-100vh" }}
+      transition={{ duration: 0.45, type: "spring", stiffness: 75 }}
     >
       <Container>
-        <ImgContainer>
-          <ImgCont>
-            <AnimatePresence exitBeforeEnter>
-              <ImageS
-                alt={`${imageSrc.name} Image 1`}
-                src={imageSrc.image1}
-                layout="fill"
-                objectFit="cover"
-                priority
-                key={imageSrc.image1}
-                variant={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-              />
-            </AnimatePresence>
-          </ImgCont>
+        <ImgCont
+          key="modal2"
+          initial={{ x: "-5vw", opacity: 0 }}
+          animate={{ x: "0vw", opacity: 1 }}
+          exit={{ x: "-5vw", opacity: 0 }}
+          transition={{
+            delay: 0.45,
+            duration: 0.65,
+          }}
+        >
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <ImageS
+              alt={`${imageSrc.name} Image 1`}
+              src={imageSrc.image1}
+              key={imageSrc.image1}
+              // layout="fill"
 
-          {/* <ImgCont>
-            <AnimatePresence exitBeforeEnter>
-              <ImageS
-                alt={`${imageSrc.name} Image 2`}
-                src={imageSrc.image2}
-                layout="fill"
-                objectFit="cover"
-                priority
-                key={imageSrc.image2}
-                variant={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ delay: 0.2 }}
-              />
-            </AnimatePresence>
-          </ImgCont> */}
-        </ImgContainer>
+              priority
+              // custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
+            />
+          </AnimatePresence>
+        </ImgCont>
 
         <Right>
           {links.map((pages, index) => {
             return (
-              <Divide key={index}>
+              <Divide
+                key={index}
+                initial={{ x: "5vw", opacity: 0 }}
+                animate={{ x: "0vw", opacity: 1 }}
+                exit={{ x: "5vw", opacity: 0 }}
+                transition={{
+                  delay: 0.6,
+                  duration: 0.65,
+                }}
+              >
                 {pages.map((item: Item, index) => {
                   return (
                     <NavLinks
@@ -235,29 +244,25 @@ const Container = styled(motion.div)`
   }
 `;
 
-const ImageS = styled(motion.div)`
-  background-image: url(${(props) => props.src});
+const ImageS = styled(motion.img)`
+  /* background-image: url(${(props) => props.src});
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: cover; */
   width: 100%;
+  max-height: 900px;
+  object-fit: cover;
+  object-position: center;
   height: 100%;
-`;
-
-const ImgContainer = styled(motion.div)`
-  position: relative;
-  height: 100%;
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-  }
 `;
 
 const ImgCont = styled(motion.div)`
-  display: grid;
+  display: none;
   position: relative;
-  height: 100%;
+  overflow: hidden;
   width: 100%;
+  @media screen and (min-width: 768px) {
+    display: grid;
+  }
 `;
 
 const Right = styled(motion.nav)`
@@ -272,7 +277,7 @@ const Right = styled(motion.nav)`
   }
 `;
 
-const Divide = styled.div`
+const Divide = styled(motion.div)`
   display: grid;
   gap: calc(var(--gap) / 4);
 `;

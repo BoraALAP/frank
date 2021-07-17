@@ -1,23 +1,23 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Video, Transformation } from "cloudinary-react";
 
 import frank_logo from "../assets/branding/frank_logo";
-import ArrowRight from "../assets/icons/arrowRight";
+import { ArrowRight } from "../assets/icons/Arrow";
 
 import Meta from "../components/global/Meta";
 import { useEffect } from "react";
 import Router from "next/router";
 
 const Home = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      Router.push("/home");
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     Router.push("/home");
+  //   }, 10000);
+  // }, []);
   return (
     <Container
-      bg="/videography.jpg"
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
@@ -39,10 +39,18 @@ const Home = () => {
             transition={{ delay: 1.5, duration: 0.75 }}
           >
             <H1>Continue to Frank</H1>
-            <ArrowRight color="black" />
+            <ArrowRight color="var(--color-primary)" />
           </Right>
         </Link>
       </Header>
+      <VideoContainer>
+        <Video
+          cloudName="arttic-fox"
+          publicId="frank/general/Ostaco_Website_2_nxy07i"
+          autoPlay
+          loop
+        />
+      </VideoContainer>
     </Container>
   );
 };
@@ -55,6 +63,17 @@ const Container = styled(motion.div)`
   height: 100vh;
   width: 100vw;
 `;
+const VideoContainer = styled.div`
+  display: grid;
+  position: absolute;
+  width: 100vw;
+  overflow: hidden;
+  justify-content: center;
+  z-index: -100;
+  video {
+    height: 100vh;
+  }
+`;
 
 const Header = styled.div`
   width: 100%;
@@ -62,13 +81,12 @@ const Header = styled.div`
   align-items: center;
   padding: 2.5vh var(--padding);
   box-sizing: border-box;
-  justify-content: center;
+  grid-auto-flow: row;
+  justify-items: center;
   align-content: center;
   background-color: var(--color-whiteBg);
   gap: var(--gap);
   @media screen and (min-width: 768px) {
-    justify-content: space-between;
-    grid-auto-flow: column;
     border-bottom: 1px solid var(--color-primary);
   }
 `;

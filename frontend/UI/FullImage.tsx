@@ -7,7 +7,12 @@ export const FullImage = ({ imageSrc, height = "100%" }) => {
     <Container>
       <AnotherContainer>
         <ImageContainer height={height}>
-          <Image src={imageSrc} layout="fill" objectFit="cover" />
+          <Image
+            src={imageSrc}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="30% 50%"
+          />
         </ImageContainer>
       </AnotherContainer>
     </Container>

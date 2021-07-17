@@ -12,7 +12,6 @@ export default function DesignOptionsProductTemplate({ productName }) {
   const { data, loading } = useQuery(PRODUCTOPTIONS, {
     variables: { product: Capitilize(productName) },
   });
-  console.log(Capitilize(productName));
 
   const [display, setDisplay] = useState("");
 

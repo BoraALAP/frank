@@ -12,14 +12,13 @@ const frank = () => {
       <Content>
         <Text>
           <Subtitle>Who is Frank?</Subtitle>
-          <Body>
-            <H4>
-              What differentiates Frank from our competitors is how we run the
-              business, day in day out. Family owwned and operated, we take
-              pride in the fact that we have many long-standing members of the
-              Frank team.
-            </H4>
-          </Body>
+
+          <H4>
+            What differentiates Frank from our competitors is how we run the
+            business, day in day out. Family owned and operated, we take pride
+            in the fact that we have many long-standing members of the Frank
+            team.
+          </H4>
         </Text>
         <ContactDetails />
       </Content>

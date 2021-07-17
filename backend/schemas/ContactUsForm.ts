@@ -1,8 +1,8 @@
-import { text, integer } from "@keystone-next/fields";
+import { text } from '@keystone-next/fields';
 
-// import { sendEmail } from "../mail";
-import { list } from "@keystone-next/keystone/schema";
-import { permissions } from "../access";
+import { list } from '@keystone-next/keystone/schema';
+import { permissions } from '../access';
+import { contactUsFormEmail } from '../lib/mail';
 
 export const ContactUsForm = list({
   access: {
@@ -15,6 +15,13 @@ export const ContactUsForm = list({
     hideCreate: (args) => !permissions.canManageContactForm(args),
     hideDelete: (args) => !permissions.canManageContactForm(args),
     isHidden: (args) => !permissions.canManageContactForm(args),
+  },
+  hooks: {
+    resolveInput: async ({ resolvedData }) => {
+      console.log(resolvedData);
+      await contactUsFormEmail(resolvedData);
+      return resolvedData;
+    },
   },
   fields: {
     firstName: text({
@@ -46,7 +53,7 @@ export const ContactUsForm = list({
     comments: text({
       isRequired: true,
       ui: {
-        displayMode: "textarea",
+        displayMode: 'textarea',
       },
     }),
     iam: text({
@@ -56,21 +63,4 @@ export const ContactUsForm = list({
       isRequired: true,
     }),
   },
-
-  // hooks:{
-  //   afterChange: async({updatedItem, existingItem}) => {
-  //     console.log(updatedItem , "updated");
-  //     console.log(existingItem , "existing");
-  //     if(updatedItem) {
-
-  //       const props = {
-  //         recipientEmail: process.env.RECEIVER,
-  //         info: updatedItem,
-  //         subject: `Contact Us ${updatedItem.firstName}`,
-  //       };
-
-  //       await sendEmail("contactUsForm.jsx", props);
-  //     }
-  //   }
-  // }
 });

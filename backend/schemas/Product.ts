@@ -1,8 +1,8 @@
-import { text, relationship } from '@keystone-next/fields';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { list } from '@keystone-next/keystone/schema';
-import { permissions } from '../access';
-import { cloudinary } from '../lib/cloudinaryConfig';
+import { text, relationship, integer } from "@keystone-next/fields";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { list } from "@keystone-next/keystone/schema";
+import { permissions } from "../access";
+import { cloudinary } from "../lib/cloudinaryConfig";
 
 export const Product = list({
   access: {
@@ -22,127 +22,130 @@ export const Product = list({
       isRequired: true,
       isIndexed: true,
       ui: {
-        description: 'Product Name',
+        description: "Product Name",
       },
     }),
     subtitle: text({
       isRequired: true,
       ui: {
-        description: 'Category Listing Subtitle',
+        description: "Category Listing Subtitle",
       },
     }),
     excerpt: text({
       isRequired: true,
       ui: {
-        displayMode: 'textarea',
-        description: 'Category Listing Subtitle',
+        displayMode: "textarea",
+        description: "Category Listing Subtitle",
       },
+    }),
+    order: integer({
+      defaultValue: 0,
     }),
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image on Category Listing',
+      label: "Product Image on Category Listing",
       ui: {
-        description: 'Category Listing Image',
+        description: "Category Listing Image",
       },
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.products',
+      ref: "ProductCategory.products",
       many: true,
     }),
     pageSubtitle: text({
       isRequired: true,
       ui: {
-        description: 'Page Subtitle',
+        description: "Page Subtitle",
       },
     }),
     productImage: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image',
+      label: "Product Image",
     }),
     imageTitle: text({
       isRequired: true,
     }),
     imageDescription: text({
-      ui: { displayMode: 'textarea' },
+      ui: { displayMode: "textarea" },
     }),
     specs: text({
       isRequired: true,
-      ui: { displayMode: 'textarea' },
+      ui: { displayMode: "textarea" },
     }),
     productImage1: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image 1',
+      label: "Product Image 1",
     }),
     secondaryDetailsTitle: text({}),
     secondaryDetailsDescription: text({
-      ui: { displayMode: 'textarea' },
+      ui: { displayMode: "textarea" },
     }),
     productImage2: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image 2',
+      label: "Product Image 2",
     }),
     productImage3: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image 3',
+      label: "Product Image 3",
     }),
     productImage4: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/operations',
+        folder: "frank/products",
       },
-      label: 'Product Image 4',
+      label: "Product Image 4",
     }),
 
     operationsTitle: text({}),
     operationsSubTitle: text({}),
     operationsDescription: text({
-      ui: { displayMode: 'textarea' },
+      ui: { displayMode: "textarea" },
     }),
     operations: relationship({
-      ref: 'Operation.products',
+      ref: "Operation.products",
       many: true,
     }),
     exteriorOptions: relationship({
-      ref: 'Exterior.products',
+      ref: "Exterior.products",
       many: true,
     }),
     interiorOptions: relationship({
-      ref: 'Interior.products',
+      ref: "Interior.products",
       many: true,
     }),
     hardwareKitOptions: relationship({
-      ref: 'HardwareKit.products',
+      ref: "HardwareKit.products",
       many: true,
     }),
     glassOptions: relationship({
-      ref: 'Glass.products',
+      ref: "Glass.products",
       many: true,
     }),
     screenOptions: relationship({
-      ref: 'Screen.products',
+      ref: "Screen.products",
       many: true,
     }),
     dividedLiteOptions: relationship({
-      ref: 'DividedLite.products',
+      ref: "DividedLite.products",
       many: true,
     }),
     brickmoldAndSubsillOptions: relationship({
-      ref: 'BrickmoldAndSubsill.products',
+      ref: "BrickmoldAndSubsill.products",
       many: true,
     }),
   },

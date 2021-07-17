@@ -3,9 +3,29 @@ import styled from "styled-components";
 
 const Message = () => {
   return (
-    <Container image1="/homepage4.jpg">
+    <Container>
+      <Bottom>
+        <Image
+          src="https://res.cloudinary.com/arttic-fox/image/upload/v1615432918/frank/general/frank_factory_bbxhxa.jpg"
+          layout="fill"
+          objectFit="cover"
+          loading="lazy"
+          objectPosition="center -40px"
+        />
+      </Bottom>
       <Top>
         <Left>
+          <Image
+            src="/ontarioMadeLogo.png"
+            layout="responsive"
+            width={80}
+            height={80}
+            objectFit="contain"
+            objectPosition="50% 50%"
+            loading="lazy"
+          />
+        </Left>
+        <Right>
           <h3>
             FRANK is proudly made in Ontario and services an exclusive network
             of dealers across Canada. What differentiates us from our
@@ -16,16 +36,8 @@ const Message = () => {
             Learn more about us{" "}
             <a href="https://www.supportontariomade.ca/search-results?query=ostaco">
               here.
-            </a>{" "}
+            </a>
           </p>
-        </Left>
-        <Right>
-          <Image
-            src="/ontarioMadeLogo.png"
-            layout="fixed"
-            width={96}
-            height={96}
-          />
         </Right>
       </Top>
     </Container>
@@ -34,34 +46,43 @@ const Message = () => {
 
 const Container = styled.div`
   display: grid;
-  background-color: var(--color-lightGrey2);
-  background: url(${(props) => `${props.image1}`});
-  padding: var(--padding) var(--padding) calc(2 * var(--padding));
+  padding: 0 var(--padding) calc(2 * var(--padding));
   gap: calc(2 * var(--gap));
-  @media screen and (min-width: 768px) {
-    padding: calc(2 * var(--padding)) var(--padding) calc(8 * var(--padding));
-  }
+  /* border-bottom: 1px solid var(--color-grey); */
 `;
 
 const Top = styled.div`
   display: grid;
   gap: var(--gap);
 
+  padding-top: var(--padding);
   @media screen and (min-width: 768px) {
-    grid-template-columns: auto 25%;
+    grid-template-columns: 25% auto;
   }
 `;
 
-const Left = styled.div`
+const Bottom = styled.div`
+  display: none;
+  position: relative;
+  height: 375px;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+  }
+`;
+
+const Right = styled.div`
   display: grid;
   width: 80%;
   gap: var(--gap);
 `;
 
-const Right = styled.div`
+const Left = styled.div`
   display: grid;
   color: var(--color-primary);
   margin: 0px;
+  padding: 2rem;
+  align-content: start;
 `;
 
 export default Message;

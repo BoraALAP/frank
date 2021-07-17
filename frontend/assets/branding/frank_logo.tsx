@@ -59,7 +59,7 @@ const frank_logo = () => {
 const Svg = styled.svg`
   display: grid;
   height: 60px;
-  width: 100%;
+  width: auto;
 `;
 
 export default frank_logo;

@@ -9,7 +9,10 @@ import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
 import Category from "../components/pageSpecific/home/Category";
 
-import { EnergyEfficiency } from "../components/pageSpecific/EnergyEfficiency";
+import {
+  DesignEfficiency,
+  EnergyEfficiency,
+} from "../components/pageSpecific/EnergyEfficiency";
 import { Slugify } from "../lib/Stringer";
 import { useUser } from "../components/auth/user";
 
@@ -51,7 +54,7 @@ const Home = (props) => {
               );
             })}
         </Categories>
-        <EnergyEfficiency />
+        <DesignEfficiency />
       </Context>
     </Container>
   );

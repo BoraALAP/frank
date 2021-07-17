@@ -25,6 +25,10 @@ export const permissionFields = {
     defaultValue: false,
     label: 'User can check or update Dealer list or Imagine Page',
   }),
+  dealer: checkbox({
+    defaultValue: false,
+    label: 'This user is a dealer information',
+  }),
   hide: checkbox({
     defaultValue: false,
     label: 'Hide from the list',

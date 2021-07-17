@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "../../../UI/Links";
+import Link from "next/link";
 
 interface Props {
   image: any;
@@ -21,24 +22,25 @@ const Category = ({
 }: Props) => {
   const hrefFixed = href.replace(/\s+/g, "").toLowerCase();
   return (
-    <Container rev={rev}>
-      <Left rev={rev}>
-        <Image src={image} objectFit="cover" layout="fill" />
-      </Left>
-      <Right>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-        <Body>{description}</Body>
-        <TertiaryButton href={hrefFixed}>View {title}</TertiaryButton>
-      </Right>
-    </Container>
+    <Link href={hrefFixed}>
+      <Container rev={rev}>
+        <Left rev={rev}>
+          <Image src={image} objectFit="cover" layout="fill" />
+        </Left>
+        <Right>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
+          <Body>{description}</Body>
+          <TertiaryButton href={hrefFixed}>View {title}</TertiaryButton>
+        </Right>
+      </Container>
+    </Link>
   );
 };
 
 const Container = styled.div`
   display: grid;
   @media screen and (min-width: 768px) {
-    margin-top: calc(-2 * var(--padding));
     grid-template-columns: ${(props) => (props.rev ? "2fr 3fr" : "3fr 2fr")};
   }
 `;

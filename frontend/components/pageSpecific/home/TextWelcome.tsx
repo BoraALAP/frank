@@ -6,14 +6,6 @@ const TextWelcome = (props) => {
     <Container>
       <H1Big>
         <Inwrap rev>
-          {/* <ImageS>
-            <Image
-              src="/homepage1.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="50% 50%"
-            />
-          </ImageS> */}
           <Span>
             FRANK has been in windows and doors for over four decades. He has
             made strong partnerships, built a trusted team, and designed
@@ -22,13 +14,6 @@ const TextWelcome = (props) => {
           </Span>
         </Inwrap>
       </H1Big>
-
-      <H1Small>
-        Frank has been working on windows and doors for over 40 years. But even
-        more than windows and doors, he loves people. Over four decades, Frank
-        has built the business bearing his name into a trusted team with loyal
-        customers and strong partnerships. FRANK is like a family.
-      </H1Small>
     </Container>
   );
 };
@@ -41,8 +26,6 @@ const Inwrap = styled.div`
     grid-auto-flow: column;
     align-items: center;
     gap: calc(var(--gap));
-    /* grid-template-columns: ${(props) =>
-      props.rev ? ` 1fr 2fr ` : `max-content auto`}; */
   }
 `;
 
@@ -68,18 +51,10 @@ const H1 = styled.h1`
   }
 `;
 
-const H1Small = styled(H1)`
-  display: grid;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-`;
-
 const H1Big = styled(H1)`
-  display: none;
+  display: grid;
   gap: var(--gap);
   @media screen and (min-width: 768px) {
-    display: grid;
   }
 `;
 

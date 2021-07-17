@@ -3,8 +3,8 @@ import Image from "next/image";
 import { TertiaryButton } from "./Links";
 
 import Close from "../assets/icons/lightboxCross";
-import Prev from "../assets/icons/arrowLeft";
-import Next from "../assets/icons/arrowRight";
+import { ArrowLeft } from "../assets/icons/Arrow";
+import { ArrowRight } from "../assets/icons/Arrow";
 
 interface Props {
   src: string;
@@ -36,7 +36,7 @@ const Lightbox = ({
       name = "Core";
       break;
     case "Core+":
-      url = "/products/coreplus";
+      url = "/products/core+";
       name = "Core+";
       break;
     case "Enersense":
@@ -64,19 +64,19 @@ const Lightbox = ({
       name = "Moose";
       break;
     case "Moose+":
-      url = "/products/mooseplus";
+      url = "/products/moose+";
       name = "Moose+";
       break;
     case "Orchestra Door":
-      url = "/products/orchestradoor";
+      url = "/products/orchestra_door";
       name = "Orchestra Door";
       break;
     case "Folding Door":
-      url = "/products/foldingdoor";
+      url = "/products/folding_door";
       name = "Folding Door";
       break;
     case "Lift and Slide":
-      url = "/products/liftandslide";
+      url = "/products/lift_and_slide";
       name = "Lift and Slide";
       break;
 
@@ -88,7 +88,7 @@ const Lightbox = ({
     <Container open={open}>
       <Context>
         <Icon onClick={decNumber}>
-          <Prev color="white" />
+          <ArrowLeft color="white" />
         </Icon>
 
         <Middle>
@@ -113,7 +113,7 @@ const Lightbox = ({
           </Details>
         </Middle>
         <Icon onClick={incNumber}>
-          <Next color="white" />
+          <ArrowRight color="white" />
         </Icon>
       </Context>
       <BG onClick={close} />

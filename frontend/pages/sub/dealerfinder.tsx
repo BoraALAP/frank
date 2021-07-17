@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   GoogleMap,
   useLoadScript,
@@ -104,25 +105,33 @@ const DealerFinder = (props) => {
           {!loading && locations.length !== 0 ? (
             locations.map((item) => {
               return (
-                <Dealer
-                  key={item.id}
-                  onClick={() => {
-                    handleClick(item);
-                    setMarker(item.id);
-                  }}
-                  active={
-                    location.lat === parseFloat(item.lat) &&
-                    location.lng === parseFloat(item.lng)
-                  }
-                >
-                  <h4>{item.city}</h4>
-                  <h6>{item.name}</h6>
-                  <p>{item.formattedAddress}</p>
-                </Dealer>
+                <AnimatePresence exitBeforeEnter initial={false} key={item.id}>
+                  <Dealer
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    onClick={() => {
+                      handleClick(item);
+                      setMarker(item.id);
+                    }}
+                    active={
+                      location.lat === parseFloat(item.lat) &&
+                      location.lng === parseFloat(item.lng)
+                    }
+                  >
+                    <h4>{item.city}</h4>
+                    <h6>{item.name}</h6>
+
+                    <p>{item.formattedAddress}</p>
+                  </Dealer>
+                </AnimatePresence>
               );
             })
           ) : (
-            <p>No Location Found</p>
+            <AnimatePresence exitBeforeEnter initial={false}>
+              <p>No Location Found</p>
+            </AnimatePresence>
           )}
         </Left>
         <Right>
@@ -246,12 +255,13 @@ const Fixed = styled.div`
   }
 `;
 
-const Dealer = styled.li`
+const Dealer = styled(motion.li)`
   padding-left: 5vw;
   grid-gap: 0.5em;
   h6,
   h4 {
     color: ${(props) => props.active && `var(--color-secondary)`};
+    transition: all 0.4s ease-in-out;
   }
 `;
 

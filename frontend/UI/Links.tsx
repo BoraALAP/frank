@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { Link as Scroll } from "react-scroll";
+import { ArrowRight } from "../assets/icons/Arrow";
 
 export const NavLinks = (props) => {
   if (props.href) {
@@ -44,6 +45,7 @@ interface ButtonProps {
   disabled?: boolean;
   onClick?: any;
 }
+
 export const Button = ({
   href,
   children,
@@ -95,6 +97,7 @@ export const ButtonS = ({
     </ButtonSmall>
   );
 };
+
 const ButtonContainer = styled.button`
   display: grid;
   color: ${(props) => {
@@ -120,12 +123,14 @@ const ButtonContainer = styled.button`
     }
   }};
   padding: 0.75rem 1.5rem;
+  cursor: pointer;
 `;
 
 const ButtonSmall = styled(ButtonContainer)`
   display: grid;
   padding: 0 1.5rem;
   align-content: center;
+  cursor: pointer;
 `;
 
 interface TertiaryProps {
@@ -154,6 +159,7 @@ export const TertiaryButton = ({
     </TertiaryContainer>
   );
 };
+
 const TertiaryContainer = styled.button`
   display: grid;
   color: ${(props) => {
@@ -171,6 +177,7 @@ const TertiaryContainer = styled.button`
   font-weight: 600;
   text-decoration: underline;
   width: max-content;
+  cursor: pointer;
 `;
 
 interface FooterProps {
@@ -179,6 +186,7 @@ interface FooterProps {
   children: any;
   disabled?: boolean;
 }
+
 export const FooterButton = ({
   href,
   children,
@@ -193,10 +201,30 @@ export const FooterButton = ({
     </Link>
   );
 };
+
 const FooterButtonContainer = styled.button`
   display: grid;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-primary);
   width: max-content;
+  cursor: pointer;
+`;
+
+export const ListLink = ({ href, children }) => {
+  return (
+    <ListLinkContainer href={href} download target="_blank" rel="nofollow">
+      {children}
+
+      <ArrowRight color="var(--color-grey)" />
+    </ListLinkContainer>
+  );
+};
+
+const ListLinkContainer = styled.a`
+  display: grid;
+  grid-template-columns: auto 24px;
+  border-bottom: 1px solid var(--color-grey);
+  padding: 8px 8px 4px;
+  cursor: pointer;
 `;

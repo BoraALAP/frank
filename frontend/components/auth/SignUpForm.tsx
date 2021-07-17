@@ -22,7 +22,9 @@ const SignUpForm = ({ onSuccess }: any) => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
 
-  const [createUser, { data, error: dataError }] = useMutation(CREATE_USER);
+  const [createUser, { data, loading, error: dataError }] = useMutation(
+    CREATE_USER
+  );
   // if the user is logged in, redirect to the homepage
   useEffect(() => {
     if (data?.createUser) {
@@ -50,6 +52,7 @@ const SignUpForm = ({ onSuccess }: any) => {
           password: "",
           confirmPassword: "",
           companyName: "",
+          phone: "",
         }}
         validationSchema={Yup.object({
           firstName: Yup.string()
@@ -74,6 +77,12 @@ const SignUpForm = ({ onSuccess }: any) => {
             .required("Required")
             .min(2, "Must be 2 characters or more")
             .max(14, "Must be 14 characters or less"),
+          phone: Yup.number()
+            .typeError("That doesn't look like a phone number")
+            .positive("A phone number can't start with a minus")
+            .integer("A phone number can't include a decimal point")
+            .min(10, "Must be 10 characters or more")
+            .required("A phone number is required"),
         })}
         onSubmit={async ({
           email,
@@ -81,6 +90,7 @@ const SignUpForm = ({ onSuccess }: any) => {
           firstName,
           lastName,
           companyName,
+          phone,
         }) => {
           try {
             await createUser({
@@ -90,6 +100,7 @@ const SignUpForm = ({ onSuccess }: any) => {
                 firstName: Capitilize(`${firstName}`),
                 lastName: Capitilize(`${lastName}`),
                 companyName: Capitilize(`${companyName}`),
+                phone: phone.toString(),
               },
             });
 
@@ -189,23 +200,40 @@ const SignUpForm = ({ onSuccess }: any) => {
               <ErrorMessages name="confirmPassword" />
             </FieldContainer>
           </InRow>
-          <FieldContainer>
-            <Label htmlFor="companyName">Company Name</Label>
+          <InRow>
+            <FieldContainer>
+              <Label htmlFor="companyName">Company Name</Label>
 
-            <InputContainer
-              autoComplete="company"
-              autoFocus
-              disabled={user}
-              id="companyName"
-              placeholder="You Company Name"
-              required
-              type="text"
-              name="companyName"
-            />
-            <ErrorMessages name="companyName" />
-          </FieldContainer>
+              <InputContainer
+                autoComplete="company"
+                autoFocus
+                disabled={user}
+                id="companyName"
+                placeholder="Your Company Name"
+                required
+                type="text"
+                name="companyName"
+              />
+              <ErrorMessages name="companyName" />
+            </FieldContainer>
+            <FieldContainer>
+              <Label htmlFor="phone">Phone Number</Label>
+              <InputContainer
+                autoComplete="phone"
+                autoFocus
+                disabled={user}
+                minLength={8}
+                id="phone"
+                placeholder="Your Phone Number"
+                required
+                type="number"
+                name="phone"
+              />
+              <ErrorMessages name="phone" />
+            </FieldContainer>
+          </InRow>
           <ErrorMessages>{error}</ErrorMessages>
-          {user ? (
+          {user || loading ? (
             <Button disabled>Creating account...</Button>
           ) : (
             <Button type="submit">Sign up</Button>
@@ -243,6 +271,7 @@ export const CREATE_USER = gql`
     $email: String!
     $password: String!
     $companyName: String!
+    $phone: String!
   ) {
     createUser(
       data: {
@@ -251,6 +280,7 @@ export const CREATE_USER = gql`
         email: $email
         password: $password
         companyName: $companyName
+        phone: $phone
       }
     ) {
       id

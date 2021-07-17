@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container } from "../components/layout/Container";
-import { ContactForm } from "../components/pageSpecific/contact/ContactForm";
+import { ContactForm } from "../components/auth/ContactForm";
 import { PageTitle } from "../components/layout/PageTitle";
 import { ContactDetails } from "../components/pageSpecific/contact/ContactDetails";
 

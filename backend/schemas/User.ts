@@ -1,8 +1,9 @@
-import { text, password, relationship } from '@keystone-next/fields';
+import { text, password, relationship, integer } from '@keystone-next/fields';
 
 import { list } from '@keystone-next/keystone/schema';
 
 import { permissions, rules } from '../access';
+import { createAccountEmail } from '../lib/mail';
 // import { sendEmail } from "../mail";
 
 export const User = list({
@@ -21,12 +22,22 @@ export const User = list({
     isHidden: (args) => !permissions.canManageUsers(args),
     labelField: 'firstName',
   },
+  hooks: {
+    resolveInput: async ({ resolvedData }) => {
+      console.log(resolvedData);
+      await createAccountEmail(resolvedData);
+      return resolvedData;
+    },
+  },
   fields: {
     firstName: text({ isRequired: true, isIndexed: true }),
     lastName: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
     password: password(),
     companyName: text({ isRequired: true }),
+    phone: text({
+      isRequired: true,
+    }),
     dealerId: text({}),
     role: relationship({
       ref: 'Role.assignedTo',

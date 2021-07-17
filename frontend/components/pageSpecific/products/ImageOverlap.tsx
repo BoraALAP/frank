@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
+import RotatingImage from "../../../UI/RotatingImage";
 import { Body } from "../../layout/Body";
 import Details from "./Details";
 
 export const ImageOverlap = ({
+  rotate,
   title,
   subtitle,
   image,
@@ -11,21 +13,38 @@ export const ImageOverlap = ({
   imageDescription,
   spec,
 }) => {
+  const ImageContainer = () => {
+    switch (rotate) {
+      case "602b3e5732bba63fe0604257":
+        return <RotatingImage location="core" frame="42" />;
+
+      case "602b3fb0202390402b9faa65":
+        return <RotatingImage location="coreplus" frame="43" />;
+
+      case "602b4ac83a39a34164a5c2af":
+        return <RotatingImage location="enersense" frame="40" />;
+
+      case "602b4ac83a39a34164a5c2ae":
+        return <RotatingImage location="prism" frame="42" />;
+
+      default:
+        return (
+          <Image
+            src={image.publicUrl}
+            alt={image.originalFilename}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="center bottom"
+          />
+        );
+    }
+    return <p>no image provided</p>;
+  };
   return (
     <Container>
       <Details title={title} subtitle={subtitle} padding />
       <Bottom>
-        <Left>
-          {image && (
-            <Image
-              src={image.publicUrl}
-              alt={image.originalFilename}
-              layout="fill"
-              objectFit="contain"
-              objectPosition="center bottom"
-            />
-          )}
-        </Left>
+        <Left>{image && <ImageContainer />}</Left>
         <Right>
           <Title>{imageTitle}</Title>
           <Body>{imageDescription.split("\n")}</Body>
@@ -58,7 +77,9 @@ const Left = styled.div`
   display: grid;
   position: relative;
   min-height: 550px;
+
   @media screen and (min-width: 768px) {
+    padding-right: var(--padding);
     order: 1;
   }
 `;

@@ -25,15 +25,6 @@ const learn = () => {
     <Container space title="Learn">
       <Context>
         <PageTitle title="Learn" links={links} padding>
-          {/* <>
-          {links?.map((item, index) => {
-            return (
-              <Link key={index} to={item.to} spy={true} smooth={true}>
-                {item.name}
-              </Link>
-            );
-          })}
-        </> */}
           <Body>
             <>
               There are many benefits to energy efficient windows and doors.

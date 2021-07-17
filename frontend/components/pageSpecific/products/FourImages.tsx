@@ -67,6 +67,7 @@ const Text = styled.div`
   display: grid;
   gap: var(--gap);
   padding: var(--padding) var(--padding) calc(2 * var(--padding));
+  align-content: flex-start;
 `;
 
 const Title = styled.h3`
