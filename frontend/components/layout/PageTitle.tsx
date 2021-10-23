@@ -26,6 +26,44 @@ interface Breadcrumbs {
   clickAction?: any;
 }
 
+interface ListItems {
+  item?: any;
+  index?: Number;
+  clickAction?: Function;
+}
+
+const listItems = (item, index, clickAction) => {
+  if (item?.href) {
+    return (
+      <NavLinks
+        key={index}
+        href={Slugify(item?.href)}
+        role="button"
+        aria-label={`navigation button - ${item?.name}`}
+      >
+        {item?.name}
+      </NavLinks>
+    );
+  } else if (item?.to) {
+    return (
+      <NavLinks key={index} to={item?.to}>
+        {item?.name}
+      </NavLinks>
+    );
+  } else {
+    return (
+      <NavLinks
+        key={index}
+        onClick={() => clickAction(item?.name)}
+        role="button"
+        aria-label={`navigation button - ${item?.name}`}
+      >
+        {item?.name}
+      </NavLinks>
+    );
+  }
+};
+
 export const PageTitle = ({
   title,
   subtitle,
@@ -42,32 +80,16 @@ export const PageTitle = ({
       twoColumn={children && true}
       id={id}
     >
-      <h1>{title}</h1>
+      <h1 role="page heading" aria-label={`page heading ${title}`}>
+        {title}
+      </h1>
       {subtitle && <h3>{subtitle}</h3>}
       <Bottom twoColumn={children && true}>
         {children && <Text>{children}</Text>}
         {links && (
           <Links>
             {links?.map((item, index) => {
-              if (item.href) {
-                return (
-                  <NavLinks key={index} href={Slugify(item.href)}>
-                    {item.name}
-                  </NavLinks>
-                );
-              } else if (item.to) {
-                return (
-                  <NavLinks key={index} to={item.to}>
-                    {item.name}
-                  </NavLinks>
-                );
-              } else {
-                return (
-                  <NavLinks key={index} onClick={() => clickAction(item.name)}>
-                    {item.name}
-                  </NavLinks>
-                );
-              }
+              return listItems(item, index, clickAction);
             })}
           </Links>
         )}
@@ -96,23 +118,23 @@ export const Breadcrumbs = ({
       id={id}
     >
       <TitleBox>
-        <Clickable onClick={() => router.back()}>{parent}</Clickable>
-        <H2>/ {title}</H2>
+        <Clickable
+          onClick={() => router.back()}
+          role="button"
+          aria-label={`parent title`}
+        >
+          <H2>{parent}</H2>
+        </Clickable>
+        <H2 role="page heading" aria-label={`page heading ${title}`}>
+          / {title}
+        </H2>
       </TitleBox>
       {subtitle && <h4>{subtitle}</h4>}
       <Bottom twoColumn={children && true}>
         {children && <Text>{children}</Text>}
         <Links>
           {links?.map((item, index) => {
-            return item.href ? (
-              <NavLinks key={index} href={Slugify(item.href)}>
-                {item.name}
-              </NavLinks>
-            ) : (
-              <NavLinks key={index} onClick={() => clickAction(item.name)}>
-                {item.name}
-              </NavLinks>
-            );
+            return listItems(item, index, clickAction);
           })}
         </Links>
       </Bottom>
@@ -132,7 +154,7 @@ const H2 = styled.h2`
   font-weight: 500;
 `;
 
-const Clickable = styled(H2)`
+const Clickable = styled.button`
   display: grid;
   cursor: pointer;
 `;
@@ -143,7 +165,7 @@ const Links = styled.div`
 
 const Context = styled.div`
   display: grid;
-
+  margin-top: ${(props) => props.mt && "1rem"};
   padding: 0 ${(props) => (props.padding ? `var(--padding)` : "0")};
   gap: ${(props) => (props.twoColumn ? `var(--gap)` : `calc( var(--gap) / 2)`)};
   @media screen and (min-width: 768px) {

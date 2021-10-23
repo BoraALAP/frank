@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
 
 interface MetaProps {
@@ -10,6 +10,7 @@ interface MetaProps {
   padding?: boolean;
   title?: any;
   loading?: boolean;
+  id?: string;
 }
 
 export const Container = ({
@@ -20,10 +21,10 @@ export const Container = ({
   padding = false,
   title,
   loading = false,
+  id,
 }: MetaProps) => {
   return (
     <>
-      {/* <AnimatePresence exitBeforeEnter initial={false}> */}
       {title && <Meta title={title} />}
       <ContainerS
         space={space}
@@ -31,15 +32,14 @@ export const Container = ({
         pageGap={pageGap}
         padding={padding}
         style={{ visibility: "visible" }}
-        // layoutId="page"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.35 }}
+        id={id}
       >
         {children}
       </ContainerS>
-      {/* </AnimatePresence> */}
     </>
   );
 };
@@ -63,12 +63,12 @@ const ContainerS = styled(motion.div)`
       : `0`};
 
   @media screen and (min-width: 768px) {
-    gap: ${(props) =>
+    /* gap: ${(props) =>
       props.gap
         ? `calc(2*var(--gap))`
         : props.pageGap
         ? `calc(4*var(--gap))`
-        : `0`};
+        : `0`}; */
 
     padding: ${(props) =>
       props.space && props.padding

@@ -8,12 +8,10 @@ import { ArrowRight } from "../assets/icons/Arrow";
 
 interface Props {
   src: string;
-
   incNumber: any;
   decNumber: any;
   open: boolean;
   close: any;
-
   description?: string;
   productName?: string;
 }
@@ -87,9 +85,11 @@ const Lightbox = ({
   return (
     <Container open={open}>
       <Context>
-        <Icon onClick={decNumber}>
-          <ArrowLeft color="white" />
-        </Icon>
+        <button>
+          <Icon onClick={decNumber}>
+            <ArrowLeft color="white" />
+          </Icon>
+        </button>
 
         <Middle>
           <Icon onClick={close}>
@@ -112,9 +112,11 @@ const Lightbox = ({
             )}
           </Details>
         </Middle>
-        <Icon onClick={incNumber}>
-          <ArrowRight color="white" />
-        </Icon>
+        <button>
+          <Icon onClick={incNumber}>
+            <ArrowRight color="white" />
+          </Icon>
+        </button>
       </Context>
       <BG onClick={close} />
     </Container>
@@ -144,7 +146,7 @@ const Middle = styled.div`
 const Details = styled.div`
   display: grid;
   justify-content: center;
-
+  justify-items: center;
   justify-self: center;
   color: var(--color-white);
   z-index: 10;
@@ -172,9 +174,6 @@ const ImageContainer = styled.div`
   min-width: 70vw;
   max-width: 900px;
   z-index: 3;
-  div {
-    max-width: 900px;
-  }
 `;
 
 const Icon = styled.div`

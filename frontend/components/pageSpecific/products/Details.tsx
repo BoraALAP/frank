@@ -7,6 +7,7 @@ interface Props {
   transparent?: Boolean;
   padding?: Boolean;
   children?: any;
+  id?: string;
 }
 
 const Details = ({
@@ -15,13 +16,14 @@ const Details = ({
   children,
   padding = false,
   transparent = false,
+  id,
 }: Props) => {
   return (
-    <Container>
+    <Container id={id}>
       <Context padding={padding} transparent={transparent}>
-        <Title>{title}</Title>
+        {title && <Title>{title}</Title>}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
-        <Descriptions>{children}</Descriptions>
+        {children && <Descriptions>{children}</Descriptions>}
       </Context>
     </Container>
   );
@@ -32,14 +34,14 @@ const Context = styled.div`
   background-color: ${(props) =>
     props.transparent ? "transparent" : `var(--color-lightGray)`};
   padding: ${(props) => (props.padding ? `var(--padding)` : "inherit")};
-  gap: var(--gap);
+  gap: calc(var(--gap) / 2);
 `;
 
 const Title = styled.h1`
   display: grid;
 `;
 
-const Subtitle = styled.h5`
+const Subtitle = styled.h4`
   display: grid;
 `;
 

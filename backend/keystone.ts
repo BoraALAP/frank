@@ -1,33 +1,34 @@
-import 'dotenv/config';
-import { createAuth } from '@keystone-next/auth';
-import { config, createSchema } from '@keystone-next/keystone/schema';
+import "dotenv/config";
+import { createAuth } from "@keystone-next/auth";
+import { config, createSchema } from "@keystone-next/keystone/schema";
 import {
   withItemData,
   statelessSessions,
-} from '@keystone-next/keystone/session';
-import { permissionsList } from './schemas/fields';
-import { Role } from './schemas/Role';
-import { Screen } from './schemas/Options/Screen';
-import { HardwareKit } from './schemas/Options/HardwareKit';
-import { Glass } from './schemas/Options/Glass';
-import { GlassColor } from './schemas/Options/GlassColor';
-import { Exterior } from './schemas/Options/Exterior';
-import { ExteriorColor } from './schemas/Options/ExteriorColor';
-import { Interior } from './schemas/Options/Interior';
-import { InteriorColor } from './schemas/Options/InteriorColor';
-import { DividedLite } from './schemas/Options/DividedLite';
-import { BrickmoldAndSubsill } from './schemas/Options/BrickmoldAndSubsill';
+} from "@keystone-next/keystone/session";
+import { permissionsList } from "./schemas/fields";
+import { Role } from "./schemas/Role";
+import { Screen } from "./schemas/Options/Screen";
+import { HardwareKit } from "./schemas/Options/HardwareKit";
+import { Glass } from "./schemas/Options/Glass";
+import { GlassColor } from "./schemas/Options/GlassColor";
+import { Exterior } from "./schemas/Options/Exterior";
+import { ExteriorColor } from "./schemas/Options/ExteriorColor";
+import { Interior } from "./schemas/Options/Interior";
+import { InteriorColor } from "./schemas/Options/InteriorColor";
+import { DividedLite } from "./schemas/Options/DividedLite";
+import { DoorSlab } from "./schemas/Options/DoorSlab";
+import { BrickmoldAndSubsill } from "./schemas/Options/BrickmoldAndSubsill";
 
-import { ProductCategory } from './schemas/ProductCategory';
-import { Product } from './schemas/Product';
+import { ProductCategory } from "./schemas/ProductCategory";
+import { Product } from "./schemas/Product";
 
-import { Operation } from './schemas/Operation';
-import { Imagine } from './schemas/Imagine';
-import { Dealer } from './schemas/Dealer';
-import { ContactUsForm } from './schemas/ContactUsForm';
-import { User } from './schemas/User';
+import { Operation } from "./schemas/Operation";
+import { Imagine } from "./schemas/Imagine";
+import { Dealer } from "./schemas/Dealer";
+import { ContactUsForm } from "./schemas/ContactUsForm";
+import { User } from "./schemas/User";
 
-import { forgotPasswordEmail } from './lib/mail';
+import { forgotPasswordEmail } from "./lib/mail";
 // import { extendGraphqlSchema } from './mutations';
 
 function check(name: string) {}
@@ -38,11 +39,11 @@ const sessionConfig = {
 };
 
 const { withAuth } = createAuth({
-  listKey: 'User',
-  identityField: 'email',
-  secretField: 'password',
+  listKey: "User",
+  identityField: "email",
+  secretField: "password",
   initFirstItem: {
-    fields: ['firstName', 'lastName', 'email', 'password', 'companyName'],
+    fields: ["firstName", "lastName", "email", "password", "companyName"],
   },
   passwordResetLink: {
     async sendToken(args) {
@@ -73,9 +74,10 @@ export default withAuth(
       Screen,
       DividedLite,
       BrickmoldAndSubsill,
+      DoorSlab,
     }),
     db: {
-      adapter: 'mongoose',
+      adapter: "mongoose",
       url: process.env.DATABASE_URL,
     },
     server: {
@@ -91,7 +93,7 @@ export default withAuth(
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
-      User: `id name email role { ${permissionsList.join(' ')} }`,
+      User: `id name email role { ${permissionsList.join(" ")} }`,
     }),
   })
 );

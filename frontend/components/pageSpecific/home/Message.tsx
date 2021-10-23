@@ -34,7 +34,10 @@ const Message = () => {
           </h3>
           <p>
             Learn more about us{" "}
-            <a href="https://www.supportontariomade.ca/search-results?query=ostaco">
+            <a
+              href="https://www.supportontariomade.ca/search-results?query=ostaco"
+              target="_blank"
+            >
               here.
             </a>
           </p>
@@ -44,7 +47,7 @@ const Message = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.section`
   display: grid;
   padding: 0 var(--padding) calc(2 * var(--padding));
   gap: calc(2 * var(--gap));

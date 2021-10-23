@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container } from "../../components/layout/Container";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { gql, useQuery } from "@apollo/client";
@@ -13,35 +12,40 @@ export default function DesignOptionsProductTemplate({ productName }) {
     variables: { product: Capitilize(productName) },
   });
 
-  const [display, setDisplay] = useState("");
-
   const links = [
     {
       name: "Exterior Finish",
+      to: "Exterior Finish",
       show: data?.allProducts[0].exteriorOptions.length > 0,
     },
     {
       name: "Interior Finish",
+      to: "Interior Finish",
       show: data?.allProducts[0].interiorOptions.length > 0,
     },
     {
       name: "Hardware",
+      to: "Hardware",
       show: data?.allProducts[0].hardwareKitOptions.length > 0,
     },
     {
       name: "Glass",
+      to: "Glass",
       show: data?.allProducts[0].glassOptions.length > 0,
     },
     {
       name: "Screens",
+      to: "Screens",
       show: data?.allProducts[0].screenOptions.length > 0,
     },
     {
       name: "Divided Lites",
+      to: "Divided Lites",
       show: data?.allProducts[0].dividedLiteOptions.length > 0,
     },
     {
-      name: "Brickmold and Subsill",
+      name: "Brickmold",
+      to: "Brickmold",
       show: data?.allProducts[0].brickmoldAndSubsillOptions.length > 0,
     },
   ];
@@ -51,10 +55,6 @@ export default function DesignOptionsProductTemplate({ productName }) {
     return item;
   };
 
-  const handleList = (name) => {
-    setDisplay(name);
-  };
-
   return (
     <Container space pageGap padding title="Design Options">
       <Breadcrumbs
@@ -62,7 +62,6 @@ export default function DesignOptionsProductTemplate({ productName }) {
         subtitle="Product Design Options Overview"
         parent={`${Capitilize(productName)}`}
         links={list()}
-        clickAction={handleList}
       >
         <p>
           Deciding on the product that’s right for your project is just the
@@ -72,9 +71,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
         </p>
       </Breadcrumbs>
 
-      {display === "Exterior Finish" && (
+      {data?.allProducts[0]?.exteriorOptions?.length > 0 && (
         <Operations
           title="Exterior Finish"
+          id="Exterior Finish"
           subTitle="Product Design Options"
           list={data?.allProducts[0].exteriorOptions}
           description="
@@ -85,9 +85,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Interior Finish" && (
+      {data?.allProducts[0]?.interiorOptions?.length > 0 && (
         <Operations
           title="Interior Finish"
+          id="Interior Finish"
           subTitle="Product Design Options"
           list={data?.allProducts[0].interiorOptions}
           description="
@@ -95,9 +96,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Hardware" && (
+      {data?.allProducts[0]?.hardwareKitOptions?.length > 0 && (
         <Operations
           title="Hardware"
+          id="Hardware"
           subTitle="Product Design Options"
           list={data?.allProducts[0].hardwareKitOptions}
           description="
@@ -108,9 +110,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Glass" && (
+      {data?.allProducts[0]?.glassOptions?.length > 0 && (
         <Operations
           title="Glass"
+          id="Glass"
           subTitle="Product Design Options"
           list={data?.allProducts[0].glassOptions}
           description="
@@ -118,9 +121,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Screens" && (
+      {data?.allProducts[0]?.screenOptions?.length > 0 && (
         <Operations
           title="Screens"
+          id="Screens"
           subTitle="Product Design Options"
           list={data?.allProducts[0].screenOptions}
           description="
@@ -128,9 +132,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
          "
         />
       )}
-      {display === "Divided Lites" && (
+      {data?.allProducts[0]?.dividedLiteOptions?.length > 0 && (
         <Operations
           title="Divided Lites"
+          id="Divided Lites"
           subTitle="Product Design Options"
           list={data?.allProducts[0].dividedLiteOptions}
           description="
@@ -138,9 +143,10 @@ export default function DesignOptionsProductTemplate({ productName }) {
           "
         />
       )}
-      {display === "Brickmold and Subsill" && (
+      {data?.allProducts[0]?.brickmoldAndSubsillOptions?.length > 0 && (
         <Operations
-          title="Brickmold and Subsill"
+          title="Brickmold"
+          id="Brickmold"
           subTitle="Product Design Options"
           list={data?.allProducts[0].brickmoldAndSubsillOptions}
           description="
@@ -223,6 +229,11 @@ const PRODUCTOPTIONS = gql`
           id
           publicUrl
           originalFilename
+        }
+        imageDisplay {
+          publicUrl
+          originalFilename
+          id
         }
       }
     }

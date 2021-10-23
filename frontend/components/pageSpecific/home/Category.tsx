@@ -38,7 +38,7 @@ const Category = ({
   );
 };
 
-const Container = styled.div`
+const Container = styled.section`
   display: grid;
   @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) => (props.rev ? "2fr 3fr" : "3fr 2fr")};

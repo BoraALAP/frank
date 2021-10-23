@@ -1,9 +1,9 @@
-import { text, relationship } from '@keystone-next/fields';
+import { text, relationship, select } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { permissions } from '../../access';
-import { cloudinary } from '../../lib/cloudinaryConfig';
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { permissions } from "../../access";
+import { cloudinary } from "../../lib/cloudinaryConfig";
 
 export const DividedLite = list({
   access: {
@@ -24,17 +24,26 @@ export const DividedLite = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/divided',
+        folder: "frank/divided",
       },
-      label: 'Source',
+      label: "Source",
     }),
     description: text({}),
+    type: select({
+      dataType: "enum",
+      options: [
+        { label: "Design", value: "Design" },
+        { label: "BarType", value: "Bar Type" },
+        { label: "SDLBarOptions", value: "SDL Bar Options" },
+      ],
+      ui: { displayMode: "select" },
+    }),
     products: relationship({
-      ref: 'Product.dividedLiteOptions',
+      ref: "Product.dividedLiteOptions",
       many: true,
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.dividedLiteOptions',
+      ref: "ProductCategory.dividedLiteOptions",
       many: true,
     }),
   },

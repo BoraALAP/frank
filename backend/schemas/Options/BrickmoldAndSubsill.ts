@@ -27,6 +27,13 @@ export const BrickmoldAndSubsill = list({
       },
       label: 'Source',
     }),
+    imageDisplay: cloudinaryImage({
+      cloudinary: {
+        ...cloudinary,
+        folder: 'frank/brickmold',
+      },
+      label: 'Source Display',
+    }),
     description: text({}),
     products: relationship({
       ref: 'Product.brickmoldAndSubsillOptions',

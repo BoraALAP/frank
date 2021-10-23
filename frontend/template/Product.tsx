@@ -2,15 +2,15 @@ import { gql, useQuery } from "@apollo/client";
 
 import { Breadcrumbs } from "../components/layout/PageTitle";
 import { Loading } from "../UI/Loading";
-import { Operations } from "../components/pageSpecific/products/Operations";
 import { ImageOverlap } from "../components/pageSpecific/products/ImageOverlap";
 import { FourImages } from "../components/pageSpecific/products/FourImages";
 
 import { DesignEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Container } from "../components/layout/Container";
+import GreenInitiative from "../components/pageSpecific/products/GreenInitiative";
 
 const ProductTemplate = ({ product }) => {
-  const { loading, error, data } = useQuery(PRODUCT_QUERY, {
+  const { loading, data } = useQuery(PRODUCT_QUERY, {
     variables: { product: product },
   });
 
@@ -33,10 +33,6 @@ const ProductTemplate = ({ product }) => {
     productImage2,
     productImage3,
     productImage4,
-    operationsTitle,
-    operationsSubTitle,
-    operationsDescription,
-    operations,
   } = data?.allProducts[0];
 
   const links = [
@@ -79,20 +75,8 @@ const ProductTemplate = ({ product }) => {
         title={secondaryDetailsTitle}
         description={secondaryDetailsDescription}
       />
-      <Operations
-        title={operationsTitle || "Operations"}
-        subTitle={
-          operationsSubTitle || "Placeholder Copy (Addressing this with Marco)"
-        }
-        description={
-          operationsDescription ||
-          "Placeholder - Marco please advise. The choice of colour can have a big impact, or be a subtle accent to your home’s exterior.  Select from our wide range of standard colour coating options, or request a custom colour match – the options are endless. "
-        }
-        list={operations}
-        video
-        padding
-      />
       <DesignEfficiency />
+      <GreenInitiative product={name} />
     </Container>
   );
 };
@@ -139,16 +123,6 @@ const PRODUCT_QUERY = gql`
         id
         originalFilename
         publicUrl
-      }
-      operations {
-        id
-        name
-        image {
-          id
-          originalFilename
-          publicUrl
-        }
-        video
       }
     }
   }

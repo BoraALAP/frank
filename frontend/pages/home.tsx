@@ -9,10 +9,7 @@ import { Container } from "../components/layout/Container";
 import Message from "../components/pageSpecific/home/Message";
 import Category from "../components/pageSpecific/home/Category";
 
-import {
-  DesignEfficiency,
-  EnergyEfficiency,
-} from "../components/pageSpecific/EnergyEfficiency";
+import { DesignEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Slugify } from "../lib/Stringer";
 import { useUser } from "../components/auth/user";
 
@@ -65,7 +62,7 @@ const Context = styled.div`
   gap: calc(2 * var(--gap));
 `;
 
-const Welcome = styled.div`
+const Welcome = styled.article`
   display: grid;
   padding: 0 var(--padding);
   gap: var(--gap);
@@ -83,7 +80,7 @@ const Categories = styled.div`
 
 const Left = styled.div``;
 
-const Right = styled.div`
+const Right = styled.aside`
   display: none;
   grid-auto-flow: row;
   align-items: end;

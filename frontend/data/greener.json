@@ -1,0 +1,2144 @@
+[
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE180 with Argon",
+    "u": 1.52,
+    "shgc": 0.53,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.26,
+    "shgc": 0.49,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.82,
+    "shgc": 0.41,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.9,
+    "shgc": 0.44,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.3,
+    "er": 32,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.8,
+    "shgc": 0.28,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.88,
+    "shgc": 0.29,
+    "er": 37,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.86,
+    "shgc": 0.27,
+    "er": 37,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE366/Argon with i89",
+    "u": 1.21,
+    "shgc": 0.21,
+    "er": 26,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.19,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.77,
+    "shgc": 0.16,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Fixed Casement",
+    "option": "D89 with Argon",
+    "u": 1.34,
+    "shgc": 0.55,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.26,
+    "shgc": 0.41,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.94,
+    "shgc": 0.35,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.01,
+    "shgc": 0.37,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.22,
+    "shgc": 0.25,
+    "er": 27,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.93,
+    "shgc": 0.24,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 1.0,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.98,
+    "shgc": 0.23,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.99,
+    "shgc": 0.16,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.9,
+    "shgc": 0.14,
+    "er": 28,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Casement",
+    "option": "D89 with Argon",
+    "u": 1.33,
+    "shgc": 0.47,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE180/Argon with i89",
+    "u": 1.3,
+    "shgc": 0.41,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.95,
+    "shgc": 0.35,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.02,
+    "shgc": 0.37,
+    "er": 38,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.94,
+    "shgc": 0.24,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 1.01,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.99,
+    "shgc": 0.23,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 1.0,
+    "shgc": 0.16,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.14,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Awning",
+    "option": "D89 with Argon",
+    "u": 1.38,
+    "shgc": 0.47,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE180 with Argon",
+    "u": 1.58,
+    "shgc": 0.59,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE180/Argon with i89",
+    "u": 1.3,
+    "shgc": 0.54,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.78,
+    "shgc": 0.46,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.48,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.33,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.77,
+    "shgc": 0.31,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.86,
+    "shgc": 0.32,
+    "er": 40,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.84,
+    "shgc": 0.3,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.84,
+    "shgc": 0.21,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.73,
+    "shgc": 0.18,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Picture Window",
+    "option": "D89 with Argon",
+    "u": 1.38,
+    "shgc": 0.62,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core",
+    "type": "Single Hung",
+    "option": "LowE180/Argon with i89",
+    "u": 1.47,
+    "shgc": 0.48,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Single Hung",
+    "option": "D89 with Argon",
+    "u": 1.54,
+    "shgc": 0.55,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Hung",
+    "option": "LowE180/Argon with i89",
+    "u": 1.42,
+    "shgc": 0.46,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Hung",
+    "option": "D89 with Argon",
+    "u": 1.49,
+    "shgc": 0.53,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Single Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.48,
+    "shgc": 0.48,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Single Slider",
+    "option": "D89 with Argon",
+    "u": 1.55,
+    "shgc": 0.55,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Single Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.38,
+    "shgc": 0.48,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Single Slider",
+    "option": "D89 with Argon",
+    "u": 1.47,
+    "shgc": 0.55,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.43,
+    "shgc": 0.46,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Slider",
+    "option": "D89 with Argon",
+    "u": 1.5,
+    "shgc": 0.52,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.44,
+    "shgc": 0.46,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core",
+    "type": "Double Slider",
+    "option": "D89 with Argon",
+    "u": 1.47,
+    "shgc": 0.55,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE180 with Argon",
+    "u": 1.52,
+    "shgc": 0.53,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.26,
+    "shgc": 0.49,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.82,
+    "shgc": 0.41,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.9,
+    "shgc": 0.44,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.3,
+    "er": 32,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.8,
+    "shgc": 0.28,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.88,
+    "shgc": 0.29,
+    "er": 37,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.86,
+    "shgc": 0.27,
+    "er": 37,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE366/Argon with i89",
+    "u": 1.21,
+    "shgc": 0.21,
+    "er": 26,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.19,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.77,
+    "shgc": 0.16,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Fixed Casement",
+    "option": "D89 with Argon",
+    "u": 1.34,
+    "shgc": 0.55,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.31,
+    "shgc": 0.41,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.94,
+    "shgc": 0.35,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.01,
+    "shgc": 0.37,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.22,
+    "shgc": 0.25,
+    "er": 27,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.93,
+    "shgc": 0.24,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 1.0,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.98,
+    "shgc": 0.23,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.99,
+    "shgc": 0.16,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.9,
+    "shgc": 0.14,
+    "er": 28,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Casement",
+    "option": "D89 with Argon",
+    "u": 1.33,
+    "shgc": 0.47,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE180/Argon with i89",
+    "u": 1.3,
+    "shgc": 0.41,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.95,
+    "shgc": 0.35,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.02,
+    "shgc": 0.37,
+    "er": 38,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.94,
+    "shgc": 0.24,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 1.01,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.99,
+    "shgc": 0.23,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 1.0,
+    "shgc": 0.16,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.14,
+    "er": 28,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Awning",
+    "option": "D89 with Argon",
+    "u": 1.38,
+    "shgc": 0.47,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE180 with Argon",
+    "u": 1.58,
+    "shgc": 0.59,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE180/Argon with i89",
+    "u": 1.3,
+    "shgc": 0.54,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.78,
+    "shgc": 0.46,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.48,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.33,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.77,
+    "shgc": 0.31,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.86,
+    "shgc": 0.32,
+    "er": 40,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.84,
+    "shgc": 0.3,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.84,
+    "shgc": 0.21,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.73,
+    "shgc": 0.18,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Picture Window",
+    "option": "D89 with Argon",
+    "u": 1.38,
+    "shgc": 0.62,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Hung",
+    "option": "LowE180/Argon with i89",
+    "u": 1.47,
+    "shgc": 0.48,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Hung",
+    "option": "D89 with Argon",
+    "u": 1.54,
+    "shgc": 0.55,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Hung",
+    "option": "LowE180/Argon with i89",
+    "u": 1.42,
+    "shgc": 0.46,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Hung",
+    "option": "D89 with Argon",
+    "u": 1.49,
+    "shgc": 0.53,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.48,
+    "shgc": 0.48,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Slider",
+    "option": "D89 with Argon",
+    "u": 1.55,
+    "shgc": 0.55,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.38,
+    "shgc": 0.48,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Single Slider",
+    "option": "D89 with Argon",
+    "u": 1.47,
+    "shgc": 0.55,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.43,
+    "shgc": 0.46,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Slider",
+    "option": "D89 with Argon",
+    "u": 1.5,
+    "shgc": 0.52,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Slider",
+    "option": "LowE180/Argon with i89",
+    "u": 1.44,
+    "shgc": 0.46,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Core+",
+    "type": "Double Slider",
+    "option": "D89 with Argon",
+    "u": 1.47,
+    "shgc": 0.55,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE180 with Argon",
+    "u": 1.53,
+    "shgc": 0.56,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.25,
+    "shgc": 0.51,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.79,
+    "shgc": 0.43,
+    "er": 47,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.46,
+    "er": 46,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.31,
+    "er": 33,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.79,
+    "shgc": 0.29,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.3,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.29,
+    "er": 38,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE366/Argon with i89",
+    "u": 1.19,
+    "shgc": 0.22,
+    "er": 26,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.74,
+    "shgc": 0.17,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Fixed Casement",
+    "option": "D89 with Argon",
+    "u": 1.36,
+    "shgc": 0.58,
+    "er": 44,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE180 with Argon",
+    "u": 1.48,
+    "shgc": 0.49,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.25,
+    "shgc": 0.45,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.38,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.4,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.27,
+    "er": 30,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.26,
+    "er": 36,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.27,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.25,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE366/Argon with i89",
+    "u": 1.19,
+    "shgc": 0.19,
+    "er": 25,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.18,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.79,
+    "shgc": 0.15,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Casement",
+    "option": "D89 with Argon",
+    "u": 1.36,
+    "shgc": 0.51,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE180 with Argon",
+    "u": 1.48,
+    "shgc": 0.49,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE180/Argon with i89",
+    "u": 1.31,
+    "shgc": 0.45,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.38,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.4,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.27,
+    "er": 30,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.26,
+    "er": 36,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.27,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.25,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.18,
+    "er": 30,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.79,
+    "shgc": 0.15,
+    "er": 31,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Prism",
+    "type": "Awning",
+    "option": "D89 with Argon",
+    "u": 1.36,
+    "shgc": 0.51,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180 with Argon",
+    "u": 1.47,
+    "shgc": 0.47,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.25,
+    "shgc": 0.43,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.37,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.93,
+    "shgc": 0.39,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/Argon with i89",
+    "u": 1.22,
+    "shgc": 0.28,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.27,
+    "er": 30,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.84,
+    "shgc": 0.25,
+    "er": 36,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.92,
+    "shgc": 0.26,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.9,
+    "shgc": 0.24,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE366/Argon with i89",
+    "u": 1.2,
+    "shgc": 0.19,
+    "er": 24,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.17,
+    "er": 29,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.81,
+    "shgc": 0.14,
+    "er": 30,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "D89 with Argon",
+    "u": 1.31,
+    "shgc": 0.49,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180 with Argon",
+    "u": 1.48,
+    "shgc": 0.48,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/Argon with i89",
+    "u": 1.28,
+    "shgc": 0.43,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.86,
+    "shgc": 0.37,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.93,
+    "shgc": 0.39,
+    "er": 42,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.15,
+    "shgc": 0.27,
+    "er": 30,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.85,
+    "shgc": 0.25,
+    "er": 36,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.92,
+    "shgc": 0.26,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.9,
+    "shgc": 0.25,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.91,
+    "shgc": 0.17,
+    "er": 30,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.82,
+    "shgc": 0.14,
+    "er": 30,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "D89 with Argon",
+    "u": 1.35,
+    "shgc": 0.49,
+    "er": 39,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180 with Argon",
+    "u": 1.54,
+    "shgc": 0.59,
+    "er": 40,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/Argon with i89",
+    "u": 1.27,
+    "shgc": 0.54,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.78,
+    "shgc": 0.46,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.48,
+    "er": 48,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.33,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.77,
+    "shgc": 0.31,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.32,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.83,
+    "shgc": 0.3,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/Argon with i89",
+    "u": 1.21,
+    "shgc": 0.23,
+    "er": 26,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.84,
+    "shgc": 0.21,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.73,
+    "shgc": 0.18,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "D89 with Argon",
+    "u": 1.35,
+    "shgc": 0.61,
+    "er": 45,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/Argon with i89",
+    "u": 1.3,
+    "shgc": 0.43,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.9,
+    "shgc": 0.37,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.39,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.18,
+    "shgc": 0.27,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.89,
+    "shgc": 0.25,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.96,
+    "shgc": 0.26,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.94,
+    "shgc": 0.24,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.95,
+    "shgc": 0.17,
+    "er": 29,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.86,
+    "shgc": 0.14,
+    "er": 29,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Fixed Casement",
+    "option": "D89 with Argon",
+    "u": 1.36,
+    "shgc": 0.49,
+    "er": 38,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180 with Argon",
+    "u": 1.53,
+    "shgc": 0.48,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/Argon with i89",
+    "u": 1.34,
+    "shgc": 0.43,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.37,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.39,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.19,
+    "shgc": 0.27,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.9,
+    "shgc": 0.25,
+    "er": 35,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.96,
+    "shgc": 0.26,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.95,
+    "shgc": 0.25,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.95,
+    "shgc": 0.17,
+    "er": 29,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.87,
+    "shgc": 0.14,
+    "er": 29,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Awning",
+    "option": "D89 with Argon",
+    "u": 1.41,
+    "shgc": 0.49,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180 with Argon",
+    "u": 1.56,
+    "shgc": 0.59,
+    "er": 40,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/Argon with i89",
+    "u": 1.28,
+    "shgc": 0.54,
+    "er": 43,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.79,
+    "shgc": 0.46,
+    "er": 49,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 0.88,
+    "shgc": 0.48,
+    "er": 48,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.14,
+    "shgc": 0.33,
+    "er": 34,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.78,
+    "shgc": 0.31,
+    "er": 40,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.87,
+    "shgc": 0.32,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.3,
+    "er": 38,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/Argon with i89",
+    "u": 1.22,
+    "shgc": 0.23,
+    "er": 26,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.85,
+    "shgc": 0.21,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.74,
+    "shgc": 0.18,
+    "er": 34,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Enersense",
+    "type": "Picture Window",
+    "option": "D89 with Argon",
+    "u": 1.36,
+    "shgc": 0.61,
+    "er": 45,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Moose",
+    "type": " ",
+    "option": "LowE180/Argon with i89",
+    "u": 1.42,
+    "shgc": 0.48,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 1.19,
+    "shgc": 0.4,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.25,
+    "shgc": 0.43,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose",
+    "type": " ",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 1.19,
+    "shgc": 0.28,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose",
+    "type": " ",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 1.14,
+    "shgc": 0.16,
+    "er": 23,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose+",
+    "type": " ",
+    "option": "LowE180/Argon with i89",
+    "u": 1.42,
+    "shgc": 0.48,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose+",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 1.19,
+    "shgc": 0.4,
+    "er": 37,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose+",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.31,
+    "shgc": 0.43,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Moose+",
+    "type": " ",
+    "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+    "u": 1.14,
+    "shgc": 0.28,
+    "er": 30,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE180/Argon with i89",
+    "u": 1.31,
+    "shgc": 0.44,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.37,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.02,
+    "shgc": 0.39,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.19,
+    "shgc": 0.27,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.26,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.17,
+    "er": 28,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Lift & Slide",
+    "type": " ",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.14,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE180/Argon with i89",
+    "u": 1.31,
+    "shgc": 0.44,
+    "er": 36,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.37,
+    "er": 41,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.02,
+    "shgc": 0.39,
+    "er": 39,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE272/Clear c/w Argon Triple IG",
+    "u": 1.19,
+    "shgc": 0.27,
+    "er": 29,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE272/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.26,
+    "er": 33,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.25,
+    "er": 32,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE366/LowE180 c/w Argon Triple IG",
+    "u": 0.97,
+    "shgc": 0.17,
+    "er": 28,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Orchestra",
+    "type": " ",
+    "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+    "u": 0.91,
+    "shgc": 0.14,
+    "er": 27,
+    "estSaving": "$250"
+  },
+  {
+    "series": "Folding Door",
+    "type": " ",
+    "option": "LowE180/LowE180 c/w Argon Triple IG",
+    "u": 1.19,
+    "shgc": 0.38,
+    "er": 35,
+    "estSaving": "$125"
+  },
+  {
+    "series": "Folding Door",
+    "type": " ",
+    "option": "LowE272/LowE272 c/w Argon Triple IG",
+    "u": 1.19,
+    "shgc": 0.24,
+    "er": 27,
+    "estSaving": "$125"
+  }
+]

@@ -22,6 +22,19 @@ const imagine = () => {
   const [modal, setModal] = useState(false);
   const [selected, setSelected] = useState(0);
 
+  const escFunction = (event) => {
+    if (event.keyCode === 27) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  });
+
   const handleModal = (index) => {
     setSelected(index);
 
@@ -39,7 +52,7 @@ const imagine = () => {
     setSelected(selected !== 0 ? selected - 1 : data?.allImagines?.length - 1);
   };
 
-  const { store, dispatch } = useContext(GlobalContext);
+  const { dispatch } = useContext(GlobalContext);
   return (
     <BigContainer>
       <Container space pageGap padding title="Imagine Page">
@@ -63,15 +76,22 @@ const imagine = () => {
               {!loading && data?.allImagines?.length > 0 ? (
                 data?.allImagines?.map((img, index) => {
                   return (
-                    <img
-                      src={img.image.publicUrl}
+                    <button
                       key={index}
-                      alt={img.description}
                       onClick={() => {
                         handleModal(index),
-                          dispatch({ type: "HEADER_SHOW", headerShow: false });
+                          dispatch({
+                            type: "HEADER_SHOW",
+                            headerShow: false,
+                          });
                       }}
-                    />
+                    >
+                      <img
+                        src={img.image.publicUrl}
+                        key={index}
+                        alt={img.description}
+                      />
+                    </button>
                   );
                 })
               ) : (

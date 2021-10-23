@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { gql, useQuery } from "@apollo/client";
 
 import { Container } from "../../components/layout/Container";
 import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
@@ -7,8 +8,15 @@ import { PageTitle } from "../../components/layout/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
 import { Body } from "../../components/layout/Body";
 import Certify from "../../components/pageSpecific/learn/Certify";
+import { Operations } from "../../components/pageSpecific/products/Operations";
+import Table from "../../components/pageSpecific/learn/Table";
+import generalData from "../../data/greener.json";
 
 const learn = () => {
+  const { loading, error, data } = useQuery(OPERATION_QUERY);
+
+  console.log(data);
+
   const links = [
     { name: "U-Factor", to: "ufactor" },
     { name: "Solar Heat Gain", to: "solarheatgain" },
@@ -18,7 +26,8 @@ const learn = () => {
     },
     { name: "Energy Star", to: "energystar" },
     { name: "Design Options", href: "/designoptions" },
-    { name: "Operations Overview", to: "operationsoverview" },
+    { name: "Table", to: "table" },
+    { name: "Operations Overview", to: "operationsOverview" },
   ];
 
   return (
@@ -130,6 +139,23 @@ const learn = () => {
         </TwoColumn>
         <Certify />
         <DesignOptions />
+
+        <PageTitle title="Operations" padding id="operationsOverview" />
+        {data?.allProductCategories.map((item) => (
+          <Operations
+            key={item.key}
+            list={item.operations}
+            subTitle={item.name}
+            video
+            padding
+          />
+        ))}
+        <Container gap>
+          <PageTitle title="Table" padding id="table" />
+          <Container padding>
+            <Table id="table" data={generalData} />
+          </Container>
+        </Container>
       </Context>
     </Container>
   );
@@ -138,6 +164,29 @@ const learn = () => {
 const Context = styled.div`
   display: grid;
   gap: calc(4 * var(--gap));
+`;
+
+const OPERATION_QUERY = gql`
+  query Category {
+    allProductCategories {
+      name
+      id
+      operations {
+        id
+        name
+        image {
+          id
+          publicUrl
+          originalFilename
+        }
+        video
+        products {
+          id
+          name
+        }
+      }
+    }
+  }
 `;
 
 export default learn;

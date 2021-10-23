@@ -1,8 +1,8 @@
-import { text, relationship } from '@keystone-next/fields';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinary } from '../lib/cloudinaryConfig';
-import { permissions } from '../access';
+import { text, relationship } from "@keystone-next/fields";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinary } from "../lib/cloudinaryConfig";
+import { permissions } from "../access";
 
 export const ProductCategory = list({
   access: {
@@ -23,48 +23,52 @@ export const ProductCategory = list({
       isIndexed: true,
     }),
     subtitle: text({}),
-    description: text({ ui: { displayMode: 'textarea' } }),
+    description: text({ ui: { displayMode: "textarea" } }),
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/productCategory',
+        folder: "frank/productCategory",
       },
-      label: 'Source',
+      label: "Source",
     }),
     products: relationship({
-      ref: 'Product.productCategories',
+      ref: "Product.productCategories",
       many: true,
     }),
     exteriorOptions: relationship({
-      ref: 'Exterior.productCategories',
+      ref: "Exterior.productCategories",
       many: true,
     }),
     interiorOptions: relationship({
-      ref: 'Interior.productCategories',
+      ref: "Interior.productCategories",
       many: true,
     }),
     hardwareKitOptions: relationship({
-      ref: 'HardwareKit.productCategories',
+      ref: "HardwareKit.productCategories",
       many: true,
     }),
     glassOptions: relationship({
-      ref: 'Glass.productCategories',
+      ref: "Glass.productCategories",
       many: true,
     }),
     screenOptions: relationship({
-      ref: 'Screen.productCategories',
+      ref: "Screen.productCategories",
       many: true,
     }),
     dividedLiteOptions: relationship({
-      ref: 'DividedLite.productCategories',
+      ref: "DividedLite.productCategories",
+      many: true,
+    }),
+    doorSlabOptions: relationship({
+      ref: "DoorSlab.productCategories",
       many: true,
     }),
     brickmoldAndSubsillOptions: relationship({
-      ref: 'BrickmoldAndSubsill.productCategories',
+      ref: "BrickmoldAndSubsill.productCategories",
       many: true,
     }),
     operations: relationship({
-      ref: 'Operation.productCategories',
+      ref: "Operation.productCategories",
       many: true,
     }),
   },

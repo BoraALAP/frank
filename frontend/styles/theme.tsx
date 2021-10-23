@@ -28,6 +28,7 @@ export const primaryTheme = {
     whiteDisabled: "hsla(0, 0%, 100%,60%)",
     error: "hsl(0, 100%, 15%)",
     whiteBg: "hsla(0, 0%, 100%, 0.5)",
+    highlight: "hsla(0, 0%, 100%, 0.4)",
     overlay: "hsla(0, 0%, 0%, 90%)",
   },
 

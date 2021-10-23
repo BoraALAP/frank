@@ -141,6 +141,8 @@ export const Menu = (props) => {
       animate={{ y: "0vh" }}
       exit={{ y: "-100vh" }}
       transition={{ duration: 0.45, type: "spring", stiffness: 75 }}
+      aria-label="menu modal"
+      role="menu modal"
     >
       <Container>
         <ImgCont
@@ -174,7 +176,7 @@ export const Menu = (props) => {
           </AnimatePresence>
         </ImgCont>
 
-        <Right>
+        <Right aria-label="navigation" role="navigation">
           {links.map((pages, index) => {
             return (
               <Divide
@@ -194,6 +196,8 @@ export const Menu = (props) => {
                       Bottom={item.bottom}
                       onClick={props.onClick}
                       key={index}
+                      aria-label={`Navigation Item - ${item.name}`}
+                      role="navigation item"
                       onMouseEnter={() => {
                         setImageSrc({
                           image1: item.image1,
@@ -245,8 +249,8 @@ const Container = styled(motion.div)`
 `;
 
 const ImageS = styled(motion.img)`
-  /* background-image: url(${(props) => props.src});
-  background-position: 50% 50%;
+  /* background-image: url(${(props) => props.src});*/
+  /* background-position: 50% 50%;
   background-size: cover; */
   width: 100%;
   max-height: 900px;
@@ -262,6 +266,7 @@ const ImgCont = styled(motion.div)`
   width: 100%;
   @media screen and (min-width: 768px) {
     display: grid;
+    align-content: center;
   }
 `;
 

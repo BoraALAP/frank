@@ -89,12 +89,10 @@ export default function CategoryTemplate({ category }) {
 
 const CATEGORY_QUERY = gql`
   query CATEGORY_QUERY($category: String) {
-    allProductCategories(
-      where: { name_contains: $category, sortBy: order_ASC }
-    ) {
+    allProductCategories(where: { name_contains: $category }) {
       id
       name
-      products {
+      products(sortBy: order_ASC) {
         id
         name
         subtitle

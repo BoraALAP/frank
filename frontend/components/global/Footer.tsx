@@ -51,14 +51,14 @@ const Footer = () => {
               <a
                 href="https://www.google.ca/maps/place/248+Bowes+Rd,+Concord,+ON+L4K+1J9/@43.8080799,-79.4959531,17z/data=!3m1!4b1!4m5!3m4!1s0x882b2ef33a5c88f9:0x10157b4990c72448!8m2!3d43.808076!4d-79.4937644"
                 target="_blank"
-                rel="nofollow"
+                rel="noopener"
               >
                 248 Bowes Rd, Concord ON, Canada, L4K 1J9
               </a>
             </p>
             <p>
               Copyright © 2020 Ostaco. All rights reserved. |
-              <a href="https://artticfox.com" target="_blank" rel="nofollow">
+              <a href="https://artticfox.com" target="_blank" rel="noopener">
                 {" "}
                 Build by Artticfox
               </a>
@@ -70,7 +70,7 @@ const Footer = () => {
   );
 };
 
-const BigContainer = styled.div`
+const BigContainer = styled.footer`
   display: grid;
   background-color: var(--color-lightGrey2);
   border-top: 1px solid var(--color-grey);
@@ -88,7 +88,7 @@ const Context = styled.div`
   }
 `;
 
-const Left = styled.div`
+const Left = styled.nav`
   display: grid;
   align-content: start;
   gap: var(--gap);

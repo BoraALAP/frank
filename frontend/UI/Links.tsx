@@ -27,10 +27,11 @@ export const NavLinks = (props) => {
   }
 };
 
-const Container = styled.div`
+const Container = styled.button`
   display: grid;
   padding: 0.5rem 0;
-  font-weight: 500;
+  font-weight: 600;
+  text-align: left;
   color: ${(props) =>
     props.Bottom ? `var(--color-primary)` : `var(--color-grey)`};
   font-size: ${(props) => (props.Bottom ? "0.875rem" : "1.125rem")};

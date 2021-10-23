@@ -1,21 +1,14 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Video, Transformation } from "cloudinary-react";
+import { Video } from "cloudinary-react";
 
 import frank_logo from "../assets/branding/frank_logo";
 import { ArrowRight } from "../assets/icons/Arrow";
 
 import Meta from "../components/global/Meta";
-import { useEffect } from "react";
-import Router from "next/router";
 
 const Home = () => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     Router.push("/home");
-  //   }, 10000);
-  // }, []);
   return (
     <Container
       animate={{ opacity: 1 }}
@@ -32,15 +25,17 @@ const Home = () => {
           transition={{ delay: 1, duration: 0.75 }}
         />
         <Link href="/home">
-          <Right
-            animate={{ x: 0, opacity: 1 }}
-            initial={{ x: 20, opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 1.5, duration: 0.75 }}
-          >
-            <H1>Continue to Frank</H1>
-            <ArrowRight color="var(--color-primary)" />
-          </Right>
+          <a>
+            <Right
+              animate={{ x: 0, opacity: 1 }}
+              initial={{ x: 20, opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 1.5, duration: 0.75 }}
+            >
+              <H1>Continue to Frank</H1>
+              <ArrowRight color="var(--color-primary)" />
+            </Right>
+          </a>
         </Link>
       </Header>
       <VideoContainer>
@@ -71,7 +66,7 @@ const VideoContainer = styled.div`
   justify-content: center;
   z-index: -100;
   video {
-    height: 100vh;
+    width: 100vw;
   }
 `;
 

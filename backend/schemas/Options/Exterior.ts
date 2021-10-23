@@ -1,9 +1,9 @@
-import { text, relationship } from '@keystone-next/fields';
+import { text, relationship, checkbox } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { permissions } from '../../access';
-import { cloudinary } from '../../lib/cloudinaryConfig';
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { permissions } from "../../access";
+import { cloudinary } from "../../lib/cloudinaryConfig";
 
 export const Exterior = list({
   access: {
@@ -24,22 +24,25 @@ export const Exterior = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/exterior',
+        folder: "frank/exterior",
       },
-      label: 'Source',
+      label: "Source",
     }),
     hex: text({}),
     description: text({}),
+    stain: checkbox({
+      defaultValue: false,
+    }),
     products: relationship({
-      ref: 'Product.exteriorOptions',
+      ref: "Product.exteriorOptions",
       many: true,
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.exteriorOptions',
+      ref: "ProductCategory.exteriorOptions",
       many: true,
     }),
     colors: relationship({
-      ref: 'ExteriorColor.parent',
+      ref: "ExteriorColor.parent",
       many: true,
     }),
   },

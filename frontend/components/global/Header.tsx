@@ -53,9 +53,16 @@ export const Header = (props) => {
   });
 
   useEffect(() => {
+    if (isOpen) {
+      setSticky(true);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     dispatch({ type: "HEADER_SHOW", payload: sticky });
   }, [sticky]);
 
+  // open the menu
   const handleMenu = () => {
     dispatch({ type: "MENU_SHOW", payload: !store.menuShow });
     toggleOpen();
@@ -70,24 +77,31 @@ export const Header = (props) => {
   return (
     <Context>
       <Container>
-        <HeaderS show={store.headerShow}>
+        <HeaderS show={store.headerShow} aria-label="header" role="header">
           <Link href="/home">
-            <Left>
-              <LogoS />
-              <H4>
-                We make
-                <br />
-                Windows and Doors
-              </H4>
-            </Left>
+            <a>
+              <Left aria-label="logo" role="logo">
+                <LogoS />
+                <H4>
+                  We make
+                  <br />
+                  Windows and Doors
+                </H4>
+              </Left>
+            </a>
           </Link>
           <Right>
             <MenuIconS
               initial={false}
               animate={isOpen ? "open" : "closed"}
               ref={containerRef}
-              aria-label="Open Close Toggle"
+              aria-label="Menu Open Close Toggle"
               onClick={handleMenu}
+              role="button"
+              type="button"
+              aria-pressed={isOpen ? "true" : "false"}
+              aria-controls="link-list"
+              aria-haspopup="true"
             >
               <MenuIcon />
             </MenuIconS>
@@ -154,10 +168,10 @@ const H4 = styled.h4`
   }
 `;
 
-const MenuIconS = styled(motion.div)`
-  padding: 4px;
-  height: 32px;
-  width: 32px;
+const MenuIconS = styled(motion.button)`
+  /* padding: 4px; */
+  height: 40px;
+  width: 40px;
   box-sizing: border-box;
   &:hover {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));

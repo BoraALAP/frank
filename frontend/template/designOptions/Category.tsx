@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { Container } from "../../components/layout/Container";
@@ -14,42 +12,43 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
     variables: { category: Capitilize(categoryName) },
   });
 
-  const [display, setDisplay] = useState("");
-
   const links = [
     {
       name: "Exterior Finish",
+      to: "Exterior Finish",
       show: data?.allProductCategories[0].exteriorOptions.length > 0,
     },
     {
       name: "Interior Finish",
+      to: "Interior Finish",
       show: data?.allProductCategories[0].interiorOptions.length > 0,
     },
     {
       name: "Hardware",
+      to: "Hardware",
       show: data?.allProductCategories[0].hardwareKitOptions.length > 0,
     },
     {
       name: "Glass",
+      to: "Glass",
       show: data?.allProductCategories[0].glassOptions.length > 0,
     },
     {
       name: "Screens",
+      to: "Screens",
       show: data?.allProductCategories[0].screenOptions.length > 0,
     },
     {
       name: "Divided Lites",
+      to: "Divided Lites",
       show: data?.allProductCategories[0].dividedLiteOptions.length > 0,
     },
     {
-      name: "Brickmold and Subsill",
+      name: "Brickmold",
+      to: "Brickmold",
       show: data?.allProductCategories[0].brickmoldAndSubsillOptions.length > 0,
     },
   ];
-
-  const handleList = (name) => {
-    setDisplay(name);
-  };
 
   const list = () => {
     const item = links.filter((it) => it.show);
@@ -63,7 +62,6 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
         subtitle="Category Design Options Overview"
         parent={`${Capitilize(categoryName)}`}
         links={list()}
-        clickAction={handleList}
       >
         <p>
           Deciding on the product that’s right for your project is just the
@@ -73,22 +71,24 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
         </p>
       </Breadcrumbs>
 
-      {display === "Exterior Finish" && (
+      {data?.allProductCategories[0]?.exteriorOptions?.length > 0 && (
         <Operations
           title="Exterior Finish"
+          id="Exterior Finish"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].exteriorOptions}
           description="
-            The choice of colour can have a big impact, or be a subtle accent to
-            your home’s exterior. Select from our wide range of standard colour
-            coating options, or request a custom colour match – the options are
-            endless.
-          "
+          The choice of colour can have a big impact, or be a subtle accent to
+          your home’s exterior. Select from our wide range of standard colour
+          coating options, or request a custom colour match – the options are
+          endless.
+        "
         />
       )}
-      {display === "Interior Finish" && (
+      {data?.allProductCategories[0]?.interiorOptions?.length > 0 && (
         <Operations
           title="Interior Finish"
+          id="Interior Finish"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].interiorOptions}
           description="
@@ -96,9 +96,10 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {display === "Hardware" && (
+      {data?.allProductCategories[0]?.hardwareKitsOptions?.length > 0 && (
         <Operations
           title="Hardware"
+          id="Hardware"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].hardwareKitsOptions}
           description="
@@ -109,9 +110,10 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {display === "Glass" && (
+      {data?.allProductCategories[0]?.glassOptions?.length > 0 && (
         <Operations
           title="Glass"
+          id="Glass"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].glassOptions}
           description="
@@ -119,9 +121,10 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {display === "Screens" && (
+      {data?.allProductCategories[0]?.screenOptions?.length > 0 && (
         <Operations
           title="Screens"
+          id="Screens"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].screenOptions}
           description="
@@ -129,9 +132,10 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
          "
         />
       )}
-      {display === "Divided Lites" && (
+      {data?.allProductCategories[0]?.dividedLiteOptions?.length > 0 && (
         <Operations
           title="Divided Lites"
+          id="Divided Lites"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].dividedLiteOptions}
           description="
@@ -139,9 +143,11 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {display === "Brickmold and Subsill" && (
+      {data?.allProductCategories[0]?.brickmoldAndSubsillOptions?.length >
+        0 && (
         <Operations
-          title="Brickmold and Subsill"
+          title="Brickmold"
+          id="Brickmold"
           subTitle="Product Design Options"
           list={data?.allProductCategories[0].brickmoldAndSubsillOptions}
           description="
@@ -224,6 +230,11 @@ const CATEGORYOPTIONS = gql`
           id
           publicUrl
           originalFilename
+        }
+        imageDisplay {
+          publicUrl
+          originalFilename
+          id
         }
       }
     }

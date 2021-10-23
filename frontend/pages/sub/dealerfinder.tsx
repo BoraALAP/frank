@@ -106,25 +106,28 @@ const DealerFinder = (props) => {
             locations.map((item) => {
               return (
                 <AnimatePresence exitBeforeEnter initial={false} key={item.id}>
-                  <Dealer
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35 }}
+                  <button
                     onClick={() => {
                       handleClick(item);
                       setMarker(item.id);
                     }}
-                    active={
-                      location.lat === parseFloat(item.lat) &&
-                      location.lng === parseFloat(item.lng)
-                    }
                   >
-                    <h4>{item.city}</h4>
-                    <h6>{item.name}</h6>
+                    <Dealer
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.35 }}
+                      active={
+                        location.lat === parseFloat(item.lat) &&
+                        location.lng === parseFloat(item.lng)
+                      }
+                    >
+                      <h4>{item.city}</h4>
+                      <h6>{item.name}</h6>
 
-                    <p>{item.formattedAddress}</p>
-                  </Dealer>
+                      <p>{item.formattedAddress}</p>
+                    </Dealer>
+                  </button>
                 </AnimatePresence>
               );
             })
@@ -258,6 +261,7 @@ const Fixed = styled.div`
 const Dealer = styled(motion.li)`
   padding-left: 5vw;
   grid-gap: 0.5em;
+  text-align: left;
   h6,
   h4 {
     color: ${(props) => props.active && `var(--color-secondary)`};

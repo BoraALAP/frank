@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
     --color-black: hsl(0, 0%, 0%);
     --color-white: hsl(0, 0%, 100%);
     --color-whiteDisabled: hsla(0, 0%, 100%,60%);
+    --color-highlight: hsla(0, 0%, 100%, 0.4);
     --color-error: hsl(0, 100%, 15%);
     --color-whiteBg: hsla(0, 0%, 100%, 0.5);
     --color-overlay: hsla(0, 0%, 0%, 90%);
@@ -43,6 +44,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+*:focus{
+  outline: 1px solid #001ec9;
+}
   body{
     font-family: var(--font-main);
     font-weight: 400;
@@ -174,6 +178,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
     border: none;
     padding: 0;
+    color: var(--color-primary);
     &:disabled{
       background-color: var(--color-grey);
       border: none;

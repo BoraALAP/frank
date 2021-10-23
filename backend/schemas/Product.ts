@@ -110,7 +110,6 @@ export const Product = list({
       },
       label: "Product Image 4",
     }),
-
     operationsTitle: text({}),
     operationsSubTitle: text({}),
     operationsDescription: text({
@@ -142,6 +141,10 @@ export const Product = list({
     }),
     dividedLiteOptions: relationship({
       ref: "DividedLite.products",
+      many: true,
+    }),
+    doorSlabOptions: relationship({
+      ref: "DoorSlab.products",
       many: true,
     }),
     brickmoldAndSubsillOptions: relationship({

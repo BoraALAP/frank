@@ -9,10 +9,12 @@ import { Container } from "../../layout/Container";
 interface Props {
   list?: any;
   video?: Boolean;
-  title: String;
-  subTitle: String;
+  title?: String;
+  subTitle?: String;
   description?: any;
   padding?: Boolean;
+  id?: string;
+  key?: string;
 }
 
 const variants = {
@@ -30,83 +32,135 @@ const variants = {
 export const Operations = ({
   list,
   video = false,
-  title = "Operations",
+  title,
   subTitle,
   description,
   padding = false,
+  id,
 }: Props) => {
   const [videoSrc, setVideoSrc] = useState();
   const [imageSrc, setImageSrc] = useState();
   const [operationName, setOperationName] = useState();
   const [descriptions, setDescription] = useState();
-  const [id, setId] = useState();
+  const [products, setProducts] = useState([]);
+  const [itemId, setItemId] = useState();
   const [active, setActive] = useState();
   useEffect(() => {
     setImageSrc(list && list[0]?.image?.publicUrl);
     setVideoSrc(list && list[0]?.video);
     setOperationName(list && list[0]?.name);
-    setId(list && list[0]?.id);
+    setItemId(list && list[0]?.id);
+    setProducts(list && list[0]?.products);
   }, [list]);
 
   return (
-    <Container gap padding={padding && true}>
-      <Details title={title} subtitle={subTitle} transparent>
-        {description}
-      </Details>
+    <Container gap padding={padding && true} id={id}>
+      {(title || subTitle) && (
+        <Details title={title} subtitle={subTitle} transparent>
+          {description}
+        </Details>
+      )}
       <Middle>
         <Left>
           {videoSrc && video ? (
-            <ReactPlayer
-              url={videoSrc}
-              playing
-              loop
-              muted
-              controls
-              width="100%"
-              // height="100%"
-            />
+            <AnimatePresence exitBeforeEnter>
+              <VideoContainer
+                key={itemId}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.35 }}
+              >
+                <ReactPlayer
+                  url={videoSrc}
+                  playing
+                  loop
+                  muted
+                  controls
+                  width="100%"
+                  height="auto"
+                  className="video"
+                />
+              </VideoContainer>
+            </AnimatePresence>
           ) : (
             <AnimatePresence exitBeforeEnter>
               <ImageS
                 alt={operationName}
-                key={id}
+                key={itemId}
                 src={imageSrc}
                 variants={variants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.35 }}
               />
             </AnimatePresence>
           )}
-          <h6>{operationName}</h6>
-          <p>{descriptions}</p>
+          <AnimatePresence exitBeforeEnter>
+            <TextDetails
+              key={itemId}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35 }}
+            >
+              {operationName && <h6>{operationName}</h6>}
+              {description && <p>{descriptions}</p>}
+              {products && (
+                <ProductDisplay>
+                  {products.map((item) => (
+                    <p>{item.name}</p>
+                  ))}
+                </ProductDisplay>
+              )}
+            </TextDetails>
+          </AnimatePresence>
         </Left>
         <Right>
           {list?.map((item) => {
             return (
-              <ImageContainer
+              <button
                 key={item.id}
-                src={item.image?.publicUrl}
-                alt={item.image?.originalFilename}
-                active={item.id === active}
+                aria-label="option thumbnail"
                 onMouseEnter={() => {
                   item.video && setVideoSrc(item.video);
-                  item.image && setImageSrc(item.image?.publicUrl);
+                  item.image &&
+                    setImageSrc(
+                      item.imageDisplay
+                        ? item.imageDisplay?.publicUrl
+                        : item.image?.publicUrl
+                    );
                   setOperationName(item.name);
                   setDescription(item.description);
                   setActive(item.id);
-                  setId(item.id);
+                  setItemId(item.id);
+                  item.products && setProducts(item.products);
                 }}
                 onClick={() => {
                   setVideoSrc(item.video);
-                  item.image && setImageSrc(item.image?.publicUrl);
+                  item.image &&
+                    setImageSrc(
+                      item.imageDisplay
+                        ? item.imageDisplay?.publicUrl
+                        : item.image?.publicUrl
+                    );
                   setDescription(item.description);
                   setActive(item.id);
                   setOperationName(item.name);
-                  setId(item.id);
+                  setItemId(item.id);
+                  item.product && setProducts(item.products);
                 }}
-              />
+              >
+                <ImageContainer
+                  key={item.id}
+                  src={item.image?.publicUrl}
+                  alt={item.image?.originalFilename}
+                  active={item.id === active}
+                />
+              </button>
             );
           })}
         </Right>
@@ -132,14 +186,14 @@ const Left = styled.div`
   gap: calc(var(--gap) / 2);
 
   /* can be deleted after all of them set  */
-  div {
+  div.video {
     height: 300px;
 
-    @media screen and (min-width: 768px) {
+    /* @media screen and (min-width: 768px) {
       max-height: 450px;
       height: 50vw;
       min-height: 250px;
-    }
+    } */
   }
 `;
 
@@ -147,8 +201,12 @@ const Right = styled.div`
   display: grid;
   gap: calc(var(--gap) / 4);
   grid-template-columns: repeat(auto-fit, minmax(4rem, 4rem));
-  justify-content: center;
+  justify-content: start;
   align-content: start;
+`;
+
+const VideoContainer = styled(motion.div)`
+  display: grid;
 `;
 
 const ImageContainer = styled.div`
@@ -175,9 +233,27 @@ const ImageContainer = styled.div`
 
 const ImageS = styled(motion.div)`
   background-image: url(${(props) => props.src});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  height: 100%;
+
+  height: 300px;
+
+  @media screen and (min-width: 768px) {
+    max-height: 450px;
+    height: 50vw;
+    min-height: 250px;
+  }
+`;
+
+const ProductDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+`;
+
+const TextDetails = styled(motion.div)`
+  display: grid;
 `;
