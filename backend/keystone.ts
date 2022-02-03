@@ -29,13 +29,11 @@ import { ContactUsForm } from "./schemas/ContactUsForm";
 import { User } from "./schemas/User";
 
 import { forgotPasswordEmail } from "./lib/mail";
-// import { extendGraphqlSchema } from './mutations';
-
-function check(name: string) {}
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
+  sameSite: "none",
 };
 
 const { withAuth } = createAuth({
@@ -45,6 +43,7 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ["firstName", "lastName", "email", "password", "companyName"],
   },
+
   passwordResetLink: {
     async sendToken(args) {
       // send the email
@@ -86,7 +85,6 @@ export default withAuth(
         credentials: true,
       },
     },
-    // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
       isAccessAllowed: ({ session }) => !!session?.data,

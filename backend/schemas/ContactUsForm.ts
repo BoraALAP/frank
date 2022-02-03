@@ -1,8 +1,8 @@
-import { text } from '@keystone-next/fields';
+import { text } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
-import { permissions } from '../access';
-import { contactUsFormEmail } from '../lib/mail';
+import { list } from "@keystone-next/keystone/schema";
+import { permissions } from "../access";
+import { contactUsFormEmail } from "../lib/mail";
 
 export const ContactUsForm = list({
   access: {
@@ -18,7 +18,6 @@ export const ContactUsForm = list({
   },
   hooks: {
     resolveInput: async ({ resolvedData }) => {
-      console.log(resolvedData);
       await contactUsFormEmail(resolvedData);
       return resolvedData;
     },
@@ -53,7 +52,7 @@ export const ContactUsForm = list({
     comments: text({
       isRequired: true,
       ui: {
-        displayMode: 'textarea',
+        displayMode: "textarea",
       },
     }),
     iam: text({

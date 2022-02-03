@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { TertiaryButton } from "./Links";
 
-import Close from "../assets/icons/lightboxCross";
+import { LightBoxCross } from "../assets/icons/lightboxCross";
 import { ArrowLeft } from "../assets/icons/Arrow";
 import { ArrowRight } from "../assets/icons/Arrow";
 
@@ -93,7 +93,7 @@ const Lightbox = ({
 
         <Middle>
           <Icon onClick={close}>
-            <Close color="white" />
+            <LightBoxCross color="white" />
           </Icon>
           <ImageContainer>
             <Image
@@ -127,9 +127,9 @@ const Container = styled.div`
   display: ${(props) => (props.open ? "grid" : "none")};
   width: 100vw;
   height: 100vh;
-
   position: fixed;
 `;
+
 const Context = styled.div`
   display: grid;
   grid-template-columns: repeat(3, auto);

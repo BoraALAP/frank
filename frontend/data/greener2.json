@@ -1373,11 +1373,7 @@
             "estSaving": "$250"
           }
         ]
-      },
-      { "type": "Single Hung", "options": [] },
-      { "type": "Double Hung", "options": [] },
-      { "type": "Single Slider", "options": [] },
-      { "type": "Double Slider", "options": [] }
+      }
     ]
   },
   {

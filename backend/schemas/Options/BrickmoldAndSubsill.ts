@@ -1,8 +1,8 @@
-import { text, relationship } from '@keystone-next/fields';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinary } from '../../lib/cloudinaryConfig';
-import { permissions } from '../../access';
+import { text, relationship, select } from "@keystone-next/fields";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinary } from "../../lib/cloudinaryConfig";
+import { permissions } from "../../access";
 
 export const BrickmoldAndSubsill = list({
   access: {
@@ -23,24 +23,32 @@ export const BrickmoldAndSubsill = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/brickmold',
+        folder: "frank/brickmold",
       },
-      label: 'Source',
+      label: "Source",
     }),
     imageDisplay: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/brickmold',
+        folder: "frank/brickmold",
       },
-      label: 'Source Display',
+      label: "Source Display",
     }),
     description: text({}),
+    type: select({
+      dataType: "enum",
+      options: [
+        { label: "Options", value: "Options" },
+        { label: "Comparison", value: "Comparison" },
+      ],
+      ui: { displayMode: "select" },
+    }),
     products: relationship({
-      ref: 'Product.brickmoldAndSubsillOptions',
+      ref: "Product.brickmoldAndSubsillOptions",
       many: true,
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.brickmoldAndSubsillOptions',
+      ref: "ProductCategory.brickmoldAndSubsillOptions",
       many: true,
     }),
   },

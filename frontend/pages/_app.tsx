@@ -30,30 +30,30 @@ const MyApp = ({ Component, pageProps, apollo }) => {
         {router.route !== "/" && <Header />}
 
         <ComponentS>
-          <AnimatePresence exitBeforeEnter initial={false}>
-            <Component {...pageProps} key={router.pathname} />
-            <CookieConsent
-              location="bottom"
-              buttonText="Accept All"
-              cookieName="acceptingCookies"
-              style={{
-                background: "var(--color-primary)",
-                boxSizing: "border-box",
-                width: "100%",
-                padding: "16px 32px",
-              }}
-              buttonStyle={{
-                backgroundColor: "var(--color-secondary)",
-                color: "#fff",
-                fontSize: "16px",
-                padding: "8px 32px",
-              }}
-              expires={150}
-            >
-              This website uses cookies to ensure you get the best experience on
-              our website.{" "}
-            </CookieConsent>
-          </AnimatePresence>
+          {/* <AnimatePresence exitBeforeEnter initial={false}> */}
+          <Component {...pageProps} key={router.pathname} />
+          <CookieConsent
+            location="bottom"
+            buttonText="Accept All"
+            cookieName="acceptingCookies"
+            style={{
+              background: "var(--color-primary)",
+              boxSizing: "border-box",
+              width: "100%",
+              padding: "16px 32px",
+            }}
+            buttonStyle={{
+              backgroundColor: "var(--color-secondary)",
+              color: "#fff",
+              fontSize: "16px",
+              padding: "8px 32px",
+            }}
+            expires={150}
+          >
+            This website uses cookies to ensure you get the best experience on
+            our website.{" "}
+          </CookieConsent>
+          {/* </AnimatePresence> */}
         </ComponentS>
 
         {router.route !== "/" && <Footer />}

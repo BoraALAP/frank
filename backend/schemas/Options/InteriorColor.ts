@@ -1,9 +1,9 @@
-import { text, relationship } from '@keystone-next/fields';
+import { text, relationship } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { permissions } from '../../access';
-import { cloudinary } from '../../lib/cloudinaryConfig';
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { permissions } from "../../access";
+import { cloudinary } from "../../lib/cloudinaryConfig";
 
 export const InteriorColor = list({
   access: {
@@ -24,13 +24,13 @@ export const InteriorColor = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/interiorcolor',
+        folder: "frank/interiorcolor",
       },
-      label: 'Source',
+      label: "Source",
     }),
     description: text({}),
     parent: relationship({
-      ref: 'Interior.colors',
+      ref: "Interior.colors",
       many: true,
     }),
   },

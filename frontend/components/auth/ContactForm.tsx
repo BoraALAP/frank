@@ -13,11 +13,8 @@ import { Button } from "../../UI/Links";
 import { useState } from "react";
 
 export const ContactForm = () => {
-  const [createContactUsForm, { data, error, loading }] = useMutation(
-    CONTACT_QUERY
-  );
-
-  console.log(data);
+  const [createContactUsForm, { data, error, loading }] =
+    useMutation(CONTACT_QUERY);
 
   const [errors, setErrors] = useState("");
 

@@ -32,7 +32,7 @@ export const DoorSlab = list({
     material: select({
       dataType: "enum",
       options: [
-        { label: "America", value: "America" },
+        { label: "American", value: "American" },
         { label: "Canvas", value: "Canvas" },
         { label: "Mahogany", value: "Mahogany" },
         { label: "Rustic", value: "Rustic" },

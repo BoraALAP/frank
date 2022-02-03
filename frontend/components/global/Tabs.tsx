@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Tabs = ({ tabs, onClick, active }) => {
-  console.log("active", active);
+  console.log(tabs);
 
   return (
     <Container>
@@ -13,7 +13,7 @@ const Tabs = ({ tabs, onClick, active }) => {
             active={active === index}
             onClick={() => onClick(index)}
           >
-            {item}
+            <h6>{item}</h6>
           </Tab>
         );
       })}

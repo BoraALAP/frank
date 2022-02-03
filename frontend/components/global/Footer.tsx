@@ -14,9 +14,12 @@ const Footer = () => {
   ];
 
   const socials = [
-    { name: "Facebook", href: "" },
-    { name: "Instagram", href: "" },
-    { name: "LinkedIn", href: "" },
+    { name: "Facebook", href: "https://www.facebook.com/frankWD.2020" },
+    { name: "Instagram", href: "https://www.instagram.com/frankwindowsdoors" },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/frank-windows-doors",
+    },
   ];
 
   return (

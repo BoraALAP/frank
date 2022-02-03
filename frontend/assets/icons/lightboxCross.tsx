@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const lightboxCross = ({ color }) => {
+export const LightBoxCross = ({ color }) => {
   return (
     <Svg
       width="44"
@@ -28,5 +28,3 @@ const Svg = styled.svg`
 
   z-index: 10;
 `;
-
-export default lightboxCross;

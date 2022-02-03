@@ -4,7 +4,7 @@ import { Body } from "../components/layout/Body";
 import { Container } from "../components/layout/Container";
 
 interface Props {
-  imageSrc: string;
+  imageSrc?: string;
   children: any;
   id?: string;
   rev?: boolean;
@@ -14,9 +14,11 @@ export const TwoColumn = ({ imageSrc, children, rev = false, id }: Props) => {
   return (
     <Container>
       <Context id={id}>
-        <ImageContainer rev={rev}>
-          <Image src={imageSrc} objectFit="cover" layout="fill" />
-        </ImageContainer>
+        {imageSrc && (
+          <ImageContainer rev={rev}>
+            <Image src={imageSrc} objectFit="cover" layout="fill" />
+          </ImageContainer>
+        )}
 
         <Text>{children}</Text>
       </Context>
@@ -38,7 +40,8 @@ const Context = styled.div`
 const ImageContainer = styled.div`
   display: grid;
   position: relative;
-  min-height: 300px;
+
+  min-height: 400px;
 
   @media screen and (min-width: 768px) {
     order: ${(props) => (props.rev ? "1" : "0")};

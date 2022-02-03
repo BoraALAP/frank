@@ -36,7 +36,7 @@ const SIGNIN_MUTATION = gql`
 const SignInForm = ({ onSuccess }: any) => {
   const [errors, setError] = useState("");
   const user = useUser();
-  const [signin, { error, loading }] = useMutation(SIGNIN_MUTATION, {
+  const [signin, { data, error, loading }] = useMutation(SIGNIN_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
@@ -63,11 +63,15 @@ const SignInForm = ({ onSuccess }: any) => {
               variables: { email: email, password: password },
             });
 
+            if (data?.authenticateUserWithPassword?.code === "FAILURE") {
+              setError("Please check your email and password");
+            }
+
             if (onSuccess && typeof onSuccess === "function") {
               onSuccess();
             }
           } catch (error) {
-            setError("Please check your email and password");
+            console.log(error);
           }
         }}
       >
@@ -97,7 +101,7 @@ const SignInForm = ({ onSuccess }: any) => {
             />
             <ErrorMessages name="password" />
           </FieldContainer>
-          <ErrorMessages>{error}</ErrorMessages>
+          <ErrorMessages>{errors}</ErrorMessages>
           {loading ? (
             <Button disabled>Signing in...</Button>
           ) : (

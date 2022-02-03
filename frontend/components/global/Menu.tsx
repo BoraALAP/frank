@@ -58,14 +58,14 @@ export const Menu = (props) => {
 
         bottom: false,
       },
-      {
-        href: "/designoptions",
-        name: "Design Options",
-        image1:
-          "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/DESIGN_agrkrp.jpg",
+      // {
+      //   href: "/designoptions",
+      //   name: "Design Options",
+      //   image1:
+      //     "https://res.cloudinary.com/arttic-fox/image/upload/v1615427643/frank/menu/DESIGN_agrkrp.jpg",
 
-        bottom: false,
-      },
+      //   bottom: false,
+      // },
       {
         href: "/sub/learn",
         name: "Learn",

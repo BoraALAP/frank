@@ -134,7 +134,9 @@ export const Breadcrumbs = ({
         {children && <Text>{children}</Text>}
         <Links>
           {links?.map((item, index) => {
-            return listItems(item, index, clickAction);
+            if (item?.show) {
+              return listItems(item, index, clickAction);
+            }
           })}
         </Links>
       </Bottom>

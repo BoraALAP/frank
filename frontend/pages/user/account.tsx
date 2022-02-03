@@ -21,7 +21,7 @@ const account = () => {
     <Container space padding gap title="My Profile">
       <PageTitle title="Account" />
       <h2>Hello {user?.firstName}</h2>
-      {user?.role?.dealer && (
+      {user?.dealer && (
         <ListContainer>
           <h6>Dealer Brochures</h6>
           <List>

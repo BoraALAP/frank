@@ -1,4 +1,4 @@
-import { text, relationship, checkbox } from "@keystone-next/fields";
+import { text, relationship, select } from "@keystone-next/fields";
 
 import { list } from "@keystone-next/keystone/schema";
 import { cloudinaryImage } from "@keystone-next/cloudinary";
@@ -28,10 +28,22 @@ export const Exterior = list({
       },
       label: "Source",
     }),
+    imageDisplay: cloudinaryImage({
+      cloudinary: {
+        ...cloudinary,
+        folder: "frank/exterior",
+      },
+      label: "Source Display",
+    }),
     hex: text({}),
     description: text({}),
-    stain: checkbox({
-      defaultValue: false,
+    type: select({
+      dataType: "enum",
+      options: [
+        { label: "Stain", value: "Stain" },
+        { label: "Colour", value: "Colour" },
+      ],
+      ui: { displayMode: "select" },
     }),
     products: relationship({
       ref: "Product.exteriorOptions",

@@ -75,13 +75,15 @@ export default function CategoryTemplate({ category }) {
     <Container space pageGap title={name}>
       <PageTitle title={name} links={links} padding />
       {products.map((product, index) => {
-        return (
-          <ProductCard
-            product={product}
-            side={index! % 2 && true}
-            key={product.id}
-          ></ProductCard>
-        );
+        if (!product.hide) {
+          return (
+            <ProductCard
+              product={product}
+              side={index! % 2 && true}
+              key={product.id}
+            ></ProductCard>
+          );
+        }
       })}
     </Container>
   );
@@ -95,6 +97,7 @@ const CATEGORY_QUERY = gql`
       products(sortBy: order_ASC) {
         id
         name
+        hide
         subtitle
         excerpt
         image {

@@ -16,15 +16,10 @@ export default function designoptions() {
 
   const links = [
     {
-      name: "Exterior Finish",
+      name: "Finishes",
       show: data?.allExteriors.length > 0,
-      to: "Exterior Finish",
+      to: "Finishes",
     },
-    // {
-    //   name: "Interior Finish",
-    //   show: data?.allInteriors.length > 0,
-    //   to: "Interior Finish",
-    // },
     {
       name: "Hardware",
       show: data?.allHardwareKits.length > 0,
@@ -41,9 +36,14 @@ export default function designoptions() {
       to: "Screens",
     },
     {
-      name: "Divided Lites",
+      name: "Window Divided Lites",
       show: data?.allDividedLites.length > 0,
       to: "Divided Lites",
+    },
+    {
+      name: "Entry Door Slabs",
+      show: data?.allDividedLites.length > 0,
+      to: "Door Slabs",
     },
     {
       name: "Brickmold",
@@ -68,7 +68,7 @@ export default function designoptions() {
   const [glassTab, setGlassTab] = useState(0);
 
   const arrayGlass = [arrayGlassNonPrivacy, arrayGlassPrivacy];
-  const arrayGlassTitles = ["Decor", "Privacy"];
+  const arrayGlassLabel = ["Decor", "Privacy"];
 
   // Exterior !!!!!!!!!!!!!!!
 
@@ -89,8 +89,6 @@ export default function designoptions() {
       return value.type;
     })
     .filter((value, index, self) => {
-      console.log(value, index, self);
-
       return self.indexOf(value) === index;
     });
 
@@ -125,102 +123,25 @@ export default function designoptions() {
         </PageTitle>
       </Container>
 
-      {/* <Details title="Exterior Finish" transparent id="Exterior Finish" />
-      {data?.allProductCategories &&
-        data.allProductCategories.map((item, index) => {
-          console.log(item);
-
-          return (
-            <Operations
-              key={index}
-              subTitle={`${item.name} Exterior Options`}
-              list={item.exteriorOptions}
-              description="
-            The choice of colour can have a big impact, or be a subtle accent to
-            your home’s exterior. Select from our wide range of standard colour
-            coating options, or request a custom colour match – the options are
-            endless.
-          "
-            />
-          );
-        })} */}
-
-      <Container gap>
-        <Details title="Exterior" subtitle="Product Design Options" transparent>
+      {data?.allExteriorOptions.length > 0 && (
+        <Operations
+          title="Finishes"
+          list={data?.allExteriorOptions}
+          id="Finishes"
+          description="
           The choice of colour can have a big impact, or be a subtle accent to
           your home’s exterior. Select from our wide range of standard colour
           coating options, or request a custom colour match – the options are
           endless.
-        </Details>
-
-        {arrayExteriorLabel && (
-          <Tabs
-            tabs={arrayExteriorLabel}
-            active={exteriorTab}
-            onClick={(e) => setExteriorTab(e)}
-          />
-        )}
-        {arrayExteriorColor &&
-          arrayExteriorColor.map((list, index) => {
-            const withStain = list.filter((item) => {
-              return item.stain;
-            });
-            const withoutStain = list.filter((item) => {
-              return !item.stain;
-            });
-
-            if (index === exteriorTab) {
-              if (withStain.length > 0) {
-                return (
-                  <>
-                    <Operations
-                      id="Exterior"
-                      subTitle="Stain"
-                      key={`${index + 10}`}
-                      list={withStain}
-                    />
-                    <Operations
-                      id="Exterior"
-                      subTitle="Color"
-                      key={`${index}`}
-                      list={withoutStain}
-                    />
-                  </>
-                );
-              }
-              return (
-                <Operations
-                  id="Exterior"
-                  key={`${index}`}
-                  list={withoutStain}
-                />
-              );
-            }
-          })}
-      </Container>
-
-      {/* <Details title="Interior Finish" transparent id="Interior Finish" />
-      {data?.allProductCategories &&
-        data.allProductCategories.map((item) => {
-          return (
-            <Operations
-              subTitle={`${item.name} Interior Finish`}
-              list={item.exteriorOptions}
-              description="
-            The choice of colour can have a big impact, or be a subtle accent to
-            your home’s exterior. Select from our wide range of standard colour
-            coating options, or request a custom colour match – the options are
-            endless.
           "
-            />
-          );
-        })} */}
+        />
+      )}
 
       {data?.allHardwareKits.length > 0 && (
         <Operations
           title="Hardware"
           id="Hardware"
-          subTitle="Product Design Options"
+          contain
           list={data?.allHardwareKits}
           description="
             Practical does not need to be boring. Quality and ease of use may be
@@ -232,30 +153,22 @@ export default function designoptions() {
       )}
 
       {data?.allGlasses.length > 0 && (
-        <Container gap>
-          <Details title="Glass" subtitle="Product Design Options" transparent>
-            New glass refreshes your home’s look and improves your insulation.
-            Choose from our different options for enhanced security, privacy,
-            lighting, and energy efficiency.
-          </Details>
-
-          <Tabs
-            tabs={arrayGlassTitles}
-            active={glassTab}
-            onClick={(e) => setGlassTab(e)}
-          />
-          {arrayGlass.map((list, index) => {
-            if (index === glassTab)
-              return <Operations id="Glass" key={`${index}`} list={list} />;
-          })}
-        </Container>
+        <Operations
+          title="Glass"
+          list={data?.allGlasses}
+          id="Glass"
+          description="
+          New glass refreshes your home’s look and improves your insulation.
+          Choose from our different options for enhanced security, privacy,
+          lighting, and energy efficiency.
+       "
+        />
       )}
 
       {data?.allScreens.length > 0 && (
         <Operations
           title="Screens"
           id="Screens"
-          subTitle="Product Design Options"
           list={data?.allScreens}
           description="
           Screens come in a variety of mesh and screenbar options to complete the customization of your windows. Our newest product is FlexScreen for windows. And for entranceways, we offer factory-installed retractable screens.
@@ -264,88 +177,37 @@ export default function designoptions() {
       )}
 
       {data?.allDividedLites.length > 0 && (
-        <Container gap>
-          <Details
-            title="Divided Lites"
-            subtitle="Product Design Options"
-            transparent
-          >
-            Add refinement to any glass surface with divided lights. Presented
+        <Operations
+          title="Window Divided Lites"
+          id="Divided Lites"
+          list={data?.allDividedLites}
+          description="
+         Add refinement to any glass surface with divided lights. Presented
             in a variety of patterns and in a range of materials and finishes,
             the details make the difference.
-          </Details>
-
-          <Tabs
-            tabs={arrayDividedLabel}
-            active={dividedTab}
-            onClick={(e) => setDividedTab(e)}
-          />
-          {arrayDivided.map((list, index) => {
-            if (index === dividedTab)
-              return <Operations id="Divided" key={`${index}`} list={list} />;
-          })}
-        </Container>
+        "
+        />
       )}
 
-      {/* <>
-        {data?.allDividedLites.length > 0 && (
+      {data?.allDoorSlabs.length > 0 && (
+        <Container gap>
           <Operations
-            title="Divided Lites"
-            id="Divided Lites"
-            subTitle="Product Design Options"
-            list={data?.allDividedLites}
+            id="Door Slabs"
+            list={data?.allDoorSlabs}
+            title="Entry Door Slabs"
+            contain
             description="
-          Add refinement to any glass surface with divided lights. Presented in a variety of patterns and in a range of materials and finishes, the details make the difference.
-          "
+          Add refinement to any glass surface with divided lights. Presented
+          in a variety of patterns and in a range of materials and finishes,
+          the details make the difference."
           />
-        )}
-        <Extra>
-          <DividedLitesOptions>
-            <Details subtitle="SDL Bar Options" transparent />
-            <ImageCont>
-              {SDLBarOptions.map((it, index) => {
-                return (
-                  <Card key={index}>
-                    <Image
-                      src={it.imgSrc}
-                      layout="responsive"
-                      width={400}
-                      height={300}
-                    />
-                    <Title>{it.title}</Title>
-                    <Description>{it.description}</Description>
-                  </Card>
-                );
-              })}
-            </ImageCont>
-          </DividedLitesOptions>
-          <DividedLitesOptions>
-            <Details transparent subtitle="Bar Type" />
-            <ImageCont>
-              {BarType.map((it, index) => {
-                return (
-                  <Card key={index}>
-                    <Image
-                      src={it.imgSrc}
-                      layout="responsive"
-                      width={400}
-                      height={300}
-                    />
-                    <Title>{it.title}</Title>
-                    <Description>{it.description}</Description>
-                  </Card>
-                );
-              })}
-            </ImageCont>
-          </DividedLitesOptions>
-        </Extra>
-      </> */}
+        </Container>
+      )}
 
       {data?.allBrickmoldAndSubsills.length > 0 && (
         <Operations
           title="Brickmold"
           id="Brickmold"
-          subTitle="Product Design Options"
           list={data?.allBrickmoldAndSubsills}
           description="
           Exterior brickmold is available in an assortment of styles suitable for every application and aesthetic. Similarly, factory stained or painted trim is made to order and finished to match your interior for a cohesive look.
@@ -355,38 +217,6 @@ export default function designoptions() {
     </Container>
   );
 }
-
-const Extra = styled.div`
-  display: grid;
-  gap: calc(2 * var(--gap));
-`;
-
-const DividedLitesOptions = styled.div`
-  display: grid;
-  gap: var(--gap);
-`;
-
-const ImageCont = styled.div`
-  display: grid;
-  gap: var(--gap);
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-const Card = styled.div`
-  display: grid;
-  gap: calc(var(--gap) / 2);
-  align-content: baseline;
-`;
-
-const Title = styled.h6`
-  display: grid;
-`;
-
-const Description = styled.p`
-  display: grid;
-`;
 
 const OPTIONS = gql`
   query allOptions {
@@ -419,7 +249,7 @@ const OPTIONS = gql`
       id
       name
       description
-      privacy
+      type
       image {
         publicUrl
         originalFilename
@@ -440,7 +270,7 @@ const OPTIONS = gql`
       id
       name
       description
-      stain
+      type
       image {
         publicUrl
         originalFilename
@@ -451,6 +281,7 @@ const OPTIONS = gql`
       id
       name
       description
+      type
       image {
         publicUrl
         originalFilename
@@ -462,6 +293,17 @@ const OPTIONS = gql`
       name
       description
       type
+      image {
+        publicUrl
+        originalFilename
+        id
+      }
+    }
+    allDoorSlabs {
+      id
+      name
+      description
+      material
       image {
         publicUrl
         originalFilename

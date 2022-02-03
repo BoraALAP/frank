@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-scroll";
-import { gql, useQuery } from "@apollo/client";
+// import { gql, useQuery } from "@apollo/client";
 
 import { Container } from "../../components/layout/Container";
 import { DesignOptions } from "../../components/pageSpecific/EnergyEfficiency";
@@ -8,14 +7,10 @@ import { PageTitle } from "../../components/layout/PageTitle";
 import { TwoColumn } from "../../UI/TwoColumn";
 import { Body } from "../../components/layout/Body";
 import Certify from "../../components/pageSpecific/learn/Certify";
-import { Operations } from "../../components/pageSpecific/products/Operations";
-import Table from "../../components/pageSpecific/learn/Table";
-import generalData from "../../data/greener.json";
+import { GreenInitiative } from "../../components/pageSpecific/products/GreenInitiative";
 
 const learn = () => {
-  const { loading, error, data } = useQuery(OPERATION_QUERY);
-
-  console.log(data);
+  // const { loading, error, data } = useQuery(OPERATION_QUERY);
 
   const links = [
     { name: "U-Factor", to: "ufactor" },
@@ -25,9 +20,8 @@ const learn = () => {
       to: "visibletransmittance",
     },
     { name: "Energy Star", to: "energystar" },
-    { name: "Design Options", href: "/designoptions" },
-    { name: "Table", to: "table" },
-    { name: "Operations Overview", to: "operationsOverview" },
+    // { name: "Design Options", href: "/designoptions" },
+    { name: "Energy Calculator", to: "energyCalculator" },
   ];
 
   return (
@@ -58,7 +52,7 @@ const learn = () => {
           </Body>
         </PageTitle>
 
-        <TwoColumn imageSrc="/frank2.jpg" rev id="ufactor">
+        <TwoColumn imageSrc="/learn1.jpg" rev id="ufactor">
           <h4>U-Factor</h4>
           <p>
             How well do your windows and doors keep heat inside your home? Well,
@@ -69,7 +63,7 @@ const learn = () => {
             we get depending on your geographic location.
           </p>
         </TwoColumn>
-        <TwoColumn imageSrc="/frank2.jpg">
+        <TwoColumn imageSrc="/learn2.jpg">
           <div>
             <h4 id="solarheatgain">Solar Heat Gain</h4>
             <p>
@@ -100,7 +94,7 @@ const learn = () => {
           </div>
         </TwoColumn>
         <PageTitle title="Energy Star" padding id="energystar" />
-        <TwoColumn imageSrc="/frank2.jpg" rev>
+        <TwoColumn imageSrc="/learn3.jpg" rev>
           <div>
             <h4>Save Money - And More</h4>
             <p>
@@ -120,7 +114,7 @@ const learn = () => {
             </p>
           </div>
         </TwoColumn>
-        <TwoColumn imageSrc="/frank2.jpg">
+        <TwoColumn imageSrc="/learn4.jpg">
           <>
             <h4>Protect Your Valuables</h4>
             <p>
@@ -139,23 +133,7 @@ const learn = () => {
         </TwoColumn>
         <Certify />
         <DesignOptions />
-
-        <PageTitle title="Operations" padding id="operationsOverview" />
-        {data?.allProductCategories.map((item) => (
-          <Operations
-            key={item.key}
-            list={item.operations}
-            subTitle={item.name}
-            video
-            padding
-          />
-        ))}
-        <Container gap>
-          <PageTitle title="Table" padding id="table" />
-          <Container padding>
-            <Table id="table" data={generalData} />
-          </Container>
-        </Container>
+        <GreenInitiative id="energyCalculator" />
       </Context>
     </Container>
   );
@@ -166,27 +144,27 @@ const Context = styled.div`
   gap: calc(4 * var(--gap));
 `;
 
-const OPERATION_QUERY = gql`
-  query Category {
-    allProductCategories {
-      name
-      id
-      operations {
-        id
-        name
-        image {
-          id
-          publicUrl
-          originalFilename
-        }
-        video
-        products {
-          id
-          name
-        }
-      }
-    }
-  }
-`;
+// const OPERATION_QUERY = gql`
+//   query Category {
+//     allProductCategories {
+//       name
+//       id
+//       operations {
+//         id
+//         name
+//         image {
+//           id
+//           publicUrl
+//           originalFilename
+//         }
+//         video
+//         products {
+//           id
+//           name
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default learn;

@@ -1,4 +1,4 @@
-import { text, relationship, integer } from "@keystone-next/fields";
+import { text, relationship, integer, checkbox } from "@keystone-next/fields";
 import { cloudinaryImage } from "@keystone-next/cloudinary";
 import { list } from "@keystone-next/keystone/schema";
 import { permissions } from "../access";
@@ -18,6 +18,7 @@ export const Product = list({
     isHidden: (args) => !permissions.canManageProducts(args),
   },
   fields: {
+    hide: checkbox({ defaultValue: false }),
     name: text({
       isRequired: true,
       isIndexed: true,

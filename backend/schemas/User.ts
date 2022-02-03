@@ -1,9 +1,9 @@
-import { text, password, relationship, integer } from '@keystone-next/fields';
+import { text, password, relationship, checkbox } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
+import { list } from "@keystone-next/keystone/schema";
 
-import { permissions, rules } from '../access';
-import { createAccountEmail } from '../lib/mail';
+import { permissions, rules } from "../access";
+import { createAccountEmail } from "../lib/mail";
 // import { sendEmail } from "../mail";
 
 export const User = list({
@@ -20,13 +20,14 @@ export const User = list({
     hideCreate: (args) => !permissions.canManageUsers(args),
     hideDelete: (args) => !permissions.canManageUsers(args),
     isHidden: (args) => !permissions.canManageUsers(args),
-    labelField: 'firstName',
+    labelField: "firstName",
   },
   hooks: {
-    resolveInput: async ({ resolvedData }) => {
-      console.log(resolvedData);
-      await createAccountEmail(resolvedData);
-      return resolvedData;
+    resolveInput: async (args) => {
+      args.operation === "create" &&
+        (await createAccountEmail(args.resolvedData));
+
+      return args.resolvedData;
     },
   },
   fields: {
@@ -38,16 +39,18 @@ export const User = list({
     phone: text({
       isRequired: true,
     }),
+    dealer: checkbox({ defaultValue: false }),
     dealerId: text({}),
     role: relationship({
-      ref: 'Role.assignedTo',
+      ref: "Role.assignedTo",
       access: {
+        read: permissions.canManageRoles,
         create: permissions.canManageRoles,
         update: permissions.canManageUsers,
       },
       ui: {
-        createView: { fieldMode: 'hidden' },
-        itemView: { fieldMode: 'edit' },
+        createView: { fieldMode: "hidden" },
+        itemView: { fieldMode: "edit" },
       },
     }),
   },

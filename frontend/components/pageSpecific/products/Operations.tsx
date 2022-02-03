@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import Details from "./Details";
 import { Container } from "../../layout/Container";
+import Tabs from "../../global/Tabs";
 
 interface Props {
   list?: any;
@@ -13,6 +14,7 @@ interface Props {
   subTitle?: String;
   description?: any;
   padding?: Boolean;
+  contain?: Boolean;
   id?: string;
   key?: string;
 }
@@ -36,6 +38,7 @@ export const Operations = ({
   subTitle,
   description,
   padding = false,
+  contain = false,
   id,
 }: Props) => {
   const [videoSrc, setVideoSrc] = useState();
@@ -43,6 +46,7 @@ export const Operations = ({
   const [operationName, setOperationName] = useState();
   const [descriptions, setDescription] = useState();
   const [products, setProducts] = useState([]);
+  2;
   const [itemId, setItemId] = useState();
   const [active, setActive] = useState();
   useEffect(() => {
@@ -53,6 +57,24 @@ export const Operations = ({
     setProducts(list && list[0]?.products);
   }, [list]);
 
+  const arrayLabel = list
+    .map((value) => {
+      return value.type;
+    })
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+  const arrayItems = list.reduce((acc, curr) => {
+    if (!acc[curr.type]) {
+      acc[curr.type] = [];
+    }
+    acc[curr.type].push(curr);
+    return acc;
+  }, {});
+
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <Container gap padding={padding && true} id={id}>
       {(title || subTitle) && (
@@ -60,111 +82,124 @@ export const Operations = ({
           {description}
         </Details>
       )}
-      <Middle>
-        <Left>
-          {videoSrc && video ? (
-            <AnimatePresence exitBeforeEnter>
-              <VideoContainer
-                key={itemId}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.35 }}
-              >
-                <ReactPlayer
-                  url={videoSrc}
-                  playing
-                  loop
-                  muted
-                  controls
-                  width="100%"
-                  height="auto"
-                  className="video"
+      {arrayLabel.length > 1 && (
+        <Tabs
+          tabs={arrayLabel}
+          onClick={(e) => {
+            setActiveTab(e);
+          }}
+          active={activeTab}
+        />
+      )}
+      {arrayItems[arrayLabel[activeTab]] && (
+        <Middle>
+          <Left>
+            {videoSrc && video ? (
+              <AnimatePresence exitBeforeEnter>
+                <VideoContainer
+                  key={itemId}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.35 }}
+                >
+                  <ReactPlayer
+                    url={videoSrc}
+                    playing
+                    loop
+                    muted
+                    controls
+                    width="100%"
+                    height="auto"
+                    className="video"
+                  />
+                </VideoContainer>
+              </AnimatePresence>
+            ) : (
+              <AnimatePresence exitBeforeEnter>
+                <ImageS
+                  alt={operationName}
+                  key={itemId}
+                  src={imageSrc}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  contain={contain}
+                  transition={{ duration: 0.35 }}
                 />
-              </VideoContainer>
-            </AnimatePresence>
-          ) : (
+              </AnimatePresence>
+            )}
             <AnimatePresence exitBeforeEnter>
-              <ImageS
-                alt={operationName}
+              <TextDetails
                 key={itemId}
-                src={imageSrc}
                 variants={variants}
                 initial="enter"
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.35 }}
-              />
-            </AnimatePresence>
-          )}
-          <AnimatePresence exitBeforeEnter>
-            <TextDetails
-              key={itemId}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.35 }}
-            >
-              {operationName && <h6>{operationName}</h6>}
-              {description && <p>{descriptions}</p>}
-              {products && (
-                <ProductDisplay>
-                  {products.map((item) => (
-                    <p>{item.name}</p>
-                  ))}
-                </ProductDisplay>
-              )}
-            </TextDetails>
-          </AnimatePresence>
-        </Left>
-        <Right>
-          {list?.map((item) => {
-            return (
-              <button
-                key={item.id}
-                aria-label="option thumbnail"
-                onMouseEnter={() => {
-                  item.video && setVideoSrc(item.video);
-                  item.image &&
-                    setImageSrc(
-                      item.imageDisplay
-                        ? item.imageDisplay?.publicUrl
-                        : item.image?.publicUrl
-                    );
-                  setOperationName(item.name);
-                  setDescription(item.description);
-                  setActive(item.id);
-                  setItemId(item.id);
-                  item.products && setProducts(item.products);
-                }}
-                onClick={() => {
-                  setVideoSrc(item.video);
-                  item.image &&
-                    setImageSrc(
-                      item.imageDisplay
-                        ? item.imageDisplay?.publicUrl
-                        : item.image?.publicUrl
-                    );
-                  setDescription(item.description);
-                  setActive(item.id);
-                  setOperationName(item.name);
-                  setItemId(item.id);
-                  item.product && setProducts(item.products);
-                }}
               >
-                <ImageContainer
+                {operationName && <h6>{operationName}</h6>}
+                {description && <p>{descriptions}</p>}
+                {products && (
+                  <ProductDisplay>
+                    {products.map((item) => (
+                      <p key={item.id}>{item.name}</p>
+                    ))}
+                  </ProductDisplay>
+                )}
+              </TextDetails>
+            </AnimatePresence>
+          </Left>
+          <Right>
+            {arrayItems[arrayLabel[activeTab]]?.map((item) => {
+              return (
+                <button
                   key={item.id}
-                  src={item.image?.publicUrl}
-                  alt={item.image?.originalFilename}
-                  active={item.id === active}
-                />
-              </button>
-            );
-          })}
-        </Right>
-      </Middle>
+                  aria-label="option thumbnail"
+                  onMouseEnter={() => {
+                    item.video && setVideoSrc(item.video);
+                    item.image &&
+                      setImageSrc(
+                        item.imageDisplay
+                          ? item.imageDisplay?.publicUrl
+                          : item.image?.publicUrl
+                      );
+                    setOperationName(item.name);
+                    setDescription(item.description);
+                    setActive(item.id);
+                    setItemId(item.id);
+                    item.products && setProducts(item.products);
+                  }}
+                  onClick={() => {
+                    setVideoSrc(item.video);
+                    item.image &&
+                      setImageSrc(
+                        item.imageDisplay
+                          ? item.imageDisplay?.publicUrl
+                          : item.image?.publicUrl
+                      );
+                    setDescription(item.description);
+                    setActive(item.id);
+                    setOperationName(item.name);
+                    setItemId(item.id);
+                    item.product && setProducts(item.products);
+                  }}
+                >
+                  <ImageContainer
+                    key={item.id}
+                    src={item.image?.publicUrl}
+                    alt={item.image?.originalFilename}
+                    active={item.id === active}
+                    contain={contain}
+                  />
+                </button>
+              );
+            })}
+          </Right>
+        </Middle>
+      )}
     </Container>
   );
 };
@@ -200,7 +235,7 @@ const Left = styled.div`
 const Right = styled.div`
   display: grid;
   gap: calc(var(--gap) / 4);
-  grid-template-columns: repeat(auto-fit, minmax(4rem, 4rem));
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 6rem));
   justify-content: start;
   align-content: start;
 `;
@@ -211,11 +246,12 @@ const VideoContainer = styled(motion.div)`
 
 const ImageContainer = styled.div`
   display: grid;
-  height: 4rem;
-  width: 4rem;
+  height: 6rem;
+  width: 6rem;
   background-color: var(--color-white);
   background-image: url(${(props) => props.src});
-  background-size: cover;
+  background-size: ${(props) => (props.contain ? "contain" : "cover")};
+  background-repeat: no-repeat;
   background-position: center;
   border: ${(props) =>
     props.active
@@ -233,9 +269,10 @@ const ImageContainer = styled.div`
 
 const ImageS = styled(motion.div)`
   background-image: url(${(props) => props.src});
-  background-size: cover;
+  background-size: ${(props) => (props.contain ? "contain" : "cover")};
   background-repeat: no-repeat;
   background-position: center;
+  background-color: var(--color-white);
   width: 100%;
 
   height: 300px;

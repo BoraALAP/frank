@@ -1,9 +1,9 @@
-import { text, relationship } from '@keystone-next/fields';
+import { text, relationship, select } from "@keystone-next/fields";
 
-import { list } from '@keystone-next/keystone/schema';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { cloudinary } from '../../lib/cloudinaryConfig';
-import { permissions } from '../../access';
+import { list } from "@keystone-next/keystone/schema";
+import { cloudinaryImage } from "@keystone-next/cloudinary";
+import { cloudinary } from "../../lib/cloudinaryConfig";
+import { permissions } from "../../access";
 
 export const HardwareKit = list({
   access: {
@@ -24,17 +24,32 @@ export const HardwareKit = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: 'frank/hardware',
+        folder: "frank/HardwareKit",
       },
-      label: 'Source',
+      label: "Source",
+    }),
+    imageDisplay: cloudinaryImage({
+      cloudinary: {
+        ...cloudinary,
+        folder: "frank/HardwareKit",
+      },
+      label: "Source Display",
+    }),
+    type: select({
+      dataType: "enum",
+      options: [
+        { label: "Encore", value: "Encore" },
+        { label: "Contemporary", value: "Contemporary" },
+      ],
+      ui: { displayMode: "select" },
     }),
     description: text({}),
     products: relationship({
-      ref: 'Product.hardwareKitOptions',
+      ref: "Product.hardwareKitOptions",
       many: true,
     }),
     productCategories: relationship({
-      ref: 'ProductCategory.hardwareKitOptions',
+      ref: "ProductCategory.hardwareKitOptions",
       many: true,
     }),
   },

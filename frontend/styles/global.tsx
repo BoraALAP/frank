@@ -65,10 +65,10 @@ const GlobalStyle = createGlobalStyle`
 
   h1{
     font-size: 2.5rem;
-    line-height: 2.5rem;
+    line-height: 3.5rem;
     @media screen and (min-width: 768px){
       font-size: 4.5rem;
-      line-height: 4.5rem;
+      line-height: 6.5rem;
       }
   }
 

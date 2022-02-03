@@ -6,7 +6,8 @@ export const FourImages = ({
   imageSrc1,
   imageSrc2,
   imageSrc3,
-  imageSrc4,
+  // imageSrc4,
+
   title,
   description,
 }) => {
@@ -31,11 +32,11 @@ export const FourImages = ({
           <Image src={imageSrc3.publicUrl} objectFit="cover" layout="fill" />
         </ImageContainer>
       )}
-      {imageSrc4?.publicUrl && (
+      {/* {imageSrc4?.publicUrl && (
         <ImageContainerCover>
           <Image src={imageSrc4.publicUrl} objectFit="cover" layout="fill" />
         </ImageContainerCover>
-      )}
+      )} */}
     </Container>
   );
 };
@@ -55,12 +56,6 @@ const ImageContainer = styled.div`
   display: grid;
   position: relative;
   min-height: 400px;
-`;
-
-const ImageContainerCover = styled(ImageContainer)`
-  @media screen and (min-width: 768px) {
-    grid-column: span 2;
-  }
 `;
 
 const Text = styled.div`

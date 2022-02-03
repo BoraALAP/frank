@@ -1,13 +1,17 @@
+import React from "react";
+import Image from "next/image";
 import { gql, useQuery } from "@apollo/client";
+import styled from "styled-components";
 
-import { Breadcrumbs } from "../components/layout/PageTitle";
+import { Breadcrumbs, PageTitle } from "../components/layout/PageTitle";
 import { Loading } from "../UI/Loading";
 import { ImageOverlap } from "../components/pageSpecific/products/ImageOverlap";
 import { FourImages } from "../components/pageSpecific/products/FourImages";
 
 import { DesignEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Container } from "../components/layout/Container";
-import GreenInitiative from "../components/pageSpecific/products/GreenInitiative";
+import { GreenInitiative } from "../components/pageSpecific/products/GreenInitiative";
+import { Operations } from "../components/pageSpecific/products/Operations";
 
 const ProductTemplate = ({ product }) => {
   const { loading, data } = useQuery(PRODUCT_QUERY, {
@@ -21,6 +25,7 @@ const ProductTemplate = ({ product }) => {
   const {
     id,
     name,
+    hide,
     pageSubtitle,
     productImage,
     productCategories,
@@ -33,20 +38,34 @@ const ProductTemplate = ({ product }) => {
     productImage2,
     productImage3,
     productImage4,
+    operations,
   } = data?.allProducts[0];
 
   const links = [
     {
       name: "Design Options",
       href: `/designoptions/product/${name}`,
+      show: true,
+    },
+    {
+      name: "Operations",
+      to: "operations",
+      show: true,
+    },
+    {
+      name: "Home Energy Calculator",
+      to: "energyCalculator",
+      show: productCategories[0].name === "Windows",
     },
     {
       name: "Energy Efficiency",
       href: "/sub/learn",
+      show: true,
     },
     {
       name: "Find a Dealer",
       href: "/sub/dealerfinder",
+      show: true,
     },
   ];
 
@@ -71,17 +90,28 @@ const ProductTemplate = ({ product }) => {
         imageSrc1={productImage1}
         imageSrc2={productImage2}
         imageSrc3={productImage3}
-        imageSrc4={productImage4}
         title={secondaryDetailsTitle}
         description={secondaryDetailsDescription}
       />
+      <PageTitle title="Operations" padding id="operations" />
+      <Operations list={operations} video padding />
+      <ImageContainer>
+        <Image src={productImage4.publicUrl} objectFit="cover" layout="fill" />
+      </ImageContainer>
       <DesignEfficiency />
-      <GreenInitiative product={name} />
+
+      <GreenInitiative product={name} id="energyCalculator" />
     </Container>
   );
 };
 
 export default ProductTemplate;
+
+const ImageContainer = styled.div`
+  display: grid;
+  position: relative;
+  min-height: 600px;
+`;
 
 const PRODUCT_QUERY = gql`
   query PRODUCT_QUERY($product: String) {
@@ -123,6 +153,20 @@ const PRODUCT_QUERY = gql`
         id
         originalFilename
         publicUrl
+      }
+      operations {
+        id
+        name
+        image {
+          id
+          publicUrl
+          originalFilename
+        }
+        video
+        products {
+          id
+          name
+        }
       }
     }
   }

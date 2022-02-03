@@ -1,28 +1,27 @@
 import { gql, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+
 import { Container } from "../../components/layout/Container";
 import { Operations } from "../../components/pageSpecific/products/Operations";
 import { Breadcrumbs } from "../../components/layout/PageTitle";
 import { Capitilize } from "../../lib/Stringer";
 
 export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
-  const router = useRouter();
-
   const { data, loading } = useQuery(CATEGORYOPTIONS, {
     variables: { category: Capitilize(categoryName) },
   });
 
   const links = [
     {
-      name: "Exterior Finish",
-      to: "Exterior Finish",
-      show: data?.allProductCategories[0].exteriorOptions.length > 0,
+      name: "Door Slabs",
+      to: "Door Slabs",
+      show: data?.allProductCategories[0].doorSlabOptions.length > 0,
     },
     {
-      name: "Interior Finish",
-      to: "Interior Finish",
-      show: data?.allProductCategories[0].interiorOptions.length > 0,
+      name: "Finishes",
+      to: "Finishes",
+      show: data?.allProductCategories[0].exteriorOptions.length > 0,
     },
+
     {
       name: "Hardware",
       to: "Hardware",
@@ -43,6 +42,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
       to: "Divided Lites",
       show: data?.allProductCategories[0].dividedLiteOptions.length > 0,
     },
+
     {
       name: "Brickmold",
       to: "Brickmold",
@@ -71,37 +71,41 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
         </p>
       </Breadcrumbs>
 
-      {data?.allProductCategories[0]?.exteriorOptions?.length > 0 && (
+      {data?.allProductCategories[0].doorSlabOptions.length > 0 && (
+        <Container gap>
+          <Operations
+            id="Door Slabs"
+            list={data?.allProductCategories[0].doorSlabOptions}
+            title="Entry Door Slabs"
+            contain
+            description="
+          Add refinement to any glass surface with divided lights. Presented
+          in a variety of patterns and in a range of materials and finishes,
+          the details make the difference."
+          />
+        </Container>
+      )}
+
+      {data?.allProductCategories[0].exteriorOptions.length > 0 && (
         <Operations
-          title="Exterior Finish"
-          id="Exterior Finish"
-          subTitle="Product Design Options"
+          title="Finishes"
           list={data?.allProductCategories[0].exteriorOptions}
+          id="Finishes"
           description="
           The choice of colour can have a big impact, or be a subtle accent to
           your home’s exterior. Select from our wide range of standard colour
           coating options, or request a custom colour match – the options are
           endless.
-        "
-        />
-      )}
-      {data?.allProductCategories[0]?.interiorOptions?.length > 0 && (
-        <Operations
-          title="Interior Finish"
-          id="Interior Finish"
-          subTitle="Product Design Options"
-          list={data?.allProductCategories[0].interiorOptions}
-          description="
-          Choose classic white frames, or stand out with a colour coated interior. We can create a clean, smooth finish, or select from our wood grain options to make a statement.
           "
         />
       )}
-      {data?.allProductCategories[0]?.hardwareKitsOptions?.length > 0 && (
+
+      {data?.allProductCategories[0].hardwareKitOptions.length > 0 && (
         <Operations
           title="Hardware"
           id="Hardware"
-          subTitle="Product Design Options"
-          list={data?.allProductCategories[0].hardwareKitsOptions}
+          contain
+          list={data?.allProductCategories[0].hardwareKitOptions}
           description="
             Practical does not need to be boring. Quality and ease of use may be
             the most important aspects of your product’s hardware, but we offer
@@ -110,45 +114,50 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
           "
         />
       )}
-      {data?.allProductCategories[0]?.glassOptions?.length > 0 && (
+
+      {data?.allProductCategories[0].glassOptions.length > 0 && (
         <Operations
           title="Glass"
-          id="Glass"
-          subTitle="Product Design Options"
           list={data?.allProductCategories[0].glassOptions}
+          id="Glass"
           description="
-          New glass refreshes your home’s look and improves your insulation. Choose from our different options for enhanced security, privacy, lighting, and energy efficiency. 
-          "
+          New glass refreshes your home’s look and improves your insulation.
+          Choose from our different options for enhanced security, privacy,
+          lighting, and energy efficiency.
+       "
         />
       )}
-      {data?.allProductCategories[0]?.screenOptions?.length > 0 && (
+
+      {data?.allProductCategories[0].screenOptions.length > 0 && (
         <Operations
           title="Screens"
           id="Screens"
-          subTitle="Product Design Options"
           list={data?.allProductCategories[0].screenOptions}
           description="
           Screens come in a variety of mesh and screenbar options to complete the customization of your windows. Our newest product is FlexScreen for windows. And for entranceways, we offer factory-installed retractable screens.
          "
         />
       )}
-      {data?.allProductCategories[0]?.dividedLiteOptions?.length > 0 && (
+
+      {data?.allProductCategories[0].dividedLiteOptions.length > 0 && (
         <Operations
-          title="Divided Lites"
+          title="Window Divided Lites"
           id="Divided Lites"
-          subTitle="Product Design Options"
+          contain
           list={data?.allProductCategories[0].dividedLiteOptions}
           description="
-          Add refinement to any glass surface with divided lights. Presented in a variety of patterns and in a range of materials and finishes, the details make the difference. 
-          "
+         Add refinement to any glass surface with divided lights. Presented
+            in a variety of patterns and in a range of materials and finishes,
+            the details make the difference.
+        "
         />
       )}
-      {data?.allProductCategories[0]?.brickmoldAndSubsillOptions?.length >
-        0 && (
+
+      {data?.allProductCategories[0].brickmoldAndSubsillOptions.length > 0 && (
         <Operations
           title="Brickmold"
           id="Brickmold"
-          subTitle="Product Design Options"
+          contain
           list={data?.allProductCategories[0].brickmoldAndSubsillOptions}
           description="
           Exterior brickmold is available in an assortment of styles suitable for every application and aesthetic. Similarly, factory stained or painted trim is made to order and finished to match your interior for a cohesive look.
@@ -166,36 +175,40 @@ const CATEGORYOPTIONS = gql`
         id
         name
         description
+        type
         image {
           id
           publicUrl
           originalFilename
         }
-      }
-      interiorOptions {
-        id
-        name
-        description
-        image {
-          id
+        imageDisplay {
           publicUrl
           originalFilename
+          id
         }
       }
+
       hardwareKitOptions {
         id
         name
         description
+        type
         image {
           id
           publicUrl
           originalFilename
+        }
+        imageDisplay {
+          publicUrl
+          originalFilename
+          id
         }
       }
       glassOptions {
         id
         name
         description
+        type
         image {
           id
           publicUrl
@@ -216,6 +229,17 @@ const CATEGORYOPTIONS = gql`
         id
         name
         description
+        type
+        image {
+          id
+          publicUrl
+          originalFilename
+        }
+      }
+      doorSlabOptions {
+        id
+        name
+        description
         image {
           id
           publicUrl
@@ -226,6 +250,7 @@ const CATEGORYOPTIONS = gql`
         id
         name
         description
+        type
         image {
           id
           publicUrl

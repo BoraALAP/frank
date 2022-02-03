@@ -1,4 +1,4 @@
-import { gql, useQuery, useMutation } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 const CURRENT_USER_QUERY = gql`
   query {
@@ -8,17 +8,8 @@ const CURRENT_USER_QUERY = gql`
         lastName
         email
         companyName
+        dealer
         dealerId
-        role {
-          name
-          canManageRoles
-          canManageUsers
-          canManageProducts
-          canManageOptions
-          canManageContactForm
-          canManageLists
-          dealer
-        }
       }
     }
   }
@@ -31,7 +22,8 @@ const SIGNOUT = gql`
 `;
 
 const useUser = () => {
-  const { data } = useQuery(CURRENT_USER_QUERY);
+  const { data, error } = useQuery(CURRENT_USER_QUERY);
+
   return data?.authenticatedItem;
 };
 

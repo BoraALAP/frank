@@ -8,6 +8,7 @@ import { Container } from "../../components/layout/Container";
 import Lightbox from "../../UI/Lightbox";
 import { GlobalContext } from "../../context/context";
 import { ErrorMessages } from "../../UI/FormElements";
+import { Facebook, Instagram, Linkedin } from "../../assets/icons/Social";
 
 const imagine = () => {
   const breakpointColumnsObj = {
@@ -66,6 +67,29 @@ const imagine = () => {
               professional with a keen eye for detail or a homeowner looking for
               inspiration, imagine the possibilities with FRANK.
             </p>
+            <Social>
+              <a
+                href="https://www.facebook.com/frankWD.2020"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook />
+              </a>
+              <a
+                href="https://www.instagram.com/frankwindowsdoors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/frank-windows-doors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin />
+              </a>
+            </Social>
           </Header>
           <ImageContainer>
             <Masonry
@@ -120,6 +144,14 @@ const imagine = () => {
     </BigContainer>
   );
 };
+
+const Social = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  justify-content: start;
+`;
+
 const BigContainer = styled.div`
   display: grid;
 `;

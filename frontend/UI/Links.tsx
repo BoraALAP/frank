@@ -43,6 +43,7 @@ interface ButtonProps {
   rev?: boolean;
   type?: string;
   children: any;
+  contain?: boolean;
   disabled?: boolean;
   onClick?: any;
 }
@@ -52,6 +53,7 @@ export const Button = ({
   children,
   rev = false,
   type = "",
+  contain = false,
   disabled = false,
   onClick,
 }: ButtonProps) => {
@@ -60,6 +62,7 @@ export const Button = ({
       <ButtonContainer
         href={href}
         rev={rev}
+        contain={contain}
         disabled={disabled}
         onClick={onClick}
       >
@@ -101,6 +104,7 @@ export const ButtonS = ({
 
 const ButtonContainer = styled.button`
   display: grid;
+  width: ${(props) => (props.contain ? "fit-content" : "auto")};
   color: ${(props) => {
     if (props.rev) {
       return `var(--color-primary)`;
