@@ -1,4 +1,4 @@
-import { text } from "@keystone-next/fields";
+import { text, timestamp } from "@keystone-next/fields";
 
 import { list } from "@keystone-next/keystone/schema";
 import { permissions } from "../access";
@@ -23,6 +23,7 @@ export const ContactUsForm = list({
     },
   },
   fields: {
+    createdDate: timestamp({ defaultValue: new Date().toISOString() }),
     firstName: text({
       isRequired: true,
     }),

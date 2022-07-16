@@ -9,12 +9,12 @@ const Footer = () => {
 
     { name: "Find a dealer", href: "/sub/dealerfinder" },
 
-    { name: "Privacy Policy", href: "/sub/privacypolicy" },
-    { name: "Warranty", href: "/sub/warranty" },
+    // { name: "Privacy Policy", href: "/sub/privacypolicy" },
+    // { name: "Warranty", href: "/sub/warranty" },
   ];
 
   const socials = [
-    { name: "Facebook", href: "https://www.facebook.com/frankWD.2020" },
+    { name: "Facebook", href: "https://www.facebook.com/FRANKbyOstaco" },
     { name: "Instagram", href: "https://www.instagram.com/frankwindowsdoors" },
     {
       name: "LinkedIn",
@@ -35,9 +35,9 @@ const Footer = () => {
           </Left>
           <Middle>
             {socials.map((social, index) => (
-              <FooterButton href={social.href} key={index}>
+              <a href={social.href} key={index} target="_blank" rel="noopener">
                 {social.name}
-              </FooterButton>
+              </a>
             ))}
           </Middle>
           <Right>
@@ -46,8 +46,12 @@ const Footer = () => {
                 905-660-5021
               </a>{" "}
               |{" "}
-              <a href="mail:admin@ostaco.com" target="_blank" rel="nofollow">
-                admin@ostaco.com
+              <a
+                href="mail:marketing@frankwd.com"
+                target="_blank"
+                rel="nofollow"
+              >
+                marketing@frankwd.com
               </a>
             </p>
             <p>
@@ -60,7 +64,7 @@ const Footer = () => {
               </a>
             </p>
             <p>
-              Copyright © 2020 Ostaco. All rights reserved. |
+              Copyright © 2020 Frank™. All rights reserved. |
               <a href="https://artticfox.com" target="_blank" rel="noopener">
                 {" "}
                 Build by Artticfox
@@ -106,6 +110,10 @@ const Middle = styled.div`
   display: grid;
   align-content: start;
   gap: var(--gap);
+  a {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
 `;
 
 const Right = styled.div`

@@ -22,54 +22,62 @@ const account = () => {
       <PageTitle title="Account" />
       <h2>Hello {user?.firstName}</h2>
       {user?.dealer && (
-        <ListContainer>
-          <h6>Dealer Brochures</h6>
-          <List>
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+2900+EN+(14-Jan-21).pdf">
-              SV 2900 En
+        <>
+          <ListContainer>
+            <h6>Software</h6>
+            <ListLink href="https://s3.amazonaws.com/frank.com/static/OstacoParadigmPlus_v3046.2.exe">
+              Download Paradigm Plus
             </ListLink>
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+2900+Hybrid+EN+(14-Jan-21).pdf">
-              SV 2900 Hybrid
-            </ListLink>
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/Sunview-Patio-Doors-Warranty.pdf">
-              Sunview Patio Doors Warranty
-            </ListLink>
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/Sunview+Vinyl+Victorian+EN+(06-Nov-20).pdf">
-              Sunview Vinyl Victorian
-            </ListLink>
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Brighton+EN+(31-Aug-20).pdf">
-              SV Brighton
-            </ListLink>
+          </ListContainer>
+          <ListContainer>
+            <h6>Dealer Brochures</h6>
+            <List>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+2900+EN+(14-Jan-21).pdf">
+                SV 2900 En
+              </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+2900+Hybrid+EN+(14-Jan-21).pdf">
+                SV 2900 Hybrid
+              </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/Sunview-Patio-Doors-Warranty.pdf">
+                Sunview Patio Doors Warranty
+              </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/Sunview+Vinyl+Victorian+EN+(06-Nov-20).pdf">
+                Sunview Vinyl Victorian
+              </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Brighton+EN+(31-Aug-20).pdf">
+                SV Brighton
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Buckingham+1000+EN+(06-Nov-20).pdf">
-              SV Buckingham 1000
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Buckingham+1000+EN+(06-Nov-20).pdf">
+                SV Buckingham 1000
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Essex+EN+(14-Jan-21).pdf">
-              SV Essex
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Essex+EN+(14-Jan-21).pdf">
+                SV Essex
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Kent+EN+(16-Sep-20).pdf">
-              SV Kent
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Kent+EN+(16-Sep-20).pdf">
+                SV Kent
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Muskoka+EN+(31-Aug-20).pdf">
-              SV Muskoka
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Muskoka+EN+(31-Aug-20).pdf">
+                SV Muskoka
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Newcastle+EN+(14-Jan-21).pdf">
-              SV Newcastle
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Newcastle+EN+(14-Jan-21).pdf">
+                SV Newcastle
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Windsor+EN+(31Aug20).pdf">
-              SV Windsor
-            </ListLink>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV+Windsor+EN+(31Aug20).pdf">
+                SV Windsor
+              </ListLink>
 
-            <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV1200+EN+(14-Jan-21).pdf">
-              SV1200
-            </ListLink>
-          </List>
-        </ListContainer>
+              <ListLink href="https://s3.amazonaws.com/frank.com/dealerportal/SV1200+EN+(14-Jan-21).pdf">
+                SV1200
+              </ListLink>
+            </List>
+          </ListContainer>
+        </>
       )}
       <TertiaryButton href="/user/signout">Sign Out</TertiaryButton>
     </Container>

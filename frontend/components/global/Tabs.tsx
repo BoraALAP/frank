@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Tabs = ({ tabs, onClick, active }) => {
-  console.log(tabs);
-
   return (
     <Container>
       {tabs.map((item, index) => {

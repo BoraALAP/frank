@@ -1376,7 +1376,51 @@
       }
     ]
   },
-
+  {
+    "series": "Moose",
+    "types": [
+      {
+        "type": "",
+        "options": [
+          {
+            "option": "LowE180/Argon with i89",
+            "u": 1.42,
+            "shgc": 0.48,
+            "er": 36,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+            "u": 1.19,
+            "shgc": 0.4,
+            "er": 37,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon Triple IG",
+            "u": 1.25,
+            "shgc": 0.43,
+            "er": 37,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE272/LowE180 c/w Argon &i89 Triple IG",
+            "u": 1.19,
+            "shgc": 0.28,
+            "er": 29,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+            "u": 1.14,
+            "shgc": 0.16,
+            "er": 23,
+            "estSaving": "$125"
+          }
+        ]
+      }
+    ]
+  },
   {
     "series": "Moose+",
     "types": [
@@ -1410,6 +1454,138 @@
             "shgc": 0.28,
             "er": 30,
             "estSaving": "$125"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "series": "Lift and Slide",
+    "types": [
+      {
+        "type": "",
+        "options": [
+          {
+            "option": "LowE180/Argon with i89",
+            "u": 1.31,
+            "shgc": 0.44,
+            "er": 36,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+            "u": 0.91,
+            "shgc": 0.37,
+            "er": 41,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon Triple IG",
+            "u": 1.02,
+            "shgc": 0.39,
+            "er": 39,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE272/Clear c/w Argon Triple IG",
+            "u": 1.19,
+            "shgc": 0.27,
+            "er": 29,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE272/LowE180 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.26,
+            "er": 33,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE272/LowE272 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.25,
+            "er": 32,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE366/LowE180 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.17,
+            "er": 28,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+            "u": 0.91,
+            "shgc": 0.14,
+            "er": 27,
+            "estSaving": "$250"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "series": "Orchestra",
+    "types": [
+      {
+        "type": "",
+        "options": [
+          {
+            "option": "LowE180/Argon with i89",
+            "u": 1.31,
+            "shgc": 0.44,
+            "er": 36,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon &i89 Triple IG",
+            "u": 0.91,
+            "shgc": 0.37,
+            "er": 41,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE180/LowE180 c/w Argon Triple IG",
+            "u": 1.02,
+            "shgc": 0.39,
+            "er": 39,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE272/Clear c/w Argon Triple IG",
+            "u": 1.19,
+            "shgc": 0.27,
+            "er": 29,
+            "estSaving": "$125"
+          },
+          {
+            "option": "LowE272/LowE180 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.26,
+            "er": 33,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE272/LowE272 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.25,
+            "er": 32,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE366/LowE180 c/w Argon Triple IG",
+            "u": 0.97,
+            "shgc": 0.17,
+            "er": 28,
+            "estSaving": "$250"
+          },
+          {
+            "option": "LowE366/LowE366 c/w Argon &i89 Triple IG",
+            "u": 0.91,
+            "shgc": 0.14,
+            "er": 27,
+            "estSaving": "$250"
           }
         ]
       }

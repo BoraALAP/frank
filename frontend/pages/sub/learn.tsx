@@ -8,6 +8,7 @@ import { TwoColumn } from "../../UI/TwoColumn";
 import { Body } from "../../components/layout/Body";
 import Certify from "../../components/pageSpecific/learn/Certify";
 import { GreenInitiative } from "../../components/pageSpecific/products/GreenInitiative";
+import { OntarioMade } from "../../components/pageSpecific/learn/OntarioMade";
 
 const learn = () => {
   // const { loading, error, data } = useQuery(OPERATION_QUERY);
@@ -19,6 +20,7 @@ const learn = () => {
       name: "Visible Transmittance",
       to: "visibletransmittance",
     },
+    { name: "Ontario Made", to: "ontarioMade" },
     { name: "Energy Star", to: "energystar" },
     // { name: "Design Options", href: "/designoptions" },
     { name: "Energy Calculator", to: "energyCalculator" },
@@ -43,7 +45,7 @@ const learn = () => {
             </>
 
             <>
-              FRANK products are ENERGY STAR rated and provide ratings designed
+              Frank™ products are ENERGY STAR rated and provide ratings designed
               to indicate a window or door’s efficiency. There are several terms
               that will better educate you, and lead to a better understanding
               of a product’s effectiveness in insulating and blocking heat from
@@ -51,7 +53,6 @@ const learn = () => {
             </>
           </Body>
         </PageTitle>
-
         <TwoColumn imageSrc="/learn1.jpg" rev id="ufactor">
           <h4>U-Factor</h4>
           <p>
@@ -63,6 +64,7 @@ const learn = () => {
             we get depending on your geographic location.
           </p>
         </TwoColumn>
+
         <TwoColumn imageSrc="/learn2.jpg">
           <div>
             <h4 id="solarheatgain">Solar Heat Gain</h4>
@@ -93,6 +95,8 @@ const learn = () => {
             </a>
           </div>
         </TwoColumn>
+        <OntarioMade id="ontarioMade" />
+
         <PageTitle title="Energy Star" padding id="energystar" />
         <TwoColumn imageSrc="/learn3.jpg" rev>
           <div>
@@ -131,8 +135,10 @@ const learn = () => {
             </p>
           </>
         </TwoColumn>
+
         <Certify />
-        <DesignOptions />
+        {/* <DesignOptions /> */}
+        {/* !Fixme: Add the design options image as stand alone */}
         <GreenInitiative id="energyCalculator" />
       </Context>
     </Container>

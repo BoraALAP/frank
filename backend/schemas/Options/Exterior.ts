@@ -42,6 +42,7 @@ export const Exterior = list({
       options: [
         { label: "Stain", value: "Stain" },
         { label: "Colour", value: "Colour" },
+        { label: "Euro Finish", value: "Euro Finish" },
       ],
       ui: { displayMode: "select" },
     }),

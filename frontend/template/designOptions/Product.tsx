@@ -59,7 +59,6 @@ export default function DesignOptionsProductTemplate({ productName }) {
     <Container space pageGap padding title="Design Options">
       <Breadcrumbs
         title="Design Options"
-        subtitle="Product Design Options Overview"
         parent={`${Capitilize(productName)}`}
         links={list()}
       >
@@ -141,7 +140,7 @@ export default function DesignOptionsProductTemplate({ productName }) {
 
       {data?.allProducts[0].dividedLiteOptions.length > 0 && (
         <Operations
-          title="Window Divided Lites"
+          title="Divided Lites"
           id="Divided Lites"
           contain
           list={data?.allProducts[0].dividedLiteOptions}
@@ -197,11 +196,14 @@ const PRODUCTOPTIONS = gql`
           originalFilename
         }
       }
-      hardwareKitOptions {
+      hardwareKitOptions(sortBy: name_ASC) {
         id
         name
         description
-        type
+        type {
+          id
+          name
+        }
         image {
           id
           publicUrl
@@ -228,10 +230,17 @@ const PRODUCTOPTIONS = gql`
         id
         name
         description
+        type
+        url
         image {
           id
           publicUrl
           originalFilename
+        }
+        imageDisplay {
+          publicUrl
+          originalFilename
+          id
         }
       }
       dividedLiteOptions {

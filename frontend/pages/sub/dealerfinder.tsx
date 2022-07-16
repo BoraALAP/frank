@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+/* eslint-disable no-undef */
+/* global google */
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   GoogleMap,
-  useLoadScript,
+  Autocomplete,
   Marker,
   MarkerClusterer,
   InfoWindow,
+  useJsApiLoader,
 } from "@react-google-maps/api";
 
 import { Loading } from "../../UI/Loading";
 import { Container } from "../../components/layout/Container";
+
+import { Button, ButtonS } from "../../UI/Links";
 
 const DEALER_QUERY = gql`
   query DEALER_QUERY($search: String) {
@@ -25,26 +30,37 @@ const DEALER_QUERY = gql`
       }
       sortBy: city_ASC
     ) {
-      postal
-      city
-      name
-      province
       id
-      formattedAddress
+      name
       googlePlaceID
+      formattedAddress
       lat
       lng
+      city
+      postal
+      phone
+      email
+      person
+      province
     }
   }
 `;
 
 const containerStyle = {
   width: "100%",
-  height: "400px",
+  height: "100%",
 };
 
 const DealerFinder = (props) => {
   const [searchWord, setSearchWord] = useState("");
+  // /**@type React.MutableRefObject<HTMLInputElement> */
+
+  interface RefObject {
+    current: object;
+    value: string;
+  }
+  const inputRef = useRef<RefObject>();
+
   const { data, loading, error, refetch } = useQuery(DEALER_QUERY, {
     fetchPolicy: "cache-and-network",
     variables: { search: searchWord },
@@ -70,15 +86,15 @@ const DealerFinder = (props) => {
     });
   }, []);
 
-  //load google map and initilize
-  const { isLoaded, loadError } = useLoadScript({
+  // load google map and initilize
+  const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API,
+    libraries: ["places", "geometry"],
   });
 
-  // if (loading) return <Loading />;
   if (error) return `Error! ${error}`;
 
-  if (loadError) {
+  if (loadError && isLoaded) {
     return (
       <Container space padding title="Dealer Finder">
         <div>Map cannot be loaded right now, sorry.</div>;
@@ -86,9 +102,46 @@ const DealerFinder = (props) => {
     );
   }
 
-  const handleChange = (e) => {
+  let geocoder;
+
+  if (isLoaded) {
+    geocoder = new google.maps.Geocoder();
+  }
+
+  const geocodeFunc = (request: google.maps.GeocoderRequest): void => {
+    geocoder
+      .geocode(request)
+      .then((result) => {
+        const { results } = result;
+
+        // map.setCenter(results[0].geometry.location);
+        // marker.setPosition(results[0].geometry.location);
+        // marker.setMap(map);
+        // responseDiv.style.display = "block";
+        // response.innerText = JSON.stringify(result, null, 2);
+        setLocation({
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng(),
+        });
+
+        results[0].address_components.map((item) => {
+          if (item.types.includes("locality")) {
+            setSearchWord(item.long_name);
+          }
+        });
+
+        return results;
+      })
+      .catch((e) => {
+        alert("Geocode was not successful for the following reason: " + e);
+      });
+  };
+
+  const handleSubmit = (e) => {
+    geocodeFunc({ address: inputRef?.current?.value });
     e.preventDefault();
-    setSearchWord(e.target.value);
+
+    // setSearchWord(e.target.value);
   };
 
   const handleClick = (position) => {
@@ -96,6 +149,10 @@ const DealerFinder = (props) => {
       lat: parseFloat(position.lat),
       lng: parseFloat(position.lng),
     });
+  };
+
+  const handleChange = (e) => {
+    setSearchWord(e.target.value);
   };
 
   return (
@@ -106,7 +163,7 @@ const DealerFinder = (props) => {
             locations.map((item) => {
               return (
                 <AnimatePresence exitBeforeEnter initial={false} key={item.id}>
-                  <button
+                  <li
                     onClick={() => {
                       handleClick(item);
                       setMarker(item.id);
@@ -126,8 +183,18 @@ const DealerFinder = (props) => {
                       <h6>{item.name}</h6>
 
                       <p>{item.formattedAddress}</p>
+                      {/* <p>{item.person}</p>
+                      <a href={`mailto: ${item.email}`}>{item.email}</a>
+                      <a href={`tel: +1${item.phone}`}>{item.phone}</a> */}
+                      <a
+                        href={`https://www.google.com/maps/place/?q=place_id:${item.googlePlaceID}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Find it on Google
+                      </a>
                     </Dealer>
-                  </button>
+                  </li>
                 </AnimatePresence>
               );
             })
@@ -140,19 +207,32 @@ const DealerFinder = (props) => {
         <Right>
           <Fixed>
             <p>
-              Ostaco Windows and Doors products are proudly distributed by many
-              retailers across Ontario. Please fill out this form and our team
-              will quickly get back to you with information on your nearest
-              dealer.
+              Frank has many great dealers across Ontario. Please put in your
+              town.
             </p>
-            <Input
-              aria-label="city"
-              id="city"
-              name="q"
-              onChange={handleChange}
-              value={searchWord}
-              placeholder="What city are you looking for?"
-            />
+            <Row>
+              {isLoaded && (
+                <Autocomplete>
+                  <Input
+                    aria-label="city"
+                    id="city"
+                    name="q"
+                    onChange={handleChange}
+                    value={searchWord}
+                    ref={inputRef}
+                    placeholder="What city are you looking for?"
+                  />
+                </Autocomplete>
+              )}
+              <ButtonS
+                type="submit"
+                onClick={handleSubmit}
+                disabled={searchWord === ""}
+              >
+                Search
+              </ButtonS>
+            </Row>
+
             <GoogleContainer>
               {isLoaded ? (
                 <>
@@ -219,6 +299,7 @@ const Content = styled.div`
 const GoogleContainer = styled.div`
   display: grid;
   order: 0;
+  min-height: 400px;
   @media screen and (min-width: 768px) {
     order: 1;
   }
@@ -254,18 +335,30 @@ const Fixed = styled.div`
   @media (min-width: 768px) {
     position: sticky;
     top: 5rem;
-    height: min-content;
+    align-content: start;
   }
 `;
 
-const Dealer = styled(motion.li)`
+const Dealer = styled(motion.button)`
+  display: grid;
   padding-left: 5vw;
   grid-gap: 0.5em;
   text-align: left;
+  grid-auto-flow: row;
   h6,
   h4 {
     color: ${(props) => props.active && `var(--color-secondary)`};
     transition: all 0.4s ease-in-out;
+  }
+`;
+
+const Row = styled.form`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2rem;
+  grid-template-columns: 1fr auto;
+  div {
+    display: grid;
   }
 `;
 

@@ -1,11 +1,11 @@
-import { text, relationship, select } from "@keystone-next/fields";
+import { text, relationship } from "@keystone-next/fields";
 
 import { list } from "@keystone-next/keystone/schema";
 import { cloudinaryImage } from "@keystone-next/cloudinary";
-import { cloudinary } from "../../lib/cloudinaryConfig";
 import { permissions } from "../../access";
+import { cloudinary } from "../../lib/cloudinaryConfig";
 
-export const HardwareKit = list({
+export const HardwareType = list({
   access: {
     create: permissions.canManageOptions,
     read: () => true,
@@ -24,28 +24,13 @@ export const HardwareKit = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: "frank/hardware",
+        folder: "frank/HardwareType",
       },
       label: "Source",
     }),
-    imageDisplay: cloudinaryImage({
-      cloudinary: {
-        ...cloudinary,
-        folder: "frank/hardware",
-      },
-      label: "Source Display",
-    }),
-    type: relationship({
-      ref: "HardwareType.parent",
-      many: true,
-    }),
     description: text({}),
-    products: relationship({
-      ref: "Product.hardwareKitOptions",
-      many: true,
-    }),
-    productCategories: relationship({
-      ref: "ProductCategory.hardwareKitOptions",
+    parent: relationship({
+      ref: "HardwareKit.type",
       many: true,
     }),
   },

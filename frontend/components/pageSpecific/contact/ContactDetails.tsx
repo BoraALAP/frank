@@ -16,7 +16,7 @@ const list = [
     email: "sales@frankwd.com",
   },
   {
-    name: "Professional Support",
+    name: "Technical Support",
     email: "tech@frankwd.com",
   },
 ];
@@ -24,13 +24,28 @@ const list = [
 export const ContactDetails = () => {
   return (
     <Container>
-      {list.map((item, index) => (
+      {/* {list.map((item, index) => (
         <Detail key={index}>
           <h5>{item.name}</h5>
           <a href={`mailto:${item.email}`}>{item.email}</a>
           {item.phone && <a href={`tel:${item.phone}`}>{item.phone}</a>}
         </Detail>
-      ))}
+      ))} */}
+      <Detail>
+        <h5>Contact Info</h5>
+        <a href={`mailto:hello@frankwd.com`}>hello@frankwd.com</a>
+        <a
+          href={`https://www.google.com/maps/place/?q=place_id:ChIJh7nUtowuK4gRY9G-7jD1Kbo`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          248 Bowes Rd,
+          <br />
+          Concord, ON L4K 1J9,
+          <br />
+          Canada
+        </a>
+      </Detail>
     </Container>
   );
 };

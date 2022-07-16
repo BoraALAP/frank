@@ -12,12 +12,12 @@ const contactus = () => {
         <ContactDetails />
         <Right>
           <p>
-            Connect with FRANK by phone, or email on anything. We’re available
+            Connect with Frank™ by phone, or email on anything. We’re available
             Monday through Friday from 8:00 a.m. to 4:00 p.m. Eastern Standard
             Time.
           </p>
           <p>
-            To find out where the closest FRANK showroom of products is to you,
+            To find out where the closest Frank™ showroom of products is to you,
             and for local expert advice, please use our Dealer Locator.
           </p>
           <ContactForm />

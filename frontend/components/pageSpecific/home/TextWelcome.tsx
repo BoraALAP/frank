@@ -1,19 +1,19 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { Loading } from "../../../UI/Loading";
 
-const TextWelcome = (props) => {
+const TextWelcome = ({ message }) => {
+  const str = message?.split("\n");
+
   return (
     <Container>
-      <H1Big>
-        <Inwrap rev>
-          <Span>
-            FRANK has been in windows and doors for over four decades. He has
-            made strong partnerships, built a trusted team, and designed
-            products for everyone. Frank is like a family, we care about our
-            customers.
-          </Span>
-        </Inwrap>
-      </H1Big>
+      <Inwrap rev>
+        {message ? (
+          str.map((st, index) => <H1Big key={index}>{st}</H1Big>)
+        ) : (
+          <Loading />
+        )}
+      </Inwrap>
     </Container>
   );
 };
@@ -23,7 +23,7 @@ const Container = styled.div``;
 const Inwrap = styled.div`
   @media screen and (min-width: 991px) {
     display: grid;
-    grid-auto-flow: column;
+
     align-items: center;
     gap: calc(var(--gap));
   }

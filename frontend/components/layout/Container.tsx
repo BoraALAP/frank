@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { motion } from "framer-motion";
 import Meta from "../../components/global/Meta";
 
@@ -50,6 +51,7 @@ const ContainerS = styled(motion.div)`
   width: 100%;
   box-sizing: border-box;
   justify-self: center;
+
   margin: auto;
   gap: ${(props) =>
     props.gap ? `var(--gap)` : props.pageGap ? `calc(2*var(--gap))` : `0`};

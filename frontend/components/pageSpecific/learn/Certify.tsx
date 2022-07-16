@@ -28,9 +28,10 @@ const Certify = () => {
                 loading="lazy"
               />
               <p>
-                Certifying Body Placeholder. SAWDAC Joins Allies to Advocate for
-                Investment in Residential Retrofits for Post-Pandemic Economic
-                Recovery
+                QAI is a global powerhouse for independent third-party testing,
+                inspection and certification. Our services cover an expansive
+                list of industries and markets, and we take pride in being able
+                to handle even the most demanding projects.
               </p>
             </Card>
             <Card>
@@ -44,9 +45,16 @@ const Certify = () => {
                 loading="lazy"
               />
               <p>
-                Certifying Body Placeholder. SAWDAC Joins Allies to Advocate for
-                Investment in Residential Retrofits for Post-Pandemic Economic
-                Recovery
+                SAWDAC Joins Allies to Advocate for Investment in Residential
+                Retrofits for Post-Pandemic Economic Recovery
+              </p>
+              <p>
+                Earlier this week, SAWDAC joined several other associations
+                under the Efficiency Canada banner to make a direct appeal via a
+                letter to the federal government about the potential role of the
+                “energy efficiency sector” in Canada’s economic recovery in the
+                wake of the pandemic. The focus of this appeal is on the role of
+                home energy retrofits in job creation.
               </p>
             </Card>
 
@@ -61,13 +69,13 @@ const Certify = () => {
                 loading="lazy"
               />
               <p>
-                Certifying Body Placeholder. SAWDAC Joins Allies to Advocate for
-                Investment in Residential Retrofits for Post-Pandemic Economic
-                Recovery
+                ENERGY STAR is a voluntary U.S. Environmental Protection Agency
+                (EPA) program that delivers environmental benefits and financial
+                value through superior energy efficiency.
               </p>
             </Card>
           </Three>
-          <Two>
+          <Three>
             <Card>
               <Image
                 src="/certifying/logofencan.png"
@@ -79,9 +87,11 @@ const Certify = () => {
                 loading="lazy"
               />
               <p>
-                Certifying Body Placeholder. SAWDAC Joins Allies to Advocate for
-                Investment in Residential Retrofits for Post-Pandemic Economic
-                Recovery
+                Members are part of a strong, supportive network of industry
+                leaders where they can connect and learn from their peers, make
+                valuable connections needed to expand business, and together set
+                the stage for the future. We are your leading resource on all
+                matters that impact the fenestration industry across Canada.
               </p>
             </Card>
             <Card>
@@ -95,9 +105,67 @@ const Certify = () => {
                 loading="lazy"
               />
               <p>
-                Certifying Body Placeholder. SAWDAC Joins Allies to Advocate for
-                Investment in Residential Retrofits for Post-Pandemic Economic
-                Recovery
+                The CCMC provides code compliance assessments either as an
+                alternative solution, which uses a proprietary CCMC-developed
+                set of criteria to establish code compliance, or as an
+                acceptable solution, that verifies if a product meets a
+                code-referenced product or material standard.
+              </p>
+            </Card>
+            <Card>
+              <Image
+                src="/certifying/nfrc.png"
+                layout="responsive"
+                width={300}
+                height={50}
+                objectFit="contain"
+                objectPosition="50% 50%"
+                loading="lazy"
+              />
+              <p>
+                The NFRC is an independent non-profit organization that
+                establishes objective window, door, and skylight energy
+                performance ratings to help you compare products and make an
+                informed purchase.
+              </p>
+            </Card>
+          </Three>
+          <Two>
+            <Card>
+              <Image
+                src="/certifying/ul.png"
+                layout="responsive"
+                width={300}
+                height={50}
+                objectFit="contain"
+                objectPosition="50% 50%"
+                loading="lazy"
+              />
+              <p>
+                As a global safety science leader, we provide the expertise,
+                insights and services necessary to achieve core business
+                objectives. Our testing, inspection and certification, advisory
+                and risk management services, decision-making tools, training
+                and business intelligence offerings help our customers, based in
+                more than 100 countries, solve their critical business
+                challenges and prepare for future opportunities.
+              </p>
+            </Card>
+            <Card>
+              <Image
+                src="/certifying/nafs.png"
+                layout="responsive"
+                width={300}
+                height={50}
+                objectFit="contain"
+                objectPosition="50% 50%"
+                loading="lazy"
+              />
+              <p>
+                Performance Grade is a numeric designator that defines a
+                specific set of NAFS-specified product performance requirements
+                for a specific Design Pressure (DP) range as required by
+                conditions at the intended location of the building.
               </p>
             </Card>
           </Two>

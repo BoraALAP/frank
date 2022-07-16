@@ -28,30 +28,62 @@ export const Product = list({
     }),
     subtitle: text({
       isRequired: true,
+      label: "Category Subtitle",
       ui: {
         description: "Category Listing Subtitle",
       },
     }),
     excerpt: text({
       isRequired: true,
+      label: "Category Description",
       ui: {
         displayMode: "textarea",
         description: "Category Listing Subtitle",
       },
-    }),
-    order: integer({
-      defaultValue: 0,
     }),
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
         folder: "frank/products",
       },
-      label: "Product Image on Category Listing",
+      label: "Category Listing Product Image",
       ui: {
         description: "Category Listing Image",
       },
     }),
+    featured: checkbox({
+      defaultValue: false,
+      ui: {
+        description: "Featured Product on Home Page",
+      },
+    }),
+    featuredImage: cloudinaryImage({
+      cloudinary: {
+        ...cloudinary,
+        folder: "frank/products",
+      },
+      label: "Feature Listing Image",
+      ui: {
+        description: "Feature Listing Image",
+      },
+    }),
+    featuredTitle: text({
+      ui: {
+        displayMode: "textarea",
+        description: "Featured Listing Title",
+      },
+    }),
+    featuredSubtitle: text({
+      ui: {
+        displayMode: "textarea",
+        description: "Featured Listing Subtitle",
+      },
+    }),
+
+    order: integer({
+      defaultValue: 0,
+    }),
+
     productCategories: relationship({
       ref: "ProductCategory.products",
       many: true,
@@ -71,8 +103,10 @@ export const Product = list({
     }),
     imageTitle: text({
       isRequired: true,
+      label: "Subtitle",
     }),
     imageDescription: text({
+      label: "Description",
       ui: { displayMode: "textarea" },
     }),
     specs: text({
@@ -86,8 +120,9 @@ export const Product = list({
       },
       label: "Product Image 1",
     }),
-    secondaryDetailsTitle: text({}),
+    secondaryDetailsTitle: text({ label: "Title next to first image" }),
     secondaryDetailsDescription: text({
+      label: "Description next to first image",
       ui: { displayMode: "textarea" },
     }),
     productImage2: cloudinaryImage({
@@ -118,6 +153,15 @@ export const Product = list({
     }),
     operations: relationship({
       ref: "Operation.products",
+      many: true,
+    }),
+    configurationsTitle: text({}),
+    configurationsSubTitle: text({}),
+    configurationsDescription: text({
+      ui: { displayMode: "textarea" },
+    }),
+    configurations: relationship({
+      ref: "Configuration.products",
       many: true,
     }),
     exteriorOptions: relationship({

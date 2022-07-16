@@ -1,14 +1,26 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Video } from "cloudinary-react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedVideo } from "@cloudinary/react";
 
-import frank_logo from "../assets/branding/frank_logo";
+import Logo from "../assets/branding/frank_logo";
 import { ArrowRight } from "../assets/icons/Arrow";
 
 import Meta from "../components/global/Meta";
 
 const Home = () => {
+  // Create and configure your Cloudinary instance.
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: "arttic-fox",
+    },
+  });
+
+  const myVideo = cld.video(
+    "frank/Downsized_3_Ostaco_Website_2_dcle5g_1_tdqwp2"
+  );
+
   return (
     <Container
       animate={{ opacity: 1 }}
@@ -16,55 +28,51 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ delay: 0.35, duration: 0.75 }}
     >
-      <Meta title="Welcome to Frank" />
+      <Meta title="Welcome to Frank™" />
       <Header>
-        <LogoS
-          animate={{ x: 0, opacity: 1 }}
-          initial={{ x: -20, opacity: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ delay: 1, duration: 0.75 }}
-        />
         <Link href="/home">
-          <a>
+          <A>
+            <Logo height="160px" />
+
             <Right
               animate={{ x: 0, opacity: 1 }}
               initial={{ x: 20, opacity: 0 }}
               exit={{ opacity: 0 }}
               transition={{ delay: 1.5, duration: 0.75 }}
             >
-              <H1>Continue to Frank</H1>
+              {/* <H1>Continue to Frank™</H1> */}
               <ArrowRight color="var(--color-primary)" />
             </Right>
-          </a>
+          </A>
         </Link>
       </Header>
-      <VideoContainer>
-        <Video
-          cloudName="arttic-fox"
-          publicId="frank/general/Ostaco_Website_2_nxy07i"
-          autoPlay
-          loop
-        />
-      </VideoContainer>
+
+      <VideoS cldVid={myVideo} autoPlay muted loop />
     </Container>
   );
 };
 
 const Container = styled(motion.div)`
   display: grid;
-  background-image: ${(props) => `url(${props.bg})`};
-  background-position: center center;
-  background-size: cover;
+
   height: 100vh;
   width: 100vw;
 `;
-const VideoContainer = styled.div`
+
+const A = styled.div`
   display: grid;
+  gap: var(--gap);
+  cursor: pointer;
+`;
+
+const VideoS = styled(AdvancedVideo)`
   position: absolute;
   width: 100vw;
+  height: 100vh;
   overflow: hidden;
   justify-content: center;
-  z-index: -100;
+
+  object-fit: cover;
   video {
     width: 100vw;
   }
@@ -72,12 +80,14 @@ const VideoContainer = styled.div`
 
 const Header = styled.div`
   width: 100%;
+  height: 100vh;
   display: grid;
   align-items: center;
   padding: 2.5vh var(--padding);
   box-sizing: border-box;
   grid-auto-flow: row;
   justify-items: center;
+  z-index: 10;
   align-content: center;
   background-color: var(--color-whiteBg);
   gap: var(--gap);
@@ -86,16 +96,11 @@ const Header = styled.div`
   }
 `;
 
-const LogoS = styled(motion.custom(frank_logo))`
-  display: grid;
-  height: 80px;
-  width: auto;
-`;
-
 const Right = styled(motion.div)`
   display: grid;
   grid-auto-flow: column;
   align-items: center;
+  justify-content: center;
   gap: var(--gap);
 `;
 

@@ -5,7 +5,7 @@ import { cloudinaryImage } from "@keystone-next/cloudinary";
 import { cloudinary } from "../lib/cloudinaryConfig";
 import { permissions } from "../access";
 
-export const Operation = list({
+export const Configuration = list({
   access: {
     create: permissions.canManageProducts,
     read: () => true,
@@ -25,24 +25,24 @@ export const Operation = list({
     image: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: "frank/operations",
+        folder: "frank/configurations",
       },
       label: "Source",
     }),
     imageDisplay: cloudinaryImage({
       cloudinary: {
         ...cloudinary,
-        folder: "frank/operations",
+        folder: "frank/configurations",
       },
       label: "Source Display",
     }),
     video: text(),
     productCategories: relationship({
-      ref: "ProductCategory.operations",
+      ref: "ProductCategory.configurations",
       many: true,
     }),
     products: relationship({
-      ref: "Product.operations",
+      ref: "Product.configurations",
       many: true,
     }),
   },

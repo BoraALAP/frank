@@ -39,6 +39,13 @@ const ProductTemplate = ({ product }) => {
     productImage3,
     productImage4,
     operations,
+    operationsTitle,
+    operationsSubTitle,
+    operationsDescription,
+    configurations,
+    configurationsTitle,
+    configurationsSubTitle,
+    configurationsDescription,
   } = data?.allProducts[0];
 
   const links = [
@@ -51,6 +58,11 @@ const ProductTemplate = ({ product }) => {
       name: "Operations",
       to: "operations",
       show: true,
+    },
+    {
+      name: "Configurations",
+      to: "configurations",
+      show: configurations.length > 0,
     },
     {
       name: "Home Energy Calculator",
@@ -93,8 +105,30 @@ const ProductTemplate = ({ product }) => {
         title={secondaryDetailsTitle}
         description={secondaryDetailsDescription}
       />
-      <PageTitle title="Operations" padding id="operations" />
-      <Operations list={operations} video padding />
+      {/* <PageTitle title="Operations" padding id="operations" /> */}
+      {operations.length > 0 && (
+        <Operations
+          list={operations}
+          title={operationsTitle || "Operations"}
+          subTitle={operationsSubTitle}
+          description={operationsDescription}
+          video
+          padding
+          id="operations"
+        />
+      )}
+      {configurations.length > 0 && (
+        <Operations
+          list={configurations}
+          title={configurationsTitle || "Configurations"}
+          subTitle={configurationsSubTitle}
+          description={configurationsDescription}
+          video
+          padding
+          contain
+          id="configurations"
+        />
+      )}
       <ImageContainer>
         <Image src={productImage4.publicUrl} objectFit="cover" layout="fill" />
       </ImageContainer>
@@ -168,6 +202,26 @@ const PRODUCT_QUERY = gql`
           name
         }
       }
+      operationsTitle
+      operationsSubTitle
+      operationsDescription
+      configurations {
+        id
+        name
+        image {
+          id
+          publicUrl
+          originalFilename
+        }
+        video
+        products {
+          id
+          name
+        }
+      }
+      configurationsTitle
+      configurationsSubTitle
+      configurationsDescription
     }
   }
 `;

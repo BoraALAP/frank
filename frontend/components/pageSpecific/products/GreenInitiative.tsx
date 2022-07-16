@@ -22,8 +22,6 @@ export const GreenInitiative = ({ product, id }: GreenProps) => {
   const newArray = data[0]?.types.map((item) => item.type);
   const productArray = dataSet.map((item) => item.series);
 
-  console.log(newArray);
-
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -41,10 +39,16 @@ export const GreenInitiative = ({ product, id }: GreenProps) => {
             // subtitle="Energy Savings Calculator"
           >
             <div>
-              How much energy can you save using energy efficient windows?{" "}
-              <a href="https://www.cardinalcorp.com/technology/applications/energy-calculator/">
-                Click Here
-              </a>
+              <h4>
+                How much energy can you save using energy efficient windows?{" "}
+                <ATag
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.cardinalcorp.com/technology/applications/energy-calculator/"
+                >
+                  Click Here
+                </ATag>
+              </h4>
             </div>
           </PageTitle>
           <Icon onClick={() => setShowModal(!showModal)}>
@@ -113,7 +117,11 @@ export const GreenInitiative = ({ product, id }: GreenProps) => {
                 analysis of building simulations using the REM/Design program
                 (www.archenergy.com) and residential building insulation levels
                 described in the{" "}
-                <a href="http://windows.lbl.gov/software/resfen/6/RESFEN60UserManual.pdf">
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="http://windows.lbl.gov/software/resfen/6/RESFEN60UserManual.pdf"
+                >
                   Resfen User Guide.
                 </a>
               </p>
@@ -139,7 +147,11 @@ export const GreenInitiative = ({ product, id }: GreenProps) => {
                 ENERGY STAR compliance estimates are for windows only. Northern
                 criteria will be effective in January of 2016, all other zones
                 go into effect January 2015. Go to{" "}
-                <a href="https://www.energystar.gov/sites/default/files/ES_Final_V6_Residential_WDS_Spec.pdf">
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.energystar.gov/sites/default/files/ES_Final_V6_Residential_WDS_Spec.pdf"
+                >
                   this PDF
                 </a>{" "}
                 to see the full set of requirements for windows, doors, and
@@ -153,6 +165,12 @@ export const GreenInitiative = ({ product, id }: GreenProps) => {
   }
   return null;
 };
+
+const ATag = styled.a`
+  text-decoration: underline;
+  font-size: inherit;
+  font-weight: inherit;
+`;
 
 const Title = styled.div`
   display: grid;

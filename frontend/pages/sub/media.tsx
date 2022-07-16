@@ -26,7 +26,7 @@ const media = () => {
               heat that enters and escapes your home.
             </>
             <>
-              FRANK products are ENERGY STAR rated and provide ratings designed
+              Frank™ products are ENERGY STAR rated and provide ratings designed
               to indicate a window or door’s efficiency. There are several terms
               that will better educate you, and lead to a better understanding
               of a product’s effectiveness in insulating and blocking heat from

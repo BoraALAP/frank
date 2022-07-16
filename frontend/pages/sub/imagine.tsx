@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Masonry from "react-masonry-css";
 import { gql, useQuery } from "@apollo/client";
+import InstagramFeed from "react-ig-feed";
+import "react-ig-feed/dist/index.css";
 
 import { Container } from "../../components/layout/Container";
 
@@ -59,13 +61,13 @@ const imagine = () => {
       <Container space pageGap padding title="Imagine Page">
         <Context>
           <Header>
-            <h1>Imagine with Frank.</h1>
+            <h1>Imagine with Frank™.</h1>
             <p>
-              FRANK is here to help you imagine what your home could be. We hope
-              browsing through our gallery will give you a sense of the wide
-              range of custom options we offer. Whether you are a building
+              Frank™ is here to help you imagine what your home could be. We
+              hope browsing through our gallery will give you a sense of the
+              wide range of custom options we offer. Whether you are a building
               professional with a keen eye for detail or a homeowner looking for
-              inspiration, imagine the possibilities with FRANK.
+              inspiration, imagine the possibilities with Frank™.
             </p>
             <Social>
               <a
@@ -90,6 +92,10 @@ const imagine = () => {
                 <Linkedin />
               </a>
             </Social>
+            <InstagramFeed
+              token="IGQVJXcHRKbGNxUU9MSHBSa2pfc0xGYlFQelFVSFBzRVUyZA3FJWEtEbkc0d2duYkZAIanh5ZAXdMV2QzSFo5UWZA3MndibHUtc0RteVkxZATB5RF80TnEzNWdzSHcwSVZALbFY1RUZA2OXdOTDFOZAGRYZA1J4cgZDZD"
+              counter="12"
+            />
           </Header>
           <ImageContainer>
             <Masonry
@@ -120,7 +126,7 @@ const imagine = () => {
                 })
               ) : (
                 <ErrorMessages>
-                  Sorry no images are coming from our not so awesome database"{" "}
+                  Sorry no images are coming from our not so awesome database"
                 </ErrorMessages>
               )}
             </Masonry>
@@ -166,8 +172,6 @@ const ImageContainer = styled.div`
   width: 100%;
 
   .my-masonry-grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
     margin-left: -30px; /* gutter size offset */
     width: auto;

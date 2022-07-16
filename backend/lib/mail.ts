@@ -1,10 +1,10 @@
-import 'dotenv/config';
-import { createTransport, getTestMessageUrl } from 'nodemailer';
-import mailgunTransport from 'nodemailer-mailgun-transport';
-import { forgotPassword } from '../templates/forgot-password';
-import { contactUsFormCustomer } from '../templates/contactUsFormCustomer';
-import { createAccount } from '../templates/createAccount';
-import { contactUsFormClient } from '../templates/contactUsFormClient';
+import "dotenv/config";
+import { createTransport, getTestMessageUrl } from "nodemailer";
+import mailgunTransport from "nodemailer-mailgun-transport";
+import { forgotPassword } from "../templates/forgot-password";
+import { contactUsFormCustomer } from "../templates/contactUsFormCustomer";
+import { createAccount } from "../templates/createAccount";
+import { contactUsFormClient } from "../templates/contactUsFormClient";
 
 // TODO - IMPLEMENT MAILGUN FOR EMAIL
 
@@ -24,15 +24,15 @@ const transport = createTransport(
     auth: {
       domain: process.env.MAILGUN_DOMAIN,
       apiKey: process.env.MAILGUN_API_KEY,
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
+      // user: process.env.MAIL_USER,
+      // pass: process.env.MAIL_PASS,
     },
   })
 );
 
 export const forgotPasswordEmail = async (token, to) => {
   const options = {
-    subject: 'test',
+    subject: "test",
     to,
     from: process.env.MAILGUN_FROM,
     html: forgotPassword(token),
@@ -60,7 +60,7 @@ export const contactUsFormEmail = async (info) => {
   };
 
   const customer = {
-    subject: 'Contact Us Form for you',
+    subject: "Contact Us Form for you",
     to: info.email,
     from: process.env.MAILGUN_FROM,
     html: contactUsFormCustomer(info),

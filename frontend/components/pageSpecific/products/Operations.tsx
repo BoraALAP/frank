@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Details from "./Details";
 import { Container } from "../../layout/Container";
 import Tabs from "../../global/Tabs";
+import Link from "next/link";
 
 interface Props {
   list?: any;
@@ -17,6 +18,7 @@ interface Props {
   contain?: Boolean;
   id?: string;
   key?: string;
+  url?: string;
 }
 
 const variants = {
@@ -45,33 +47,66 @@ export const Operations = ({
   const [imageSrc, setImageSrc] = useState();
   const [operationName, setOperationName] = useState();
   const [descriptions, setDescription] = useState();
+  const [url, setUrl] = useState();
   const [products, setProducts] = useState([]);
   2;
   const [itemId, setItemId] = useState();
   const [active, setActive] = useState();
   useEffect(() => {
-    setImageSrc(list && list[0]?.image?.publicUrl);
+    setImageSrc(
+      list && list[0]?.imageDisplay?.publicUrl
+        ? list[0].imageDisplay.publicUrl
+        : list[0]?.image?.publicUrl
+    );
+
     setVideoSrc(list && list[0]?.video);
     setOperationName(list && list[0]?.name);
+    setDescription(list && list[0]?.description);
+    setUrl(list && list[0]?.url);
     setItemId(list && list[0]?.id);
     setProducts(list && list[0]?.products);
   }, [list]);
 
   const arrayLabel = list
     .map((value) => {
-      return value.type;
+      return Array.isArray(value?.type) ? value?.type[0]?.name : value?.type;
     })
     .filter((value, index, self) => {
       return self.indexOf(value) === index;
     });
 
   const arrayItems = list.reduce((acc, curr) => {
-    if (!acc[curr.type]) {
-      acc[curr.type] = [];
+    if (Array.isArray(curr?.type)) {
+      if (!acc[curr.type[0].name]) {
+        acc[curr.type[0].name] = [];
+      }
+      acc[curr.type[0].name].push(curr);
+      return acc;
+    } else {
+      if (!acc[curr.type]) {
+        acc[curr.type] = [];
+      }
+      acc[curr.type].push(curr);
+      return acc;
     }
-    acc[curr.type].push(curr);
-    return acc;
   }, {});
+
+  const [hoverState, setHoverState] = useState({
+    backgroundPosition: "center center",
+  });
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    // const x = ((e.clientX - left) / width) * 100;
+    // const y = ((e.clientY - top) / height) * 100;
+
+    let xposition = e.clientX - left;
+    let yposition = e.clientY - top;
+
+    let x = Math.round(100 / (width / xposition));
+    let y = Math.round(100 / (height / yposition));
+    setHoverState({ backgroundPosition: `${x}% ${y}%` });
+  };
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -109,7 +144,7 @@ export const Operations = ({
                     playing
                     loop
                     muted
-                    controls
+                    // controls
                     width="100%"
                     height="auto"
                     className="video"
@@ -117,19 +152,26 @@ export const Operations = ({
                 </VideoContainer>
               </AnimatePresence>
             ) : (
-              <AnimatePresence exitBeforeEnter>
-                <ImageS
-                  alt={operationName}
-                  key={itemId}
-                  src={imageSrc}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  contain={contain}
-                  transition={{ duration: 0.35 }}
-                />
-              </AnimatePresence>
+              <div style={{ overflow: "hidden" }}>
+                <AnimatePresence exitBeforeEnter>
+                  <ImageS
+                    alt={operationName}
+                    key={itemId}
+                    src={imageSrc}
+                    onMouseMove={handleMouseMove}
+                    onMouseOut={() =>
+                      setHoverState({ backgroundPosition: "center center" })
+                    }
+                    style={hoverState}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    contain={contain}
+                    transition={{ duration: 0.35 }}
+                  />
+                </AnimatePresence>
+              </div>
             )}
             <AnimatePresence exitBeforeEnter>
               <TextDetails
@@ -142,6 +184,11 @@ export const Operations = ({
               >
                 {operationName && <h6>{operationName}</h6>}
                 {description && <p>{descriptions}</p>}
+                {url && (
+                  <a href={url} target="_blank">
+                    Learn More
+                  </a>
+                )}
                 {products && (
                   <ProductDisplay>
                     {products.map((item) => (
@@ -158,20 +205,20 @@ export const Operations = ({
                 <button
                   key={item.id}
                   aria-label="option thumbnail"
-                  onMouseEnter={() => {
-                    item.video && setVideoSrc(item.video);
-                    item.image &&
-                      setImageSrc(
-                        item.imageDisplay
-                          ? item.imageDisplay?.publicUrl
-                          : item.image?.publicUrl
-                      );
-                    setOperationName(item.name);
-                    setDescription(item.description);
-                    setActive(item.id);
-                    setItemId(item.id);
-                    item.products && setProducts(item.products);
-                  }}
+                  // onMouseEnter={() => {
+                  //   item.video && setVideoSrc(item.video);
+                  //   item.image &&
+                  //     setImageSrc(
+                  //       item.imageDisplay
+                  //         ? item.imageDisplay?.publicUrl
+                  //         : item.image?.publicUrl
+                  //     );
+                  //   setOperationName(item.name);
+                  //   setDescription(item.description);
+                  //   setActive(item.id);
+                  //   setItemId(item.id);
+                  //   item.products && setProducts(item.products);
+                  // }}
                   onClick={() => {
                     setVideoSrc(item.video);
                     item.image &&
@@ -181,6 +228,7 @@ export const Operations = ({
                           : item.image?.publicUrl
                       );
                     setDescription(item.description);
+                    setDescription(item.url);
                     setActive(item.id);
                     setOperationName(item.name);
                     setItemId(item.id);
@@ -220,15 +268,15 @@ const Left = styled.div`
   align-content: start;
   gap: calc(var(--gap) / 2);
 
-  /* can be deleted after all of them set  */
   div.video {
     height: 300px;
+  }
 
-    /* @media screen and (min-width: 768px) {
-      max-height: 450px;
-      height: 50vw;
-      min-height: 250px;
-    } */
+  @media screen and (min-width: 768px) {
+    display: grid;
+    position: sticky;
+    height: min-content;
+    top: 0;
   }
 `;
 
@@ -274,8 +322,15 @@ const ImageS = styled(motion.div)`
   background-position: center;
   background-color: var(--color-white);
   width: 100%;
-
   height: 300px;
+
+  overflow: hidden;
+  transition: transform 0.35s ease-in-out;
+  &:hover {
+    opacity: 0;
+
+    background-size: auto;
+  }
 
   @media screen and (min-width: 768px) {
     max-height: 450px;

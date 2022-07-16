@@ -58,7 +58,9 @@ export const DesignOptions = ({
         <Image src={image} objectFit="cover" layout="fill" />
       </ImageContainer>
       <Text simple>
-        <Title> {DesignBodyTitle ? DesignBodyTitle : "Design Options"}</Title>
+        <Title>
+          {DesignBodyTitle ? DesignBodyTitle : "Imagine with Frank™"}
+        </Title>
 
         {DesignBodyCopy ? (
           <Body> {DesignBodyCopy} </Body>
@@ -73,8 +75,8 @@ export const DesignOptions = ({
           </Body>
         )}
 
-        <TertiaryButton href="/designoptions">
-          See Design Options
+        <TertiaryButton href="/sub/imagine">
+          Checkout Some of Frank's Work
         </TertiaryButton>
       </Text>
     </Container>

@@ -6,12 +6,15 @@ import Link from "next/link";
 import { GlobalContext } from "../context/context";
 import TextWelcome from "../components/pageSpecific/home/TextWelcome";
 import { Container } from "../components/layout/Container";
-import Message from "../components/pageSpecific/home/Message";
+
 import Category from "../components/pageSpecific/home/Category";
 
 import { DesignEfficiency } from "../components/pageSpecific/EnergyEfficiency";
 import { Slugify } from "../lib/Stringer";
 import { useUser } from "../components/auth/user";
+import { ProductCard } from "../components/pageSpecific/products/ProductCard";
+import { FeaturedCard } from "../components/pageSpecific/home/FeaturedCard";
+import HighlightedPage from "../components/pageSpecific/home/HighlightedPage";
 
 const Home = (props) => {
   const { store, dispatch } = useContext(GlobalContext);
@@ -24,7 +27,7 @@ const Home = (props) => {
       <Context>
         <Welcome>
           <Left>
-            <TextWelcome />
+            <TextWelcome message={data?.allHomePages[0].enterenceMessage} />
           </Left>
 
           <Right>
@@ -34,8 +37,37 @@ const Home = (props) => {
             </Link>
           </Right>
         </Welcome>
+        <Link href={`/${data?.allHomePages[0].pageHighlightUrl}`} passHref>
+          <a>
+            <HighlightedPage page={data?.allHomePages[0]} />
+          </a>
+        </Link>
+        {data?.allProducts.length > 0 && (
+          <Featured>
+            <Container padding>
+              <h2>
+                {data?.allProducts.length > 1
+                  ? "Featured Products"
+                  : "Featured Product"}{" "}
+              </h2>
+            </Container>
+            {data?.allProducts.map((product, index) => {
+              if (!product.hide) {
+                return (
+                  <FeaturedCard
+                    product={product}
+                    side={index! % 2 && true}
+                    key={product.id}
+                  />
+                );
+              }
+            })}
+          </Featured>
+        )}
         <Categories>
-          <Message />
+          <Container padding>
+            <h2>Product Categories</h2>
+          </Container>
           {!loading &&
             data?.allProductCategories.map((category, index) => {
               return (
@@ -57,9 +89,14 @@ const Home = (props) => {
   );
 };
 
+const Featured = styled.div`
+  display: grid;
+  gap: calc(var(--gap) * 2);
+`;
+
 const Context = styled.div`
   display: grid;
-  gap: calc(2 * var(--gap));
+  gap: calc(3 * var(--gap));
 `;
 
 const Welcome = styled.article`
@@ -91,12 +128,22 @@ const Right = styled.aside`
     display: grid;
     position: sticky;
     height: min-content;
-    top: 500px;
+    top: 170px;
   }
 `;
 
 const CATEGORIES = gql`
   query CATEGORIES {
+    allHomePages {
+      enterenceMessage
+      pageHighlightImage {
+        originalFilename
+        publicUrl
+      }
+      pageHighlightTitle
+      pageHighlightCopy
+      pageHighlightUrl
+    }
     allProductCategories {
       id
       name
@@ -106,6 +153,22 @@ const CATEGORIES = gql`
         id
         filename
         publicUrl
+      }
+    }
+    allProducts(where: { featured: true }) {
+      id
+      name
+      subtitle
+      excerpt
+      image {
+        publicUrl
+        originalFilename
+      }
+      featuredTitle
+      featuredSubtitle
+      featuredImage {
+        publicUrl
+        originalFilename
       }
     }
   }

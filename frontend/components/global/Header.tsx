@@ -83,9 +83,9 @@ export const Header = (props) => {
               <Left aria-label="logo" role="logo">
                 <LogoS />
                 <H4>
-                  We make
+                  we make
                   <br />
-                  Windows and Doors
+                  windows and doors
                 </H4>
               </Left>
             </a>
@@ -133,7 +133,7 @@ const HeaderS = styled.header`
   width: 100%;
   max-width: 1440px;
   z-index: 1000;
-  padding: 2.5vh var(--padding);
+  padding: 1rem var(--padding);
   top: ${(props) => (props.show ? "0" : "-30vh")};
   transition: top 1s ease;
   background-color: var(--color-bg);

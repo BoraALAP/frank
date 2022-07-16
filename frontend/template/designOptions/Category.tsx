@@ -59,7 +59,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
     <Container space pageGap padding title="Design Options">
       <Breadcrumbs
         title="Design Options"
-        subtitle="Category Design Options Overview"
+        // subtitle="Category Design Options Overview"
         parent={`${Capitilize(categoryName)}`}
         links={list()}
       >
@@ -141,7 +141,7 @@ export const DesignOptionsCategoryTemplate = ({ categoryName }) => {
 
       {data?.allProductCategories[0].dividedLiteOptions.length > 0 && (
         <Operations
-          title="Window Divided Lites"
+          title="Divided Lites"
           id="Divided Lites"
           contain
           list={data?.allProductCategories[0].dividedLiteOptions}
@@ -188,11 +188,14 @@ const CATEGORYOPTIONS = gql`
         }
       }
 
-      hardwareKitOptions {
+      hardwareKitOptions(sortBy: name_DESC) {
         id
         name
         description
-        type
+        type(sortBy: name_DESC) {
+          id
+          name
+        }
         image {
           id
           publicUrl
@@ -219,10 +222,17 @@ const CATEGORYOPTIONS = gql`
         id
         name
         description
+        type
+        url
         image {
           id
           publicUrl
           originalFilename
+        }
+        imageDisplay {
+          publicUrl
+          originalFilename
+          id
         }
       }
       dividedLiteOptions {

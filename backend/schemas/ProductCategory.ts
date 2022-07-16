@@ -71,5 +71,9 @@ export const ProductCategory = list({
       ref: "Operation.productCategories",
       many: true,
     }),
+    configurations: relationship({
+      ref: "Configuration.productCategories",
+      many: true,
+    }),
   },
 });

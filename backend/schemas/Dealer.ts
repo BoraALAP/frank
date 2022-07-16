@@ -19,7 +19,7 @@ export const Dealer = list({
     name: text({
       isRequired: true,
     }),
-    googlePlaceID: text({}),
+    googlePlaceID: text({ label: "Google Place ID" }),
     formattedAddress: text({}),
     lat: text({}),
     lng: text({}),

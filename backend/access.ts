@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { permissionsList } from './schemas/fields';
-import { ListAccessArgs } from './types';
+import { permissionsList } from "./schemas/fields";
+import { ListAccessArgs } from "./types";
 // At it's simplest, the access control returns a yes or no value depending on the users session
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -56,6 +56,17 @@ export const rules = {
     }
     // 1. Do they have the permission of canManageProducts
     if (permissions.canManageProducts({ session })) {
+      return true;
+    }
+    // 2. If not, do they own this item?
+    return { user: { id: session.itemId } };
+  },
+  canManagePages({ session }: ListAccessArgs) {
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+    // 1. Do they have the permission of canManagePages
+    if (permissions.canManagePages({ session })) {
       return true;
     }
     // 2. If not, do they own this item?

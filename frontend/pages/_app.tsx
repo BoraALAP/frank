@@ -15,6 +15,14 @@ import { initialState, globalReducer } from "../context/reducer";
 import { Header } from "../components/global/Header";
 import Footer from "../components/global/Footer";
 
+import MessengerCustomerChat, {
+  showMessenger,
+  hideMessenger,
+  showDialog,
+  hideDialog,
+  setMessengerHeight,
+} from "react-messenger-customer-chat";
+
 const MyApp = ({ Component, pageProps, apollo }) => {
   const [store, dispatch] = useReducer(globalReducer, initialState);
   const router = useRouter();
@@ -32,10 +40,19 @@ const MyApp = ({ Component, pageProps, apollo }) => {
         <ComponentS>
           {/* <AnimatePresence exitBeforeEnter initial={false}> */}
           <Component {...pageProps} key={router.pathname} />
+          <MessengerCustomerChat
+            pageId="101384518267099"
+            appId="1912941222249658"
+          />
           <CookieConsent
             location="bottom"
             buttonText="Accept All"
-            cookieName="acceptingCookies"
+            declineButtonText="Decline All"
+            cookieName="localhost"
+            declineCookieValue="localhost"
+            enableDeclineButton
+            sameSite="none"
+            acceptOnScrollPercentage={50}
             style={{
               background: "var(--color-primary)",
               boxSizing: "border-box",
@@ -48,10 +65,19 @@ const MyApp = ({ Component, pageProps, apollo }) => {
               fontSize: "16px",
               padding: "8px 32px",
             }}
+            declineButtonStyle={{
+              backgroundColor: "var(--color-error)",
+              color: "#fff",
+              fontSize: "16px",
+              padding: "8px 32px",
+            }}
             expires={150}
           >
             This website uses cookies to ensure you get the best experience on
             our website.{" "}
+            <a style={{ color: "#FFF" }} href="/sub/cookiePolicy">
+              Read More
+            </a>
           </CookieConsent>
           {/* </AnimatePresence> */}
         </ComponentS>

@@ -1,16 +1,16 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-const Message = () => {
+export const OntarioMade = ({ id }) => {
   return (
-    <Container>
+    <Container id={id}>
       <Bottom>
         <Image
-          src="https://res.cloudinary.com/arttic-fox/image/upload/v1615432918/frank/general/frank_factory_bbxhxa.jpg"
+          src="https://res.cloudinary.com/arttic-fox/image/upload/v1649250947/frank/general/PXL_20210309_232855226.NIGHT_2_ohswnc.jpg"
           layout="fill"
           objectFit="cover"
           loading="lazy"
-          objectPosition="center -40px"
+          objectPosition="center top"
         />
       </Bottom>
       <Top>
@@ -27,15 +27,18 @@ const Message = () => {
         </Left>
         <Right>
           <h3>
-            FRANK is proudly made in Ontario and services an exclusive network
+            Frank™ is proudly made in Ontario and services an exclusive network
             of dealers across Canada. What differentiates us from our
             competitors is our ability to customize each order, deliver a
-            quality product every time, and innovate ahead of the curve.
+            quality product every time, innovate ahead of the curve, and be a
+            one-stop-shop. What that means is that you can get your windows,
+            entry doors and sliding doors all from Frank™. Why would you want to
+            go anywhere else?
           </h3>
           <p>
             Learn more about us{" "}
             <a
-              href="https://www.supportontariomade.ca/search-results?query=ostaco"
+              href="https://www.supportontariomade.ca/en/ontario-made-products/architectural-pvc-windows"
               target="_blank"
             >
               here.
@@ -87,5 +90,3 @@ const Left = styled.div`
   padding: 2rem;
   align-content: start;
 `;
-
-export default Message;

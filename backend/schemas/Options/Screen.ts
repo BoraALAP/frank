@@ -1,4 +1,4 @@
-import { text, relationship } from "@keystone-next/fields";
+import { text, relationship, select } from "@keystone-next/fields";
 
 import { list } from "@keystone-next/keystone/schema";
 import { cloudinaryImage } from "@keystone-next/cloudinary";
@@ -28,7 +28,22 @@ export const Screen = list({
       },
       label: "Source",
     }),
+    imageDisplay: cloudinaryImage({
+      cloudinary: {
+        ...cloudinary,
+        folder: "frank/screen",
+      },
+      label: "Source Display",
+    }),
     description: text({}),
+    type: select({
+      dataType: "enum",
+      options: [
+        { label: "Standard", value: "Standard" },
+        { label: "ScreenBars", value: "Screen Bars" },
+      ],
+      ui: { displayMode: "select" },
+    }),
     products: relationship({
       ref: "Product.screenOptions",
       many: true,
@@ -37,5 +52,6 @@ export const Screen = list({
       ref: "ProductCategory.screenOptions",
       many: true,
     }),
+    url: text({}),
   },
 });

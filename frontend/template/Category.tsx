@@ -16,6 +16,8 @@ export default function CategoryTemplate({ category }) {
 
   const { name, products } = data?.allProductCategories[0];
 
+  const productsWithoutHide = products.filter((product) => !product.hide);
+
   let links = [];
   switch (name) {
     case "Windows":
@@ -74,16 +76,14 @@ export default function CategoryTemplate({ category }) {
   return (
     <Container space pageGap title={name}>
       <PageTitle title={name} links={links} padding />
-      {products.map((product, index) => {
-        if (!product.hide) {
-          return (
-            <ProductCard
-              product={product}
-              side={index! % 2 && true}
-              key={product.id}
-            ></ProductCard>
-          );
-        }
+      {productsWithoutHide.map((product, index) => {
+        return (
+          <ProductCard
+            product={product}
+            side={index! % 2 && true}
+            key={product.id}
+          ></ProductCard>
+        );
       })}
     </Container>
   );

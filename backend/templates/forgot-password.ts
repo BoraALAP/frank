@@ -9,7 +9,7 @@ export function forgotPassword(token: string) {
     ">
       <h2>Hello there!</h2>
       <p>Your Password Reset Token is here!
-      <a href="${process.env.FRONTEND_URL}/reset-password?token=${token}">Click Here to reset</a></p>
+      <a href="https://${process.env.FRONTEND_URL}/reset-password?token=${token}">Click Here to reset</a></p>
       <p>Frank</p>
     </div>
   `;

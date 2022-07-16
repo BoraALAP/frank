@@ -7,8 +7,11 @@ import {
 } from "@keystone-next/keystone/session";
 import { permissionsList } from "./schemas/fields";
 import { Role } from "./schemas/Role";
+import { HomePage } from "./schemas/Page/HomePage";
+import { MeetFrankPage } from "./schemas/Page/MeetFrankPage";
 import { Screen } from "./schemas/Options/Screen";
 import { HardwareKit } from "./schemas/Options/HardwareKit";
+import { HardwareType } from "./schemas/Options/HardwareType";
 import { Glass } from "./schemas/Options/Glass";
 import { GlassColor } from "./schemas/Options/GlassColor";
 import { Exterior } from "./schemas/Options/Exterior";
@@ -23,6 +26,7 @@ import { ProductCategory } from "./schemas/ProductCategory";
 import { Product } from "./schemas/Product";
 
 import { Operation } from "./schemas/Operation";
+import { Configuration } from "./schemas/Configuration";
 import { Imagine } from "./schemas/Imagine";
 import { Dealer } from "./schemas/Dealer";
 import { ContactUsForm } from "./schemas/ContactUsForm";
@@ -34,6 +38,7 @@ const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
   sameSite: "none",
+  secure: true,
 };
 
 const { withAuth } = createAuth({
@@ -56,10 +61,13 @@ export default withAuth(
   config({
     lists: createSchema({
       User,
+      HomePage,
+      MeetFrankPage,
       Role,
       Product,
       ProductCategory,
       Operation,
+      Configuration,
       Imagine,
       Dealer,
       ContactUsForm,
@@ -70,6 +78,7 @@ export default withAuth(
       Glass,
       GlassColor,
       HardwareKit,
+      HardwareType,
       Screen,
       DividedLite,
       BrickmoldAndSubsill,
@@ -81,7 +90,14 @@ export default withAuth(
     },
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL],
+        origin: [
+          `${process.env.FRONTEND_URL}`,
+          `https://${process.env.FRONTEND_URL}`,
+          `https://www.${process.env.FRONTEND_URL}`,
+          `https://staging.${process.env.FRONTEND_URL}`,
+          `http://localhost:7777`,
+          "*",
+        ],
         credentials: true,
       },
     },

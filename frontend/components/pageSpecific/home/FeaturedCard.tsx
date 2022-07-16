@@ -6,13 +6,22 @@ import { TertiaryButton } from "../../../UI/Links";
 import { Body } from "../../layout/Body";
 import { Slugify } from "../../../lib/Stringer";
 
-export const ProductCard = ({ product, side }) => {
+export const FeaturedCard = ({ product, side }) => {
+  const image =
+    product?.featuredImage?.publicUrl !== null
+      ? product?.featuredImage?.publicUrl
+      : product?.image?.publicUrl;
+
   return (
     <Link href={`/products/${Slugify(product.name)}`}>
       <Container side={side}>
         <ImageContainer>
           <Image
-            src={product?.image?.publicUrl}
+            src={
+              product?.featuredImage?.publicUrl
+                ? product?.featuredImage?.publicUrl
+                : product?.image?.publicUrl
+            }
             alt={product?.image?.originalFilename}
             layout="fill"
             objectFit="cover"
@@ -20,9 +29,9 @@ export const ProductCard = ({ product, side }) => {
           />
         </ImageContainer>
         <Text side={side}>
-          <Title>{product.name}</Title>
-          <Subtitle>{product.subtitle}</Subtitle>
-          <Body>{product.excerpt.split("\n")}</Body>
+          <Title>{product.featuredTitle}</Title>
+          <Subtitle>{product.featuredSubtitle}</Subtitle>
+
           <TertiaryButton
             rev={side ? false : true}
             href={`/products/${Slugify(product.name)}`}

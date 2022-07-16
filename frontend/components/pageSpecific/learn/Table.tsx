@@ -46,7 +46,6 @@ const TableLabel = ({ product = false }) => {
 
 const TableItem = ({ data, index, product }) => {
   const { series, type, option, u, shgc, er, estSaving }: any = { ...data };
-  console.log(type === "");
   return (
     <ItemContainer odd={index % 2 == 0} product={product}>
       {/* {series && <span>{series}</span>} */}

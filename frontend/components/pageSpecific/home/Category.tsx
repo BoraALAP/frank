@@ -31,7 +31,7 @@ const Category = ({
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
           <Body>{description}</Body>
-          <TertiaryButton href={hrefFixed}>View {title}</TertiaryButton>
+          <TertiaryButton href={hrefFixed}>View All {title}</TertiaryButton>
         </Right>
       </Container>
     </Link>
@@ -40,6 +40,7 @@ const Category = ({
 
 const Container = styled.section`
   display: grid;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     grid-template-columns: ${(props) => (props.rev ? "2fr 3fr" : "3fr 2fr")};
   }
